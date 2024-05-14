@@ -1,0 +1,156 @@
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.card .card-image {
+  width: 100%;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+}
+.card .card-content {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.card-content-games {
+  color: #6d87f5;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.card-content-heading {
+  color: #2e436a;
+  font-size: 2rem;
+}
+.card-content-description {
+  color: #5e5e5e;
+  font-size: 1.3rem;
+}
+.card-content-user-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #5e5e5e;
+}
+.card-content-user-details img {
+  width: 5rem;
+}
+.card-content-user-details-desc {
+  font-size: 1.2rem;
+}
+.card-content-user-details .name {
+  font-weight: 900;
+}
+
+@media (min-width: 780px) {
+  .card {
+    width: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: 30%;
+    gap: 1rem;
+  }
+  .card-content {
+    gap: 1rem !important;
+  }
+  .card-content-games {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .card-content-heading {
+    font-size: 2.5rem;
+  }
+  .card-content-description {
+    font-size: 2rem;
+  }
+  .card-content-user-details-desc {
+    font-size: 1.8rem;
+  }
+}
+
+/* @media (min-width: 640px) {
+  .card .card-image img {
+    height: 300px;
+  }
+  .card-content-games {
+    font-size: 1.5rem;
+  }
+  .card-content-heading {
+    font-size: 2.5rem;
+  }
+  .card-content-description {
+    font-size: 1.5rem;
+  }
+  .card-content-user-details {
+    font-size: 1.5rem;
+  }
+  .card-content-user-details img {
+    width: 7rem;
+  }
+} */
+
+/* @media (min-width: 780px) {
+  .card {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .card-image {
+    width: 45%;
+  }
+  .card-content {
+    width: 55%;
+  }
+} */
+
+/* @media (min-width: 1024px) {
+  .card {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .card .card-image {
+    width: 50%;
+    height: auto;
+  }
+  .card .card-image img {
+    height: auto;
+  }
+  .card .card-content {
+    width: 50%;
+    height: auto;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+} */
+
+/* @media (min-width: 1280px) {
+  .card-image {
+    width: 45% !important;
+  }
+  .card-content {
+    padding: 10px 0;
+  }
+  .card-content-games {
+    font-size: 2rem;
+  }
+  .card-content-heading {
+    font-size: 5rem;
+  }
+  .card-content-description {
+    font-size: 2.5rem;
+  }
+  .card-content-user-details img {
+    width: 8rem;
+  }
+  .card-content-user-details-desc {
+    font-size: 2.3rem;
+  }
+} */

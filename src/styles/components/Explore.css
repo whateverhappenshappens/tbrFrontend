@@ -1,0 +1,166 @@
+.explore {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+  margin-bottom: 2rem;
+}
+.box1 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.dont-know-text {
+  font-size: 4.5rem;
+  color: #2e436a;
+  font-weight: 700;
+  display: inline-block;
+  margin: 0;
+  white-space: nowrap;
+}
+.about-techbairn {
+  letter-spacing: 0;
+  line-height: 3.3rem;
+  font-weight: 500;
+  font-size: 1.7rem;
+  text-align: justify;
+  color: #516fa7;
+}
+.explore-btn {
+  background-color: #6d87f5;
+  border: 2px solid #6d87f5;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.3rem;
+  font-weight: 500;
+  border-radius: 2rem;
+  text-align: center;
+  padding: 1.5rem 4rem;
+  transition: 0.1s;
+}
+.explore-btn:hover {
+  background-color: rgba(0, 0, 0, 0);
+  color: #6d87f5;
+}
+.clueless-girl-img {
+  height: auto;
+  width: 100%;
+}
+.box2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.guided-learning-text {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #2e436a;
+}
+.talk-to-consultant {
+  color: #516fa7;
+  line-height: 3.3rem;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+.call-back-btn-box {
+  display: block;
+  width: fit-content;
+}
+.call-back-btn:link,
+call-back-btn:visited {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 1.8rem;
+  align-items: center;
+  background-color: #2fd18c;
+  padding: 2.2rem 1.8rem;
+  border-radius: 2rem;
+  transition: all 0.3s;
+}
+.call-back-btn:hover,
+.call-back-btn:active {
+  background-color: #26a770;
+}
+
+.request-call-back-text {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.phone-image {
+  width: 2.3rem;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+@media (min-width: 768px) {
+  .explore {
+    padding: 0 60px 0 70px !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .box1 {
+    width: 100%;
+  }
+  .explore-btn {
+    width: fit-content;
+  }
+  .mid-box {
+    width: 50%;
+  }
+  .box2 {
+    justify-content: center;
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .box1 {
+    width: 45%;
+  }
+  .mid-box {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box2 {
+    width: 25%;
+    overflow-x: visible;
+  }
+  .dont-know-text {
+    font-size: 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .explore {
+    padding: 5rem 100px 0 140px !important;
+  }
+  .box1 {
+    justify-content: center;
+    gap: 2rem;
+    width: 40%;
+  }
+  .box2 {
+    width: 30%;
+  }
+  .dont-know-text {
+    font-size: 6rem;
+  }
+  .about-techbairn {
+    font-size: 2.5rem;
+  }
+  .explore-btn {
+    font-size: 2.5rem;
+  }
+  .guided-learning-text {
+    font-size: 5rem;
+  }
+  .talk-to-consultant {
+    font-size: 2.3rem;
+  }
+  .request-call-back-text {
+    font-size: 2.1rem;
+  }
+}

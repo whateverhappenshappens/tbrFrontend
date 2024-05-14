@@ -1,0 +1,12 @@
+@font-face {
+    font-family:'VisbyRoundCF-Regular';
+    src: url(../../assets/fonts/VisbyRoundCF-Regular.otf);
+}
+*{
+    font-family: 'VisbyRoundCF-Regular';
+}
+@media (max-width:767px){
+    .container1{
+        padding: 0rem 0rem;
+    }
+}

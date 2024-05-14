@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'extra-bold';
+  src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+}
+
+.concepts {
+  width: 100vw;
+    background-color: #6d87f5;
+    padding: 7.5rem 2rem 9rem; 
+  }
+  
+  .concepts-headings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .concepts-head1 {
+    font-size: 4rem; 
+    color: white;
+
+  }
+  .concepts-head1 p{
+    font-family: 'extra-bold';
+  }
+  .concepts-button button {
+    background: #ffffff;
+    border-radius: 14px;
+    font-size: 2.4rem; 
+    color: #6d87f5;
+    padding: 2rem 2.5rem; 
+    border: none;
+  }
+  
+  .concepts-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; 
+    margin-top: 8rem; 
+  }
+  
+  @media (min-width: 1024px) {
+    .concepts {
+      padding: 10rem 14rem; /* Add padding for larger screens */
+    }
+  
+    .concepts-accordion {
+      margin-top: 12rem; /* Adjust margin top for larger screens */
+    }
+  }
+
+  @media (max-width: 767px){
+    .concepts-button button{
+      padding: 1rem 1rem;
+      font-size: 1.4rem;
+    }
+    .concepts-head1{
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .concepts-headings{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  

@@ -1,0 +1,90 @@
+.BloggingFooter-want-to-write-blog-text {
+  font-size: 5.5rem;
+  color: #2e436a;
+  opacity: 1;
+  margin-right: 66.4rem;
+  margin-left: 66.4rem;
+  margin-bottom: 6.1rem;
+}
+.BloggingFooter-descriptio {
+  font-size: 2.5rem;
+  color: #2e436a;
+  opacity: 1;
+  margin-bottom: 6rem;
+  margin-right: 69.5rem;
+  margin-left: 69.5rem;
+}
+.BloggingFooter-button {
+  font-size: 3.5rem;
+  color: #ffffff;
+  opacity: 1;
+  background-color: #6d87f5;
+  border-radius: 50px;
+  opacity: 1;
+  padding: 2.9rem 5.9rem 2.8rem 6rem;
+  margin-right: 79.6rem;
+  margin-left: 79.6rem;
+  margin-bottom: 12rem;
+  border: none;
+  outline: none;
+}
+.bloggingcard-paginayion {
+  display: flex;
+  margin-right: 59rem;
+  margin-left: 59.1rem;
+  padding-bottom: 15.3rem;
+}
+.page-item {
+  list-style: none;
+  padding: 0.3rem 0rem;
+}
+.page-link {
+  text-decoration: none;
+  font-size: 2rem;
+  color: #5e5e5e;
+  opacity: 1;
+  margin-right: 7.5rem;
+  transition: 0.5s;
+}
+.page-link:hover {
+  color: #ffffff;
+  opacity: 1;
+  background: #2e436a 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+  padding: 0.3rem 2.2rem 0.3rem 2.1rem;
+}
+.bloggingcard-paginayion-right-icon {
+  margin: 0.3rem 0rem;
+  font-size: 2rem;
+  color: #5e5e5e;
+  opacity: 1;
+  transition: 0.5s;
+}
+.bloggingcard-paginayion-right-icon:hover {
+  color: #e91919;
+  opacity: 1;
+  /* background: #2E436A; */
+  border-radius: 15px;
+  opacity: 1;
+  padding: 0.3rem 2.2rem 0.3rem 2.1rem;
+  font-size: 2rem;
+}
+.bloggingcard-paginayion-next-btn {
+  font-size: 2rem;
+  color: #5e5e5e;
+  opacity: 1;
+  margin-left: 7rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  transition: 0.5s;
+}
+.bloggingcard-paginayion-next-btn:hover {
+  color: #ffffff;
+  opacity: 1;
+  background: #2e436a 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+  padding: 0.3rem 2.2rem 0.3rem 2.1rem;
+}

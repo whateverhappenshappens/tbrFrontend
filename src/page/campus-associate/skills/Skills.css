@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'extra-bold';
+    src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+  }
+  
+.skills {
+    background-color: #2E436A;
+    display: flex;
+    justify-content: center;
+    height: auto; /* Adjusted min-height to fit the viewport height */
+    font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+.skills-img {
+    margin-top: 9.7rem;
+    position: relative;
+    width: 50%; /* Changed min-width to width */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align the image to the bottom */
+}
+
+.skills-img img {
+    max-height: 90vh; /* Adjusted max-height to fit the viewport height */
+    width: auto; /* Added to maintain aspect ratio */
+}
+
+.skills-required {
+    width: 50%;
+    margin-top: 10.3rem;
+}
+
+.skills-required-heading {
+    color: white;
+    font-size: 4.5rem;
+    text-align: center; /* Center the heading text */
+    font-family: 'extra-bold';
+}
+
+.skills-required-rect {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    margin-top: 5.4rem;
+    margin-bottom: 10.3rem;
+    margin-right: auto; /* Align the container to the left */
+    margin-left: auto; /* Align the container to the right */
+    max-width: 80%; /* Adjusting the width for responsiveness */
+}
+
+@media (max-width:767px)
+{
+    .skills-required{
+        width:100%;
+    }
+    .skills-img{
+        display: none;
+    }
+    .skills-required-heading{
+        font-size: 3.5rem;
+    }
+}

@@ -1,0 +1,34 @@
+.review-container{
+ background-color: #3853C5;
+ padding: 2.6rem 5rem 2.6rem 2.6rem;
+ border-radius: 2rem;
+ margin-right: 6rem;
+ margin-top: 16rem;
+}
+
+.person-info{
+    display: flex;
+    align-items: center;
+    gap: 2.8rem;
+}
+.review-text{
+    color: white;
+
+}
+.profile-pic{
+    height: 5.8rem;
+    width: 5.8rem;
+    border-radius: 10%;
+}
+.user-name{
+    color: white;
+    font-weight: 500;
+font-size: 1.7rem;
+}
+.user-college{
+    color: white;
+    font-size: 1.5rem;
+}
+.person-info{
+    margin-top: 2.5rem;
+}

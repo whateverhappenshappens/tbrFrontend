@@ -1,0 +1,108 @@
+.enroll {
+    overflow: visible;
+    margin:0px 50px 50px 50px;
+}
+
+.enroll-content {
+    background-color: #6D87F5;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(10rem);
+}
+
+.enroll-text {
+    color: #FFFFFF;
+    padding-left: 92px;
+}
+
+.enroll-text-large {
+    font-family: 'extra-bold';
+    margin-top: 8rem; /* Adjusted for better spacing */
+    margin-left: 0; /* Removed margin for better alignment */
+    font-size: 6rem; /* Adjusted font size for better readability on smaller screens */
+}
+.enroll-text-small {
+    font-family: 'medium';
+    font-size: 2.5rem;
+    margin-top: 4rem;
+    margin-left: 0; /* Removed margin for better alignment */
+    max-width: 76rem;
+}
+.enroll-button p{
+    font-family: 'bold';
+    cursor: pointer;
+}
+.enroll-button {
+    
+    border-radius: 20px;
+    border: none;
+    color: #6D87F5;
+    margin-top: 4rem; /* Adjusted margin for better spacing */
+    margin-bottom: 6rem; /* Adjusted margin for better spacing */
+    font-size: 3.3rem;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    padding: 1.5rem 4.4rem; /* Adjusted padding for better button size on smaller screens */
+}
+
+.enroll-img img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 3.4rem;
+}
+.image-para{
+    display: none;
+}
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .enroll{
+        padding: 0px 20px;
+       margin:0rem;
+    }
+    .image-para{
+        font-family: 'extra-bold';
+        padding-left: 0rem;
+        display: block;
+        color: white;
+        margin-left: 0; /* Removed margin for better alignment */
+        font-size: 3.3rem; /* Adjusted font size for better readability on smaller screens */
+    }
+    .enroll-text-large{
+        display: none;
+    }
+    .enroll-content {
+        flex-direction: column-reverse; /* Change back to column layout for smaller screens */
+        padding-left: 2rem; /* Adjust padding for better spacing */
+        padding-right: 2rem; /* Adjust padding for better spacing */
+    }
+
+    .enroll-text-large {
+        font-size: 5rem; /* Adjust font size for smaller screens */
+        margin-top: 6rem; /* Adjust margin for smaller screens */
+        margin-left: 0; /* Removed margin for better alignment */
+    }
+
+    .enroll-text-small {
+        font-size: 1.4rem; /* Adjust font size for smaller screens */
+        margin-top: 0rem; /* Adjust margin for smaller screens */
+        margin-left: 0; /* Removed margin for better alignment */
+    }
+
+    .enroll-button {
+        margin-top: 3rem; /* Adjust margin for smaller screens */
+        margin-bottom: 3rem; /* Adjust margin for smaller screens */
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+        padding: 1.2rem 3.2rem; /* Adjust padding for better button size on smaller screens */
+    }
+
+    .enroll-img img {
+        margin-top: 0rem; /* Adjust margin for smaller screens */
+        margin-bottom: 0rem; /* Adjust margin for smaller screens */
+    }
+    .enroll-text{
+        padding-left: 0rem;
+    }
+}
+

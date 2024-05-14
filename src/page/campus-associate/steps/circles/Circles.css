@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'bold';
+    src: url(../../../../assets/fonts/VisbyRoundCF-DemiBold.otf);
+}
+.circle{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 2rem;
+    
+}
+.backGroundCircle{
+    border-radius: 50%;
+}
+.circle img{
+    max-width: 100%; 
+    max-height: 100%; 
+    width: auto; 
+    height: auto; 
+    padding: 2rem; 
+    margin: auto; 
+}
+.circles-head{
+    margin-top: 2.3rem;
+    color: #2E436A;
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'bold';
+}
+
+@media (max-width:767px){
+    .circle img{
+        height:auto;
+        width: 10rem;
+    }
+    .circles-head{
+        font-size: 1.85rem;
+        margin-top: 0rem;
+    }
+}

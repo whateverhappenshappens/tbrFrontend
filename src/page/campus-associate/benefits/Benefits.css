@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'extra-bold';
+    src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+}
+
+.benefits{
+    margin-top: 5rem;
+    background-color: #2E436A;
+    padding-bottom: 5rem;
+    padding-top: 1rem;
+}
+
+.benefits-head {
+    font-size: 5.5rem;
+    color: #FFFFFF;  
+    
+}
+
+.benefits-head p {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: 'extra-bold';
+}
+
+.benefits-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 5rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+@media (max-width: 767px) {
+    .benefits-card {
+        margin-left: 0; /* Adjusting margin for smaller screens */
+        grid-template-columns: 1fr; /* Switching to a single column layout */
+        gap: 3rem; /* Adjusting gap for smaller screens */
+    }
+    .benefits-head{
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .benefits-card {
+        grid-template-columns: repeat(2, 1fr); /* Switching to a two-column layout for tablets */
+    }
+    
+}

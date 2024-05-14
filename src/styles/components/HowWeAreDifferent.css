@@ -1,0 +1,50 @@
+.how-we-are-different-box {
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+.heading-text {
+  font-size: 5rem;
+  font-weight: 600;
+  color: #2e436a;
+  text-align: center;
+}
+.ellipse-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 2.5rem;
+}
+@media (min-width: 500px) {
+  .ellipse-box {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .ellipse-box {
+    gap: 3rem;
+  }
+  .how-we-are-different-box {
+    padding-right: 60px !important;
+    padding-left: 70px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .how-we-are-different-box {
+    gap: 5rem;
+  }
+  .heading-text {
+    font-size: 6rem;
+  }
+}
+@media (min-width: 1280px) {
+  .how-we-are-different-box {
+    padding-right: 100px !important;
+    padding-left: 140px !important;
+  }
+}

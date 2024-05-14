@@ -1,0 +1,92 @@
+
+
+.project-card {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    height: auto;
+    width: 100%; 
+    max-width: 40rem; 
+    margin: 0 auto; 
+    padding: 3rem; 
+}
+
+.project-card-rectangle {
+    padding: 8.1rem 7.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: #FECBC4;
+}
+
+.project-card-rectangle img {
+    max-width: 100%;
+    height: auto;
+}
+
+.project-card-content-heading {
+    margin-top: 2rem; 
+    font-size: 2.5rem;
+    max-width: 22.3rem;
+    margin-bottom: 2rem;
+}
+.project-card-content-heading p{
+    font-family: 'bold';
+}
+.project-card-content-paragraph {
+    margin-top: 1.5rem; 
+    font-size: 2rem;
+    margin-bottom: 2.9rem;
+}
+
+.project-card-content-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card-content-button button {
+    background: #6D87F5;
+    border-radius: 20px;
+    padding: 1.5rem 3rem; 
+    color: white;
+    font-size: 2.5rem; 
+    border: none;
+    align-items: center;
+    margin-bottom: 2rem; 
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        max-width: 46rem; 
+    }
+    
+    .project-card-content {
+        flex-direction: column;
+        margin-left: 1rem; 
+        margin-right: 1rem; 
+    }
+
+    .project-card-content-heading {
+        margin-top: 1.5rem; 
+        text-align: center; 
+        max-width: none; 
+    }
+
+    .project-card-content-paragraph {
+        margin-top: 1rem; 
+        text-align: center; 
+    }
+
+    .project-card-content-button button {
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+        margin-bottom: 0rem;
+    }
+    .project-card-rectangle{
+        padding: 8.1rem 2.9rem;
+    }
+}

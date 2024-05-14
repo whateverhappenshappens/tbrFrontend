@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "extra-bold";
+  src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+}
+
+.experience {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  overflow: visible;
+  padding: 2rem 4rem;
+}
+
+.slick-slider {
+  overflow: visible;
+}
+
+.experience-texts {
+  text-align: center;
+  padding: 2rem 2rem;
+}
+
+.experience-head1 {
+  font-size: 3rem;
+  font-family: "extra-bold";
+}
+
+.experience-head2 {
+  font-size: 1.5rem;
+}
+
+.cards-container {
+  justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 0 -10px;
+}
+
+.cards {
+  width: 100%;
+  min-height: 300px;
+  margin: 10px;
+}
+
+.slick-slider-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .cards-container {
+    display: none;
+  }
+
+  .slick-slider-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .experience {
+    padding: 2rem 1rem;
+  }
+  .experience-texts {
+    padding: 0rem;
+  }
+}

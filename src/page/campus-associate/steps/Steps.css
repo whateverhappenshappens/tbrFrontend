@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'extra-bold';
+    src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+  }
+
+.steps{
+    background-color:#F7FAFC;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+.steps-head1{
+    margin-left: 5rem;
+    color:#2E436A;
+    font-size: 6rem;
+    font-family: 'extra-bold';
+}
+.steps-hr{
+    position: relative;
+    top: 23rem;
+    left: 20rem;
+    width: 70%;
+    height: 0px;
+    border: 1px dashed #2E436A;
+    opacity: 1;
+}
+.circles{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 7rem;
+    margin-right: 7rem;
+    
+}
+@media (max-width:1500px){
+    .steps-hr{
+    display: none;
+}
+.steps-head1{
+    align-items: center;
+}
+}
+@media (max-width:767px){
+    .steps{
+        margin: 0 auto;
+        padding: 2rem 0rem;
+    }
+    .steps-hr{
+        display: none;
+    }
+    .steps-head1{
+        margin-left: 0rem;
+        font-size: 3.5rem;
+        text-align: center;
+    }
+    .circles-head{
+        font-size: 1.5rem;
+    }
+}
+

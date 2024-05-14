@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'extra-bold';
+  src: url(../../../../assets//fonts//VisbyRoundCF-ExtraBold.otf);
+}
+
+.exp-cards {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .exp-cards-colorfulbg {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .exp-card-image {
+    width: 100%;
+    max-width: 150px; 
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .exp-cards-head {
+    margin-top: 20px;
+    color: #2E436A;
+    font-size: 1.5rem;
+    font-family: 'extra-bold';
+  }
+  
+  .exp-cards-para {
+    margin-top: 10px;
+    color: #4F4F4F;
+    font-size: 1rem;
+  }
+  
+  @media (min-width:768px) and (max-width:912px){
+    .exp-cards{
+      height:35rem;
+      margin: 0rem 1rem;
+    }
+  }

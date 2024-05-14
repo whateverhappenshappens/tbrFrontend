@@ -1,0 +1,204 @@
+
+.details {
+    padding: 4.8rem 5rem;
+    background-color: #F7FAFC;
+}
+
+.details-content {
+    margin-top: 10rem;
+    padding: 4rem 9.2rem;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #6D87F5, #6D87F500), url('../../../../assets/Mask Group 9.png') right center/cover no-repeat;
+    display: flex;
+    justify-content: flex-start; 
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.details-links {
+    display: flex;
+    flex-direction: row;
+    font-size: 2rem;
+    align-items: center;
+    margin-bottom: 0rem;
+}
+
+.details-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.details-paragraphs {
+    color: white;
+    text-align: left; 
+    margin-top: 2rem;
+}
+
+.details-paragraphs-para1 {
+    font-size: 7rem;
+    font-family: 'extra-bold';
+}
+
+.details-paragraphs-para2 {
+    margin-top: .9rem;
+    font-size: 5rem;
+    font-family: 'extra-bold';
+}
+
+.details-paragraphs-para3 {
+    font-size: 2.5rem;
+    margin-top: 3.4rem;
+}
+.star{
+    display: flex;
+}
+.details-ratings {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+.details-best{
+    
+    width:30rem;
+
+}
+.para-1,.para-2{
+    padding: 0.5rem;
+    background-color: #2E436A;
+}
+.details-stars,
+.details-best {
+    color: white;
+    font-size: 2rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.details-stars p, .details-best p{
+    margin-bottom: 0rem;
+}
+
+.details-date {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.details-date p {
+    margin-top: 1rem;
+}
+
+.details-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+    flex-wrap: wrap;
+}
+.para-2,.rating{
+    margin-left: 6rem;
+}
+.details-buttons-enroll,
+.details-buttons-download {
+    border-radius: 14px;
+    font-size: 2.6rem;
+    padding: 1.5rem 2.1rem;
+    border: none;
+}
+
+.details-buttons-enroll {
+    background: #FFFFFF;
+    color: #6D87F5;
+}
+
+.details-buttons-download {
+    border: 3px solid #FFFFFF;
+    border-radius: 14px;
+    font-size: 1.6rem;
+    color: white;
+    background-color: #6D87F5;
+    padding: 1rem 2.5rem;
+}
+
+.details-buttons-enroll p {
+    display: inline;
+}
+
+.details-buttons-strike {
+    margin-left: 0.5rem;
+    text-decoration: line-through;
+}
+
+.details-buttons-enroll {
+    background: #6D87F5;
+    color: white;
+    position: relative;
+    overflow: hidden; 
+}
+
+.details-buttons-enroll::before {
+    content: ''; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3); 
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    animation: shine 2s linear infinite; 
+}
+
+@keyframes shine {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(4);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .details-content {
+        padding: 6rem 3rem;
+    }
+    .details{
+        padding: 1rem;
+    }
+    .details-links {
+        font-size: 1.5rem;
+    }
+
+    .details-paragraphs-para1,.details-paragraphs-para2 {
+        font-size: 2rem;
+    }
+
+    .details-paragraphs-para3 {
+        font-size: 1.4rem;
+    }
+
+    .details-buttons-enroll,
+    .details-buttons-download {
+        text-align: center;
+        font-size: 1rem;
+    }
+    .details-best{
+        width:22rem;
+    }
+    .details-date p{
+        font-size: 1.5rem;
+    }
+    .details-stars, .details-best{
+        font-size: 1rem;
+    }
+    .para-2{
+        margin-left:9rem;
+    }
+}

@@ -1,0 +1,123 @@
+.studentsayingcard {
+    position: relative;
+    display: flex;
+    height: 485px;
+    width: 812px;
+    flex-direction: column;
+    background-color: #ffffff;
+    max-width: 75.2rem;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+}
+
+.studentsayingcard-info {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.studentsayingcard-logo {
+    border-radius: 50%;
+}
+
+.studentsayingcard-profile {
+    color: #2E436A;
+    margin-left: 5.6rem;
+}
+
+.studentsayingcard-profile-name {
+    font-size: 4rem;
+    font-family: 'bold';
+}
+
+.studentsayingcard-profile-program {
+    font-size: 3rem;
+    font-family: 'medium';
+    opacity: 75%;
+}
+
+.studentsayingcard-linkedin {
+    margin-left: 15rem;
+}
+
+.studentsayingcard-review {
+    overflow: visible;
+    font-size: 3rem;
+    color: #2E436A;
+    margin-top: 39px;
+    padding: 0rem 4rem;
+}
+
+.studentsayingcard-review p{
+    font-family: 'medium';
+    color: #2E436A;
+}
+
+.studentsayingcard-card-stars{
+    display: flex;
+    padding-left: 4rem;
+    margin-top: 3rem;
+    position: absolute;
+    bottom: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .studentsaying{
+        padding: 0px 20px;
+    }
+    .studentsayingcard {
+        width: 100%; 
+        max-width: 100%; 
+        padding: 1rem 3rem; 
+        height: auto;
+    }
+    .studentsaying-cards-card{
+        padding:20px;
+    }
+    .studentsayingcard-info {
+        margin-top: 0rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .studentsayingcard-profile {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .studentsayingcard-profile-name {
+        font-size: 3rem;
+    }
+
+    .studentsayingcard-profile-program {
+        font-size: 2.5rem;
+    }
+
+    .studentsayingcard-linkedin {
+        display: none;
+    }
+
+    .studentsayingcard-review {
+        font-size: 2.5rem;
+        margin-top: 2rem;
+        margin-right: 0;
+        padding:0rem;
+    }
+
+    .studentsayingcard-card-stars{
+        position: sticky;
+        padding-left: 0rem;
+    }
+
+    .studentsayingcard-review p {
+        font-size: 1.5rem;
+    }
+
+    .studentsaying-heading{
+        font-size: 4.5rem;
+    }
+}

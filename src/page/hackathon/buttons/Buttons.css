@@ -1,0 +1,59 @@
+.events-buttons-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.events-buttons{
+    width:35%;
+    height: 12rem;
+    margin-top: 9.5rem;
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 75px;
+    background-color: #ffffff;
+}
+
+.events-buttons button{
+    border:none;
+    border-radius: 75px; 
+    width: 50%;
+}
+.events-button-upcoming p{
+    cursor: pointer;
+    font-size: 3.5rem;
+    font-family: 'bold';
+}
+.events-button-past p{
+    font-family: 'bold';
+    font-size: 3.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px){
+    .events-button-upcoming,.events-button-past{
+        width:50%;
+    }
+
+.events-buttons{
+    height: 5rem;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .events-button-upcoming p{
+        margin:0rem;
+        font-size: 1rem;
+    }
+    .events-button-past p{
+        margin:0rem;
+        font-size: 1rem;
+    }
+    .events-buttons-container{
+        margin-top: 7rem;
+    }
+}

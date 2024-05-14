@@ -1,0 +1,23 @@
+.benefit-card {
+    display: flex;
+    flex-direction: column;
+    background: #192F56;
+    border-radius: 20px;
+    width: 80%;
+    height:35rem;
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+.benefit-card img {
+    height: 7.6rem;
+    width: 7.6rem;
+    margin: 8rem auto 4.30rem auto; /* Center the image horizontally and adjust margins */
+    display: block; /* Ensure the image is centered properly */
+}
+
+.benefit-card p {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center; /* Center the text horizontally */
+    margin: 0 3.1rem; /* Add some left and right margin */
+}

@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'bold';
+    src: url(../../../../assets/fonts/VisbyRoundCF-DemiBold.otf);
+  }
+
+.rectangles{
+    background-color: white;
+    font-size:  1.8rem;
+    color:#2E436A;
+    border: none;
+    border-radius: 20px;
+    height:7rem;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    padding-left: 5rem;
+}
+
+.rectangles p{
+    margin-bottom: 0rem;
+    font-family: 'bold';
+}
+
+@media (max-width:767px){
+    .rectangles{
+        font-size: 1.3rem;
+        padding-left: 1rem;
+    }
+}

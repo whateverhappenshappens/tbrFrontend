@@ -1,0 +1,169 @@
+.explore-programs {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 3rem;
+  color: #2e436a;
+}
+.explore-programs .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.explore-programs .main .name {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.explore-programs .main .name h1 {
+  font-size: 4.7rem;
+  font-weight: bold;
+}
+.explore-programs .main .name p {
+  font-size: 2.5rem;
+}
+.explore-programs .explore-btn {
+  border: 2px solid #6d87f5;
+  color: white;
+  background-color: #6d87f5;
+  font-size: 2.8rem;
+  font-weight: 500;
+  padding: 1.3rem 3rem;
+  transition: 0.4s ease;
+}
+.explore-programs .explore-btn:hover {
+  background-color: white;
+  color: #6d87f5;
+}
+
+/* programs part */
+.programs {
+  display: flex;
+  overflow: visible;
+  flex-direction: column;
+  gap: 2rem;
+}
+.program-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  transition: 0.4s ease;
+  background-color: white;
+  gap: 1rem;
+}
+.program-card:hover {
+  border-radius: 1rem;
+  box-shadow: 3px 3px 15px black;
+}
+.program-card .logo {
+  width: 35%;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+.program-card.one .logo {
+  background-color: #d0d8f9;
+}
+.program-card.one .logo span {
+  color: #6d87f5;
+}
+.program-card.two .logo {
+  background-color: #fbf2d6;
+}
+.program-card.two .logo span {
+  color: #ffd03f;
+}
+.program-card.three .logo {
+  background-color: #fededa;
+}
+.program-card.three .logo span {
+  color: #ff614b;
+}
+.program-card .logo span {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.program-card .details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 65%;
+  gap: 1rem;
+  padding: 0;
+}
+.program-card .details h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.program-card .details p {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 640px) {
+  .explore-programs {
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .explore-programs {
+    padding-right: 60px !important;
+    padding-left: 70px !important;
+    padding-top: 7rem;
+  }
+  .programs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .program-card {
+    width: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .explore-programs .main {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .explore-programs .main .name h1 {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  .explore-programs .main .name p {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .explore-programs {
+    padding: 6rem 100px 6rem 140px !important;
+  }
+  .explore-programs .main .name h1 {
+    font-size: 6rem;
+  }
+  .explore-programs .main .name p {
+    font-size: 3rem;
+  }
+  .program-card {
+    width: 30%;
+  }
+  .program-card .logo {
+    height: 12rem;
+  }
+  .program-card .logo span {
+    font-size: 4rem;
+  }
+  .program-card .details h2 {
+    font-size: 3rem;
+  }
+  .program-card .details p {
+    font-size: 2rem;
+  }
+}

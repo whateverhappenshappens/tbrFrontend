@@ -1,0 +1,158 @@
+.feedback-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100vw;
+  overflow: visible;
+  padding: 0 30px;
+}
+/* .slider {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100vw;
+} */
+.slick-track {
+  display: flex !important;
+  gap: 1rem;
+}
+/* .feedback-scroll-card: */
+.feedback-scroll-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.feedback-scroll-img-div {
+  width: 100%;
+}
+.feedback-scroll-img-div img {
+  width: 100%;
+  height: 100%;
+}
+.feedback-scroll-content-div {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.feedback-scroll-content-div-Technology-text {
+  color: #6d87f5;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.feedback-scroll-content-div-extraordinary-text {
+  color: #2e436a;
+  font-size: 2rem;
+}
+.feedback-scroll-content-div-extraordinary-text-description {
+  color: #5e5e5e;
+  font-size: 1.3rem;
+}
+.feedback-scroll-content-div-owner-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #5e5e5e;
+}
+.feedback-scroll-content-div-owner-content img {
+  width: 5rem;
+}
+.feedback-scroll-content-div-owner-content-details {
+  font-size: 1.2rem;
+}
+.feedback-scroll-content-div-owner-content-details .name {
+  font-weight: 900;
+}
+
+@media (min-width: 640px) {
+  .feedback-scroll-img-div img {
+    height: 300px;
+  }
+  .feedback-scroll-content-div-Technology-text {
+    font-size: 1.5rem;
+  }
+  .feedback-scroll-content-div-extraordinary-text {
+    font-size: 2.5rem;
+  }
+  .feedback-scroll-content-div-extraordinary-text-description {
+    font-size: 1.5rem;
+  }
+  .feedback-scroll-content-div-owner-content-details {
+    font-size: 1.5rem;
+  }
+  .feedback-scroll-content-div-owner-content img {
+    width: 7rem;
+  }
+}
+
+@media (min-width: 780px) {
+  /* .slider {
+    padding: 0 60px 0 70px !important;
+  } */
+  .feedback-scroll {
+    padding: 0 60px 0 70px;
+  }
+  .feedback-scroll-card {
+    display: flex !important;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .feedback-scroll-img-div {
+    width: 45%;
+  }
+  .feedback-scroll-content-div {
+    width: 55%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .feedback-scroll-card {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .feedback-scroll-img-div {
+    width: 50%;
+    height: auto;
+  }
+  .feedback-scroll-img-div img {
+    height: auto;
+  }
+  .feedback-scroll-content-div {
+    width: 50%;
+    height: auto;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .slider {
+    padding: 0 100px 0 140px !important;
+  }
+  /* .feedback-scroll {
+    padding: 0 100px 0 140px;
+  } */
+  .feedback-scroll-img-div {
+    width: 45%;
+  }
+  .feedback-scroll-content-div {
+    padding: 10px 0;
+  }
+  .feedback-scroll-content-div-Technology-text {
+    font-size: 2rem;
+  }
+  .feedback-scroll-content-div-extraordinary-text {
+    font-size: 5rem;
+  }
+  .feedback-scroll-content-div-extraordinary-text-description {
+    font-size: 2.5rem;
+  }
+  .feedback-scroll-content-div-owner-content img {
+    width: 8rem;
+  }
+  .feedback-scroll-content-div-owner-content-details {
+    font-size: 2.3rem;
+  }
+}

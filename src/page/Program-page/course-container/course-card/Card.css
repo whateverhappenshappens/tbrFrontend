@@ -1,0 +1,241 @@
+.course-card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow: visible;
+}
+
+.course-card-banner-image p{
+    font-family: 'bold';
+    width: 19.1rem;
+    font-size: 2.5rem;
+    padding: 1.1rem 2.4rem 1.1rem 2.3rem;
+    color: #FFFFFF;
+    opacity: 1;
+    background: #6D87F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    margin-left: -.9rem;
+    margin-bottom:-5.5rem;
+    transform: translateY(41px);
+}
+.course-card img{
+    width:65rem;
+    height:50rem;
+    border-radius: 3rem;
+    margin-right: 1.8rem;
+}
+.course-card-content-box{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:66rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 3px 3px 10px #00000029;
+    border-radius: 3rem;
+    opacity: 1;
+    margin-right: 1.7rem;
+    margin-top: -29.5rem;
+}
+.course-card-content-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.course-card-content-header h3{
+    font-size: 6rem;
+    /* margin-left: 5rem;
+    margin-top: 4rem;
+    margin-right: 17rem; */
+    color: #2E436A;
+    font-family: 'bold';
+    opacity: 1;
+}
+.course-card-content-header-rating{
+    font-size: 2rem;
+    font-family: 'medium';
+    padding: 0rem 1rem;
+    background: #2E436A 0% 0% no-repeat padding-box;
+    color: #FFFFFF;
+    opacity: 1;
+    /* padding: 0.9rem 1.6rem 1rem 1.7rem; */
+    /* margin-right: 5rem;
+    margin-top:5.3rem ;
+    margin-bottom:4.3rem ; */
+    font: normal normal medium 20px/35px Visby Round CF;
+}
+.course-card-content-para1{
+    font-size: 2.5rem;
+    padding: 0rem 5rem;
+    margin: 1.5rem 0rem;
+    /* margin-left: 5rem;
+    margin-right: 6.9rem; */
+    color: #2E436A;
+    opacity: 1;
+    font-family: 'regular';
+}
+.course-card-content-para2{
+    font-size: 2.5rem;
+    padding: 0rem 5rem;
+    /* margin-left: 5rem;
+    margin-right: 6.9rem; */
+    color: #2E436A;
+    opacity: 1;
+    font: normal normal normal 25px/35px Visby Round CF;
+}
+.months-and-internship-oppurtunity{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 0rem;
+    /* margin-left: 5rem;
+    margin-top: 3rem; */
+}
+.months-details{
+    font-size: 3rem;
+    padding-right: 3.8rem;
+    border-right: 1px solid #2E436A;
+    opacity: 1;
+    color: #2E436A;
+    opacity: 1;
+    font-family: 'demi-bold';
+}
+.internship-oppurtunity-details{
+    font-size: 3rem;
+    /* padding-left: 3.5rem; */
+    /* margin-right: 24.2rem; */
+    
+    color: #2E436A;
+    opacity: 1; 
+    font-family: 'demi-bold';
+}
+.Teacher-Name{
+    font-size: 3rem;
+    color: #2E436A;
+    padding-left: 5rem;
+    margin: 1rem 0rem;
+    opacity: 1;
+    /* margin-left: 5rem;
+    margin-top: 3rem;
+    margin-right: 45.8rem; */
+    font-family: 'bold';
+}
+.course-card-content-button{
+    /* margin-top: 4rem; */
+   
+    border-top: 3px solid #6D87F5;
+}
+.course-card-content-button-enroll-now{
+    font-size: 3rem;
+    color: #FFFFFF;
+    opacity: 1;
+    width: 50%;
+    background: #6D87F5 0% 0% no-repeat padding-box;
+    border-radius: 0rem 0rem 0rem 3rem;
+    opacity: 1;
+    padding:1rem;
+    /* padding: 2.7rem 12.9rem 2.7rem 12.9rem; */
+    border: 3px solid #6D87F5;
+    opacity: 1;
+    font-family: 'bold';
+}
+.course-card-content-button-view-details{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 0px 0px 30px 0px;
+    border: none;
+    outline: none;
+    width: 50%;
+    padding: 1rem;
+    opacity: 1;
+    color: #6D87F5;
+    opacity: 1;
+    font-size: 3rem;
+    /* padding: 2.7rem 11.5rem 2.7rem 11.5rem; */
+    opacity: 1;
+    font-family: 'bold';
+}
+
+@media (max-width: 768px) {
+    @media (max-width: 768px) {
+        .course-card-content-header{
+            margin-top: 1rem;
+        }
+
+        .course-card {
+            align-items: stretch; /* Stretch items vertically */
+        }
+    
+        .course-card-banner-image p {
+           padding:0rem;
+           width: 10rem;
+           margin-left: 0rem;
+           margin-bottom: 0rem;
+           font-size: 1.5rem;
+           top: -1rem;
+        }
+    
+        .course-card img {
+            width: 100%; /* Adjusted width to fit smaller screens */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 0; /* Remove border radius */
+            margin-right: 0; /* Remove right margin */
+        }
+    
+        .course-card-content-box {
+            margin-right: 0rem;
+            transform: translateY(-85px);
+            width: 100%; /* Adjusted width to fit smaller screens */
+            margin-top: 0; /* Remove top margin */
+        }
+    
+        .course-card-content-header h3 {
+            font-size: 2rem; /* Reduced font size */
+            text-align: center; /* Center align text */
+            margin: 0rem; /* Adjusted margin */
+        }
+    
+        .course-card-content-header-rating {
+            font-size: 1rem;
+            padding: 0.5rem 1rem; /* Adjusted padding */
+            text-align: center; /* Center align text */
+            margin:  0rem; /* Adjusted margin */
+        }
+    
+        .course-card-content-para1,
+        .Teacher-Name {
+            padding:0rem 1.5rem;
+            font-size: 1.5rem; /* Reduced font size */
+            text-align: center; /* Center align text */
+            margin:  1rem 0rem; /* Adjusted margin */
+        }
+    
+        .months-and-internship-oppurtunity {
+           margin: 1rem 0rem;
+            align-items: center; /* Center align items */
+
+        }
+    
+        .months-details,
+        .internship-oppurtunity-details {
+            font-size: 1.5rem; /* Reduced font size */
+            margin: 0rem; /* Adjusted margin */
+        }
+    
+        .course-card-content-button {
+            flex-direction: column; /* Change to column layout */
+            align-items: center; /* Center align items */
+            margin-top: 2rem; /* Adjusted margin */
+        }
+    
+        .course-card-content-button button {
+            font-size: 2rem;
+        }
+    
+        .course-card {
+            margin-bottom: -10rem; /* Reduce bottom margin between cards */
+        }
+    }
+    
+}
+
