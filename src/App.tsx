@@ -155,7 +155,7 @@ function App() {
           <Route path="/operations" element={<OperationSignIn />} />
 
           <Route
-            path="/events/manage"
+            path="/operations/manage-events"
             element={<EventsManagerPage headerHeight={headerHeight} />}
           />
           <Route path="/hire-with-us" element={<Hire />} />
