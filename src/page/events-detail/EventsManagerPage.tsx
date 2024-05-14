@@ -252,6 +252,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the mobile banner</label>
             <input
               type="text"
               placeholder="Mobile Banner Link"
@@ -261,6 +262,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the Event banner</label>
             <input
               type="text"
               placeholder="Event Mode"
@@ -270,6 +272,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Speaker Image"
@@ -279,6 +282,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Heading"
@@ -288,6 +292,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Sub Heading"
@@ -297,6 +302,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Date"
@@ -306,6 +312,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="About Speaker"
@@ -315,6 +322,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Speaker's Social Link"
@@ -324,6 +332,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Speaker's Experience Details"
