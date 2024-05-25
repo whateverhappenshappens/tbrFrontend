@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "../../../styles/components/BloggingCard.css";
 import Card from "./card/Card";
@@ -11,6 +11,9 @@ import user1 from "../../../assets/CA 3@2x.png";
 import { blogs } from "../blogs";
 
 const BloggingCard: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="bloggingcard">
       {blogs.map((blog) => (
@@ -23,6 +26,7 @@ const BloggingCard: React.FC = () => {
           img={user1}
           name={blog.author}
           date={blog.date}
+          body={blog.blog}
         />
       ))}
       {/* <div className="bloggingcard-pagination">
