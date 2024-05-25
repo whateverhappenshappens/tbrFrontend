@@ -1,11 +1,8 @@
 import "../../styles/components/Header.css";
-
 import logo from "../../assets/Logo.png";
 import hamburger from "../../assets/hamburger.png";
 import { NavLink } from "react-router-dom";
-
 import { useRef, useState, useEffect } from "react";
-
 import Login from "../main/login/Login";
 import Signup from "../Sign-up/Signup";
 
@@ -41,11 +38,11 @@ function Header({
   return (
     <header className="header" ref={headerContainer}>
       <div
-        className="login-pop absolute w-3/4 bg-white top-0 border border-black hidden"
+        className="login-pop absolute w-3/4 bg-white top-[66%] border"
         ref={loginContainer}
       >
         <div
-          className="text-9xl cursor-pointer absolute overflow-hidden"
+          className="text-9xl right-[5%] cursor-pointer absolute overflow-hidden"
           onClick={() => (loginContainer.current.style.display = "none")}
         >
           &times;
@@ -53,12 +50,12 @@ function Header({
         <Login handle_login={handle_login} setIsLoggedIn={setIsLoggedIn} />
       </div>
       <div
-        className="signup-pop absolute w-3/4 bg-white top-0 border border-black hidden"
+        className="signup absolute w-[78%] bg-white top-[64%] border "
         ref={signupContainer}
       >
         <div
-          className="text-9xl cursor-pointer absolute overflow-hidden"
-          onClick={() => (loginContainer.current.style.display = "none")}
+          className="text-9xl cursor-pointer right-[5%] absolute overflow-hidden"
+          onClick={() => (signupContainer.current.style.display = "none")}
         >
           &times;
         </div>

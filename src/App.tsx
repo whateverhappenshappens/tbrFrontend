@@ -12,7 +12,7 @@ import PaymentSuccess from "./page/PaymentSuccess/PaymentSuccess";
 import LandingPage from "./page/LandingPage/LandingPage";
 import Blogging from "./page/blogging-page/Blogging";
 import BlogDetail from "./components/BlogDetail/BlogDetail";
-// import Login from "./components/main/login/Login";
+import Login from "./components/main/login/Login";
 import Footer from "./components/footer/Footer";
 import CampusAssociate from "./page/campus-associate/CampusAssociate";
 import EventsDetail from "./page/events-detail/Events";
@@ -20,7 +20,7 @@ import EventsManagerPage from "./page/events-detail/EventsManagerPage";
 import CodeSlayer from "./page/programs-detail/codeslayers/CodeSlayer";
 import MlProgram from "./page/programs-detail/mlprogram/MlProgram";
 import IotProgram from "./page/programs-detail/iot/IotProgram";
-// import Signup from "./components/Sign-up/Signup";
+import Signup from "./components/Sign-up/Signup";
 
 import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";

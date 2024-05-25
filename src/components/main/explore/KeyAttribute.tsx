@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../styles/components/KeyAttribute.css";
 import "./animation.js"
+import {motion} from "framer-motion";
 
 const KeyAttribute: React.FC = () => {
   return (
@@ -30,15 +31,15 @@ const KeyAttribute: React.FC = () => {
       </p>
       <div className="figure-numbers-box">
         <div className="figure-number">
-          <p className="number" data-val="40">0+</p>
+          <p className="number" data-val="300">0+</p>
           <p className="learner">LEARNERS</p>
         </div>
         <div className="figure-number">
-          <p className="number" data-val="100">0+</p>
+          <p className="number" data-val="400">0+</p>
           <p className="learner">PARTNERSHIPS</p>
         </div>
         <div className="figure-number">
-          <p className="number" data-val="100">0+</p>
+          <p className="number" data-val="500">0+</p>
           <p className="learner">COLLABORATIONS</p>
         </div>
       </div>
