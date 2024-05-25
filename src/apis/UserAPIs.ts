@@ -44,8 +44,8 @@ export const UserAPI = {
 
       if (res.status == 201) {
         localStorage.setItem("access-token", res.data.access_token);
-        if(typeof handle_login === "function")handle_login();
-        if(typeof setIsLoggedIn === "function")setIsLoggedIn(true);
+        if (typeof handle_login === "function") handle_login();
+        if (typeof setIsLoggedIn === "function") setIsLoggedIn(true);
       }
       return res;
     } catch (error) {

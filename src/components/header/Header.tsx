@@ -19,6 +19,7 @@ function Header({
   setIsLoggedIn,
 }: any) {
   const [navOpen, setNavOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false); // State to manage More dropdown
 
   const transRef = useRef<HTMLDivElement>(null);
   const closeNavRef = useRef<HTMLDivElement>(null);
@@ -38,6 +39,11 @@ function Header({
     }
     updateHeaderHeight(Math.ceil(headerContainer.current.offsetHeight));
   }, [navOpen]);
+
+  const handleTrue = () => {
+    setMoreOpen(!moreOpen);
+  };
+
   return (
     <header className="header" ref={headerContainer}>
       <div
@@ -92,13 +98,61 @@ function Header({
             </NavLink>
           </li>
           <li>
-            <NavLink className="nav-list-item" to="/refer">
-              refer & earn
+            <NavLink className="nav-list-item" to="/event-listing">
+              events
+            </NavLink>
+          </li>
+          <li className="more-btn-display">
+            <button onClick={handleTrue} className="more-btn">
+              more↓
+            </button>
+            {moreOpen && (
+              <ul className="dropdown-menu">
+                <li>
+                  <NavLink to="/event-listing">
+                    <button className="more-option" onClick={handleTrue}>
+                      Refer & Earn
+                    </button>
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink to="/blog">
+                    <button className="more-option" onClick={handleTrue}>
+                      Blog
+                    </button>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/about">
+                    <button className="more-option" onClick={handleTrue}>
+                      About Us
+                    </button>
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <NavLink to="/event-listing">
+              <button className="more-option1" onClick={handleTrue}>
+                Refer & Earn
+              </button>
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/blog">
+              <button className="more-option1" onClick={handleTrue}>
+                Blog
+              </button>
             </NavLink>
           </li>
           <li>
-            <NavLink className="nav-list-item" to="/more">
-              more <span aria-hidden="true">↓</span>
+            <NavLink to="/about">
+              <button className="more-option1" onClick={handleTrue}>
+                About Us
+              </button>
             </NavLink>
           </li>
         </ul>
@@ -113,7 +167,10 @@ function Header({
           </div>
         ) : (
           <div className="h-48 md:h-fit">
-            <NavLink to="/profile" className="user-profile-img block bg-cyan-500 w-28 h-28 rounded-full"></NavLink>
+            <NavLink
+              to="/profile"
+              className="user-profile-img block bg-cyan-500 w-28 h-28 rounded-full"
+            ></NavLink>
           </div>
         )}
       </nav>

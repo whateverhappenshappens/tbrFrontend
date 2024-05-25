@@ -46,7 +46,6 @@
 .card-content-user-details .name {
   font-weight: 900;
 }
-
 @media (min-width: 780px) {
   .card {
     width: 45%;

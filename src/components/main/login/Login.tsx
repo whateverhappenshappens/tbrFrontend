@@ -31,13 +31,17 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const handle_login_btn = async () => {
     console.log(userDetails);
     // api call
-    await UserAPI.login(userDetails , handle_login, setIsLoggedIn);
-    setUserDetails({
-      password: "",
-      email: "",
-      name: "",
-      role: UserRole.USER,
-    });
+    try {
+      await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
+      setUserDetails({
+        password: "",
+        email: "",
+        name: "",
+        role: UserRole.USER,
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
