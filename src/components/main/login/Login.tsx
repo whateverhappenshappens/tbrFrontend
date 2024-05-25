@@ -55,9 +55,14 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   };
 
   const handle_login_btn = async () => {
+
     if (validateForm()) {
       console.log(userDetails);
       // api call
+
+    console.log(userDetails);
+    // api call
+    try {
       await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
       setUserDetails({
         password: "",
@@ -65,6 +70,8 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
         name: "",
         role: UserRole.USER,
       });
+    } catch (e) {
+      console.error(e);
     }
   };
 

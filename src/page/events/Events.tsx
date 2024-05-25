@@ -10,39 +10,43 @@ import "slick-carousel/slick/slick.css";
 
 import growth from "../../assets/growth-graph.png";
 
-const Events = () => {
-  const cardsData = [
-    {
-      color: "#2FD18C",
-      heading: "Web Development webinar",
-      para: "A small one two lines about the webinar",
-      image: growth,
-    },
-    {
-      color: "#2FD18C",
-      heading: "Web Development webinar",
-      para: "A small one two lines about the webinar",
-      image: growth,
-    },
-    {
-      color: "#2FD18C",
-      heading: "Web Development webinar",
-      para: "A small one two lines about the webinar",
-      image: growth,
-    },
-    {
-      color: "#2FD18C",
-      heading: "Web Development webinar",
-      para: "A small one two lines about the webinar",
-      image: growth,
-    },
-    {
-      color: "#2FD18C",
-      heading: "Web Development webinar",
-      para: "A small one two lines about the webinar",
-      image: growth,
-    },
-  ];
+interface Props {
+  activedata: any;
+}
+
+const Events: React.FC<Props> = ({ activedata }) => {
+  // const cardsData = [
+  //   {
+  //     color: "#2FD18C",
+  //     heading: "Web Development webinar",
+  //     para: "A small one two lines about the webinar",
+  //     image: growth,
+  //   },
+  //   {
+  //     color: "#2FD18C",
+  //     heading: "Web Development webinar",
+  //     para: "A small one two lines about the webinar",
+  //     image: growth,
+  //   },
+  //   {
+  //     color: "#2FD18C",
+  //     heading: "Web Development webinar",
+  //     para: "A small one two lines about the webinar",
+  //     image: growth,
+  //   },
+  //   {
+  //     color: "#2FD18C",
+  //     heading: "Web Development webinar",
+  //     para: "A small one two lines about the webinar",
+  //     image: growth,
+  //   },
+  //   {
+  //     color: "#2FD18C",
+  //     heading: "Web Development webinar",
+  //     para: "A small one two lines about the webinar",
+  //     image: growth,
+  //   },
+  // ];
   const settings = {
     // dots: true,
     infinite: true,
@@ -88,7 +92,7 @@ const Events = () => {
       </div> */}
       <div className="xl:pl-[140px] xl:pr-[100px]">
         <Slider {...settings} className="px-[30px] text-[#2E436A]">
-          {cardsData.map((card, index) => (
+          {activedata?.map((card, index) => (
             <div key={index} className="border rounded-2xl p-10">
               <div className="w-full h-full flex flex-col gap-5">
                 <div
@@ -96,7 +100,7 @@ const Events = () => {
                   style={{ backgroundColor: card.color }}
                 >
                   <img
-                    src={card.image}
+                    src={growth}
                     alt={card.heading}
                     className="w-4/12 m-auto"
                   />
@@ -106,7 +110,7 @@ const Events = () => {
                     {card.heading}
                   </p>
                   <div className="vr-regular text-3xl md:text-4xl overflow-hidden">
-                    {card.para}
+                    {card.subHeading}
                   </div>
                 </div>
                 <div className="vr-bold text-4xl font-bold overflow-hidden">

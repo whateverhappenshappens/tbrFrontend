@@ -31,11 +31,14 @@ import Test from "./components/Test";
 import { UserAPI } from "./apis/UserAPIs";
 import OperationSignIn from "./page/operations/OperationSignIn";
 import NotFound from "./page/NotFound/NotFound";
+import SalesOperations from "./page/operations/SalesOperations";
+import EnrollStudent from "./page/enroll/EnrollStudent";
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setactiveEventData] = useState<any>();
   const [pastEventData, setpastEventData] = useState<any>();
+  const [coupon, setCoupon] = useState<any>();
 
   useEffect(() => {
     const active = async () => {
@@ -138,6 +141,8 @@ function App() {
               <LandingPage
                 headerHeight={headerHeight}
                 handle_login={handle_login}
+                activedata={activeEventData}
+                pastdata={pastEventData}
               />
             }
           />
@@ -152,13 +157,19 @@ function App() {
           />
           <Route path="/campus-associate" element={<CampusAssociate />} />
           <Route path="/mentor" element={<Mentor />} />
+          <Route
+            path="/enroll-student"
+            element={<EnrollStudent coupon={coupon} setcoupon={setCoupon} />}
+          />
           <Route path="/operations" element={<OperationSignIn />} />
 
           <Route
             path="/operations/manage-events"
             element={<EventsManagerPage headerHeight={headerHeight} />}
           />
+
           <Route path="/hire-with-us" element={<Hire />} />
+          <Route path="/sales-operation" element={<SalesOperations />} />
           <Route
             path="/event-listing"
             element={
@@ -172,7 +183,7 @@ function App() {
           <Route path="/programs" element={<Programs />} />
           <Route path="/course/codeslayer" element={<CodeSlayer />} />
           <Route path="/events/:id" element={<EventsDetail />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="/course/machinester" element={<MlProgram />} />
           <Route path="/course/IOT" element={<IotProgram />} />
           <Route path="/cart" element={<Cart headerHeight={headerHeight} />} />

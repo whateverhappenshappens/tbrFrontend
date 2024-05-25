@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Event } from "../../types/Event";
 import { events } from "./events";
+import Papa from "papaparse";
 
 function EventsManagerPage({ headerHeight }: any) {
   const eventsManagerPage = useRef<HTMLDivElement | null>(null);
@@ -60,6 +61,10 @@ function EventsManagerPage({ headerHeight }: any) {
   };
 
   const handleAddEvent = () => {
+    const addEventForm = document.getElementById("addEventForm");
+    if (addEventForm) {
+      addEventForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     setAddEvent({
       bannerLinkPC: "",
       bannerLinkMobile: "",
@@ -95,10 +100,45 @@ function EventsManagerPage({ headerHeight }: any) {
     eventsManagerPage.current!.style.paddingTop = `${headerHeight}px`;
   }, [headerHeight]);
 
+  const handleDownload = () => {
+    // Format events data into CSV format
+    const csvData = Papa.unparse(
+      events.map((event) => ({
+        bannerLinkPC: event.bannerLinkPC,
+        bannerLinkMobile: event.bannerLinkMobile,
+        heading: event.heading,
+        subHeading: event.subHeading,
+        date: event.date,
+        aboutSpeaker: event.aboutSpeaker,
+        speakerSocial: event.speakerSocial,
+        speakerExperience: event.speakerExperience,
+        mode: event.mode,
+        speakerImg: event.speakerImg,
+      }))
+    );
+
+    // Create a Blob from the CSV data
+    const blob = new Blob([csvData], { type: "text/csv" });
+
+    // Create a URL to download the Blob
+    const url = window.URL.createObjectURL(blob);
+
+    // Create a temporary anchor element
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "events.csv";
+
+    // Trigger the click event on the anchor to start downloading the file
+    a.click();
+
+    // Cleanup
+    window.URL.revokeObjectURL(url);
+  };
+
   return (
     <div
       ref={eventsManagerPage}
-      className="flex flex-col gap-10 px-[30px] text-[#2E436A] overflow-visible relative"
+      className="flex flex-col gap-10 px-[30px] text-[#2E436A] overflow-visible relative "
     >
       <div className="mt-10 text-5xl md:text-7xl md:text-center font-bold overflow-visible">
         Manage Events
@@ -109,6 +149,12 @@ function EventsManagerPage({ headerHeight }: any) {
         onClick={handleAddEvent}
       >
         ADD
+      </button>
+      <button
+        className="md:w-fit bg-[#2FD18C] hover:bg-white text-white hover:text-[#2FD18C] border-2 border-[#2FD18C] font-bold text-3xl lg:text-5xl px-10 lg:px-12 py-4 lg:py-7 rounded-2xl transition"
+        onClick={handleDownload}
+      >
+        Download
       </button>
 
       <div className="w-full flex flex-col gap-5 border-2 rounded-xl p-5 lg:p-10">
@@ -242,6 +288,9 @@ function EventsManagerPage({ headerHeight }: any) {
         <div className="w-fit h-[100vh] lg:w-5/12 border rounded-xl shadow-2xl  bg-white fixed left-1/2 -translate-x-1/2 top-[31vh] -translate-y-[33%]  overflow-y-scroll overflow-hidden z-50  ">
           <div
             className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10  cursor-pointer w-fit"
+        <div className="w-3/4 lg:w-5/12 border rounded-xl shadow-2xl bg-white fixed left-1/2 -translate-x-1/2 top-[50vh] -translate-y-1/2 flex flex-col pb-7 z-50 ">
+          <div
+            className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10 cursor-pointer w-fit  "
             onClick={() => setAddEvent(null)}
           >
             &times;
@@ -252,6 +301,7 @@ function EventsManagerPage({ headerHeight }: any) {
             <label >Upload the PC banner</label>
             <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
             </div>
+          <div className="flex flex-col gap-5 p-5 lg:p-10 ">
             <input
               type="text"
               placeholder="PC Banner Link"
