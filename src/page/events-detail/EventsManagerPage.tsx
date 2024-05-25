@@ -145,7 +145,7 @@ function EventsManagerPage({ headerHeight }: any) {
       </div>
 
       <button
-        className="md:w-fit  bg-[#2FD18C] hover:bg-white text-white hover:text-[#2FD18C] border-2 border-[#2FD18C] font-bold text-3xl lg:text-5xl px-10 lg:px-12 py-4 lg:py-7 rounded-2xl transition"
+        className="md:w-fit bg-[#2FD18C] hover:bg-white text-white hover:text-[#2FD18C] border-2 border-[#2FD18C] font-bold text-3xl lg:text-5xl px-10 lg:px-12 py-4 lg:py-7 rounded-2xl transition"
         onClick={handleAddEvent}
       >
         ADD
@@ -189,27 +189,22 @@ function EventsManagerPage({ headerHeight }: any) {
 
       {/* Render the selected event */}
       {selectedEvent && (
-        <div className="w-fit h-[100vh] lg:w-5/12 border rounded-xl shadow-2xl   bg-white fixed left-1/2 -translate-x-1/2 top-[32vh] -translate-y-[33%]  overflow-y-scroll z-50 ">
+        <div className="w-3/4 lg:w-5/12 border rounded-xl shadow-2xl bg-white fixed left-1/2 -translate-x-1/2 top-[50vh] -translate-y-1/2 flex flex-col pb-7 z-50">
           <div
-            className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10  cursor-pointer w-fit"
+            className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10 cursor-pointer w-fit"
             onClick={() => setSelectedEvent(null)}
           >
             &times;
           </div>
 
-          <div className="flex h-full flex-col gap-5 p-5 lg:p-10">
-          <div className="flex justify-between items-center">
-            <label >Upload the PC banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+          <div className="flex flex-col gap-5 p-5 lg:p-10">
             <input
               type="text"
               placeholder="PC Banner Link"
               value={editableBannerLinkPC}
               onChange={(e) => setEditableBannerLinkPC(e.target.value)}
-              className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg overflow-y-scroll"
+              className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            
             <input
               type="text"
               placeholder="PC Banner Link"
@@ -274,7 +269,7 @@ function EventsManagerPage({ headerHeight }: any) {
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#6D87F5] rounded-lg"
             />
             <button
-              className="border-2 border-[#6D87F5] rounded-lg px-5 lg:px-7 py-3 lg:py-5  text-xl lg:text-3xl font-bold text-white hover:text-[#6D87F5] bg-[#6D87F5] hover:bg-white"
+              className="border-2 border-[#6D87F5] rounded-lg px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl font-bold text-white hover:text-[#6D87F5] bg-[#6D87F5] hover:bg-white"
               onClick={handleUpdate}
             >
               UPDATE
@@ -285,9 +280,6 @@ function EventsManagerPage({ headerHeight }: any) {
 
       {/* Render the add event form */}
       {addEvent && (
-        <div className="w-fit h-[100vh] lg:w-5/12 border rounded-xl shadow-2xl  bg-white fixed left-1/2 -translate-x-1/2 top-[31vh] -translate-y-[33%]  overflow-y-scroll overflow-hidden z-50  ">
-          <div
-            className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10  cursor-pointer w-fit"
         <div className="w-3/4 lg:w-5/12 border rounded-xl shadow-2xl bg-white fixed left-1/2 -translate-x-1/2 top-[50vh] -translate-y-1/2 flex flex-col pb-7 z-50 ">
           <div
             className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10 cursor-pointer w-fit  "
@@ -296,11 +288,6 @@ function EventsManagerPage({ headerHeight }: any) {
             &times;
           </div>
 
-          <div className="flex overflow-auto flex-col gap-5  lg:p-10">
-          <div className="flex justify-between items-center">
-            <label >Upload the PC banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
           <div className="flex flex-col gap-5 p-5 lg:p-10 ">
             <input
               type="text"
@@ -309,12 +296,9 @@ function EventsManagerPage({ headerHeight }: any) {
               onChange={(e) =>
                 setAddEvent({ ...addEvent, bannerLinkPC: e.target.value })
               }
-              className="border px-5 lg:px-5 py-3 lg:py-5 text-xl lg:text-xl focus:outline-[#2FD18C] rounded-lg"
+              className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            <div className="flex justify-between items-center">
-            <label >Upload the Mobile banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+            <label>Upload the mobile banner</label>
             <input
               type="text"
               placeholder="Mobile Banner Link"
@@ -324,10 +308,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            <div className="flex justify-between items-center">
-            <label >Upload the Event banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+            <label>Upload the Event banner</label>
             <input
               type="text"
               placeholder="Event Mode"
@@ -337,10 +318,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            <div className="flex justify-between items-center">
-            <label >Upload the  banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Speaker Image"
@@ -350,10 +328,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            <div className="flex justify-between items-center">
-            <label >Upload the Mobile banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Heading"
@@ -363,10 +338,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            <div className="flex justify-between items-center">
-            <label >Upload the Mobile banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Sub Heading"
@@ -376,10 +348,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            <div className="flex justify-between items-center">
-            <label >Upload the Mobile banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="Date"
@@ -389,10 +358,7 @@ function EventsManagerPage({ headerHeight }: any) {
               }
               className="border px-5 lg:px-7 py-3 lg:py-5 text-xl lg:text-3xl focus:outline-[#2FD18C] rounded-lg"
             />
-            <div className="flex justify-between items-center">
-            <label >Upload the Mobile banner</label>
-            <button className="h-[35px] w-[105px] border-solid border-4 border-black-800 text-3xl">Upload</button>
-            </div>
+            <label>Upload the speaker banner</label>
             <input
               type="text"
               placeholder="About Speaker"

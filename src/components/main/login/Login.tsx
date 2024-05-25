@@ -9,7 +9,7 @@ import { UserAPI } from "../../../apis/UserAPIs";
 
 const review: ReviewProps = {
   content:
-    "I have done multiple courses with TechBairn and they have helped me land my first internship with Google.I recommend everyone to at least try their programs once.",
+    "I have done multiple courses with TechBairn and they have helped me land my first internship with Google. I recommend everyone to at least try their programs once.",
   name: "Ankit Sinha",
   college: "KIIT University",
   id: "1",
@@ -35,18 +35,18 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     let passwordError = "";
 
     if (!userDetails.email) {
-      emailError="Email is required.";
+      emailError = "Email is required.";
       valid = false;
     } else if (!/\S+@\S+\.\S+/.test(userDetails.email)) {
-      emailError="Email is required.";
+      emailError = "Email is required.";
       valid = false;
     }
 
     if (!userDetails.password) {
-      passwordError="Password is required.";
+      passwordError = "Password is required.";
       valid = false;
     } else if (userDetails.password.length < 8) {
-      passwordError="Password must be at least 8 characters.";
+      passwordError = "Password must be at least 8 characters.";
       valid = false;
     }
 
@@ -55,23 +55,20 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   };
 
   const handle_login_btn = async () => {
-
     if (validateForm()) {
       console.log(userDetails);
       // api call
-
-    console.log(userDetails);
-    // api call
-    try {
-      await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
-      setUserDetails({
-        password: "",
-        email: "",
-        name: "",
-        role: UserRole.USER,
-      });
-    } catch (e) {
-      console.error(e);
+      try {
+        await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
+        setUserDetails({
+          password: "",
+          email: "",
+          name: "",
+          role: UserRole.USER,
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   };
 
@@ -79,36 +76,67 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     <div className="main_box">
       <aside className="left">
         <h1>TechBairn</h1>
-        <h2>We are glad <br />you are back!</h2>
-        <p className='para'>Discover the India's best EdTech platform for upskilling yourself with community based learning.</p>
+        <h2>
+          We are glad <br />
+          you are back!
+        </h2>
+        <p className="para">
+          Discover the India's best EdTech platform for upskilling yourself with
+          community based learning.
+        </p>
         <ReviewBox {...review} />
       </aside>
-      <div className='right'>
+      <div className="right">
         <h1>Log in</h1>
-        <h3>Don't have an account? <a href="#">Sign up</a></h3>
-        
-        <label>Email</label><br />
-        <input className='lng' type="email" placeholder='JohnDoe@abc.com' value={userDetails.email}
-          onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })} /><br />
+        <h3>
+          Don't have an account? <a href="#">Sign up</a>
+        </h3>
+
+        <label>Email</label>
+        <br />
+        <input
+          className="lng"
+          type="email"
+          placeholder="JohnDoe@abc.com"
+          value={userDetails.email}
+          onChange={(e) =>
+            setUserDetails({ ...userDetails, email: e.target.value })
+          }
+        />
+        <br />
         {errors.email && <div className="error">{errors.email}</div>}
-        
-        <label>Password</label><br />
-        <input className='lng' type="password" placeholder='Minimum 8 characters' value={userDetails.password}
-          onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })} /><br />
+
+        <label>Password</label>
+        <br />
+        <input
+          className="lng"
+          type="password"
+          placeholder="Minimum 8 characters"
+          value={userDetails.password}
+          onChange={(e) =>
+            setUserDetails({ ...userDetails, password: e.target.value })
+          }
+        />
+        <br />
         {errors.password && <div className="error">{errors.password}</div>}
-        
+
         <div className="new">
           <div>
-            <input type="checkbox" className="rem" /><span className="add">Remember me</span>
+            <input type="checkbox" className="rem" />
+            <span className="add">Remember me</span>
           </div>
           <div className="pass">Forget Password?</div>
         </div>
-        <button className='btn1' onClick={handle_login_btn}>Log in</button>
-        <p className='cont'>-------or continue login with--------</p>
-        <a href="#"><div className="google">
-          <FaGoogle className='icon' />
-          Google
-        </div></a>
+        <button className="btn1" onClick={handle_login_btn}>
+          Log in
+        </button>
+        <p className="cont">-------or continue login with--------</p>
+        <a href="#">
+          <div className="google">
+            <FaGoogle className="icon" />
+            Google
+          </div>
+        </a>
       </div>
     </div>
   );
