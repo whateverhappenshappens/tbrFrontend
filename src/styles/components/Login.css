@@ -1,4 +1,4 @@
-.login-container {
+/* .login-container {
   display: flex;
   gap: 2.8rem;
 }
@@ -144,7 +144,7 @@
 }
 .check-box:checked {
   /* background-color: #6D87F5; */
-  background-color: red;
+  /* background-color: red;
 }
 .forgot-password-btn {
   font-size: 2rem;
@@ -158,9 +158,7 @@
   background-color: #6d87f5;
   padding: 2rem 8rem 2rem 8rem;
   border-radius: 2rem;
-}
-
-/* 
+} */ 
 
 .Main {
   display: flex;
@@ -178,111 +176,160 @@
   height: 90vh;
   max-width: 1200px;
   border-radius: 10px;
-  background-color: white;
+  background-color: #6d87f5;
   overflow: hidden;
 }
 
 .left {
   background-color: #6d87f5;
-  width: 37%;
-  height: 85%;
+  width: 494px;
+  height: 650px;
   margin: 2.5%;
   border-radius: 10px;
-  padding: 30px;
+  overflow: hidden;
 }
-
+.error {
+  color: red;
+  font-size: 1.3rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
 .left h1 {
   color: beige;
   font-size: 3.75rem;
+  font-family: Visby Round CF;
+  font-weight: 800;
 }
 
 .left h2 {
   color: #e9f4fb;
-  font-size: 3.75rem;
+  font-size: 3rem;
   font-weight: 800;
-  margin-top: 5.5rem;
+  font-family: Visby Round CF;
+  margin-top: 3.5rem;
 }
-.image{
+
+.image {
   height: 45px;
   width: 45px;
   border-radius: 5px;
   border: 2px solid black;
   margin-left: 25px;
 }
-.para{
+
+.para {
   margin-top: 1.77rem;
   font-size: 1.44rem;
+  color: #e9f4fb;
 }
 
 .cards {
-  margin-top: 5.5rem;
   background-color: #3853c5;
   border-radius: 12px;
+  width: 428px;
+  height: 200px;
   padding: 20px;
-  position: relative;
-  bottom: 2%;
-  min-height: 17rem;
 }
 
 .try {
   color: #e9f4fb;
-  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  font: normal normal normal 16px/26px Visby Round CF;
 }
 
 .card_info {
   display: flex;
   align-items: center;
-  margin-top: 2.2rem;
-
+  margin-top: 2rem;
+  
 }
-.info{
+
+.info {
   margin-left: 20px;
-  font-size: 2rem;
+  font: normal normal bold 17px/22px Visby Round CF;
   color: #e9f4fb;
 }
 
 .right {
   width: 40%;
   height: 95%;
-  margin:2.5%;
+  margin: 2.5%;
   padding: 30px;
 }
 
 .right h1 {
   color: #2e436a;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: Visby Round CF;
 }
 
-.right h4 {
-  color: #6d87f5;
-  font-size: 1.7rem;
+.right h3 {
+  font-size: 1.5rem;
   margin-bottom: 20px;
+  font-family: Visby Round CF;
+  color: #2e436a;
 }
-a{
+
+a {
   text-decoration: none;
+  color: #6d87f5;
 }
-label{
-  font-size: 1.7rem;
+
+label {
+  font: normal normal bold 24px/25px Visby Round CF;
 }
+
 .right .lng {
   margin-top: 10px;
-  width: 70%;
+  width: 100%;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-bottom: 20px;
-
+  border: 1px solid #2E436A;
+  font-size: small;
+  color: #000;
 }
 
-.btn {
-  margin-right: 20px;
-  width: 32%;
+.new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add {
+  font: normal normal bold 16px/30px Visby Round CF;
+  color: #2E436A;
+}
+
+.pass {
+  color: #6d87f5;
+  font: normal normal bold 16px/30px Visby Round CF;
+}
+
+.rem {
+  height: 17px;
+  width: 17px;
+  border: 1px solid #707070;
+  border-radius: 15px;
+  margin: 1rem 1rem;
+}
+
+.btn1 {
+  width: 100%;
   height: 50px;
-  color: azure;
+  font: normal normal bold 15px/20px Visby Round CF;
   background-color: #6d87f5;
   border: none;
+  color: azure;
   border-radius: 15px;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.need {
+  font-size: large;
 }
 
 .check {
@@ -295,54 +342,83 @@ label{
 
 .cont {
   margin-bottom: 20px;
-  margin-left: 65px;
-  margin-right: auto;
   font-size: 1.5rem;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .google {
   height: 50px;
-  width: 150px;
-  right: 27%;
-  position: absolute;
+  width: 100%;
   border: 2px solid #000;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   font-size: 1.7rem;
+  margin: 0 auto;
 }
-.icon{
-  margin-right: 2rem;
+
+.icon {
+  margin-right: 1rem;
 }
-@media (max-width:700px) {
-  .left{
+
+@media (max-width: 700px) {
+  .left {
     display: none;
   }
-  .btn{
-      width: 95%;
-      min-width: 244px;
-      margin-left: -5px;
-      height:40px;
-  }
-  .right{
-    width:95%;
+
+  .right {
+    width: 95%;
     min-width: 244px;
   }
-  .right .lng{
-    width: 95%  ;
+  .right h3{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2E436A;
+    font-family: Visby Round CF;
   }
-  .google{
-    margin-left: auto;
-    margin-right: 5rem;
-    position: absolute;
-    right: 18.3%;
+  .right a{
+    color: #6d87f5;
+    font-family: Visby Round CF;
   }
-  .cont{
+
+  .right .lng {
+    width: 95%;
+  }
+
+  .btn1 {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    margin-top: 3rem;
+  }
+
+  .google {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .cont {
     overflow: hidden;
     margin-top: 1.3rem;
-    margin-left: 2.7rem;
+  }
+
+  .new {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+  .add, .pass {
+    font-size: 1.5rem;
+  }
+  .add{
+    margin-left: 10px;
+  }
+
+  .rem {
+    margin: 0;
   }
 }
 
-*/
+
