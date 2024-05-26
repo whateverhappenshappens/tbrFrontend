@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Event } from "../../types/Event";
 import { events } from "./events";
 import Papa from "papaparse";
+import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 
 function EventsManagerPage({ headerHeight }: any) {
   const eventsManagerPage = useRef<HTMLDivElement | null>(null);

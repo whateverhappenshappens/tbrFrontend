@@ -198,7 +198,7 @@
 .left h1 {
   color: beige;
   font-size: 3.75rem;
-  font-family: Visby Round CF;
+  font-family: extra-bold;
   font-weight: 800;
 }
 
@@ -206,7 +206,7 @@
   color: #e9f4fb;
   font-size: 3rem;
   font-weight: 800;
-  font-family: Visby Round CF;
+  font-family: extra-bold;
   margin-top: 3.5rem;
 }
 
@@ -235,7 +235,7 @@
 .try {
   color: #e9f4fb;
   margin-bottom: 3rem;
-  font: normal normal normal 16px/26px Visby Round CF;
+  font: normal normal normal 16px/26px extra-bold;
 }
 
 .card_info {
@@ -247,7 +247,7 @@
 
 .info {
   margin-left: 20px;
-  font: normal normal bold 17px/22px Visby Round CF;
+  font: normal normal bold 17px/22px extra-bold;
   color: #e9f4fb;
 }
 
@@ -261,14 +261,13 @@
 .right h1 {
   color: #2e436a;
   font-size: 3.5rem;
-  font-weight: 700;
-  font-family: Visby Round CF;
+  font-family: extra-bold;
 }
 
 .right h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 20px;
-  font-family: Visby Round CF;
+  font-family: extra-bold;
   color: #2e436a;
 }
 
@@ -278,7 +277,7 @@ a {
 }
 
 label {
-  font: normal normal bold 24px/25px Visby Round CF;
+  font: normal normal bold 24px/25px extra-bold;
 }
 
 .right .lng {
@@ -299,13 +298,13 @@ label {
 }
 
 .add {
-  font: normal normal bold 16px/30px Visby Round CF;
+  font: normal normal bold 16px/30px extra-bold;
   color: #2E436A;
 }
 
 .pass {
   color: #6d87f5;
-  font: normal normal bold 16px/30px Visby Round CF;
+  font: normal normal bold 16px/30px extra-bold;
 }
 
 .rem {
@@ -319,7 +318,7 @@ label {
 .btn1 {
   width: 100%;
   height: 50px;
-  font: normal normal bold 15px/20px Visby Round CF;
+  font: normal normal bold 15px/20px extra-bold;
   background-color: #6d87f5;
   border: none;
   color: azure;
@@ -374,13 +373,12 @@ label {
   }
   .right h3{
     font-size: 1.3rem;
-    font-weight: 600;
     color: #2E436A;
-    font-family: Visby Round CF;
+    font-family: extra-bold;
   }
   .right a{
     color: #6d87f5;
-    font-family: Visby Round CF;
+    font-family: extra-bold;
   }
 
   .right .lng {
@@ -420,5 +418,3 @@ label {
     margin: 0;
   }
 }
-
-
