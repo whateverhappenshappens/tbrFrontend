@@ -1,0 +1,22 @@
+.abouteventscard-card{
+    display:flex;
+    flex-direction:column;
+    border-radius: 20px;
+    padding-bottom: 1rem;
+    width: 28rem;
+    border: 3px solid #FFFFFF;
+}
+.abouteventscard-card img{
+    height:auto;
+    max-width:7.6rem;
+    margin-left:3.1rem;
+    margin-top: 4rem;
+    margin-bottom:4rem;
+}
+.abouteventscard-card p{
+    color:#FFFFFF;
+    font-size:2.5rem;
+    margin-left:3.1rem;
+    margin-right:3.1rem;
+    font-family: 'medium';
+}

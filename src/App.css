@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'bold';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-Bold.otf);
+}
+@font-face {
+    font-family: 'demi-bold';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-DemiBold.otf);
+}
+@font-face {
+    font-family: 'extra-bold';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-ExtraBold.otf);
+}
+@font-face {
+    font-family: 'extra-light';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-ExtraLight.otf);
+}
+@font-face {
+    font-family: 'heavy';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-Heavy.otf);
+}
+@font-face {
+    font-family: 'light';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-Light.otf);
+}
+@font-face {
+    font-family: 'medium';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-Medium.otf);
+}
+@font-face {
+    font-family: 'regular';
+    src: url(./assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-Regular.otf);
+}

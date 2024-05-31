@@ -1,0 +1,34 @@
+.review-container{
+ background-color: #3853C5;
+ padding: 1rem 2rem 1rem 1rem;
+ border-radius: 1rem;
+ margin-top: 5rem;
+ min-width: 50%;
+}
+
+.person-info{
+    display: flex;
+    align-items: center;
+    gap: 4.8rem;
+
+}
+.review-text{
+    color: white;
+    font: normal normal normal 16px/26px Visby Round CF;
+}
+.profile-pic{
+    height: 5.8rem;
+    width: 5.8rem;
+    border-radius: 10%;
+}
+.user-name{
+    color: white;
+    font: normal normal bold 17px/22px Visby Round CF;
+}
+.user-college{
+    color: white;
+    font: normal normal normal 15px/22px Visby Round CF;
+}
+.person-info{
+    margin-top: 2.5rem;
+}

@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'extra-bold';
+  src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+}
+
+.projects {
+  width: 100%;
+  background-color: #f7fafc;
+  padding-bottom: 7.4rem;
+}
+
+.projects-heading {
+  text-align: center;
+  font-size: 5.5rem;
+  padding-top: 10rem;
+  
+}
+.projects-heading p{
+  font-family: 'extra-bold';
+}
+.projects-cards {
+  display: flex;
+  flex-direction: row;
+  overflow: visible;
+  gap: 1.6rem;
+  margin-top: 10rem;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow-x: hidden; 
+}
+
+.projects-cards-left,
+.projects-cards-right {
+  overflow: visible;
+  border-radius: 50%;
+  width: 5.8rem;
+  height: 5.8rem;
+  background-color: #848484;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.projects-cards-left {
+  margin-right: 1.6rem; 
+}
+
+.projects-cards-right {
+  margin-left: 1.6rem; 
+}
+
+.projects-cards-card-container {
+  display: flex;
+}
+
+.projects-cards-card {
+  flex: 1;
+  margin-right: 1.6rem; 
+}
+
+.projects-cards-card:last-child {
+  margin-right: 0; 
+}
+
+@media (max-width:767px){
+  .projects-cards-left, .projects-cards-right{
+    padding:0rem
+  }
+  .projects-cards{
+    gap:0rem;
+  }
+}

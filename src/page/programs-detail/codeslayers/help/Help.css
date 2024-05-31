@@ -1,0 +1,100 @@
+.help-container{
+    padding-bottom: 5rem;
+}
+.help {
+    color: #2E436A;
+    margin-top: 3rem;
+}
+
+.help-head1 {
+    text-align: center;
+    font-size: 5.5rem;
+}
+
+.help-head2 {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.help-head2 a {
+    color: #6D87F5;
+    text-decoration: none;
+}
+
+.connected-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.connected-button-request {
+    background-color: white;
+    border: 1px solid #6D87F5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    height: 5rem;
+    overflow: visible;
+    margin-right: 1rem;
+}
+
+.connected-button-request-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.connected-button-request img {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+}
+
+.connected-button-request p {
+    font-size: 2rem;
+    color: #6D87F5;
+    margin-bottom: 0rem;
+}
+
+.connected-button-join {
+    border: none;
+    background: #6D87F5;
+    border-radius: 20px;
+    height: 5rem;
+    padding: 0rem 5rem;
+    margin-left: 1rem;
+}
+
+.connected-button-join p {
+    color: white;
+    font-size: 2rem; 
+    margin-bottom: 0rem;
+}
+
+@media (max-width:767px) {
+    .help-head1{
+        font-size: 2.5rem;
+    }
+    .help-head2{
+        font-size: 1.5rem;
+    }
+    .connected-button-request p{
+        font-size: 1rem;
+    }
+    .connected-button-request img{
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    .connected-button-join p{
+        font-size: 1rem;
+    }
+    .connected-button-join{
+        padding: 0rem 3rem;
+    }
+    .help-container{
+        padding: 4rem;
+    }
+}

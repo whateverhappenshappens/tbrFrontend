@@ -1,0 +1,89 @@
+.studentsaying {
+    width: 100%;
+    background-color: #F7FAFC;
+    padding-bottom: 7.4rem;
+}
+
+.studentsaying-heading {
+    text-align: center;
+    font-size: 5.5rem;
+    padding-top: 10rem;
+}
+
+.studentsaying-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1.6rem;
+    margin-top: 10rem;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: hidden; /* Hide overflow for smaller screens */
+}
+
+.studentsaying-cards-left,
+.studentsaying-cards-right {
+    border-radius: 50%;
+    width: 5.8rem;
+    height: 5.8rem;
+    background-color: #848484;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.studentsaying-cards-left {
+    margin-right: 1.6rem; /* Adjust the spacing between the buttons */
+}
+
+.studentsaying-cards-right {
+    margin-left: 1.6rem; /* Adjust the spacing between the buttons */
+}
+
+.studentsaying-cards-card {
+    display: flex; /* Ensure cards are displayed in a row */
+    gap: 1rem; /* Add gap between cards */
+}
+
+.studentsaying-heading p{
+    font-family: 'bold';
+    color: #2E436A;
+}
+
+@media (max-width: 767px) {
+    .studentsaying-cards {
+        margin-top: 2rem;
+        justify-content: center; /* Center align cards */
+    }
+    
+    .studentsaying-heading{
+        padding-top: 0rem;
+    }
+    .studentsaying-cards-card {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .studentsaying-cards-left,
+    .studentsaying-cards-right {
+        display: none; /* Hide navigation buttons */
+    }
+}
+
+@media (max-width: 768px) {
+    .studentsaying-cards-left,
+    .studentsaying-cards-right {
+        padding: 1.2rem 1.6rem 1.5rem 1.2rem; /* Adjust padding for smaller screens */
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .studentsaying-cards-left,
+    .studentsaying-cards-right {
+        padding: 1rem 1.2rem 1.3rem 0.8rem; /* Further adjust padding for smaller screens */
+        width: 4rem;
+        height: 4rem;
+    }
+}

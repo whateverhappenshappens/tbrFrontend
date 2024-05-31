@@ -1,0 +1,70 @@
+.roles-cards {
+    box-shadow: 0px 3px 6px #00000029;
+    background-color: #FFFFFF;
+    border-radius: 2rem;
+    width: 80%;
+    height: 45rem; /* Adjusted minimum height for all cards */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+.roles-colorful-bg {
+    border-radius: 2rem;
+    border: none;
+    margin: 3rem; /* Use shorthand for margin */
+}
+
+.roles-colorful-bg img {
+    height: 15.4rem;
+    width: 15.4rem;
+}
+
+.roles-cards-paragraph {
+    color: #2E436A;
+    margin: 4rem 3rem; /* Use shorthand for margin */
+}
+
+.roles-cards-paragraph p {
+    font-size: 2rem;
+}
+
+@media (max-width: 600px) {
+    .roles-colorful-bg img {
+        height: 10.4rem;
+        width: 10.4rem;
+        margin: 6.6rem auto; /* Center the image horizontally */
+    }
+
+    .roles-cards-paragraph {
+        margin: 4rem 2rem; /* Use shorthand for margin */
+    }
+
+    .roles-cards-paragraph p {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .roles-colorful-bg img {
+        height: 7.4rem;
+        width: 7.4rem;
+        margin: 6.6rem auto; /* Center the image horizontally */
+    }
+
+    .roles-cards-paragraph {
+        margin: 4rem 2rem; /* Use shorthand for margin */
+    }
+
+    .roles-cards-paragraph p {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width:768px) and (max-width:912px){
+    .roles-cards{
+        height: 37rem;
+    }
+    .roles-cards-paragraph p{
+        font-size: 1.5rem;
+    }
+  }

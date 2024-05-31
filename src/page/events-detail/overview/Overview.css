@@ -1,0 +1,61 @@
+.overview {
+    background-color:#2E436A;
+    padding-bottom: 5rem;
+    padding-top: 1rem;
+    color:white;
+    margin-top: 15rem;
+}
+
+.overview-head {
+    font-size: 5.5rem;
+    margin-left: 14rem;
+    margin-right: 14rem;
+}
+
+.overview-head p {
+    padding:0rem 2rem;
+    margin-top: 9.7rem;
+}
+.overview-para{
+    font-size: 1.5rem;
+}
+
+.overview-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Display as grid with 4 columns */
+    gap: 1.6rem;
+    margin-top: 10rem;
+    margin-left: 14rem;
+    margin-right: 14rem;
+    margin-bottom: 10rem;
+}
+
+@media (max-width: 767px) {
+    .overview-card {
+        grid-template-columns: repeat(1, 1fr); /* Display as 1 column for smaller screens */
+        margin-left: 2rem; /* Adjusted left margin */
+        margin-right: 2rem; /* Adjusted right margin */
+    }
+    .overview-head{
+        margin-left: 0rem;
+    margin-right: 0rem;
+    text-align: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    .overview-card {
+        grid-template-columns: repeat(2, 1fr); /* Display as 2 columns for tablets */
+        margin-left: 6rem; /* Adjusted left margin */
+        margin-right: 6rem; /* Adjusted right margin */
+    }
+}
+
+@media (max-width: 767px){
+    .overview{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'extra-bold';
+    src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+}
+
+.roles-head {
+    color: #2E436A;
+    font-size: 5.5rem;
+    margin-top: 13rem;
+    text-align: center;
+    
+}
+.roles-head p{
+    font-family: 'extra-bold';
+}
+.roles{
+    overflow: visible;
+}
+.roles-card {
+    margin-top: 5.1rem;
+    margin-bottom: 13rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 5rem;
+    padding: 0 3rem; 
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+
+.roles-cards {
+    box-shadow: 0px 3px 6px #00000029;
+    background-color: #FFFFFF;
+    border-radius: 2rem;
+    width: 80%;
+    height: 3rem; 
+    overflow: hidden; 
+}
+
+.roles-colorful-bg {
+    border-radius: 2rem;
+    border: none;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 3rem;
+}
+
+.roles-colorful-bg img {
+    height: 15.4rem;
+    width: 15.4rem;
+}
+
+.roles-cards-paragraph {
+    color: #2E436A;
+    margin-top: 4rem;
+    margin-bottom: 4.7rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.roles-cards-paragraph p {
+    font-size: 3rem;
+}
+
+@media (max-width: 600px) {
+    .roles-colorful-bg {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 3rem;
+    }
+
+    .roles-colorful-bg img {
+        height: 10.4rem;
+        width: 10.4rem;
+        margin-left: 16.1rem;
+        margin-right: 16.1rem;
+        margin-top: 6.6rem;
+        margin-bottom: 6.5rem;
+    }
+
+    .roles-cards-paragraph {
+        margin-top: 4rem;
+        margin-bottom: 4.7rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .roles-cards-paragraph p {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .roles-colorful-bg {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 3rem;
+    }
+
+    .roles-colorful-bg img {
+        height: 7.4rem;
+        width: 7.4rem;
+        margin-left: 10.1rem;
+        margin-right: 10.1rem;
+        margin-top: 6.6rem;
+        margin-bottom: 6.5rem;
+    }
+
+    .roles-cards-paragraph {
+        margin-top: 4rem;
+        margin-bottom: 4.7rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .roles-cards-paragraph p {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 767px){
+    .roles-head{
+        font-size: 2.5rem;
+        margin-top: 0rem;
+    }
+    .roles{
+        padding: 2rem 0rem;
+    }
+}

@@ -1,0 +1,14 @@
+.hackathon-page{
+    background-color:#F7FAFC;
+    width: 100%;
+    box-sizing: border-box;
+    transform: translateY(14rem
+    );
+} 
+
+@media (max-width:768px)
+{
+    .hackathon-page{
+    transform: translateY(50px);
+    }
+}

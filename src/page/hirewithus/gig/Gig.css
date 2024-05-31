@@ -1,0 +1,110 @@
+
+.gig {
+    background: #2E436A 0% 0% no-repeat padding-box;
+    width: 100%;
+    margin-top: 15rem;
+    padding-top: 8rem;
+    padding-bottom: 12rem;
+}
+.content {
+    margin-left: 2rem; /* Adjusted for smaller screens */
+    margin-right: 2rem; /* Adjusted for smaller screens */
+    color: #FFFFFF;
+}
+.arrow{
+    margin-right: 1rem;
+}
+.gig-headings-head1 {
+    font-family: 'bold';
+    font-size: 6rem;
+    line-height: 7.2rem;
+}
+.gig-point svg{
+    padding-top: 1rem;
+}
+.gig-headings-head2 {
+    font-family: 'medium';
+    font-size: 2.5rem;
+    line-height: 3.7rem;
+    margin-top: 7.3rem;
+}
+.gig-headings-head2 span{
+    font-size: 3rem;
+}
+.gig-points {
+    margin-top: 8rem;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    max-width: 100%;
+    border-radius: 1px solid red;
+}
+
+.gig-point {
+    font-family: 'medium';
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem; /* Adjusted for smaller screens */
+}
+
+.gig-point p {
+    margin-top: -1rem;
+}
+
+/* Media query for tablet and larger screens */
+@media only screen and (min-width: 768px) {
+    .content {
+        margin-left: 14rem;
+        margin-right: 14rem;
+    }
+
+    .gig-points {
+        max-width: 163.8rem;
+    }
+
+    .gig-point {
+        gap: 5rem;
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .gig-headings-head1 {
+        font-size: 4rem; 
+        line-height: 5rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-headings-head2 {
+        font-size: 1.5rem; /* Adjusted for smaller screens */
+        line-height: 3rem; /* Adjusted for smaller screens */
+        margin-top: 4rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-points {
+        margin-top: 4rem;
+        font-size: 1.5rem; /* Adjusted for smaller screens */
+        line-height: 3.5rem; /* Adjusted for smaller screens */
+        gap: 3rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-point {
+        flex-direction: column; /* Adjusted for smaller screens */
+        gap: 1rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-headings-head2 span {
+        font-size: 2rem;
+    }
+    
+    
+    .gig-point p {
+        font-size: 1.5rem;
+        margin-top: -0.5rem; /* Adjusted for smaller screens */
+    }
+    .gig{
+        padding-bottom: 0rem;
+    }
+}

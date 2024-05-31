@@ -1,0 +1,39 @@
+.aboutevents{
+    padding: 72px;
+    background-color:#2E436A;
+    margin-top: 15rem;
+}
+.aboutevents-head{
+    font-size:5rem;
+    color:#FFFFFF;  
+}
+.aboutevents-card{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap:5rem;
+    margin-top:10rem;
+}
+
+.aboutevents-head p{
+    font-family: 'bold';
+}
+
+@media (max-width:768px){
+.aboutevents{
+    padding: 20px;
+}
+.aboutevents-card{
+    margin-top: 5rem;
+}
+.aboutevents-head{
+    font-size: 4.5rem;
+    text-align: center;
+}
+
+.speaker-biodata p{
+    font-size: 2rem;
+    line-height: initial;
+}
+}

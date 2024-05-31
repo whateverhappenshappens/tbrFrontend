@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'extra-bold';
+  src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+}
+
+@font-face {
+  font-family: 'bold';
+  src: url(./../../../assets/fonts/VisbyRoundCF-DemiBold.otf);
+}
+.connected{
+    background-color: #F7FAFC;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 5rem 5rem;
+    font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+.connected-head1{
+    font-size: 4.5rem;
+    color:#2E436A;
+    font-family: 'extra-bold';
+}
+.connected-head2{
+    margin-top:2rem;
+    font-size: 2rem;
+    color:#2E436A;
+}   
+.connected-button{
+    display:flex;
+    flex-direction:row;
+    margin-top:2rem;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.connected-button-request{
+    background-color: white;
+    border: 1px solid #6D87F5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:1rem;
+    height:5rem;
+    overflow: visible;
+}
+
+.connected-button-request-div{
+    display: flex;
+    flex-direction: row;    
+}
+
+.connected-button-request img{
+    height: 2.5rem;
+    width:2.5rem;
+    margin-right: 1rem;
+}
+.connected-button-request p{
+    font-size: 2rem;
+    color:#6D87F5;
+    margin-bottom: 0rem;
+    font-family: 'bold';
+}
+
+.connected-button-join{
+    border:none;
+    background: #6D87F5 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    height: 5rem;
+    padding:0rem 5rem;
+}
+.connected-button-join p{
+    color: white;
+    font-size:2rem; 
+    margin-bottom: 0rem;
+    font-family: 'bold';
+}
+
+@media (max-width:767px){
+  .connected-head1{
+    font-size: 2rem;
+  }
+  .connected-head2{
+    font-size: 1.5rem;
+  }
+  .connected{
+    padding:2rem 4rem;
+  }
+  .connected-button-request p{
+    font-size: 2rem;
+    margin-bottom: 0rem;
+  }
+  .connected-button-join p{
+    margin-bottom: 0rem;
+    font-size: 2rem;
+  }
+  .connected-button-request{
+    border: 1px solid #6D87F5;
+  }
+  .connected-button-request img{
+    height:2rem;
+    width: 2rem;
+    margin-top: 0.5rem;
+  }
+}

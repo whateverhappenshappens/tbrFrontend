@@ -1,0 +1,53 @@
+.homework-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center !important;
+  width: 50%;
+}
+.circle {
+  height: 14rem;
+  width: 14rem;
+  background-color: #6d87f5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book-logo {
+  height: 6rem;
+  width: 6rem;
+}
+.ellipse-description {
+  color: #2e436a;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.ellipse-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media (min-width: 500px) {
+  .homework-box {
+    width: 45%;
+  }
+}
+@media (min-width: 768px) {
+  .circle {
+    height: 16rem;
+    width: 16rem;
+  }
+  .book-logo {
+    height: 7rem;
+    width: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .homework-box {
+    width: 20%;
+  }
+}

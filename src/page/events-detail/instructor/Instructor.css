@@ -1,0 +1,102 @@
+.instructor{
+    background: #F7FAFC 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction:column;
+    padding-top: 10rem;
+}
+.instructor-heading{
+    text-align: center;
+    color:#2E436A;
+    font-size: 6rem;
+}
+.instructor-content{
+    display: flex;
+    margin-top: 8rem;
+    margin-bottom: 9.5rem;
+    padding-left: 14rem;
+    padding-right: 20rem;
+    justify-content: center;  
+    gap:7rem; 
+}
+.instructor-biodata{
+    font-size: 2.5em;
+    line-height: 3.7rem;;
+}
+
+.instructor-profile{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.instructor-profile img{
+    height: auto;
+}
+.instructor-profile-name{
+    margin-top:3.5rem;
+    font-size: 3.5rem;
+    color:#2E436A;
+}
+.instructor-profile-company{
+    margin-top:1.5rem;
+    font-size: 3rem;
+    color:#2E436A;
+}
+
+.instructor-profile-linkedin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:4rem;
+    padding-top:2.2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom:2.1rem;
+    background: #2E436A 0% 0% no-repeat padding-box;
+    font-size: 3.5rem;
+    color:white;
+    gap:4.6rem;
+    border-radius: 15px;
+}
+.instructor-profile-linkedin img{
+    max-width:15%;
+    height: auto;
+}
+
+@media (max-width:1024px){
+    .instructor-content{
+        flex-direction: column-reverse;
+        padding-left: 0rem;
+    padding-right: 0rem;
+    }
+    .instructor-profile img{
+        height:25rem;
+    }
+}
+
+@media(max-width:767px){
+    .instructor-profile-linkedin img{
+        height: 5rem;
+    }
+    .instructor-profile-linkedin p{
+        font-size: 2rem;
+        width:15rem;
+    }
+    .instructor-profile-linkedin{
+        padding: 1rem 1rem;
+        position: absolute;
+        bottom:-10rem;
+    }
+    .instructor-heading{
+        font-size: 4rem;
+    }
+    .instructor{
+        padding-top: 0rem;
+        padding: 2rem;
+        margin-top: 5rem;
+    }
+    .instructor-content{
+        position: relative;
+    }
+}
