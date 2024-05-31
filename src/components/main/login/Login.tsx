@@ -1,20 +1,11 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ReviewBox, { ReviewProps } from "./ReviewBox";
+import ReviewSlider from "./ReviewSlider";
 import { FaGoogle } from "react-icons/fa";
 import "../../../styles/components/Login.css";
-
 import { UserRole, User } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
-
-const review: ReviewProps = {
-  content:
-    "I have done multiple courses with TechBairn and they have helped me land my first internship with Google. I recommend everyone to at least try their programs once.",
-  name: "Ankit Sinha",
-  college: "KIIT University",
-  id: "1",
-  img: "https://images.unsplash.com/photo-1592188657297-c6473609e988?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D",
-};
+import Signup from "../Sign/Signup"; // Import the Signup component
 
 const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const [userDetails, setUserDetails] = useState<User>({
@@ -29,6 +20,8 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     password: "",
   });
 
+  const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false); // State to manage signup popup visibility
+
   const validateForm = () => {
     let valid = true;
     let emailError = "";
@@ -38,7 +31,7 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
       emailError = "Email is required.";
       valid = false;
     } else if (!/\S+@\S+\.\S+/.test(userDetails.email)) {
-      emailError = "Email is required.";
+      emailError = "Invalid email format.";
       valid = false;
     }
 
@@ -57,7 +50,6 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const handle_login_btn = async () => {
     if (validateForm()) {
       console.log(userDetails);
-      // api call
       try {
         await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
         setUserDetails({
@@ -72,6 +64,10 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     }
   };
 
+  const toggleSignupPopup = () => {
+    setIsSignupPopupVisible(!isSignupPopupVisible);
+  };
+
   return (
     <div className="main_box">
       <aside className="left">
@@ -81,15 +77,15 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
           you are back!
         </h2>
         <p className="para">
-          Discover the India's best EdTech platform for upskilling yourself with
-          community based learning.
+          Discover India's best EdTech platform for upskilling yourself with
+          community-based learning.
         </p>
-        <ReviewBox {...review} />
+        <ReviewSlider />
       </aside>
       <div className="right">
         <h1>Log in</h1>
         <h3>
-          Don't have an account? <a href="#">Sign up</a>
+          Don't have an account? <button onClick={toggleSignupPopup} className="signup-link">Sign up</button>
         </h3>
 
         <label>Email</label>
@@ -131,13 +127,18 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
           Log in
         </button>
         <p className="cont">-------or continue login with--------</p>
-        <a href="#">
+        <a href="/oauth2/authorization/google">
           <div className="google">
             <FaGoogle className="icon" />
             Google
           </div>
         </a>
       </div>
+      {isSignupPopupVisible && (
+        <div className="login-pop absolute w-[100%] ml-[115px] overflow-y-hidden h-full bg-white top-[0%] border">
+          <Signup />
+        </div>
+      )}
     </div>
   );
 };

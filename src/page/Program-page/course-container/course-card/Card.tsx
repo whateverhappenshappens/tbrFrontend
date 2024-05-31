@@ -33,7 +33,7 @@ const Card: React.FC<props> = (props) => {
           </div>
           <p className="Teacher-Name">{props.teachername}</p>
           <div className="course-card-content-button">
-            <button className="course-card-content-button-enroll-now">
+            <button className="enroll-btn course-card-content-button-enroll-now">
               Enroll Now
             </button>
             <button className="course-card-content-button-view-details">

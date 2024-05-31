@@ -4,7 +4,7 @@ import hamburger from "../../assets/hamburger.png";
 import { NavLink } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import Login from "../main/login/Login";
-import Signup from "../Sign-up/Signup";
+import Signup from "../main/Sign/Signup";
 
 function Header({
   updateHeaderHeight,
@@ -17,6 +17,8 @@ function Header({
 }: any) {
   const [navOpen, setNavOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false); // State to manage More dropdown
+  const [showLogin, setShowLogin] = useState(false); // State to manage login popup visibility
+  const [showSignup, setShowSignup] = useState(false); // State to manage signup popup visibility
 
   const transRef = useRef<HTMLDivElement>(null);
   const closeNavRef = useRef<HTMLDivElement>(null);
@@ -43,30 +45,28 @@ function Header({
 
   return (
     <header className="header" ref={headerContainer}>
-      <div
-        className="login-pop absolute w-3/4 bg-white top-[66%] border"
-        ref={loginContainer}
-      >
-        <div
-          className="text-9xl right-[5%] cursor-pointer absolute overflow-hidden"
-          onClick={() => (loginContainer.current.style.display = "none")}
-        >
-          &times;
+      {showLogin && (
+        <div className="login-pop absolute w-3/4 bg-white top-[66%] border">
+          <div
+            className="text-9xl right-[5%] z-10 cursor-pointer absolute overflow-hidden"
+            onClick={() => setShowLogin(false)}
+          >
+            &times;
+          </div>
+          <Login handle_login={handle_login} setIsLoggedIn={setIsLoggedIn} />
         </div>
-        <Login handle_login={handle_login} setIsLoggedIn={setIsLoggedIn} />
-      </div>
-      <div
-        className="signup absolute w-[78%] bg-white top-[64%] border "
-        ref={signupContainer}
-      >
-        <div
-          className="text-9xl cursor-pointer right-[5%] absolute overflow-hidden"
-          onClick={() => (signupContainer.current.style.display = "none")}
-        >
-          &times;
+      )}
+      {showSignup && (
+        <div className="signup absolute w-[78%] bg-white top-[64%] border">
+          <div
+            className="text-9xl cursor-pointer z-10 right-[5%] absolute overflow-hidden"
+            onClick={() => setShowSignup(false)}
+          >
+            &times;
+          </div>
+          <Signup />
         </div>
-        <Signup />
-      </div>
+      )}
 
       <NavLink to="/">
         <img className="logo" src={logo} alt="Techbairn logo" />
@@ -155,10 +155,10 @@ function Header({
         </ul>
         {!isLoggedIn ? (
           <div className="authenticate">
-            <div className="sign-up" onClick={() => handle_signup()}>
+            <div className="sign-up" onClick={() => setShowSignup(true)}>
               Sign Up
             </div>
-            <div className="log-in" onClick={() => handle_login()}>
+            <div className="log-in" onClick={() => setShowLogin(true)}>
               Log In
             </div>
           </div>
