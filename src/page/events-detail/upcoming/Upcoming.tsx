@@ -62,7 +62,7 @@ const Upcoming: React.FC<props> = (props) => {
             <p>Mode : Online</p>
           </div>
           <div className="upcoming-buttons">
-            <button className="upcoming-buttons-enroll">
+            <button className="enroll-btn upcoming-buttons-enroll">
               <p>Enroll Now</p>
             </button>
           </div>
