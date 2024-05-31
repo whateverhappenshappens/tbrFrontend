@@ -1,5 +1,7 @@
 import React from "react";
+import "./Associate.css";
 import boy from "../../../assets/boy pointing@2x.png";
+
 const Associate: React.FC = () => {
   return (
     <div className="associate">
@@ -16,7 +18,7 @@ const Associate: React.FC = () => {
           point for your journey.
         </p>
         <button className="associate-text-button">
-          <p className="vr-bold w-[400px] ">Apply Now</p>
+          <p className="vr-bold w-[400px]">Apply Now</p>
         </button>
       </div>
       <div className="associate-img ">
