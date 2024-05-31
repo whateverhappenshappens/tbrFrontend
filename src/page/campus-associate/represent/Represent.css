@@ -16,7 +16,45 @@
     padding-bottom: 5rem;
     
 }
-
+@keyframes flash {
+    0% {
+      transform: translate(-200%, -50%) rotate(45deg);
+    }
+    50% {
+      transform: translate(50%, 50%) rotate(45deg);
+    }
+    100% {
+      transform: translate(200%, 50%) rotate(45deg);
+    }
+  }
+  
+  .enroll-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 40px; /* Adjusted padding for better appearance */
+    font-size: 1.5rem; /* Adjusted font size for better appearance */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 20px; /* Add some space at the top */
+  }
+  
+  .enroll-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 200%; /* Long enough to cover the diagonal */
+    height: 100%; /* Ensure the line covers the entire button height */
+    background: rgba(255, 255, 255, 0.9); /* Slightly more transparent for subtle effect */
+    filter: blur(10px);
+    transform: rotate(45deg);
+    animation: flash 4.5s linear infinite; /* Adjusted duration for smoother animation */
+    animation-delay: 2s;
+    pointer-events: none;
+  }
 .represent, .doubts {
     display: flex;
     flex-direction: column;

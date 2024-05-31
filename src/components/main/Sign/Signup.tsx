@@ -1,19 +1,11 @@
 import "./Signup.css";
 import { FaGoogle } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import { UserAPI } from "../../apis/UserAPIs";
-import { User, UserRole } from "../../types/User";
-import { FormError } from "../../types/FormError";
-import ReviewBox, { ReviewProps } from "./ReviewBox1";
-
-const review: ReviewProps = {
-  content:
-    "I have done multiple courses with TechBairn and they have helped me land my first internship with Google.I recommend everyone to at least try their programs once.",
-  name: "Ankit Sinha",
-  college: "KIIT University",
-  id: "1",
-  img: "https://images.unsplash.com/photo-1592188657297-c6473609e988?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D",
-};
+import { UserAPI } from "../../../apis/UserAPIs";
+import { User, UserRole } from "../../../types/User";
+import { FormError } from "../../../types/FormError";
+import ReviewSlider from "./ReviewSlider1";
+import Login from "../login/Login"; // Import the Login component
 
 function Signup() {
   const [userDetails, setUserDetails] = useState<User>({
@@ -26,6 +18,8 @@ function Signup() {
     email: "",
     password: "",
   });
+
+  const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false); // State to manage login popup visibility
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -82,6 +76,10 @@ function Signup() {
     console.log(formError);
   }, [formError]);
 
+  const toggleLoginPopup = () => {
+    setIsLoginPopupVisible(!isLoginPopupVisible);
+  };
+
   return (
     <div className="main_box">
       <aside className="left">
@@ -94,28 +92,12 @@ function Signup() {
           Discover India's best EdTech platform for upskilling yourself with
           community-based learning.
         </p>
-        <div >
-          {/* <p className="try">
-            I have done multiple courses with TechBairn, and they have helped
-            me land my first internship with Google. I recommend everyone to
-            at least try their programs once.
-          </p>
-          <div className="card_info">
-            <div className="image"></div>
-            <p className="info">
-              John Doe
-              <br />
-              VIT Vellore
-            </p>
-          </div> */}
-          <ReviewBox {...review} />
-        </div>
-        
+        <ReviewSlider />
       </aside>
       <div className="right">
         <h1>Sign up</h1>
         <h3>
-          Have an account? <a href="#">Log in</a>
+          Have an account? <button onClick={toggleLoginPopup} className="login-link">Log in</button>
         </h3>
         <label>Fullname</label>
         <br />
@@ -162,11 +144,19 @@ function Signup() {
           Create an account
         </button>
         <p className="cont">-----or continue with Google------</p>
-        <a href="#"><div className="google">
-          <FaGoogle className="icon" />
-          Google
-        </div></a>
+        <a href="#">
+          <div className="google">
+            <FaGoogle className="icon" />
+            Google
+          </div>
+        </a>
       </div>
+      {isLoginPopupVisible && (
+        <div className="login-pop absolute w-[100%] ml-[115px] h-full overflow-y-hidden bg-white border">
+          <Login />
+          
+        </div>
+      )}
     </div>
   );
 }

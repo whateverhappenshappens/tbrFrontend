@@ -20,7 +20,7 @@ import EventsManagerPage from "./page/events-detail/EventsManagerPage";
 import CodeSlayer from "./page/programs-detail/codeslayers/CodeSlayer";
 import MlProgram from "./page/programs-detail/mlprogram/MlProgram";
 import IotProgram from "./page/programs-detail/iot/IotProgram";
-import Signup from "./components/Sign-up/Signup";
+import Signup from "./components/main/Sign/Signup";
 
 import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";
@@ -31,7 +31,7 @@ import Test from "./components/Test";
 import { UserAPI } from "./apis/UserAPIs";
 import OperationSignIn from "./page/operations/OperationSignIn";
 import NotFound from "./page/NotFound/NotFound";
-import SalesOperations from "./page/operations/SalesOperations";
+// import SalesOperations from "./page/operations/SalesOperations";
 import EnrollStudent from "./page/enroll/EnrollStudent";
 
 function App() {
@@ -146,7 +146,8 @@ function App() {
               />
             }
           />
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route
             path="/blog"
             element={<Blogging headerHeight={headerHeight} />}
@@ -169,7 +170,6 @@ function App() {
           />
 
           <Route path="/hire-with-us" element={<Hire />} />
-          <Route path="/sales-operation" element={<SalesOperations />} />
           <Route
             path="/event-listing"
             element={

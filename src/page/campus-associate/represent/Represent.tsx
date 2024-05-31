@@ -25,7 +25,7 @@ const Represent: React.FC = () => {
         <p className="vr-medium medium doubts-head2">
           Get in touch with us to learn more!
         </p>
-        <button className="doubts-button vr-bold ">
+        <button className="enroll-btn doubts-button vr-bold ">
           <div className="doubts-button-div">
             <p>Apply Now</p>
           </div>
