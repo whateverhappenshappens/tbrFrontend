@@ -3,7 +3,7 @@
     background-color: #FFFFFF;
     border-radius: 2rem;
     width: 80%;
-    height: 45rem; /* Adjusted minimum height for all cards */
+    height: 40rem; /* Adjusted minimum height for all cards */
     overflow: hidden; /* Ensure content doesn't overflow */
     margin: 0 auto; /* Center the card horizontally */
 }

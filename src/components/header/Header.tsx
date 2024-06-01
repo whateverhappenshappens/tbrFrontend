@@ -46,7 +46,7 @@ function Header({
   return (
     <header className="header" ref={headerContainer}>
       {showLogin && (
-        <div className="login-pop absolute w-3/4 bg-white top-[66%] border">
+        <div className="login-pop absolute w-3/4 bg-white top-[66%] rounded-lg border">
           <div
             className="text-9xl right-[5%] z-10 cursor-pointer absolute overflow-hidden"
             onClick={() => setShowLogin(false)}
@@ -57,7 +57,7 @@ function Header({
         </div>
       )}
       {showSignup && (
-        <div className="signup absolute w-[78%] bg-white top-[64%] border">
+        <div className="signup absolute w-[78%] bg-white top-[64%] border rounded-lg">
           <div
             className="text-9xl cursor-pointer z-10 right-[5%] absolute overflow-hidden"
             onClick={() => setShowSignup(false)}

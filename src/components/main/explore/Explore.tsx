@@ -29,7 +29,7 @@ const Explore = ({handle_login}: any) => {
         <div className="explore-btn" onClick={() => private_test()}>
         {/* Explore */}
         Private Test
-        </div><div className="explore-btn" onClick={() => public_test()}>
+        </div><div className="explore-btn opacity-0" onClick={() => public_test()}>
         {/* Explore */}
         Public Test
         </div>

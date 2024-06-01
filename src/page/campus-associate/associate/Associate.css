@@ -26,6 +26,7 @@
   .associate-text-head1 {
     font-size: 5.5rem;
     font-family: 'extra-bold';
+    overflow: visible;
   }
   
   .try {
@@ -76,7 +77,24 @@
     border-radius: 15px;
     margin-top: 20px; /* Add some space at the top */
   }
-  
+  .enroll-btn1 {
+    background-color: white;
+    color: rgb(83, 83, 203);
+    ;
+    border: none;
+    padding: 20px 40px; /* Adjusted padding for better appearance */
+    font-size: 1.5rem; /* Adjusted font size for better appearance */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 20px; /* Add some space at the top */
+  }
+  .enroll-btn1 p{
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: extra-bold;
+  }
   .enroll-btn::before {
     content: "";
     position: absolute;

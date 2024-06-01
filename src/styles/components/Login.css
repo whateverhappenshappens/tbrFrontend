@@ -240,7 +240,7 @@
   font-size: 3rem;
   font-weight: 800;
   font-family: extra-bold;
-  margin-top: 3.5rem;
+  margin-top: 2rem;
 }
 
 .image {
@@ -310,7 +310,7 @@ a {
 }
 
 label {
-  font: normal normal bold 24px/25px extra-bold;
+  font: normal normal bold 18px/25px extra-bold;
 }
 
 .right .lng {

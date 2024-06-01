@@ -9,7 +9,15 @@
   overflow: visible;
   padding: 2rem 4rem;
 }
-
+.exp-cards-para{
+  font: normal normal normal 35px/40px extra-bold;
+  line-height: 2;
+}
+.heading{
+  /* font: normal normal normal 40px/40px extra-bold; */
+  font-size: 5rem;
+  color: #2E436A;
+}
 .slick-slider {
   overflow: visible;
 }

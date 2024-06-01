@@ -21,11 +21,11 @@ const Represent: React.FC = () => {
         <img src={Boy} alt="" />
       </div>
       <div className="doubts">
-        <p className="vr-bold doubts-head1 try">Ready to make an impact?</p>
+        <p className="vr-bold doubts-head1 try">Ready to make<br></br> an impact?</p>
         <p className="vr-medium medium doubts-head2">
           Get in touch with us to learn more!
         </p>
-        <button className="enroll-btn doubts-button vr-bold ">
+        <button className="doubts-button mt-[4rem] vr-bold ">
           <div className="doubts-button-div">
             <p>Apply Now</p>
           </div>

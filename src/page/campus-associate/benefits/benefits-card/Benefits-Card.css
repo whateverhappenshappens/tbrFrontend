@@ -17,7 +17,7 @@
 
 .benefit-card p {
     color: white;
-    font-size: 1.5rem;
+    font: normal normal normal 17px/40px extra-bold;
     text-align: center; /* Center the text horizontally */
     margin: 0 3.1rem; /* Add some left and right margin */
 }

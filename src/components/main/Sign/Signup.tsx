@@ -152,7 +152,7 @@ function Signup() {
         </a>
       </div>
       {isLoginPopupVisible && (
-        <div className="login-pop absolute w-[100%] ml-[115px] h-full overflow-y-hidden bg-white border">
+        <div className="login-pop absolute w-[100%] ml-[104px] h-full overflow-y-hidden bg-white border">
           <Login />
           
         </div>
