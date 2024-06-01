@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 
-function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
+function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({
     pcBanner: '',
@@ -15,7 +15,8 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
     speakerSocialLink: '',
     speakerExperienceDetails: '',
     speakerName:'',
-    youtubeLink:''
+    youtubeLink:'',
+    isActive: false
   });
 
   useEffect(() => {
@@ -32,7 +33,8 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
         speakerSocialLink: selectedEvent.speakerSocial,
         speakerExperienceDetails: selectedEvent.speakerExperience,
         speakerName:selectedEvent.speakerName,
-        youtubeLink:selectedEvent.youtubeLink
+        youtubeLink:selectedEvent.youtubeLink,
+        isActive: selectedEvent.isActive
       });
     }
   }, [selectedEvent]);
@@ -44,6 +46,15 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
       [name]: value
     }));
   };
+
+  const handleRadioChange = (e) => {
+    const isActive = e.target.value === 'true';
+    setFormData(prevState => ({
+      ...prevState,
+      isActive
+    }));
+  };
+
   const handleUploadClick = () => {
     setShowPopup(true);
   };
@@ -52,20 +63,19 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
     console.log('Data updated:', formData);
     setUpdateFormVisible(false);
   };
+
   const handleOptionClick = (option) => {
     setShowPopup(false);
     if (option === 'yes') {
-      // Handle option 1 - Update data
       console.log('Data updated:', formData);
     } else {
-      // Handle other option or cancellation
       console.log('Update cancelled');
     }
   };
 
-
   return (
     <div className="main">
+      {/* Existing form fields */}
       <div className="inline-form">
         <label htmlFor="pcBanner">PC Banner Link:</label>
         <input
@@ -100,7 +110,6 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
           value={formData.eventMode}
           onChange={handleInputChange}
         />
-        
       </div><br></br>
       <div className="inline-form">
         <label htmlFor="speakerImage">Speaker Image:</label>
@@ -151,8 +160,8 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
         <label htmlFor="speakerName">Speaker Name:</label>
         <input
           type="text"
-          id="speakerExperienceDetails"
-          name="speakerExperienceDetails"
+          id="speakerName"
+          name="speakerName"
           placeholder='Speaker Name'
           value={formData.speakerName}
           onChange={handleInputChange}
@@ -193,28 +202,55 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }: any) {
         />
       </div><br></br>
       <div className="inline-form">
-        <label htmlFor="youtubeLink">youtube Link:</label>
+        <label htmlFor="youtubeLink">YouTube Link:</label>
         <input
           type="text"
           id="youtubeLink"
           name="youtubeLink"
-          placeholder='youtube Link'
+          placeholder='YouTube Link'
           value={formData.youtubeLink}
           onChange={handleInputChange}
         />
         <button onClick={handleUploadClick}>Upload</button>
       </div><br></br>
+
+      {/* New radio buttons for isActive */}
+      <div className="inline-form">
+        <label>Is Active:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div>
+          <label>
+            <input
+              type="radio"
+              name="isActive"
+              value="true"
+              checked={formData.isActive === true}
+              onChange={handleRadioChange}
+            />&nbsp;
+            Yes
+          </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label>
+            <input
+              type="radio"
+              name="isActive"
+              value="false"
+              checked={formData.isActive === false}
+              onChange={handleRadioChange}
+            />&nbsp;
+            No
+          </label>
+        </div>
+      </div><br></br>
+
       <button className="btn-save" onClick={handleSaveClick}>Save</button>
       {showPopup && (
         <div className="popup-container">
           <div className="popup">
             <h2>Are you sure you want to update:</h2>
-            <button onClick={() => handleOptionClick('yes')}>yes </button>
-            <button onClick={() => handleOptionClick('no')}>no</button>
+            <button onClick={() => handleOptionClick('yes')}>Yes</button>
+            <button onClick={() => handleOptionClick('no')}>No</button>
           </div>
         </div>
       )}
-
     </div>
   );
 }
