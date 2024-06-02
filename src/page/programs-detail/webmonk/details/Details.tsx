@@ -102,7 +102,7 @@ const Details: React.FC<Props> = (props) => {
             </p>
           </div>
           <div className="details-buttons">
-            <button className="details-buttons-enroll">
+            <button className=" details-buttons-enroll">
               <p>
                 Enroll Now for<p className="details-buttons-strike"> ₹ 5000</p>{" "}
                 ₹ 3,999
