@@ -1,23 +1,32 @@
 import { api } from "../configs/axiosConfigs";
 import toast from "react-hot-toast";
 
-async function newAccessToken() {
-  console.log("inside refresh token function.");
-  localStorage.removeItem("access-token");
-  await api
-    .post("/v1.5/auth/refresh-token")
-    .then((res) => {
-      console.log(res);
-      localStorage.setItem("access-token", res.data.access_token);
-    })
-    .catch((error: any) => {
-      console.log(
-        `An error occurred while fetching access token -> ${error.status}`
-      );
-    });
-}
+// async function newAccessToken() {
+//   console.log("inside refresh token function.");
+//   localStorage.removeItem("access-token");
+//   await api
+//     .post("/v1.5/auth/refresh-token")
+//     .then((res) => {
+//       console.log(res);
+//       localStorage.setItem("access-token", res.data.access_token);
+//     })
+//     .catch((error: any) => {
+//       console.log(
+//         `An error occurred while fetching access token -> ${error.status}`
+//       );
+//     });
+// }
 
 export const EventsAPI = {
+  allEvents: async function () {
+    try {
+      const res = await api.get("v1.5/events");
+      return res;
+    } catch (error) {
+      console.error("An error occurred:", error);
+      return Promise.reject(error);
+    }
+  },
   activeEvents: async function () {
     try {
       const res = await api.get("/v1.5/events?active=true");

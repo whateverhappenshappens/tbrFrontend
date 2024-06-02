@@ -5,6 +5,7 @@ import Papa from "papaparse";
 import AddForm from "./Add"; // Import the add form component
 import UpdateForm from "./Update"; // Import the update form component
 import ConfirmationDialog from "./ConfirmationDialog"; // Import the confirmation dialog component
+import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 
 function EventsManagerPage({ headerHeight }: any) {
   const eventsManagerPage = useRef<HTMLDivElement | null>(null);
@@ -19,6 +20,24 @@ function EventsManagerPage({ headerHeight }: any) {
     setSelectedEvent(event);
     setUpdateFormVisible(true); // Show the update form when an event is selected for update
   };
+
+  useEffect(() => {
+    const all = async () => {
+      try {
+        await EventsAPI.allEvents()
+          .then((res) => {
+            setCurrentEvents(res.data);
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    all();
+  }, []);
 
   const handleDownload = () => {
     const csvData = Papa.unparse(
