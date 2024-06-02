@@ -26,7 +26,7 @@
     border-radius: 20px;
     border: none;
     color:#6D87F5;
-    margin-top: 4rem;
+    margin-top:108px;
     margin-bottom: 6rem;
     font-size:3.3rem;
     cursor:pointer;
@@ -35,6 +35,7 @@
 .biggest-hackathon-button p{
     padding: 1.5rem 4.4rem;
     font-family: 'bold';
+    
 }
 
 .biggest-hackathon-img{
