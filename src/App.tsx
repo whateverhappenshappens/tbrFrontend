@@ -1,9 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import "./App.css";
-
 import Header from "./components/header/Header";
 import Mentor from "./page/mentor/Mentor";
 import Webmonk from "./page/programs-detail/webmonk/Webmonk";
@@ -21,7 +18,6 @@ import CodeSlayer from "./page/programs-detail/codeslayers/CodeSlayer";
 import MlProgram from "./page/programs-detail/mlprogram/MlProgram";
 import IotProgram from "./page/programs-detail/iot/IotProgram";
 import Signup from "./components/main/Sign/Signup";
-
 import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";
 import Hire from "./page/hirewithus/Hire";

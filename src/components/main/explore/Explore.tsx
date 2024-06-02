@@ -2,16 +2,22 @@ import { NavLink } from "react-router-dom";
 import girlPic from "../../../assets/Girl@2x.png";
 import phoneCall from "../../../assets/phone-call.png";
 import "../../../styles/components/Explore.css";
-
+import { useNavigate } from "react-router-dom";
 import { UserAPI } from "../../../apis/UserAPIs";
 
-const Explore = ({handle_login}: any) => {
+const Explore = ({ handle_login }: any) => {
+  const Navigate = useNavigate();
   const private_test = () => {
     UserAPI.private_test(handle_login);
-  }
+  };
   const public_test = () => {
     UserAPI.public_test();
-  }
+  };
+
+  const redirectProgram = () => {
+    Navigate("/programs");
+  };
+
   return (
     <div className="explore">
       <div className="box1">
@@ -26,12 +32,12 @@ const Explore = ({handle_login}: any) => {
           ideal career path that suits your needs. Step along the path to
           success by signing up with TechBairn!
         </div>
-        <div className="explore-btn" onClick={() => private_test()}>
-        {/* Explore */}
-        Private Test
-        </div><div className="explore-btn opacity-0" onClick={() => public_test()}>
-        {/* Explore */}
-        Public Test
+        <div className="explore-btn cursor-pointer" onClick={redirectProgram}>
+          Explore
+        </div>
+        <div className="explore-btn opacity-0" onClick={() => public_test()}>
+          {/* Explore */}
+          Public Test
         </div>
       </div>
       <div className="mid-box">
