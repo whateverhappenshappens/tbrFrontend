@@ -6,6 +6,51 @@
   margin-bottom: auto;
 }
 .inline-form {
+  display: flex;
+  align-items: center;
+}
+
+.date-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-input-container input[type="date"] {
+  padding-right: 30px; /* Adjust this if needed */
+}
+
+.date-input-container .calendar-icon {
+  position: absolute;
+  right: 10px; /* Adjust this if needed */
+  cursor: pointer;
+  width: 2rem;
+  pointer-events: none;
+}
+.date-input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.date-input-container input[type="date"] {
+  padding-right: 40px; /* Adjust as needed to accommodate larger icon */
+}
+
+.date-input-container .calendar-icon {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Ensures the icon does not interfere with input focus */
+  font-size: 24px; /* Increase the size of the icon */
+  line-height: 1; /* Ensure the icon is centered vertically */
+}
+
+.date{
+  margin-left: 40rem;
+}
+
+.inline-form {
     display: flex;
     align-items: center;
     margin-left: 100px;

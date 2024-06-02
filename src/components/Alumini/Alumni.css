@@ -1,0 +1,9 @@
+.alumni .company-card {
+    padding: 64px; /* Increased padding to make the image larger */
+  }
+  
+  .alumni .company-card img {
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    height: auto;
+  }
+  
