@@ -54,8 +54,7 @@ function App() {
         console.error(e);
       }
     };
-    console.log("hi");
-    console.log(activeEventData);
+
     const past = async () => {
       try {
         await EventsAPI.pastEvents()

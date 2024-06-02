@@ -39,7 +39,7 @@ const logos: string[] = [
   celebal,
   clear,
 ];
-function LandingPage({ headerHeight, handle_login, activedata }: any) {
+function LandingPage({ headerHeight, handle_login, pastdata }: any) {
   const landingPage = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function LandingPage({ headerHeight, handle_login, activedata }: any) {
         subtitle="All of our instructors are from renowned companies with a vast knowledge on this subject matter."
         logos={logos}
       />
-      <Events activedata={activedata} />
+      <Events pastdata={pastdata} />
       <DarkBanner
         title="Collaborations"
         subtitle="Some subtitle will be provided later about our collaborations"
