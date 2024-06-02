@@ -1,24 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import './styles.css';
 import { IoCalendarNumberSharp } from "react-icons/io5";
-
-// Utility function to format date
-const formatDate = (date) => {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
-
-// Utility function to parse date string
-const parseDate = (dateString) => {
-  const [year, month, day] = dateString.split('-');
-  return new Date(year, month - 1, day);
-};
-
-function App({ selectedEvent, setUpdateFormVisible }) {
+function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({
     pcBanner: '',
@@ -27,7 +10,7 @@ function App({ selectedEvent, setUpdateFormVisible }) {
     speakerImage: '',
     heading: '',
     subHeading: '',
-    date: new Date(),
+    date: '',
     aboutSpeaker: '',
     speakerSocialLink: '',
     speakerExperienceDetails: '',
@@ -37,13 +20,7 @@ function App({ selectedEvent, setUpdateFormVisible }) {
   });
 
   useEffect(() => {
-    // Load form data from localStorage if available
-    const savedFormData = localStorage.getItem('formData');
-    if (savedFormData) {
-      const parsedFormData = JSON.parse(savedFormData);
-      parsedFormData.date = parseDate(parsedFormData.date);
-      setFormData(parsedFormData);
-    } else if (selectedEvent) {
+    if (selectedEvent) {
       setFormData({
         pcBanner: selectedEvent.bannerLinkPC,
         mobileBanner: selectedEvent.bannerLinkMobile,
@@ -51,7 +28,7 @@ function App({ selectedEvent, setUpdateFormVisible }) {
         speakerImage: selectedEvent.speakerImg,
         heading: selectedEvent.heading,
         subHeading: selectedEvent.subHeading,
-        date: new Date(selectedEvent.date),
+        date: selectedEvent.date,
         aboutSpeaker: selectedEvent.aboutSpeaker,
         speakerSocialLink: selectedEvent.speakerSocial,
         speakerExperienceDetails: selectedEvent.speakerExperience,
@@ -62,11 +39,6 @@ function App({ selectedEvent, setUpdateFormVisible }) {
     }
   }, [selectedEvent]);
 
-  useEffect(() => {
-    // Save form data to localStorage whenever it changes
-    localStorage.setItem('formData', JSON.stringify({ ...formData, date: formatDate(formData.date) }));
-  }, [formData]);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -74,14 +46,12 @@ function App({ selectedEvent, setUpdateFormVisible }) {
       [name]: value
     }));
   };
-
-  const handleDateChange = (date) => {
-    setFormData(prevState => ({
-      ...prevState,
-      date
-    }));
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   };
-
   const handleRadioChange = (e) => {
     const isActive = e.target.value === 'true';
     setFormData(prevState => ({
@@ -95,22 +65,14 @@ function App({ selectedEvent, setUpdateFormVisible }) {
   };
 
   const handleSaveClick = () => {
-    console.log('Data updated:', {
-      ...formData,
-      date: formatDate(formData.date)  // Formatting date before logging
-    });
-    localStorage.removeItem('formData');  // Clear saved form data on save
+    console.log('Data updated:', formData);
     setUpdateFormVisible(false);
   };
 
   const handleOptionClick = (option) => {
     setShowPopup(false);
     if (option === 'yes') {
-      console.log('Data updated:', {
-        ...formData,
-        date: formatDate(formData.date)  // Formatting date before logging
-      });
-      localStorage.removeItem('formData');  // Clear saved form data on confirmation
+      console.log('Data updated:', formData);
     } else {
       console.log('Update cancelled');
     }
@@ -118,6 +80,7 @@ function App({ selectedEvent, setUpdateFormVisible }) {
 
   return (
     <div className="main">
+      {/* Existing form fields */}
       <div className="inline-form">
         <label htmlFor="pcBanner">PC Banner Link:</label>
         <input
@@ -143,6 +106,17 @@ function App({ selectedEvent, setUpdateFormVisible }) {
         <button onClick={handleUploadClick}>Upload</button>
       </div><br></br>
       <div className="inline-form">
+        <label htmlFor="eventMode">Event Mode:</label>
+        <input
+          type="text"
+          id="eventMode"
+          name="eventMode"
+          placeholder='Event Mode'
+          value={formData.eventMode}
+          onChange={handleInputChange}
+        />
+      </div><br></br>
+      <div className="inline-form">
         <label htmlFor="speakerImage">Speaker Image:</label>
         <input
           type="text"
@@ -153,17 +127,6 @@ function App({ selectedEvent, setUpdateFormVisible }) {
           onChange={handleInputChange}
         />
         <button onClick={handleUploadClick}>Upload</button>
-      </div><br></br>
-      <div className="inline-form">
-        <label htmlFor="eventMode">Event Mode:</label>
-        <input
-          type="text"
-          id="eventMode"
-          name="eventMode"
-          placeholder='Event Mode'
-          value={formData.eventMode}
-          onChange={handleInputChange}
-        />
       </div><br></br>
       <div className="inline-form">
         <label htmlFor="heading">Heading:</label>
@@ -177,12 +140,12 @@ function App({ selectedEvent, setUpdateFormVisible }) {
         />
       </div><br></br>
       <div className="inline-form">
-        <label htmlFor="subHeading">Sub Heading:</label>
+        <label htmlFor="subHeading">Sub-Heading:</label>
         <input
           type="text"
           id="subHeading"
           name="subHeading"
-          placeholder='Sub Heading'
+          placeholder='Sub-Heading'
           value={formData.subHeading}
           onChange={handleInputChange}
         />
@@ -204,12 +167,12 @@ function App({ selectedEvent, setUpdateFormVisible }) {
         </div>
       </div><br></br>
       <div className="inline-form">
-        <label htmlFor="speakerName">Speaker's Name:</label>
+        <label htmlFor="speakerName">Speaker Name:</label>
         <input
           type="text"
           id="speakerName"
           name="speakerName"
-          placeholder="Speaker's Name"
+          placeholder='Speaker Name'
           value={formData.speakerName}
           onChange={handleInputChange}
         />
@@ -226,40 +189,42 @@ function App({ selectedEvent, setUpdateFormVisible }) {
         />
       </div><br></br>
       <div className="inline-form">
-        <label htmlFor="speakerSocialLink">Speaker's Social Link:</label>
+        <label htmlFor="speakerSocialLink">Speaker Social Link:</label>
         <input
           type="text"
           id="speakerSocialLink"
           name="speakerSocialLink"
-          placeholder="Speaker's Social Link"
+          placeholder='Speaker Social Link'
           value={formData.speakerSocialLink}
           onChange={handleInputChange}
         />
         {/* <button onClick={handleUploadClick}>Upload</button> */}
       </div><br></br>
       <div className="inline-form">
-        <label htmlFor="speakerExperienceDetails">Speaker's Experience Details:</label>
+        <label htmlFor="speakerExperienceDetails">Speaker Experience Details:</label>
         <input
           type="text"
           id="speakerExperienceDetails"
           name="speakerExperienceDetails"
-          placeholder="Speaker's Experience Details"
+          placeholder='Speaker Experience Details'
           value={formData.speakerExperienceDetails}
           onChange={handleInputChange}
         />
       </div><br></br>
       <div className="inline-form">
-        <label htmlFor="youtubeLink">Youtube link:</label>
+        <label htmlFor="youtubeLink">YouTube Link:</label>
         <input
           type="text"
           id="youtubeLink"
           name="youtubeLink"
-          placeholder="Youtube link"
+          placeholder='YouTube Link'
           value={formData.youtubeLink}
           onChange={handleInputChange}
         />
         {/* <button onClick={handleUploadClick}>Upload</button> */}
       </div><br></br>
+
+      {/* New radio buttons for isActive */}
       <div className="inline-form">
         <label>Is Active:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div>
@@ -285,6 +250,7 @@ function App({ selectedEvent, setUpdateFormVisible }) {
           </label>
         </div>
       </div><br></br>
+
       <button className="btn-save" onClick={handleSaveClick}>Save</button>
       {showPopup && (
         <div className="popup-container">
@@ -299,4 +265,4 @@ function App({ selectedEvent, setUpdateFormVisible }) {
   );
 }
 
-export default App;
+export default UpdateForm;
