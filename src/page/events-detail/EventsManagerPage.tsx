@@ -28,7 +28,6 @@ function EventsManagerPage({ headerHeight }: any) {
         await EventsAPI.allEventsBasicDetail()
           .then((res) => {
             setCurrentEvents(res.data);
-            console.log(res.data);
           })
           .catch((e) => {
             console.error(e);
@@ -66,9 +65,15 @@ function EventsManagerPage({ headerHeight }: any) {
     window.URL.revokeObjectURL(url);
   };
 
-  const handleDelete = (event: Event) => {
-    setEventToDelete(event);
-    setConfirmDialogVisible(true);
+  const handleDelete = async (event: any) => {
+    try {
+      console.log(event.id);
+      await EventsAPI.DeleteEventById(event.id);
+    } catch (e) {
+      console.error(e);
+    }
+    // setEventToDelete(event);
+    // setConfirmDialogVisible(true);
   };
 
   const confirmDelete = () => {

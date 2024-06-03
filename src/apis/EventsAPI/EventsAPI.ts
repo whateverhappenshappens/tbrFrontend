@@ -40,7 +40,6 @@ export const EventsAPI = {
   allEventsBasicDetail: async function () {
     try {
       const res = await api.get("v1.5/events");
-      console.log(res.data);
       return res;
     } catch (error) {
       console.error("An error occurred:", error);
@@ -84,6 +83,29 @@ export const EventsAPI = {
       const res = await api.request({
         url: `/v1.5/events/${url}`,
         method: "PATCH",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      //   console.log("hello");
+      //   console.log(res);
+      //   toast.success("Valid access token!");
+      console.log(res.data);
+      return res;
+    } catch (error) {
+      // newAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
+  DeleteEventById: async function (url: string) {
+    const access_token = localStorage.getItem("access-token");
+    // if token is not available in the
+    try {
+      const res = await api.request({
+        url: `/v1.5/events/delete/${url}`,
+        method: "PUT",
         headers: {
           Authorization: "Bearer " + access_token,
         },
