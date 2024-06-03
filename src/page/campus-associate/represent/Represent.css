@@ -49,10 +49,10 @@
     left: -100%;
     width: 200%; /* Long enough to cover the diagonal */
     height: 100%; /* Ensure the line covers the entire button height */
-    background: rgba(255, 255, 255, 0.9); /* Slightly more transparent for subtle effect */
-    filter: blur(10px);
+    background: rgb(255, 255, 255); /* Slightly more transparent for subtle effect */
+    filter: blur(5px);
     transform: rotate(45deg);
-    animation: flash 4.5s linear infinite; /* Adjusted duration for smoother animation */
+    animation: flash 10s linear infinite; /* Adjusted duration for smoother animation */
     animation-delay: 2s;
     pointer-events: none;
   }

@@ -20,6 +20,7 @@ function Signup() {
   });
 
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false); // State to manage login popup visibility
+  const [isChecked, setIsChecked] = useState(false); // State to track the checkbox
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,6 +54,11 @@ function Signup() {
   const handle_signup = async () => {
     console.log(userDetails);
 
+    if (!isChecked) {
+      alert("Please accept the Terms & Conditions to create an account.");
+      return;
+    }
+
     if (!formError.email && !formError.password) {
       try {
         await UserAPI.create(userDetails);
@@ -63,6 +69,7 @@ function Signup() {
           role: UserRole.USER,
         });
         setFormError({ email: "", password: "" });
+        setIsChecked(false);
       } catch (error) {
         console.error("Signup failed:", error);
         alert("Signup failed: " + error.message); // Show alert with error message
@@ -135,12 +142,17 @@ function Signup() {
         />
         <br />
         {formError.password && <div className="error">{formError.password}</div>}
-        <input className="check" type="checkbox" />
+        <input
+          className="check"
+          type="checkbox"
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
         <span className="extra1">
           I accept all <span className="extra">Terms & conditions</span>
         </span>
         <br />
-        <button className="btn" onClick={handle_signup}>
+        <button className="btn" onClick={handle_signup} disabled={!isChecked}>
           Create an account
         </button>
         <p className="cont">-----or continue with Google------</p>
@@ -154,7 +166,6 @@ function Signup() {
       {isLoginPopupVisible && (
         <div className="login-pop absolute w-[100%] ml-[104px] h-full overflow-y-hidden bg-white border">
           <Login />
-          
         </div>
       )}
     </div>

@@ -14,9 +14,8 @@ function Header({
   signupContainer,
   isLoggedIn,
   setIsLoggedIn,
-}: any) {
+}) {
   const [navOpen, setNavOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false); // State to manage More dropdown
   const [showLogin, setShowLogin] = useState(false); // State to manage login popup visibility
   const [showSignup, setShowSignup] = useState(false); // State to manage signup popup visibility
 
@@ -38,10 +37,6 @@ function Header({
     }
     updateHeaderHeight(Math.ceil(headerContainer.current.offsetHeight));
   }, [navOpen]);
-
-  const handleTrue = () => {
-    setMoreOpen(!moreOpen);
-  };
 
   return (
     <header className="header" ref={headerContainer}>
@@ -100,54 +95,51 @@ function Header({
             </NavLink>
           </li>
           <li className="more-btn-display">
-            <button onClick={handleTrue} className="more-btn">
+            <div className="more-btn">
               more↓
-            </button>
-            {moreOpen && (
               <ul className="dropdown-menu">
                 <li>
                   <NavLink to="/event-listing">
-                    <button className="more-option" onClick={handleTrue}>
+                    <button className="more-option">
                       Refer & Earn
                     </button>
                   </NavLink>
                 </li>
-
+                
                 <li>
                   <NavLink to="/blog">
-                    <button className="more-option" onClick={handleTrue}>
+                    <button className="more-option">
                       Blog
                     </button>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/about">
-                    <button className="more-option" onClick={handleTrue}>
+                    <button className="more-option">
                       About Us
                     </button>
                   </NavLink>
                 </li>
               </ul>
-            )}
+            </div>
           </li>
           <li>
             <NavLink to="/event-listing">
-              <button className="more-option1" onClick={handleTrue}>
+              <button className="more-option1">
                 Refer & Earn
               </button>
             </NavLink>
           </li>
-
           <li>
             <NavLink to="/blog">
-              <button className="more-option1" onClick={handleTrue}>
+              <button className="more-option1">
                 Blog
               </button>
             </NavLink>
           </li>
           <li>
             <NavLink to="/about">
-              <button className="more-option1" onClick={handleTrue}>
+              <button className="more-option1">
                 About Us
               </button>
             </NavLink>
