@@ -18,9 +18,29 @@ import toast from "react-hot-toast";
 // }
 
 export const EventsAPI = {
-  allEvents: async function () {
+  allEventsDetailsForDownload: async function () {
+    const access_token = localStorage.getItem("access-token");
+    try {
+      const res = await api.request({
+        url: `/v1.5/events/all`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      return res;
+    } catch (e) {
+      // newAccessToken();
+      console.error("An error occurred:", e);
+      toast.error("Invalid access token!");
+      return e;
+    }
+  },
+
+  allEventsBasicDetail: async function () {
     try {
       const res = await api.get("v1.5/events");
+      console.log(res.data);
       return res;
     } catch (error) {
       console.error("An error occurred:", error);
@@ -48,6 +68,9 @@ export const EventsAPI = {
   EventById: async function (url: string) {
     try {
       const res = await api.get(`/v1.5/events/${url}`);
+      if (res.status == 404) {
+        toast.error("Event Not found");
+      }
       return res;
     } catch (error) {
       console.error("An error occurred:", error);
@@ -68,9 +91,10 @@ export const EventsAPI = {
       //   console.log("hello");
       //   console.log(res);
       //   toast.success("Valid access token!");
+      console.log(res.data);
       return res;
     } catch (error) {
-      newAccessToken();
+      // newAccessToken();
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;

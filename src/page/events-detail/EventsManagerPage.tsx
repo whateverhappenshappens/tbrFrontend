@@ -17,6 +17,7 @@ function EventsManagerPage({ headerHeight }: any) {
   const [eventToDelete, setEventToDelete] = useState<Event | null>(null); // State to keep track of event to delete
 
   const updateComponent = (event: Event) => {
+    console.log(event);
     setSelectedEvent(event);
     setUpdateFormVisible(true); // Show the update form when an event is selected for update
   };
@@ -24,9 +25,10 @@ function EventsManagerPage({ headerHeight }: any) {
   useEffect(() => {
     const all = async () => {
       try {
-        await EventsAPI.allEvents()
+        await EventsAPI.allEventsBasicDetail()
           .then((res) => {
             setCurrentEvents(res.data);
+            console.log(res.data);
           })
           .catch((e) => {
             console.error(e);
