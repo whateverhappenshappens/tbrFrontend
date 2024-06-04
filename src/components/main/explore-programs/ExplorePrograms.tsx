@@ -15,7 +15,7 @@ const ExplorePrograms = () => {
           <h1>Explore program by categories</h1>
           <p>Get top on-demand courses from our list of courses</p>
         </div>
-        <NavLink className="explore-btn" to="/">
+        <NavLink className="explore-btn" to="/programs">
           View all
         </NavLink>
       </div>

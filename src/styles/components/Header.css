@@ -129,7 +129,7 @@
   cursor: pointer;
   border-radius: 1rem;
   z-index: 10;
-  border: 2px solid #000; 
+  /* border: 2px solid #000;  */
 }
 
 .more-btn:hover .dropdown-menu {

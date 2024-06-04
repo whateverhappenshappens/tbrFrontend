@@ -106,15 +106,23 @@ function Header({
                   </NavLink>
                 </li>
                 
-                <li>
+                {/* <li>
                   <NavLink to="/blog">
                     <button className="more-option">
                       Blog
                     </button>
                   </NavLink>
+                </li> */}
+                
+                <li>
+                  <NavLink to="/hire-with-us">
+                    <button className="more-option">
+                      Hire with us
+                    </button>
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/about">
+                  <NavLink to="/About-us">
                     <button className="more-option">
                       About Us
                     </button>

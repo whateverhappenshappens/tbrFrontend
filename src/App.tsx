@@ -21,7 +21,7 @@ import CodeSlayer from "./page/programs-detail/codeslayers/CodeSlayer";
 import MlProgram from "./page/programs-detail/mlprogram/MlProgram";
 import IotProgram from "./page/programs-detail/iot/IotProgram";
 import Signup from "./components/main/Sign/Signup";
-
+import About from "./components/About";
 import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";
 import Hire from "./page/hirewithus/Hire";
@@ -158,10 +158,7 @@ function App() {
           />
           <Route path="/campus-associate" element={<CampusAssociate />} />
           <Route path="/mentor" element={<Mentor />} />
-          <Route
-            path="/enroll-student"
-            element={<EnrollStudent coupon={coupon} setcoupon={setCoupon} />}
-          />
+          <Route path="/About-us" element={<About />} />
           <Route path="/operations" element={<OperationSignIn />} />
 
           <Route
@@ -170,6 +167,7 @@ function App() {
           />
 
           <Route path="/hire-with-us" element={<Hire />} />
+          
           <Route
             path="/event-listing"
             element={
@@ -194,7 +192,9 @@ function App() {
           />
         </Routes>
         <Footer />
+        
       </div>
+      
     </BrowserRouter>
   );
 }

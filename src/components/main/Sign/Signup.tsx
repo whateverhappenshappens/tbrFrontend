@@ -6,6 +6,7 @@ import { User, UserRole } from "../../../types/User";
 import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
 import Login from "../login/Login"; // Import the Login component
+import logo1 from "./Tlogo.svg";
 
 function Signup() {
   const [userDetails, setUserDetails] = useState<User>({
@@ -90,7 +91,11 @@ function Signup() {
   return (
     <div className="main_box">
       <aside className="left">
-        <h1>TechBairn</h1>
+      <img
+          src={logo1} // Replace with the path to your logo image
+          alt="TechBairn Logo"
+          className="logo" // Add a custom class for styling
+        />
         <h2>
           Start Your <br />
           Journey with us
