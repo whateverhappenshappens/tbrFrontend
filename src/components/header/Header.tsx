@@ -15,9 +15,8 @@ function Header({
   signupContainer,
   isLoggedIn,
   setIsLoggedIn,
-}: any) {
+}) {
   const [navOpen, setNavOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false); // State to manage More dropdown
   const [showLogin, setShowLogin] = useState(false); // State to manage login popup visibility
   const [showSignup, setShowSignup] = useState(false); // State to manage signup popup visibility
 
@@ -106,35 +105,31 @@ function Header({
             </NavLink>
           </li>
           <li className="more-btn-display">
-            <button onClick={handleTrue} className="more-btn">
+            <div className="more-btn">
               more↓
-            </button>
-            {moreOpen && (
               <ul className="dropdown-menu">
                 <li>
-                  <NavLink to="/event-listing">
+                  <NavLink to="/hire-with-us">
                     <button className="more-option" onClick={handleTrue}>
-                      Refer & Earn
+                      Hire With Us
                     </button>
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink to="/blog">
-                    <button className="more-option" onClick={handleTrue}>
-                      Blog
-                    </button>
+                    <button className="more-option">Blog</button>
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/about">
+                  <NavLink to="/About-us">
                     <button className="more-option" onClick={handleTrue}>
                       About Us
                     </button>
                   </NavLink>
                 </li>
               </ul>
-            )}
+            </div>
           </li>
           <li>
             <NavLink to="/event-listing">
@@ -143,7 +138,6 @@ function Header({
               </button>
             </NavLink>
           </li>
-
           <li>
             <NavLink to="/blog">
               <button className="more-option1" onClick={handleTrue}>

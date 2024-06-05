@@ -237,10 +237,10 @@
 
 .left h2 {
   color: #e9f4fb;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
   font-family: extra-bold;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .image {
@@ -253,7 +253,7 @@
 
 .para {
   margin-top: 1.77rem;
-  font-size: 1.44rem;
+  font: normal normal normal 20px/29px extra-bold;
   color: #e9f4fb;
 }
 
@@ -310,7 +310,7 @@ a {
 }
 
 label {
-  font: normal normal bold 18px/25px extra-bold;
+  font: normal normal bold 25px/26px extra-bold;
 }
 
 .right .lng {

@@ -6,6 +6,7 @@ import { User, UserRole } from "../../../types/User";
 import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
 import Login from "../login/Login"; // Import the Login component
+import logo1 from "./Tlogo.svg";
 
 function Signup() {
   const [userDetails, setUserDetails] = useState<User>({
@@ -20,6 +21,7 @@ function Signup() {
   });
 
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false); // State to manage login popup visibility
+  const [isChecked, setIsChecked] = useState(false); // State to track the checkbox
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,6 +55,11 @@ function Signup() {
   const handle_signup = async () => {
     console.log(userDetails);
 
+    if (!isChecked) {
+      alert("Please accept the Terms & Conditions to create an account.");
+      return;
+    }
+
     if (!formError.email && !formError.password) {
       try {
         await UserAPI.create(userDetails);
@@ -63,6 +70,7 @@ function Signup() {
           role: UserRole.USER,
         });
         setFormError({ email: "", password: "" });
+        setIsChecked(false);
       } catch (error) {
         console.error("Signup failed:", error);
         alert("Signup failed: " + error.message); // Show alert with error message
@@ -83,7 +91,11 @@ function Signup() {
   return (
     <div className="main_box">
       <aside className="left">
-        <h1>TechBairn</h1>
+      <img
+          src={logo1} // Replace with the path to your logo image
+          alt="TechBairn Logo"
+          className="logo" // Add a custom class for styling
+        />
         <h2>
           Start Your <br />
           Journey with us
@@ -135,12 +147,17 @@ function Signup() {
         />
         <br />
         {formError.password && <div className="error">{formError.password}</div>}
-        <input className="check" type="checkbox" />
+        <input
+          className="check"
+          type="checkbox"
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
         <span className="extra1">
           I accept all <span className="extra">Terms & conditions</span>
         </span>
         <br />
-        <button className="btn" onClick={handle_signup}>
+        <button className="btn" onClick={handle_signup} disabled={!isChecked}>
           Create an account
         </button>
         <p className="cont">-----or continue with Google------</p>
@@ -154,7 +171,6 @@ function Signup() {
       {isLoginPopupVisible && (
         <div className="login-pop absolute w-[100%] ml-[104px] h-full overflow-y-hidden bg-white border">
           <Login />
-          
         </div>
       )}
     </div>

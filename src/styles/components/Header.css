@@ -112,24 +112,66 @@
 .main-nav li a.active {
   color: #6d87f5;
 }
+.more-btn {
+  font-size: 2.3rem;
+  /* position: relative; */
+  cursor: pointer;
+}
 
+.dropdown-menu {
+  text-align: left;
+  display: none;
+  position: absolute;
+  bottom: -10rem;
+  left: 85rem;
+  padding: 1rem 4rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 1rem;
+  z-index: 10;
+  /* border: 2px solid #000;  */
+}
+
+.more-btn:hover .dropdown-menu {
+  display: block;
+}
+
+.more-option {
+  color: #000;
+  padding: 2px 50px;
+  border-bottom: 2px solid #000;
+}
+
+.more-option:hover {
+  border-bottom: 2px solid white;
+}
+
+/* 
 .more-btn{
   font-size: 2.3rem;
 }
 
 .dropdown-menu{
+  display: block;
   position: absolute;
-  bottom: -10rem;
-  padding: 1rem;
-  background-color: #6d87f5;
+  bottom: -12rem;
+  left: 85rem;
+  padding: 1rem 4rem;
+  background-color: whitesmoke;
   cursor: pointer;
   border-radius: 1rem;
- 
+  display: flexbox;
+  align-items: end;
+  justify-content: left;
 }
 
 .more-option{
-  color: white;
-}
+  color: #2e436a;
+  text-align:end;
+  padding: 2px 50px;
+  border-bottom: 2px solid #000;
+} */
+
 
 .more-option:hover{
   border-bottom: 2px solid white;
