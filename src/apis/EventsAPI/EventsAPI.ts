@@ -40,7 +40,6 @@ export const EventsAPI = {
   allEventsBasicDetail: async function () {
     try {
       const res = await api.get("v1.5/events");
-      console.log(res.data);
       return res;
     } catch (error) {
       console.error("An error occurred:", error);
@@ -92,6 +91,52 @@ export const EventsAPI = {
       //   console.log(res);
       //   toast.success("Valid access token!");
       console.log(res.data);
+      return res;
+    } catch (error) {
+      // newAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
+  DeleteEventById: async function (url: string) {
+    console.log("Reached DeleteByEvent");
+    const access_token = localStorage.getItem("access-token");
+    // if token is not available in the
+    try {
+      const res = await api.request({
+        url: `v1.5/events/delete/${url}?isDeleted=true`,
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      console.log("Reached DeleteByEvent");
+
+      //   toast.success("Valid access token!");
+      return res;
+    } catch (error) {
+      // newAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
+  UndoDeleteEventById: async function (url: string) {
+    console.log("Reached UndoDeleteByEvent");
+    const access_token = localStorage.getItem("access-token");
+    // if token is not available in the
+
+    try {
+      const res = await api.request({
+        url: `v1.5/events/delete/${url}?isDeleted=false`,
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      //   console.log("hello");
+
       return res;
     } catch (error) {
       // newAccessToken();

@@ -55,6 +55,28 @@ export const UserAPI = {
     }
   },
 
+  logout: async function () {
+    const access_token = localStorage.getItem("access-token");
+    try {
+      const res = await api.request({
+        url: "/v1.5/auth/logout",
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      console.log(res);
+      toast.success("Logout Successfull");
+      localStorage.removeItem("access-token");
+      return;
+    } catch (error) {
+      refreshAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
+
   Operationslogin: async function (user: User) {
     const formData = new URLSearchParams();
     formData.append("username", user.email);

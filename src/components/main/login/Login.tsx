@@ -6,6 +6,7 @@ import "../../../styles/components/Login.css";
 import { UserRole, User } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
 import Signup from "../Sign/Signup"; // Import the Signup component
+import logo2 from "./Tlogo.svg";
 
 const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const [userDetails, setUserDetails] = useState<User>({
@@ -71,7 +72,11 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   return (
     <div className="main_box">
       <aside className="left">
-        <h1>TechBairn</h1>
+      <img
+          src={logo2} // Replace with the path to your logo image
+          alt="TechBairn Logo"
+          className="logo" // Add a custom class for styling
+        />
         <h2>
           We are glad <br />
           you are back!
@@ -85,7 +90,10 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
       <div className="right">
         <h1>Log in</h1>
         <h3>
-          Don't have an account? <button onClick={toggleSignupPopup} className="signup-link">Sign up</button>
+          Don't have an account?{" "}
+          <button onClick={toggleSignupPopup} className="signup-link">
+            Sign up
+          </button>
         </h3>
 
         <label>Email</label>

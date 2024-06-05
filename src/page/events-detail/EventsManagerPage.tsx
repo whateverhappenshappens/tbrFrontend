@@ -13,7 +13,9 @@ function EventsManagerPage({ headerHeight }: any) {
   const [isAddFormVisible, setAddFormVisible] = useState(false); // State to control add form visibility
   const [isUpdateFormVisible, setUpdateFormVisible] = useState(false); // State to control update form visibility
   const [isConfirmDialogVisible, setConfirmDialogVisible] = useState(false); // State to control confirmation dialog visibility
-  const [currentEvents, setCurrentEvents] = useState<Event[]>(initialEvents); // State to manage current events
+  const [currentEvents, setCurrentEvents] = useState<Event[]>(initialEvents);
+  const [allEventsDownload, setAllEventsDownload] =
+    useState<Event[]>(initialEvents); // State to manage current events
   const [eventToDelete, setEventToDelete] = useState<Event | null>(null); // State to keep track of event to delete
 
   const updateComponent = (event: Event) => {
@@ -27,8 +29,23 @@ function EventsManagerPage({ headerHeight }: any) {
       try {
         await EventsAPI.allEventsBasicDetail()
           .then((res) => {
-            setCurrentEvents(res.data);
             console.log(res.data);
+            setCurrentEvents(res.data);
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    const allDetailsForDownload = async () => {
+      try {
+        await EventsAPI.allEventsDetailsForDownload()
+          .then((res: any) => {
+            console.log(res.data);
+            setAllEventsDownload(res.data);
           })
           .catch((e) => {
             console.error(e);
@@ -39,11 +56,12 @@ function EventsManagerPage({ headerHeight }: any) {
     };
 
     all();
+    allDetailsForDownload();
   }, []);
 
   const handleDownload = () => {
     const csvData = Papa.unparse(
-      currentEvents.map((event) => ({
+      allEventsDownload.map((event) => ({
         bannerLinkPC: event.bannerLinkPC,
         bannerLinkMobile: event.bannerLinkMobile,
         heading: event.heading,
@@ -53,7 +71,8 @@ function EventsManagerPage({ headerHeight }: any) {
         speakerSocial: event.speakerSocial,
         speakerExperience: event.speakerExperience,
         mode: event.mode,
-        speakerImg: event.speakerImg,
+        speakerImage: event.speakerImageLink,
+        speakerName: event.speakerName,
       }))
     );
 
@@ -66,9 +85,15 @@ function EventsManagerPage({ headerHeight }: any) {
     window.URL.revokeObjectURL(url);
   };
 
-  const handleDelete = (event: Event) => {
-    setEventToDelete(event);
-    setConfirmDialogVisible(true);
+  const handleDelete = async (event: any) => {
+    try {
+      console.log(event.id);
+      await EventsAPI.DeleteEventById(event.id);
+    } catch (e) {
+      console.error(e);
+    }
+    // setEventToDelete(event);
+    // setConfirmDialogVisible(true);
   };
 
   const confirmDelete = () => {
@@ -134,6 +159,7 @@ function EventsManagerPage({ headerHeight }: any) {
               >
                 UPDATE
               </button>
+
               <button
                 className="border-2 border-red-500 rounded-lg px-5 py-3 text-white hover:text-red-500 bg-red-500 hover:bg-white"
                 onClick={() => handleDelete(event)}

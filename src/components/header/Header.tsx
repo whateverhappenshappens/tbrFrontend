@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import Login from "../main/login/Login";
 import Signup from "../main/Sign/Signup";
+import { UserAPI } from "../../apis/UserAPIs";
 
 function Header({
   updateHeaderHeight,
@@ -14,9 +15,8 @@ function Header({
   signupContainer,
   isLoggedIn,
   setIsLoggedIn,
-}: any) {
+}) {
   const [navOpen, setNavOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false); // State to manage More dropdown
   const [showLogin, setShowLogin] = useState(false); // State to manage login popup visibility
   const [showSignup, setShowSignup] = useState(false); // State to manage signup popup visibility
 
@@ -41,6 +41,11 @@ function Header({
 
   const handleTrue = () => {
     setMoreOpen(!moreOpen);
+  };
+
+  const handleLogout = () => {
+    UserAPI.logout();
+    setIsLoggedIn(!isLoggedIn);
   };
 
   return (
@@ -100,35 +105,31 @@ function Header({
             </NavLink>
           </li>
           <li className="more-btn-display">
-            <button onClick={handleTrue} className="more-btn">
+            <div className="more-btn">
               more↓
-            </button>
-            {moreOpen && (
               <ul className="dropdown-menu">
                 <li>
-                  <NavLink to="/event-listing">
+                  <NavLink to="/hire-with-us">
                     <button className="more-option" onClick={handleTrue}>
-                      Refer & Earn
+                      Hire With Us
                     </button>
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink to="/blog">
-                    <button className="more-option" onClick={handleTrue}>
-                      Blog
-                    </button>
+                    <button className="more-option">Blog</button>
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/about">
+                  <NavLink to="/About-us">
                     <button className="more-option" onClick={handleTrue}>
                       About Us
                     </button>
                   </NavLink>
                 </li>
               </ul>
-            )}
+            </div>
           </li>
           <li>
             <NavLink to="/event-listing">
@@ -137,7 +138,6 @@ function Header({
               </button>
             </NavLink>
           </li>
-
           <li>
             <NavLink to="/blog">
               <button className="more-option1" onClick={handleTrue}>
@@ -163,11 +163,19 @@ function Header({
             </div>
           </div>
         ) : (
-          <div className="h-48 md:h-fit">
+          <div className="h-48 flex justify-evenly items-center  md:h-fit">
             <NavLink
               to="/profile"
               className="user-profile-img block bg-cyan-500 w-28 h-28 rounded-full"
             ></NavLink>
+            <div className="ml-5">
+              <button
+                onClick={handleLogout}
+                className="bg-[#6d87f5] text-[2.3rem]  p-2 rounded-[1rem] text-white"
+              >
+                Log Out
+              </button>
+            </div>
           </div>
         )}
       </nav>

@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { api } from "../../apis/configs/axiosConfigs";
 import * as jsonpatch from "fast-json-patch";
+import { useNavigate } from "react-router-dom";
 
 type JsonPatchOp = {
   op: "add" | "remove" | "replace" | "move" | "copy" | "test";
@@ -49,6 +50,7 @@ interface FormData {
 }
 
 function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
+  const Navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const [data, setData] = useState<FormData | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(
@@ -129,7 +131,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
 
   const handleSaveClick = async () => {
     if (!accessToken || !data) {
-      console.error("Access token or data is not available");
+      Navigate("/login");
       return;
     }
 
@@ -142,6 +144,22 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
     const patchOps = jsonpatch.compare(originalData, preprocessedFormData);
     console.log(patchOps);
 
+    // const generatePatchOps = (
+    //   original: FormData,
+    //   updated: FormData
+    // ): Operation[] => {
+    //   const observer = jsonpatch.observe(original);
+    //   // Apply updated values to original to detect changes
+    //   for (const key in updated) {
+    //     if (updated.hasOwnProperty(key)) {
+    //       original[key as keyof FormData] = updated[key as keyof FormData];
+    //     }
+    //   }
+    //   // Generate the patch operations based on observed changes
+    //   return jsonpatch.generate(observer);
+    // };
+
+    // const patchOps = generatePatchOps(originalData, formData);
     console.log("Final Patch Operations:", patchOps);
     if (patchOps.length > 0) {
       console.log(selectedEvent.id);
