@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import Login from "../main/login/Login";
 import Signup from "../main/Sign/Signup";
+import { UserAPI } from "../../apis/UserAPIs";
 
 function Header({
   updateHeaderHeight,
@@ -41,6 +42,11 @@ function Header({
 
   const handleTrue = () => {
     setMoreOpen(!moreOpen);
+  };
+
+  const handleLogout = () => {
+    UserAPI.logout();
+    setIsLoggedIn(!isLoggedIn);
   };
 
   return (
@@ -163,11 +169,19 @@ function Header({
             </div>
           </div>
         ) : (
-          <div className="h-48 md:h-fit">
+          <div className="h-48 flex justify-evenly items-center  md:h-fit">
             <NavLink
               to="/profile"
               className="user-profile-img block bg-cyan-500 w-28 h-28 rounded-full"
             ></NavLink>
+            <div className="ml-5">
+              <button
+                onClick={handleLogout}
+                className="bg-[#6d87f5] text-[2.3rem]  p-2 rounded-[1rem] text-white"
+              >
+                Log Out
+              </button>
+            </div>
           </div>
         )}
       </nav>

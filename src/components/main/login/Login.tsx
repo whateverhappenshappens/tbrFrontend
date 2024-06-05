@@ -85,7 +85,10 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
       <div className="right">
         <h1>Log in</h1>
         <h3>
-          Don't have an account? <button onClick={toggleSignupPopup} className="signup-link">Sign up</button>
+          Don't have an account?{" "}
+          <button onClick={toggleSignupPopup} className="signup-link">
+            Sign up
+          </button>
         </h3>
 
         <label>Email</label>

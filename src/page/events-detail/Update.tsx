@@ -161,8 +161,6 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
 
     // const patchOps = generatePatchOps(originalData, formData);
     console.log("Final Patch Operations:", patchOps);
-
-    console.log("Final Patch Operations:", patchOps);
     if (patchOps.length > 0) {
       console.log(selectedEvent.id);
       const url = `/v1.5/events/${selectedEvent.id}`;
