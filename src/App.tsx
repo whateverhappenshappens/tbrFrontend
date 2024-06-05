@@ -28,8 +28,9 @@ import Test from "./components/Test";
 import { UserAPI } from "./apis/UserAPIs";
 import OperationSignIn from "./page/operations/OperationSignIn";
 import NotFound from "./page/NotFound/NotFound";
-// import SalesOperations from "./page/operations/SalesOperations";
+import SalesOperations from "./page/operations/SalesOperations";
 import EnrollStudent from "./page/enroll/EnrollStudent";
+import ProfilePage from "./page/Profile/ProfilePage";
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
@@ -182,6 +183,8 @@ function App() {
           <Route path="/course/IOT" element={<IotProgram />} />
           <Route path="/cart" element={<Cart headerHeight={headerHeight} />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/operations/sales" element={<SalesOperations />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/payment-success"
             element={<PaymentSuccess headerHeight={headerHeight} />}

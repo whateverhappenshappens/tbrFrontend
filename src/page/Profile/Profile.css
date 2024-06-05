@@ -1,0 +1,263 @@
+.header {
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: hidden;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 15%;
+    overflow: visible;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+  .Main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9f4fb;
+    min-height: 100vh;
+  }
+  
+  .main_box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    background-color:#F7FAFC;
+    overflow: hidden;
+    position: relative;
+  }
+  .main_box2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 90vh;
+    max-width: 1200px;
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+  }
+  .buttondabba{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Make the search bar full width */
+    background-color:white; /* Add a light background color */
+    border-radius: 4px; /* Add rounded corners */
+    box-shadow: 3px 3px 6px #00000029 ;
+    
+  }
+  
+  .search-container input {
+    border: none; /* Remove default border */
+    outline: none; /* Remove default outline */
+    padding: 10px;
+    font-size: 16px;
+    width: 80%; /* Make the input field take up 80% of the container width */
+    background-color: white;
+    border-radius: 20px; /* Remove default background color */
+  }
+  
+  .search-container button {
+    padding: 10px 20px; /* Add some padding to the button */
+    background-color: #333; /* Set the button background color */
+    background-color:white; /* Set the button text color */
+    border: none; /* Remove default border */
+    outline: none; /* Remove default outline */
+    cursor: pointer; /* Set the cursor to a pointer on hover */
+    border-radius: 4px; /* Add rounded corners to the button */
+    color: #6d87f5;
+    font-weight: 700;
+    
+  }
+  
+  
+  .left {
+    background-color: #F7FAFC;
+    width: 30%;
+    height: 82%;
+    margin: 2.5%;
+    border-radius: 10px;
+    padding: 30px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+  }
+  .buttun{
+    width:12.25rem ;
+    height: 3rem;
+    border-radius: 15px;
+  }
+  .buttun1{
+    background-color:#F7FAFC;
+    color: #2E436A;
+    font-weight: 1000;
+  }
+  .buttun2{
+    background-color: #6D87F5;
+    color: #F7FAFC;
+    font-weight: 1000;
+    opacity: 0.95;
+  }
+  .left img{
+    height: 10.25rem;
+    width: 10.25rem;
+    /* background-color: antiquewhite; */
+    border-radius: 50%;
+    border:2px solid;
+  }
+  .left h1 {
+    color: beige;
+  }
+  
+  .left h2 {
+    color: #e9f4fb;
+    font-size: 2rem;
+    font-weight: 800;
+  }
+  .image{
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+    border: 2px solid black;
+    margin-left: 25px;
+  }
+  
+  .cards {
+    margin-top: 30px;
+    background-color: #3853c5;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    bottom: -8%;
+  }
+  
+  .try {
+    color: #e9f4fb;
+  }
+  
+  .card_info {
+    display: flex;
+    align-items: center;
+  
+  }
+  .info{
+    margin-left: 20px;
+  }
+  
+  .right label{
+    color: #2E436A;
+    font-size: 1rem;
+    font-weight: 700;
+    opacity: 0.8;
+    font: normal normal bold Visby Round CF
+  }
+  .right {
+    width: 40%;
+    height: 95%;
+    margin:2.5%;
+    padding: 30px;
+  }
+  
+  .right h1 {
+    color: #2e436a;
+  }
+  
+  .right h4 {
+    color: #6d87f5;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .right .lng {
+    margin-top: 10px;
+    width: 70%;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  
+  }
+  
+  .btn {
+    margin-right: 20px;
+    width: 30%;
+    height: 50px;
+    color: azure;
+    background-color: #6d87f5;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .check {
+    margin-right: 10px;
+  }
+  
+  .extra {
+    color: #6d87f5;
+  }
+  
+  .cont {
+    margin-bottom: 20px;
+    margin-left: 65px;
+    margin-right: auto;
+  }
+  
+  .google {
+    height: 50px;
+    width: 150px;
+    right: 30%;
+    position: absolute;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  @media (max-width:700px) {
+    .header {
+      padding-left: 7rem;
+    }
+    .left{
+      display: none;
+    }
+    .btn{
+        width: 95%;
+        min-width: 244px;
+        margin-left: 16px;
+        height:40px;
+    }
+    .right{
+      width:95%;
+      min-width: 244px;
+    }
+    .right .lng{
+      width: 95%  ;
+    }
+    .google{
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cont{
+      overflow: hidden;
+    }
+  }
