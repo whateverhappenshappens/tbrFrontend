@@ -1,6 +1,6 @@
 import React from "react";
 import "./Profile.css";
-import boyProfile from "../../assets/Boyphoto@2x.png";
+import boyProfile from "../../assets/Boy photo.png";
 
 function ProfilePage() {
   return (
