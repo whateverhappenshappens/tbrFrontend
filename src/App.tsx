@@ -1,3 +1,5 @@
+// src/App.tsx
+
 import { useState, useRef, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -28,9 +30,9 @@ import Test from "./components/Test";
 import { UserAPI } from "./apis/UserAPIs";
 import OperationSignIn from "./page/operations/OperationSignIn";
 import NotFound from "./page/NotFound/NotFound";
-// import SalesOperations from "./page/operations/SalesOperations";
 import EnrollStudent from "./page/enroll/EnrollStudent";
-
+import { CartProvider } from "./CartContext";
+import Details from "./page/programs-detail/codeslayers/details/Details"
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setactiveEventData] = useState<any>();
@@ -109,86 +111,89 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="main">
-        <Toaster
-          toastOptions={{
-            style: {
-              padding: "10px",
-              fontSize: "20px",
-              backgroundColor: "#2E436A",
-              color: "white",
-              fontWeight: "bolder",
-            },
-          }}
-        />
-        <Header
-          updateHeaderHeight={updateHeaderHeight}
-          handle_login={handle_login}
-          handle_signup={handle_signup}
-          loginContainer={loginContainer}
-          signupContainer={signupContainer}
-          setIsLoggedIn={setIsLoggedIn}
-          isLoggedIn={isLoggedIn}
-        />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <LandingPage
-                headerHeight={headerHeight}
-                handle_login={handle_login}
-                activedata={activeEventData}
-                pastdata={pastEventData}
-              />
-            }
+      <CartProvider>
+        <div className="main">
+          <Toaster
+            toastOptions={{
+              style: {
+                padding: "10px",
+                fontSize: "20px",
+                backgroundColor: "#2E436A",
+                color: "white",
+                fontWeight: "bolder",
+              },
+            }}
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/blog"
-            element={<Blogging headerHeight={headerHeight} />}
+          <Header
+            updateHeaderHeight={updateHeaderHeight}
+            handle_login={handle_login}
+            handle_signup={handle_signup}
+            loginContainer={loginContainer}
+            signupContainer={signupContainer}
+            setIsLoggedIn={setIsLoggedIn}
+            isLoggedIn={isLoggedIn}
           />
-          <Route
-            path="/blog/:id"
-            element={<BlogDetail headerHeight={headerHeight} />}
-          />
-          <Route path="/campus-associate" element={<CampusAssociate />} />
-          <Route path="/mentor" element={<Mentor />} />
-          <Route path="/About-us" element={<About />} />
-          <Route path="/operations" element={<OperationSignIn />} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <LandingPage
+                  headerHeight={headerHeight}
+                  handle_login={handle_login}
+                  activedata={activeEventData}
+                  pastdata={pastEventData}
+                />
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/blog"
+              element={<Blogging headerHeight={headerHeight} />}
+            />
+            <Route
+              path="/blog/:id"
+              element={<BlogDetail headerHeight={headerHeight} />}
+            />
+            <Route path="/campus-associate" element={<CampusAssociate />} />
+            <Route path="/mentor" element={<Mentor />} />
+            <Route path="/About-us" element={<About />} />
+            <Route path="/operations" element={<OperationSignIn />} />
 
-          <Route
-            path="/operations/manage-events"
-            element={<EventsManagerPage headerHeight={headerHeight} />}
-          />
+            <Route
+              path="/operations/manage-events"
+              element={<EventsManagerPage headerHeight={headerHeight} />}
+            />
 
-          <Route path="/hire-with-us" element={<Hire />} />
+            <Route path="/hire-with-us" element={<Hire />} />
 
-          <Route
-            path="/event-listing"
-            element={
-              <HackathonPage
-                Activedata={activeEventData}
-                Pastdata={pastEventData}
-              />
-            }
-          />
-          <Route path="/course/webmonk" element={<Webmonk />} />
-          <Route path="/programs" element={<Programs />} />
-          <Route path="/course/codeslayer" element={<CodeSlayer />} />
-          <Route path="/events/:id" element={<EventsDetail />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/course/machinester" element={<MlProgram />} />
-          <Route path="/course/IOT" element={<IotProgram />} />
-          <Route path="/cart" element={<Cart headerHeight={headerHeight} />} />
-          <Route path="/test" element={<Test />} />
-          <Route
-            path="/payment-success"
-            element={<PaymentSuccess headerHeight={headerHeight} />}
-          />
-        </Routes>
-        <Footer />
-      </div>
+            <Route
+              path="/event-listing"
+              element={
+                <HackathonPage
+                  Activedata={activeEventData}
+                  Pastdata={pastEventData}
+                />
+              }
+            />
+            <Route path="/course/webmonk" element={<Webmonk />} />
+            <Route path="/programs" element={<Programs />} />
+            <Route path="/course/codeslayer" element={<CodeSlayer />} />
+            <Route path="/events/:id" element={<EventsDetail />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/course/machinester" element={<MlProgram />} />
+            <Route path="/course/IOT" element={<IotProgram />} />
+            <Route path="/cart" element={<Cart headerHeight={headerHeight} />} />
+            <Route path="/test" element={<Test />} />
+            <Route
+              path="/payment-success"
+              element={<PaymentSuccess headerHeight={headerHeight} />}
+            />
+            
+          </Routes>
+          <Footer />
+        </div>
+      </CartProvider>
     </BrowserRouter>
   );
 }

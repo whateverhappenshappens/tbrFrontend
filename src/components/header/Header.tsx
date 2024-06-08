@@ -6,6 +6,7 @@ import { useRef, useState, useEffect } from "react";
 import Login from "../main/login/Login";
 import Signup from "../main/Sign/Signup";
 import { UserAPI } from "../../apis/UserAPIs";
+import { FaCartShopping } from "react-icons/fa6";
 
 function Header({
   updateHeaderHeight,
@@ -132,6 +133,11 @@ function Header({
             </div>
           </li>
           <li>
+            <NavLink className="nav-list-item" to="/cart">
+              <FaCartShopping />
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/event-listing">
               <button className="more-option1" onClick={handleTrue}>
                 Refer & Earn
@@ -152,6 +158,7 @@ function Header({
               </button>
             </NavLink>
           </li>
+          
         </ul>
         {!isLoggedIn ? (
           <div className="authenticate">
