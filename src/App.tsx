@@ -33,6 +33,10 @@ import NotFound from "./page/NotFound/NotFound";
 import EnrollStudent from "./page/enroll/EnrollStudent";
 import { CartProvider } from "./CartContext";
 import Details from "./page/programs-detail/codeslayers/details/Details"
+import SalesOperations from "./page/operations/SalesOperations";
+import EnrollStudent from "./page/enroll/EnrollStudent";
+import ProfilePage from "./page/Profile/ProfilePage";
+
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setactiveEventData] = useState<any>();
@@ -167,6 +171,7 @@ function App() {
 
             <Route path="/hire-with-us" element={<Hire />} />
 
+
             <Route
               path="/event-listing"
               element={
@@ -194,6 +199,33 @@ function App() {
           <Footer />
         </div>
       </CartProvider>
+          <Route
+            path="/event-listing"
+            element={
+              <HackathonPage
+                Activedata={activeEventData}
+                Pastdata={pastEventData}
+              />
+            }
+          />
+          <Route path="/course/webmonk" element={<Webmonk />} />
+          <Route path="/programs" element={<Programs />} />
+          <Route path="/course/codeslayer" element={<CodeSlayer />} />
+          <Route path="/events/:id" element={<EventsDetail />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/course/machinester" element={<MlProgram />} />
+          <Route path="/course/IOT" element={<IotProgram />} />
+          <Route path="/cart" element={<Cart headerHeight={headerHeight} />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/operations/sales" element={<SalesOperations />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route
+            path="/payment-success"
+            element={<PaymentSuccess headerHeight={headerHeight} />}
+          />
+        </Routes>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

@@ -117,6 +117,23 @@ removeFromCart: async function (userId: string, courseId: string) {
     }
   },
 
+  getAllCartForDownload: async function () {
+    const access_token = localStorage.getItem("access-token");
+
+    try {
+      const response = await api.request({
+        url: `/v1.5/cart/get-all`,
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      return response;
+    } catch (error) {
+      return error;
+    }
+  },
+
   removeFromCart: async function (userId: string, courseId: string) {
     const access_token = localStorage.getItem("access-token");
     try {
