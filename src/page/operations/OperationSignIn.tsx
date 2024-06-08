@@ -30,7 +30,7 @@ const OperationSignIn: React.FC = () => {
     if (response.status === 201) {
       if (value === "sale") {
         toast.success("Login Successful");
-        Navigate("/sales-operation");
+        Navigate("/operations/sales");
       } else {
         toast.success("Login Successful");
         Navigate("/operations/manage-events");

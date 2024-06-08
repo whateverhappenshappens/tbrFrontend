@@ -91,7 +91,7 @@ function Signup() {
   return (
     <div className="main_box">
       <aside className="left">
-      <img
+        <img
           src={logo1} // Replace with the path to your logo image
           alt="TechBairn Logo"
           className="logo" // Add a custom class for styling
@@ -109,7 +109,10 @@ function Signup() {
       <div className="right">
         <h1>Sign up</h1>
         <h3>
-          Have an account? <button onClick={toggleLoginPopup} className="login-link">Log in</button>
+          Have an account?{" "}
+          <button onClick={toggleLoginPopup} className="login-link">
+            Log in
+          </button>
         </h3>
         <label>Fullname</label>
         <br />
@@ -146,7 +149,9 @@ function Signup() {
           onChange={handleInputChange}
         />
         <br />
-        {formError.password && <div className="error">{formError.password}</div>}
+        {formError.password && (
+          <div className="error">{formError.password}</div>
+        )}
         <input
           className="check"
           type="checkbox"

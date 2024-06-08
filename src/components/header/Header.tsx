@@ -15,7 +15,7 @@ function Header({
   signupContainer,
   isLoggedIn,
   setIsLoggedIn,
-}) {
+}: any) {
   const [navOpen, setNavOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false); // State to manage login popup visibility
   const [showSignup, setShowSignup] = useState(false); // State to manage signup popup visibility
