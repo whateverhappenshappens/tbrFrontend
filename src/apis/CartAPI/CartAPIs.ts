@@ -30,6 +30,42 @@ export const CartAPI = {
       return error;
     }
   },
+  addToCart: async function (userId: string, courseId: string) {
+    const access_token = localStorage.getItem("access-token");
+
+    try {
+        const response = await api.request({
+            url: `/v1.5/cart/add`,
+            method: "POST",
+            data: { userId, courseId },
+            headers: {
+                Authorization: `Bearer ${access_token}`,
+            },
+        });
+        return response;
+    } catch (error) {
+        return error;
+    }
+},
+
+removeFromCart: async function (userId: string, courseId: string) {
+    const access_token = localStorage.getItem("access-token");
+
+    try {
+        const response = await api.request({
+            url: `/v1.5/cart/delete`,
+            method: "POST",
+            data: { userId, courseId },
+            headers: {
+                Authorization: `Bearer ${access_token}`,
+            },
+        });
+        return response;
+    } catch (error) {
+        return error;
+    }
+},
+
   paymentSuccess: async function (requestData: any) {
     const access_token = localStorage.getItem("access-token");
     try {

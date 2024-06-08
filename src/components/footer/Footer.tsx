@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
         <br></br>
         <div className="contact-title overflow-visible">Contact Us:</div>
         <div>Please feel free to drop us a mail or call to connect with our team. Our response time is less than 1 hour.</div>
-        <div className="phone-title">Phone:</div>
+        <div className="phone-title overflow-visible">Phone:</div>
         <div>- (+91) 87897 26459</div>
         <div>- (+91) 70048 85397</div>
         <div className="email-title overflow-visible">Email:</div>
