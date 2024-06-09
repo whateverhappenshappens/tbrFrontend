@@ -24,6 +24,7 @@ import About from "./components/About";
 import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";
 import Hire from "./page/hirewithus/Hire";
+import Profile from "./page/Profile/Profile"
 import Programs from "./page/Program-page/Program";
 import { EventsAPI } from "./apis/EventsAPI/EventsAPI";
 import Test from "./components/Test";
@@ -158,6 +159,7 @@ function App() {
             <Route path="/campus-associate" element={<CampusAssociate />} />
             <Route path="/mentor" element={<Mentor />} />
             <Route path="/About-us" element={<About />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/operations" element={<OperationSignIn />} />
 
             <Route
