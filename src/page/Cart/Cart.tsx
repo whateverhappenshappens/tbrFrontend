@@ -615,6 +615,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { OrderRequestData } from "../../types/OrderRequestData";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
+import { NavLink } from "react-router-dom";
 
 
 interface Props {
@@ -835,12 +836,12 @@ const Cart = ({ headerHeight }) => {
             <div className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer">
               Continue shopping
             </div>
-            <div
+            <NavLink to="/profile"
               className="continue-shopping bg-[#6D87F5] text-white text-2xl lg:text-4xl border-2 border-[#6D87F5] px-6 lg:px-16 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#6D87F5] cursor-pointer"
-              onClick={handlePayment}
+              // onClick={handlePayment}
             >
-              Checkout
-            </div>
+              Proceed to Pay....
+            </NavLink>
           </div>
         </div>
       </div>
