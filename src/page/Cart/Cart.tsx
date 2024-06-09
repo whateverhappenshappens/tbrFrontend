@@ -641,7 +641,6 @@ interface netPriceObjType {
 const Cart = ({ headerHeight }) => {
   const { cart, removeFromCart } = useCart();
   const cartPage = useRef(null);
-  const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to check if the user is logged in
 
   const [netPriceObj, setNetPriceObj] = useState<netPriceObjType>({
