@@ -105,7 +105,7 @@ const SalesOperations: React.FC = () => {
 
   const fetchAllPaymentDetails = async () => {
     try {
-      const res = await SalesAPIs.getPaymentDetailsByEmailDownload(email);
+      const res = await SalesAPIs.getAllPaymentDetailsDownload();
       setResults(res.data.paymentResponseTypeList);
     } catch (error) {
       console.error(

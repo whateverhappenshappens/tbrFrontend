@@ -84,4 +84,26 @@ export const SalesAPIs = {
       return error;
     }
   },
+  getAllPaymentDetailsDownload: async function () {
+    const access_token = localStorage.getItem("access-token");
+    // if token is not available in the
+    try {
+      const res = await api.request({
+        url: `v1.5/payment/get-all-payment`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      //   console.log("hello");
+      //   console.log(res);
+      //   toast.success("Valid access token!");
+      return res;
+    } catch (error) {
+      newAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
 };
