@@ -612,12 +612,14 @@
 
 // export default Cart;
 import React, { useRef, useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { OrderRequestData } from "../../types/OrderRequestData";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
-import { NavLink } from "react-router-dom";
-
-
+import { NavLink,useHistory } from "react-router-dom";
+import { UserAPI } from "../../apis/UserAPIs";
+import Signup from "../../components/main/Sign/Signup";
+import Profile1 from "../Profile/Profile1"
 interface Props {
   headerHeight: number;
 }
@@ -635,13 +637,12 @@ interface netPriceObjType {
   totalDiscountedPrice: number;
   discount: number;
 }
-const Cart = ({ headerHeight }) => {
-  const { cart,removeFromCart } = useCart();
-  const cartPage = useRef(null);
-// const Cart: React.FC<Props> = ({ headerHeight }) => {
-//   const { cart, removeFromCart } = useCart();
-//   const cartPage = useRef<HTMLDivElement>(null);
 
+const Cart = ({ headerHeight }) => {
+  const { cart, removeFromCart } = useCart();
+  const cartPage = useRef(null);
+  const history = useHistory();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to check if the user is logged in
 
   const [netPriceObj, setNetPriceObj] = useState<netPriceObjType>({
     totalPrice: 0,
@@ -667,6 +668,17 @@ const Cart = ({ headerHeight }) => {
     });
   }, [cart]);
 
+  useEffect(() => {
+    // Check if the user is logged in
+    UserAPI.isLoggedIn()
+      .then((response) => {
+        setIsLoggedIn(response.data.isLoggedIn);
+      })
+      .catch((error) => {
+        console.error("Error checking login status:", error);
+      });
+  }, []);
+
   const requestData: OrderRequestData = {
     utr: "utr-number",
     mobileNumber: "9999999999",
@@ -676,6 +688,17 @@ const Cart = ({ headerHeight }) => {
   };
 
   function handlePayment() {
+    if (!isLoggedIn) {
+      <div className="login-pop absolute w-[100%] ml-[102px] overflow-y-hidden h-full bg-white top-[0%] border">
+          <Signup />
+        </div> 
+      return;
+    }else {
+      <Router>
+      <Route path="/update-details" element={<Profile1 />} />
+      </Router>
+    }
+
     console.log("handlepayment");
     CartAPI.generateOrder(netPriceObj.totalDiscountedPrice, requestData)
       .then((response: any) => {
@@ -832,16 +855,20 @@ const Cart = ({ headerHeight }) => {
               </div>
             </div> */}
           </div>
+
           <div className="buttons flex justify-between">
-            <div className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer">
+            <NavLink
+              to="/programs"
+              className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
+            >
               Continue shopping
-            </div>
-            <NavLink to="/profile"
+            </NavLink>
+            <div
               className="continue-shopping bg-[#6D87F5] text-white text-2xl lg:text-4xl border-2 border-[#6D87F5] px-6 lg:px-16 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#6D87F5] cursor-pointer"
-              // onClick={handlePayment}
+              onClick={handlePayment}
             >
               Proceed to Pay....
-            </NavLink>
+            </div>
           </div>
         </div>
       </div>
@@ -850,6 +877,7 @@ const Cart = ({ headerHeight }) => {
 };
 
 export default Cart;
+
 
 
 

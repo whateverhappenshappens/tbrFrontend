@@ -150,6 +150,10 @@ function App() {
             <Route path="/campus-associate" element={<CampusAssociate />} />
             <Route path="/mentor" element={<Mentor />} />
             <Route path="/About-us" element={<About />} />
+            <Route path="/update-details" element={<Profile />} />
+            <Route path="/operations" element={<OperationSignIn />} />
+
+
             <Route path="/profile" element={<Profile />} />
             <Route
               path="/operations"
@@ -160,6 +164,7 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/operations/manage-events"
               element={<EventsManagerPage headerHeight={headerHeight} />}

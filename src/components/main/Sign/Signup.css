@@ -42,6 +42,10 @@
   background-color: white;
   overflow: hidden;
 }
+.btn:disabled {
+  cursor: not-allowed;
+  /* background-color: #ccc; Optional: to visually indicate it's disabled */
+}
 .right h3 button{
   color: #6d87f5;
 }
