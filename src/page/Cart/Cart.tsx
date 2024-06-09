@@ -612,14 +612,14 @@
 
 // export default Cart;
 import React, { useRef, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { OrderRequestData } from "../../types/OrderRequestData";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
-import { NavLink,useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { UserAPI } from "../../apis/UserAPIs";
 import Signup from "../../components/main/Sign/Signup";
-import Profile1 from "../Profile/Profile1"
+import Profile1 from "../Profile/Profile1";
 interface Props {
   headerHeight: number;
 }
@@ -690,13 +690,13 @@ const Cart = ({ headerHeight }) => {
   function handlePayment() {
     if (!isLoggedIn) {
       <div className="login-pop absolute w-[100%] ml-[102px] overflow-y-hidden h-full bg-white top-[0%] border">
-          <Signup />
-        </div> 
+        <Signup />
+      </div>;
       return;
-    }else {
+    } else {
       <Router>
-      <Route path="/update-details" element={<Profile1 />} />
-      </Router>
+        <Route path="/update-details" element={<Profile1 />} />
+      </Router>;
     }
 
     console.log("handlepayment");
@@ -877,12 +877,3 @@ const Cart = ({ headerHeight }) => {
 };
 
 export default Cart;
-
-
-
-
-
-
-
-
-
