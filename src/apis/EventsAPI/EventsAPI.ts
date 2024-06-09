@@ -28,47 +28,48 @@ export const EventsAPI = {
           Authorization: "Bearer " + access_token,
         },
       });
+      // Add isActive: true to each event
+      res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
       return res;
     } catch (e) {
-      // newAccessToken();
       console.error("An error occurred:", e);
       toast.error("Invalid access token!");
       return e;
     }
   },
-
+  
   allEventsBasicDetail: async function () {
     try {
       const res = await api.get("v1.5/events");
+      // Add isActive: true to each event
+      res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
       return res;
     } catch (error) {
       console.error("An error occurred:", error);
       return Promise.reject(error);
     }
   },
-  activeEvents: async function () {
-    try {
-      const res = await api.get("/v1.5/events?active=true");
-      return res;
-    } catch (error) {
-      console.error("An error occurred:", error);
-      return Promise.reject(error);
-    }
-  },
+
   pastEvents: async function () {
     try {
       const res = await api.get("/v1.5/events?active=false");
+      // Add isActive: false to each event (since they are past events)
+      res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
       return res;
     } catch (error) {
       console.error("An error occurred:", error);
       return Promise.reject(error);
     }
   },
+
   EventById: async function (url: string) {
     try {
       const res = await api.get(`/v1.5/events/${url}`);
       if (res.status == 404) {
         toast.error("Event Not found");
+      } else {
+        // Add isActive: true to the event
+        res.data = { ...res.data, isActive: true };
       }
       return res;
     } catch (error) {
@@ -76,9 +77,9 @@ export const EventsAPI = {
       return Promise.reject(error);
     }
   },
+
   UpdateManageEvents: async function (url: string) {
     const access_token = localStorage.getItem("access-token");
-    // if token is not available in the
     try {
       const res = await api.request({
         url: `/v1.5/events/${url}`,
@@ -87,22 +88,28 @@ export const EventsAPI = {
           Authorization: "Bearer " + access_token,
         },
       });
-      //   console.log("hello");
-      //   console.log(res);
-      //   toast.success("Valid access token!");
       console.log(res.data);
       return res;
     } catch (error) {
-      // newAccessToken();
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;
     }
   },
+  activeEvents: async function () {
+    try {
+      const res = await api.get("/v1.5/events?isActive=true");
+      // Add isActive: true to each event
+      res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
+      return res;
+    } catch (error) {
+      console.error("An error occurred:", error);
+      return Promise.reject(error);
+    }
+  },
   DeleteEventById: async function (url: string) {
     console.log("Reached DeleteByEvent");
     const access_token = localStorage.getItem("access-token");
-    // if token is not available in the
     try {
       const res = await api.request({
         url: `v1.5/events/delete/${url}?isDeleted=true`,
@@ -112,21 +119,17 @@ export const EventsAPI = {
         },
       });
       console.log("Reached DeleteByEvent");
-
-      //   toast.success("Valid access token!");
       return res;
     } catch (error) {
-      // newAccessToken();
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;
     }
   },
+
   UndoDeleteEventById: async function (url: string) {
     console.log("Reached UndoDeleteByEvent");
     const access_token = localStorage.getItem("access-token");
-    // if token is not available in the
-
     try {
       const res = await api.request({
         url: `v1.5/events/delete/${url}?isDeleted=false`,
@@ -135,14 +138,12 @@ export const EventsAPI = {
           Authorization: "Bearer " + access_token,
         },
       });
-      //   console.log("hello");
-
       return res;
     } catch (error) {
-      // newAccessToken();
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;
     }
   },
 };
+

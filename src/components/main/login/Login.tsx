@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ReviewSlider from "./ReviewSlider";
 import { FaGoogle } from "react-icons/fa";
@@ -51,14 +51,17 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const handle_login_btn = async () => {
     if (validateForm()) {
       console.log(userDetails);
-
-      await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
-      setUserDetails({
-        password: "",
-        email: "",
-        name: "",
-        role: UserRole.USER,
-      });
+      try {
+        await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
+        setUserDetails({
+          password: "",
+          email: "",
+          name: "",
+          role: UserRole.USER,
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   };
 

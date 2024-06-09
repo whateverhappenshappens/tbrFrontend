@@ -6,6 +6,9 @@ import AddForm from "./Add"; // Import the add form component
 import UpdateForm from "./Update"; // Import the update form component
 import ConfirmationDialog from "./ConfirmationDialog"; // Import the confirmation dialog component
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
+import "./bulb.css";
+// Import badge images
+import bulb from "./bulb.svg"; // Path to your bulb image
 
 function EventsManagerPage({ headerHeight }: any) {
   const eventsManagerPage = useRef<HTMLDivElement | null>(null);
@@ -30,7 +33,11 @@ function EventsManagerPage({ headerHeight }: any) {
         await EventsAPI.allEventsBasicDetail()
           .then((res) => {
             console.log(res.data);
-            setCurrentEvents(res.data);
+            const eventsWithActive = res.data.map((event: Event) => ({
+              ...event,
+              isActive: true,
+            }));
+            setCurrentEvents(res.data,);
           })
           .catch((e) => {
             console.error(e);
@@ -58,6 +65,7 @@ function EventsManagerPage({ headerHeight }: any) {
     all();
     allDetailsForDownload();
   }, []);
+  
 
   const handleDownload = () => {
     const csvData = Papa.unparse(
@@ -84,16 +92,50 @@ function EventsManagerPage({ headerHeight }: any) {
     a.click();
     window.URL.revokeObjectURL(url);
   };
-
+  
   const handleDelete = async (event: any) => {
     try {
       console.log(event.id);
-      await EventsAPI.DeleteEventById(event.id);
+      if (event.isDeleted) {
+        await EventsAPI.UndoDeleteEventById(event.id);
+        setCurrentEvents((prevEvents) =>
+          prevEvents.map((e) =>
+            e.id === event.id ? { ...e, isDeleted: false } : e
+          )
+        );
+      } else {
+        await EventsAPI.DeleteEventById(event.id);
+        setCurrentEvents((prevEvents) =>
+          prevEvents.map((e) =>
+            e.id === event.id ? { ...e, isDeleted: true } : e
+          )
+        );
+      }
     } catch (e) {
       console.error(e);
     }
-    // setEventToDelete(event);
-    // setConfirmDialogVisible(true);
+  };
+  const handle = async (event: any) => {
+    try {
+      console.log(event.id);
+      if (event.isActive) {
+        await EventsAPI.pastEvents(event.id);
+        setCurrentEvents((prevEvents) =>
+          prevEvents.map((e) =>
+            e.id === event.id ? { ...e, isActive: false } : e
+          )
+        );
+      } else {
+        await EventsAPI.activeEvents(event.id);
+        setCurrentEvents((prevEvents) =>
+          prevEvents.map((e) =>
+            e.id === event.id ? { ...e, isActive: false } : e
+          )
+        );
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const confirmDelete = () => {
@@ -141,8 +183,10 @@ function EventsManagerPage({ headerHeight }: any) {
         {currentEvents.map((event, index) => (
           <div
             key={index}
-            className="border rounded-lg p-3 lg:p-10 flex flex-col gap-5 lg:gap-7"
-          >
+            className="border rounded-lg p-3 lg:p-10 flex flex-col gap-5 lg:gap-7 relative"
+          > 
+            <div className={`bulb ${event.isActive ? 'green' : 'red'}`}></div>
+
             <div className="lg:flex lg:flex-col lg:gap-5">
               <div className="text-3xl lg:text-5xl font-bold overflow-visible">
                 {event.heading}
@@ -161,10 +205,14 @@ function EventsManagerPage({ headerHeight }: any) {
               </button>
 
               <button
-                className="border-2 border-red-500 rounded-lg px-5 py-3 text-white hover:text-red-500 bg-red-500 hover:bg-white"
+                className={`border-2 rounded-lg px-5 py-3 text-white ${
+                  event.isDeleted
+                    ? 'border-green-500 bg-green-500 hover:text-green-500 hover:bg-white'
+                    : 'border-red-500 bg-red-500 hover:text-red-500 hover:bg-white'
+                }`}
                 onClick={() => handleDelete(event)}
               >
-                DELETE
+                {event.isDeleted ? 'UNDELETE' : 'DELETE'}
               </button>
             </div>
           </div>

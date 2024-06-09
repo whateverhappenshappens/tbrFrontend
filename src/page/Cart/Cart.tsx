@@ -576,9 +576,51 @@
 
 // export default Cart;
 
-import { useRef, useEffect, useState } from "react";
+// import React from "react";
+// import { useCart } from "../../CartContext";
+
+// interface Props {
+//   headerHeight: number;
+// }
+
+// const Cart: React.FC<Props> = ({ headerHeight }) => {
+//   const { cart, removeFromCart } = useCart();
+
+//   return (
+//     <div style={{ marginTop: headerHeight }}>
+//       <h2>Your Cart</h2>
+//       {cart.length === 0 ? (
+//         <p>Your cart is empty</p>
+//       ) : (
+//         <ul>
+//           {cart.map((course) => (
+//             <li key={course.id}>
+//               <h3>{course.name}</h3>
+//               <p>{course.description}</p>
+//               <p>Price: ${course.price}</p>
+//               <p>Discounted Price: ${course.discountedPrice}</p>
+//               <button onClick={() => removeFromCart(course.id)}>
+//                 Remove
+//               </button>
+//             </li>
+//           ))}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Cart;
+import React, { useRef, useEffect, useState } from "react";
 import { OrderRequestData } from "../../types/OrderRequestData";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
+import { useCart } from "../../CartContext";
+import { NavLink } from "react-router-dom";
+
+
+interface Props {
+  headerHeight: number;
+}
 
 interface courseType {
   id: string;
@@ -593,36 +635,13 @@ interface netPriceObjType {
   totalDiscountedPrice: number;
   discount: number;
 }
+const Cart = ({ headerHeight }) => {
+  const { cart,removeFromCart } = useCart();
+  const cartPage = useRef(null);
+// const Cart: React.FC<Props> = ({ headerHeight }) => {
+//   const { cart, removeFromCart } = useCart();
+//   const cartPage = useRef<HTMLDivElement>(null);
 
-const Cart = ({ headerHeight }: any) => {
-  const cartPage = useRef<HTMLDivElement>(null);
-
-  const [addedCourses, setAddedCourses] = useState<courseType[]>([
-    {
-      id: "one",
-      name: "Webmonk",
-      description:
-        "A very small description of course should be included here within a maximum of 2 lines",
-      price: 5000,
-      discountedPrice: 2999,
-    },
-    {
-      id: "two",
-      name: "Webmonk",
-      description:
-        "A very small description of course should be included here within a maximum of 2 lines",
-      price: 5000,
-      discountedPrice: 2999,
-    },
-    {
-      id: "three",
-      name: "Webmonk",
-      description:
-        "A very small description of course should be included here within a maximum of 2 lines",
-      price: 5000,
-      discountedPrice: 2999,
-    },
-  ]);
 
   const [netPriceObj, setNetPriceObj] = useState<netPriceObjType>({
     totalPrice: 0,
@@ -630,15 +649,11 @@ const Cart = ({ headerHeight }: any) => {
     discount: 0,
   });
 
-  const removeCourse = (courseId: string) => {
-    setAddedCourses(addedCourses.filter((a) => a.id !== courseId));
-  };
-
   useEffect(() => {
     let totalPrice = 0;
     let totalDiscountedPrice = 0;
 
-    addedCourses.forEach((course) => {
+    cart.forEach((course) => {
       totalPrice += course.price;
       totalDiscountedPrice += course.discountedPrice;
     });
@@ -650,7 +665,7 @@ const Cart = ({ headerHeight }: any) => {
       totalDiscountedPrice,
       discount,
     });
-  }, [addedCourses]);
+  }, [cart]);
 
   const requestData: OrderRequestData = {
     utr: "utr-number",
@@ -658,7 +673,6 @@ const Cart = ({ headerHeight }: any) => {
     userId: "user-id",
     paymentId: "payment-id",
     modeOfPayment: "mode-of-payment",
-    selectedCourses: addedCourses.map(({ description, ...rest }) => rest),
   };
 
   function handlePayment() {
@@ -739,7 +753,9 @@ const Cart = ({ headerHeight }: any) => {
   }
 
   useEffect(() => {
-    cartPage.current!.style.paddingTop = `${headerHeight + 10}px`;
+    if (cartPage.current) {
+      cartPage.current.style.paddingTop = `${headerHeight + 10}px`;
+    }
   }, [headerHeight]);
 
   return (
@@ -748,12 +764,12 @@ const Cart = ({ headerHeight }: any) => {
       ref={cartPage}
     >
       <div className="heading text-6xl lg:text-8xl font-semibold text-center lg:text-left overflow-visible">
-        Your Shopping bag
+        Your Shopping Bag
       </div>
       <div className="main-cart border border-[#ccc] rounded-2xl flex flex-col gap-10 p-5 lg:p-7 xl:p-16 shadow-xl">
-        {addedCourses.map((course, index) => (
+        {cart.map((course) => (
           <div
-            key={index}
+            key={course.id}
             className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-92"
           >
             <div className="course-box-1 flex gap-3 xl:gap-7 lg:w-4/6">
@@ -778,7 +794,7 @@ const Cart = ({ headerHeight }: any) => {
               </div>
               <div
                 className="border-2 border-[#FF7E6C] bg-[#FF7E6C] text-white text-2xl lg:text-4xl xl:text-5xl font-semibold px-5 lg:px-6 xl:px-10 py-3 lg:py-4 xl:py-6 cursor-pointer rounded-xl hover:bg-white hover:text-[#FF7E6C]"
-                onClick={() => removeCourse(course.id)}
+                onClick={() => removeFromCart(course.id)}
               >
                 Remove
               </div>
@@ -804,7 +820,7 @@ const Cart = ({ headerHeight }: any) => {
               </div>
             </div>
 
-            {/* COUPONS SERCTION */}
+            {/* COUPONS SECTION */}
             {/* <div className="discount-coupon shadow-2xl lg:shadow-md border rounded-2xl w-fit flex mx-auto lg:h-fit lg:my-auto">
               <input
                 type="text"
@@ -820,12 +836,12 @@ const Cart = ({ headerHeight }: any) => {
             <div className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer">
               Continue shopping
             </div>
-            <div
+            <NavLink to="/profile"
               className="continue-shopping bg-[#6D87F5] text-white text-2xl lg:text-4xl border-2 border-[#6D87F5] px-6 lg:px-16 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#6D87F5] cursor-pointer"
-              onClick={() => handlePayment()}
+              // onClick={handlePayment}
             >
-              Checkout
-            </div>
+              Proceed to Pay....
+            </NavLink>
           </div>
         </div>
       </div>
@@ -834,3 +850,11 @@ const Cart = ({ headerHeight }: any) => {
 };
 
 export default Cart;
+
+
+
+
+
+
+
+
