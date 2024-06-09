@@ -151,7 +151,15 @@ function App() {
             <Route path="/mentor" element={<Mentor />} />
             <Route path="/About-us" element={<About />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/operations" element={<OperationSignIn />} />
+            <Route
+              path="/operations"
+              element={
+                <OperationSignIn
+                  handle_login={handleLogin}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              }
+            />
             <Route
               path="/operations/manage-events"
               element={<EventsManagerPage headerHeight={headerHeight} />}
