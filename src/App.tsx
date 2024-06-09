@@ -24,7 +24,7 @@ import About from "./components/About";
 import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";
 import Hire from "./page/hirewithus/Hire";
-import Profile from "./page/Profile/Profile"
+import Profile from "./page/Profile/Profile1"
 import Programs from "./page/Program-page/Program";
 import { EventsAPI } from "./apis/EventsAPI/EventsAPI";
 import Test from "./components/Test";
@@ -196,7 +196,7 @@ function App() {
           <Footer />
         </div>
       </CartProvider>
-    </BrowserRouter>
+      </BrowserRouter>
   );
 }
 

@@ -40,4 +40,48 @@ export const SalesAPIs = {
       return error;
     }
   },
+  getPaymentDetailsByMobileNoDownload: async function (mobileNumber: String) {
+    const access_token = localStorage.getItem("access-token");
+    // if token is not available in the
+    try {
+      const res = await api.request({
+        url: `v1.5/payment/user/orders-by-number/${mobileNumber}`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      //   console.log("hello");
+      console.log(res.data);
+      //   toast.success("Valid access token!");
+      return res;
+    } catch (error) {
+      newAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
+  getPaymentDetailsByEmailDownload: async function (userId: String) {
+    const access_token = localStorage.getItem("access-token");
+    // if token is not available in the
+    try {
+      const res = await api.request({
+        url: `v1.5/payment/user/orders-by-id/${userId}`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      //   console.log("hello");
+      //   console.log(res);
+      //   toast.success("Valid access token!");
+      return res;
+    } catch (error) {
+      newAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
 };

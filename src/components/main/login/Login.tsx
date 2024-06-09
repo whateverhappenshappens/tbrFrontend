@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import ReviewSlider from "./ReviewSlider";
 import { FaGoogle } from "react-icons/fa";
@@ -51,17 +51,14 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const handle_login_btn = async () => {
     if (validateForm()) {
       console.log(userDetails);
-      try {
-        await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
-        setUserDetails({
-          password: "",
-          email: "",
-          name: "",
-          role: UserRole.USER,
-        });
-      } catch (e) {
-        console.error(e);
-      }
+
+      await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
+      setUserDetails({
+        password: "",
+        email: "",
+        name: "",
+        role: UserRole.USER,
+      });
     }
   };
 
@@ -72,7 +69,7 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   return (
     <div className="main_box">
       <aside className="left">
-      <img
+        <img
           src={logo2} // Replace with the path to your logo image
           alt="TechBairn Logo"
           className="logo" // Add a custom class for styling
