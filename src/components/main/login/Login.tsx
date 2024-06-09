@@ -143,7 +143,7 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
         </a>
       </div>
       {isSignupPopupVisible && (
-        <div className="login-pop absolute w-[100%] ml-[102px] overflow-y-hidden h-full bg-white top-[0%] border">
+        <div className="absolute w-[100%] ml-[102px] overflow-y-hidden h-full bg-white top-[0%] border">
           <Signup />
         </div>
       )}

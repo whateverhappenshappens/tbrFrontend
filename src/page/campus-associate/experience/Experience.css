@@ -12,6 +12,7 @@
 .exp-cards-para{
   font: normal normal normal 35px/40px extra-bold;
   line-height: 2;
+  text-align:left;
 }
 .heading{
   /* font: normal normal normal 40px/40px extra-bold; */

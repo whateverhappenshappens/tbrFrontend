@@ -27,6 +27,24 @@
     justify-content: space-between;
   }
 }
+.toggle-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: extra-bold;
+  background-color: #3853c5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-btn:hover {
+  background-color: #0056b3;
+}
+
+
 
 @media (min-width: 1024px) {
   .bloggingcard-pagination {

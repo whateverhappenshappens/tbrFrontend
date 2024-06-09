@@ -125,7 +125,25 @@ export const UserAPI = {
       console.error("An error occurred:", error);
       return Promise.reject(error);
     }
-  },
+  },isLoggedIn: async function () {
+    const access_token = localStorage.getItem("access-token");
+    if (!access_token) {
+      return false;
+    }
+    try {
+      await api.request({
+        url: "/v1.5/requests/test/private/zoro",
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      return true;
+    } catch (error) {
+      console.error("An error occurred while checking login status:", error);
+      return false;
+    }
+  }
 };
 
 // import { api } from "./configs/axiosConfigs";

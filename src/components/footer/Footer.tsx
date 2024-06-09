@@ -17,12 +17,16 @@ const itemList = [
     name: "Quick Links:",
     list: ["About Us", "Careers", "Become a Mentor", "Hire With Us"],
   },
+  {
+    name: "Reach out to us:",
+    list: ["Contact Us:", "Phone:","- (+91) 87897 26459",  " - (+91) 70048 85397 ", "Email:","info@techbairn.co.in","hello@techbairn.com"],
+  },
 ];
 
 const Footer: React.FC = () => {
   return (
     <footer className="footer px-[30px] sm:pl-[70px] sm:pr-[60px] xl:pl-[140px] xl:pr-[100px] py-14 sm:py-20 xl:py-52 flex flex-col gap-16 xl:gap-32">
-      <div className="flex flex-col lg:flex-row lg:justify-between gap-10 sm:gap-16">
+      <div className="flex flex-col ml- lg:flex-row lg:justify-between gap-10 sm:gap-16">
         <div className="logo-social flex flex-col gap-10 xl:gap-20">
           <img
             src={logo}
@@ -47,7 +51,7 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-around mr-[15rem] gap-2 lg:gap-10 xl:gap-32 overflow-visible overflow-y-hidden">
+        <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-around mr-[0rem] gap-2 lg:gap-10 xl:gap-32 overflow-visible overflow-y-hidden">
           {itemList.map((item, index) => (
             <div key={index} className="flex flex-col sm:gap-6 xl:gap-16 overflow-visible">
               <div className="font-semibold overflow-visible">{item.name}</div>
@@ -62,6 +66,14 @@ const Footer: React.FC = () => {
                       <NavLink to="/" className="text-white">{li}</NavLink>
                     ): li === "About Us" ? (
                       <NavLink to="/About-us" className="text-white">{li}</NavLink>
+                    ):li === "Webmonk" ? (
+                      <NavLink to="/course/Webmonk" className="text-white">{li}</NavLink>
+                    ): li === "Machinester" ? (
+                      <NavLink to="/course/Machinester" className="text-white">{li}</NavLink>
+                    ):li === "Codeslayer" ? (
+                      <NavLink to="/course/Codeslayer" className="text-white">{li}</NavLink>
+                    ):li === "Robotics & IoT" ? (
+                      <NavLink to="/course/IOT" className="text-white">{li}</NavLink>
                     ):
                      (
                       li
@@ -74,18 +86,7 @@ const Footer: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="border-t pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:justify-between gap-10 overflow-visible">
-        <div className="reach-out-title overflow-visible">Reach Out to Us:</div>
-        <br></br>
-        <div className="contact-title overflow-visible">Contact Us:</div>
-        <div>Please feel free to drop us a mail or call to connect with our team. Our response time is less than 1 hour.</div>
-        <div className="phone-title overflow-visible">Phone:</div>
-        <div>- (+91) 87897 26459</div>
-        <div>- (+91) 70048 85397</div>
-        <div className="email-title overflow-visible">Email:</div>
-        <div>- info@techbairn.co.in</div>
-        <div>- hello@techbairn.com</div>
-      </div>
+      
       <div className="border-t pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
         <div>© 2024 TechBairn Research Pvt. Ltd.</div>
         <a href="#"><div>Privacy Policy</div> | <div>techbairn.com</div></a>

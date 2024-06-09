@@ -611,15 +611,14 @@
 // };
 
 // export default Cart;
-import React, { useRef, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import  { useRef, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { OrderRequestData } from "../../types/OrderRequestData";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
-import { NavLink } from "react-router-dom";
 import { UserAPI } from "../../apis/UserAPIs";
 import Signup from "../../components/main/Sign/Signup";
-import Profile1 from "../Profile/Profile1";
+
 interface Props {
   headerHeight: number;
 }
@@ -637,13 +636,17 @@ interface netPriceObjType {
   totalDiscountedPrice: number;
   discount: number;
 }
-
+// const [isLoggedIn, setIsLoggedIn] = useState(false);
+// const [isLoggedIn, setIsLoggedIn] = useState(false);
 const Cart = ({ headerHeight }) => {
   const { cart, removeFromCart } = useCart();
+  const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+  const toggleSignupPopup = () => {
+    setIsSignupPopupVisible(!isSignupPopupVisible);
+  };
   const cartPage = useRef(null);
-  const history = useHistory();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to check if the user is logged in
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [netPriceObj, setNetPriceObj] = useState<netPriceObjType>({
     totalPrice: 0,
     totalDiscountedPrice: 0,
@@ -668,16 +671,15 @@ const Cart = ({ headerHeight }) => {
     });
   }, [cart]);
 
-  useEffect(() => {
-    // Check if the user is logged in
-    UserAPI.isLoggedIn()
-      .then((response) => {
-        setIsLoggedIn(response.data.isLoggedIn);
-      })
-      .catch((error) => {
-        console.error("Error checking login status:", error);
-      });
-  }, []);
+    useEffect(() => {
+      UserAPI.isLoggedIn()
+        .then((isLoggedIn) => {
+          setIsLoggedIn(isLoggedIn);
+        })
+        .catch((error) => {
+          console.error("Error checking login status:", error);
+        });
+    }, []);
 
   const requestData: OrderRequestData = {
     utr: "utr-number",
@@ -686,94 +688,9 @@ const Cart = ({ headerHeight }) => {
     paymentId: "payment-id",
     modeOfPayment: "mode-of-payment",
   };
-
-  function handlePayment() {
-    if (!isLoggedIn) {
-      <div className="login-pop absolute w-[100%] ml-[102px] overflow-y-hidden h-full bg-white top-[0%] border">
-        <Signup />
-      </div>;
-      return;
-    } else {
-      <Router>
-        <Route path="/update-details" element={<Profile1 />} />
-      </Router>;
-    }
-
-    console.log("handlepayment");
-    CartAPI.generateOrder(netPriceObj.totalDiscountedPrice, requestData)
-      .then((response: any) => {
-        console.log(
-          "order created!",
-          response,
-          netPriceObj.totalDiscountedPrice * 100
-        );
-
-        const data = response.data;
-        const options = {
-          key: "rzp_test_LFEMJf6qnRSih6",
-          amount: data.amount,
-          currency: "INR",
-          name: "Techbairn",
-          description: "Test Transaction",
-          order_id: data.orderId,
-          callback_url: "google.com",
-          show_coupons: true,
-          handler: async function (response: any) {
-            await CartAPI.paymentSuccess({
-              orderId: response.razorpay_order_id,
-              paymentId: response.razorpay_payment_id,
-              mobileNumber: "9999999999",
-            })
-              .then((response) => {
-                console.log("payment success!", response);
-              })
-              .catch((error) =>
-                console.log(
-                  "An error occurred while trying to create success log -> " +
-                    error
-                )
-              );
-          },
-          prefill: {
-            name: "Gaurav",
-            email: "gauravtripathii7979@gmail.com",
-            contact: "9999999999",
-          },
-          notes: {
-            address: "Razorpay Corporate Office",
-          },
-          theme: {
-            color: "#3399cc",
-          },
-        };
-        const paymentWindow = new (window as any).Razorpay(options);
-        paymentWindow.on("payment.failed", function (response: any) {
-          console.log("failure --->", response);
-          // an api to log failure
-          CartAPI.paymentFailed({
-            orderId: response.error.metadata.order_id,
-            paymentId: response.error.metadata.payment_id,
-            description: response.error.description,
-            reason: response.error.reason,
-            source: response.error.source,
-            step: response.error.step,
-          })
-            .then((response) => {
-              console.log("payment failed!", response);
-            })
-            .catch((error) => {
-              console.log(
-                "An error occurred while trying to create failure log -> " +
-                  error
-              );
-            });
-        });
-        paymentWindow.open();
-      })
-      .catch((error) => {
-        console.error("There was a problem with the payment operation:", error);
-      });
-  }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (cartPage.current) {
@@ -857,23 +774,43 @@ const Cart = ({ headerHeight }) => {
           </div>
 
           <div className="buttons flex justify-between">
-            <NavLink
-              to="/programs"
-              className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
-            >
+            <NavLink to="/programs"
+              className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer">
               Continue shopping
             </NavLink>
             <div
-              className="continue-shopping bg-[#6D87F5] text-white text-2xl lg:text-4xl border-2 border-[#6D87F5] px-6 lg:px-16 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#6D87F5] cursor-pointer"
-              onClick={handlePayment}
-            >
-              Proceed to Pay....
+              className="continue-shopping bg-[#6D87F5] text-white text-2xl lg:text-4xl border-2 border-[#6D87F5] px-6 lg:px-16 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#6D87F5] cursor-pointer">
+      {isLoggedIn ? (
+        <NavLink to="/update-details">Proceed to pay..</NavLink>
+      ) : (
+        <button onClick={toggleSignupPopup}>Signup!!</button>
+      )}
             </div>
           </div>
         </div>
       </div>
+      {isSignupPopupVisible && (
+        <div className="absolute w-[78%] bg-white  border rounded-lg">
+          <div
+            className="text-9xl cursor-pointer z-10 right-[5%] absolute overflow-hidden"
+            onClick={() => setIsSignupPopupVisible(false)}
+          >
+            &times;
+          </div>
+          <Signup />
+        </div>
+      )}
     </div>
   );
 };
 
 export default Cart;
+
+
+
+
+
+
+
+
+
