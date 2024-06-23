@@ -33,6 +33,8 @@ import EnrollStudent from "./page/enroll/EnrollStudent";
 import { CartProvider } from "./CartContext";
 import SalesOperations from "./page/operations/SalesOperations";
 import ProfilePage from "./page/Profile/ProfilePage";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer} from "react-toastify";
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
@@ -103,6 +105,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <CartProvider>
         <div className="main">
           <Toaster
