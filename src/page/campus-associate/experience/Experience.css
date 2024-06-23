@@ -29,12 +29,15 @@
 }
 
 .experience-head1 {
-  font-size: 3rem;
-  font-family: "extra-bold";
+  font-size: 4rem;
+  font-family: bold;
+  color: #2E436A;
 }
 
 .experience-head2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-family: regular;
+  color: #2E436A;
 }
 
 .cards-container {

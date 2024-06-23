@@ -1,5 +1,5 @@
 import "./Signup.css";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { UserAPI } from "../../../apis/UserAPIs";
 import { User, UserRole } from "../../../types/User";
@@ -22,6 +22,7 @@ function Signup() {
 
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false); // State to manage login popup visibility
   const [isChecked, setIsChecked] = useState(false); // State to track the checkbox
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -88,6 +89,18 @@ function Signup() {
     setIsLoginPopupVisible(!isLoginPopupVisible);
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const isFormValid = () => {
+    return (
+      validateEmail(userDetails.email) &&
+      validatePassword(userDetails.password) &&
+      isChecked
+    );
+  };
+
   return (
     <div className="main_box">
       <aside className="left">
@@ -107,74 +120,77 @@ function Signup() {
         <ReviewSlider />
       </aside>
       <div className="right">
-        <h1>Sign up</h1>
+        <h1>Sign Up</h1>
         <h3>
           Have an account?{" "}
           <button onClick={toggleLoginPopup} className="login-link">
-            Log in
+            Log In
           </button>
         </h3>
-        <label>Fullname</label>
-        <br />
-        <input
-          className="lng"
-          type="text"
-          placeholder="John Doe"
-          value={userDetails.name}
-          onChange={(event) =>
-            setUserDetails({ ...userDetails, name: event.target.value })
-          }
-        />
-        <br />
-        <label>Email</label>
-        <br />
-        <input
-          className="lng"
-          type="email"
-          placeholder="JohnDoe@abc.com"
-          name="email"
-          value={userDetails.email}
-          onChange={handleInputChange}
-        />
-        <br />
-        {formError.email && <div className="error">{formError.email}</div>}
-        <label>Password</label>
-        <br />
-        <input
-          className="lng"
-          type="password"
-          placeholder="Minimum 8 characters"
-          name="password"
-          value={userDetails.password}
-          onChange={handleInputChange}
-        />
-        <br />
-        {formError.password && (
-          <div className="error">{formError.password}</div>
-        )}
-        <input
-          className="check"
-          type="checkbox"
-          checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
-        />
-        <span className="extra1">
-          I accept all <span className="extra">Terms & conditions</span>
-        </span>
-        <br />
-        <button className="btn" onClick={handle_signup} disabled={!isChecked}>
-          Create an account
-        </button>
-        <p className="cont">-----or continue with Google------</p>
-        <a href="#">
-          <div className="google">
-            <FaGoogle className="icon" />
-            Google
+        <div className="wow">
+          <label>Full Name</label>
+          <br />
+          <input
+            className="lng"
+            type="text"
+            placeholder="John Doe"
+            value={userDetails.name}
+            onChange={(event) =>
+              setUserDetails({ ...userDetails, name: event.target.value })
+            }
+          />
+          <br />
+          <label>Email</label>
+          <br />
+          <input
+            className={`lng ${formError.email ? "error-input" : ""}`}
+            type="email"
+            placeholder="JohnDoe@abc.com"
+            name="email"
+            value={userDetails.email}
+            onChange={handleInputChange}
+          />
+          <label>Password</label>
+          <br />
+          <div className="password-container">
+            <input
+              className={`lng ${formError.password ? "error-input" : ""}`}
+              type={showPassword ? "text" : "password"}
+              placeholder="Minimum 8 characters"
+              name="password"
+              value={userDetails.password}
+              onChange={handleInputChange}
+            />
+            <button
+              type="button"
+              className="eye-icon"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
           </div>
-        </a>
+          <input
+            className="check"
+            type="checkbox"
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+          <span className="ex1">
+            I accept all <span className="ex">Terms & conditions</span>
+          </span>
+          <br />
+          <button className="btn" onClick={handle_signup} disabled={!isFormValid()}>
+            Create an account
+          </button>
+          <p className="cont">-----or continue with Google------</p>
+          <div className="google">
+            <FaGoogle className="icon1" />
+            <a href="/@{/oauth2/authorization/google}">Google</a>
+          </div>
+        </div>
       </div>
       {isLoginPopupVisible && (
-        <div className="login-pop absolute w-[100%] ml-[104px] h-full overflow-y-hidden bg-white border">
+        <div className="login absolute w-[100%] ml-[114px] h-full overflow-y-hidden bg-white border">
           <Login />
         </div>
       )}
@@ -183,3 +199,4 @@ function Signup() {
 }
 
 export default Signup;
+

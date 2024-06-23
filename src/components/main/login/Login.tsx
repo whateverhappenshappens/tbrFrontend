@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ReviewSlider from "./ReviewSlider";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import "../../../styles/components/Login.css";
 import { UserRole, User } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
@@ -22,6 +22,7 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   });
 
   const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false); // State to manage signup popup visibility
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
 
   const validateForm = () => {
     let valid = true;
@@ -69,6 +70,10 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="main_box">
       <aside className="left">
@@ -79,7 +84,7 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
         />
         <h2>
           We are glad <br />
-          you are back!
+          you are back !
         </h2>
         <p className="para">
           Discover India's best EdTech platform for upskilling yourself with
@@ -88,11 +93,11 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
         <ReviewSlider />
       </aside>
       <div className="right">
-        <h1>Log in</h1>
+        <h1>Log In</h1>
         <h3>
           Don't have an account?{" "}
           <button onClick={toggleSignupPopup} className="signup-link">
-            Sign up
+            Sign Up
           </button>
         </h3>
 
@@ -107,21 +112,28 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
             setUserDetails({ ...userDetails, email: e.target.value })
           }
         />
-        <br />
         {errors.email && <div className="error">{errors.email}</div>}
 
         <label>Password</label>
         <br />
-        <input
-          className="lng"
-          type="password"
-          placeholder="Minimum 8 characters"
-          value={userDetails.password}
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, password: e.target.value })
-          }
-        />
-        <br />
+        <div className="password-container">
+          <input
+            className="lng"
+            type={showPassword ? "text" : "password"}
+            placeholder="Minimum 8 characters"
+            value={userDetails.password}
+            onChange={(e) =>
+              setUserDetails({ ...userDetails, password: e.target.value })
+            }
+          />
+          <button
+            type="button"
+            className="eye-icon"
+            onClick={togglePasswordVisibility}
+          >
+            {showPassword ? <FaEyeSlash className="icon" /> : <FaEye className="icon" />}
+          </button>
+        </div>
         {errors.password && <div className="error">{errors.password}</div>}
 
         <div className="new">
@@ -132,18 +144,18 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
           <div className="pass">Forget Password?</div>
         </div>
         <button className="btn1" onClick={handle_login_btn}>
-          Log in
+          Log In
         </button>
         <p className="cont">-------or continue login with--------</p>
-        <a href="/oauth2/authorization/google">
-          <div className="google">
-            <FaGoogle className="icon" />
-            Google
+        
+          <div className="google1">
+            <FaGoogle className="icon1" />
+            <a href="/@{/oauth2/authorization/google}">Google</a>
           </div>
-        </a>
+          
       </div>
       {isSignupPopupVisible && (
-        <div className="absolute w-[100%] ml-[102px] overflow-y-hidden h-full bg-white top-[0%] border">
+        <div className="signup absolute w-[100%] ml-[114px] overflow-y-hidden h-full bg-white top-[0%] border">
           <Signup />
         </div>
       )}

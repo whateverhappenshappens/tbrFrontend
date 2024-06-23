@@ -6,7 +6,7 @@ export const blogs: Blog[] = [
   {
     id: "one",
     image: img1,
-    title: "Mastering HTML5: A Beginner's Guide to Front-End Development",
+    title: "Mastering HTML5: A Beginner's Guide to the Front-End Development",
     blog: `Are you looking to dip your toes into the vast ocean of web development? Perhaps you've heard about HTML5 and its significance in crafting stunning websites and applications, but you're not quite sure where to begin. Fear not, for in this beginner's guide, we'll navigate through the fundamentals of HTML5 and set you on the path to becoming a proficient front-end developer.
 
     <br/><br/><strong  class="text-customBlue">Understanding HTML5:</strong><br/><br/>
@@ -264,7 +264,7 @@ export const blogs: Blog[] = [
   {
     id: "seven",
     image: img1,
-    title: "Top 5 JavaScript Frameworks You Need to Learn in 2024 ",
+    title: "Top 5 JavaScript Frameworks You Need to Learn in 2024 can help you in future ",
     blog: ` Top 5 JavaScript Frameworks You Need to Learn in 2024
 
     JavaScript has solidified its position as the go-to language for web development, and mastering its frameworks is paramount for staying ahead in the field. In this blog post, we'll explore the top 5 JavaScript frameworks you need to learn in 2024 to thrive in the ever-evolving landscape of web development.
@@ -379,7 +379,7 @@ export const blogs: Blog[] = [
     id: "nine",
     image: img1,
     title:
-      "IoT Applications in Everyday Life: How IoT is Transforming Industries and Enhancing Efficiency    ",
+      "IoT Security: Safeguarding Connected Devices and Data in the Age of Connectivity",
     blog: `In today's fast-paced world, technology is evolving at an unprecedented rate, transforming the way we live and work. One of the most significant advancements in recent years is the Internet of Things (IoT). IoT refers to the interconnection of everyday devices via the internet, enabling them to send and receive data, ultimately leading to smarter, more efficient systems. From smart homes to industrial automation, IoT is revolutionizing various industries and enhancing efficiency in ways never imagined before.
 
     <br/><br/>Smart Homes:<br/><br/>
@@ -420,7 +420,7 @@ export const blogs: Blog[] = [
     id: "ten",
     image: img1,
     title:
-      "IoT Security: Safeguarding Connected Devices and Data in the Age of Connectivity    ",
+      "IoT Applications in Everyday Life: How IoT is Transforming Industries and Enhancing Efficiency",
     blog: `In today's digitally interconnected world, the Internet of Things (IoT) has become ubiquitous, revolutionizing various aspects of our daily lives. From smart homes and wearable devices to industrial machinery and healthcare equipment, IoT technology enables seamless connectivity and data exchange. However, this proliferation of interconnected devices also poses significant security challenges, raising concerns about the protection of sensitive data and privacy. In this blog post, we will explore the importance of IoT security and discuss strategies for safeguarding connected devices and data in the age of connectivity.
 
     <br/><br/>Understanding IoT Security<br/><br/>

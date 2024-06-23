@@ -3,7 +3,7 @@
     background-color: #FFFFFF;
     border-radius: 2rem;
     width: 80%;
-    height: 40rem; /* Adjusted minimum height for all cards */
+    height: 36.5rem; /* Adjusted minimum height for all cards */
     overflow: hidden; /* Ensure content doesn't overflow */
     margin: 0 auto; /* Center the card horizontally */
 }
@@ -11,7 +11,8 @@
 .roles-colorful-bg {
     border-radius: 2rem;
     border: none;
-    margin: 3rem; /* Use shorthand for margin */
+    margin: 3rem; 
+    padding-left: 8rem;
 }
 
 .roles-colorful-bg img {
@@ -27,7 +28,11 @@
 .roles-cards-paragraph p {
     font-size: 2rem;
 }
-
+@media (max-width:768px){
+    .roles-colorful-bg {
+        padding-right: 8rem;
+    }
+}
 @media (max-width: 600px) {
     .roles-colorful-bg img {
         height: 10.4rem;

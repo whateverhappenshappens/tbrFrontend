@@ -3,6 +3,8 @@ import "./Details.css";
 import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
   star: number;
@@ -64,12 +66,14 @@ const Details: React.FC<Props> = (props) => {
     };
 
     addToCart(course);
+    toast.success("Item successfully added to cart!");
   };
 
   const arr = new Array<number>(5).fill(0);
 
   return (
     <div className="details">
+      <ToastContainer />
       <div className="details-content">
         <div className="details-info">
           <div className="details-links">

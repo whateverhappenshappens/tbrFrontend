@@ -6,18 +6,24 @@ function startAnimation() {
   valueDisplays.forEach((valueDisplay) => {
     let startValue = 0;
     let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+    let increment = 10; // Fixed increment to ensure the count goes above endValue
+    let finalValue = endValue + increment;
 
     if (isNaN(endValue)) {
       console.error(`Invalid data-val: ${valueDisplay.getAttribute("data-val")}`);
       return;
     }
 
-    let duration = Math.floor(interval / endValue);
+    let duration = Math.floor(interval / finalValue);
 
     let counter = setInterval(function() {
       startValue += 1;
-      valueDisplay.textContent = startValue;
-      if (startValue === endValue) {
+      if (startValue > endValue) {
+        valueDisplay.textContent = `${endValue}+`;
+      } else {
+        valueDisplay.textContent = startValue;
+      }
+      if (startValue === finalValue) {
         clearInterval(counter);
       }
     }, duration);

@@ -52,12 +52,12 @@
     background: #2E436A 0% 0% no-repeat padding-box;
     font-size: 3.5rem;
     color:white;
-    gap:4.6rem;
+    gap:4.8rem;
     max-width: 42rem;
     border-radius: 15px;
 }
 .speaker-profile-linkedin img{
-    max-width:15%;
+    max-width:10%;
     height: auto;
 }
 

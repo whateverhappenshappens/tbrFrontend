@@ -40,3 +40,30 @@
 .footer a:hover div::after {
   width: 100%; 
 }
+.foot {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 700px) {
+  .foot {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .links-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: left;
+  }
+  
+  .links-main > div {
+    margin-bottom: 1.5rem;
+  }
+}

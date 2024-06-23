@@ -122,9 +122,9 @@
   text-align: left;
   display: none;
   position: absolute;
-  bottom: -10rem;
-  left: 80rem;
-  padding: 1rem 4rem;
+  bottom: -11rem;
+  left: 78rem;
+  padding: 2rem 2rem;
   background-color: #ffffff;
   cursor: pointer;
   border-radius: 1rem;
@@ -139,45 +139,15 @@
 .more-option {
   color: #000;
   padding: 2px 50px;
-  border-bottom: 2px solid #000;
+  /* border-bottom: 2px solid #000; */
 }
 
 .more-option:hover {
   border-bottom: 2px solid white;
+   /* Add this line */
 }
 
-/* 
-.more-btn{
-  font-size: 2.3rem;
-}
-
-.dropdown-menu{
-  display: block;
-  position: absolute;
-  bottom: -12rem;
-  left: 85rem;
-  padding: 1rem 4rem;
-  background-color: whitesmoke;
-  cursor: pointer;
-  border-radius: 1rem;
-  display: flexbox;
-  align-items: end;
-  justify-content: left;
-}
-
-.more-option{
-  color: #2e436a;
-  text-align:end;
-  padding: 2px 50px;
-  border-bottom: 2px solid #000;
-} */
-
-
-.more-option:hover{
-  border-bottom: 2px solid white;
-}
-
-.more-option1{
+.more-option1 {
   display: none;
 }
 @media (min-width: 768px) {
@@ -213,12 +183,15 @@
   }
   .main-nav li a:hover {
     color: #6d87f5;
-    border-bottom: 5px solid #6d87f5;
-    transition: 0.1s ease;
+    box-shadow: rgba(0, 0, 0, 0.56) 1px 1px 2px 4px;
+    transition: 0.5s ease;
+    padding: 2px;  /* Adjust padding as needed */
+    border-radius: 5px;  /* Adjust border-radius as needed */
   }
+  
   .main-nav li a.active {
     color: #6d87f5;
-    border-bottom: 5px solid #6d87f5;
+    /* border-bottom: 5px solid #6d87f5; */
   }
   .trans-box {
     display: none;
@@ -306,6 +279,12 @@
   bottom: 21rem;
   left: 1.2rem;
   padding: 1rem;
+}
+.signup{
+  z-index: 0;
+}
+.login-pop{
+  z-index: 0;
 }
 .more-option{
   display: none;

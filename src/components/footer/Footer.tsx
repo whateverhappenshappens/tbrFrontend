@@ -19,14 +19,14 @@ const itemList = [
   },
   {
     name: "Reach out to us:",
-    list: ["Contact Us:", "Phone:","- (+91) 87897 26459",  " - (+91) 70048 85397 ", "Email:","info@techbairn.co.in","hello@techbairn.com"],
+    list: ["Contact Us:", "Phone:","(+91) 87897 26459",  " (+91) 70048 85397 ", "Email:","info@techbairn.co.in","hello@techbairn.com"],
   },
 ];
 
 const Footer: React.FC = () => {
   return (
     <footer className="footer px-[30px] sm:pl-[70px] sm:pr-[60px] xl:pl-[140px] xl:pr-[100px] py-14 sm:py-20 xl:py-52 flex flex-col gap-16 xl:gap-32">
-      <div className="flex flex-col ml- lg:flex-row lg:justify-between gap-10 sm:gap-16">
+      <div className="foot flex flex-col ml- lg:flex-row lg:justify-between gap-10 sm:gap-16">
         <div className="logo-social flex flex-col gap-10 xl:gap-20">
           <img
             src={logo}

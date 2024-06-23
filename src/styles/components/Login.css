@@ -223,10 +223,7 @@
 }
 .error {
   color: red;
-  font-size: 1.3rem;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  padding-left: 5px;
+  font-size: 1rem;
 }
 .left h1 {
   color: beige;
@@ -253,7 +250,8 @@
 
 .para {
   margin-top: 1.77rem;
-  font: normal normal normal 20px/29px extra-bold;
+  font: normal normal normal 20px/29px;
+  font-family: regular;
   color: #e9f4fb;
 }
 
@@ -298,9 +296,9 @@
 }
 
 .right h3 {
-  font-size: 1.3rem;
+  font-size: 2.3rem;
   margin-bottom: 20px;
-  font-family: extra-bold;
+  font-family: bold;
   color: #2e436a;
 }
 
@@ -310,7 +308,9 @@ a {
 }
 
 label {
-  font: normal normal bold 25px/26px extra-bold;
+  font-family: demi-bold;
+  font-size: 25px;
+  color: #2E436A;
 }
 
 .right .lng {
@@ -331,13 +331,16 @@ label {
 }
 
 .add {
-  font: normal normal bold 16px/30px extra-bold;
+  font-size: 1.8rem;
+  font-family: demi-bold;
   color: #2E436A;
 }
 
 .pass {
   color: #6d87f5;
-  font: normal normal bold 16px/30px extra-bold;
+  font: normal normal bold;
+  font-size: 1.8rem;
+  font-family: demi-bold;
 }
 
 .rem {
@@ -351,7 +354,8 @@ label {
 .btn1 {
   width: 100%;
   height: 50px;
-  font: normal normal bold 15px/20px extra-bold;
+  font-family: demi-bold;
+  font-size: 20px;
   background-color: #6d87f5;
   border: none;
   color: azure;
@@ -368,9 +372,6 @@ label {
   margin-right: 10px;
 }
 
-.extra {
-  color: #6d87f5;
-}
 
 .cont {
   margin-bottom: 20px;
@@ -379,16 +380,40 @@ label {
   text-align: center;
 }
 
-.google {
-  height: 50px;
-  width: 100%;
+.google1 {
+  height: 60px;
+  width: 190px;
   border: 2px solid #000;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   font-size: 1.7rem;
+  font-family: bold;
   margin: 0 auto;
+  margin-top: 3.3rem;
+}
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  padding-right: 40px; /* Ensure there is space for the eye icon */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.icon {
+  font-size: 24px; /* Increase the size of the icon */
 }
 
 .icon {
@@ -401,8 +426,8 @@ label {
   }
 
   .right {
-    width: 95%;
-    min-width: 244px;
+    width: 100%;
+    min-width: 284px;
   }
   .right h3{
     font-size: 1.3rem;
@@ -417,17 +442,22 @@ label {
   .right .lng {
     width: 95%;
   }
-
+  .signup{
+    margin-right: 83px;
+  }
   .btn1 {
     width: 100%;
     height: 40px;
     margin: 0;
     margin-top: 3rem;
+    font-family: demi-bold;
+    font-size: 20px/26px;
   }
 
   .google {
     width: 95%;
     margin: 0 auto;
+    border: none;
   }
 
   .cont {

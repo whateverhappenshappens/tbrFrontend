@@ -51,6 +51,7 @@ const FeedbackScroll: React.FC<FeedbackScrollProps> = () => {
               <p className="feedback-scroll-content-div-extraordinary-text-description">
                 {blog.summary}
               </p>
+              <div className="my">
               <div className="feedback-scroll-content-div-owner-content">
                 <img
                   src={FeedbackImg}
@@ -59,7 +60,8 @@ const FeedbackScroll: React.FC<FeedbackScrollProps> = () => {
                 />
                 <div className="feedback-scroll-content-div-owner-content-details">
                   <p className="name">{blog.author}</p>
-                  <p className="date">{blog.date}</p>
+                  <p >{blog.date}</p>
+                </div>
                 </div>
               </div>
             </div>

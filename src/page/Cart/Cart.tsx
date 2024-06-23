@@ -611,13 +611,15 @@
 // };
 
 // export default Cart;
-import  { useRef, useEffect, useState } from "react";
+
+import { useRef, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { OrderRequestData } from "../../types/OrderRequestData";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
 import { UserAPI } from "../../apis/UserAPIs";
-import Signup from "../../components/main/Sign/Signup";
+import Signup from "../../components/main/login/Login";
+import "./Cart.css";
 
 interface Props {
   headerHeight: number;
@@ -636,23 +638,18 @@ interface netPriceObjType {
   totalDiscountedPrice: number;
   discount: number;
 }
-// const [isLoggedIn, setIsLoggedIn] = useState(false);
-// const [isLoggedIn, setIsLoggedIn] = useState(false);
-const Cart = ({ headerHeight }) => {
+
+const Cart = ({ headerHeight }: Props) => {
   const { cart, removeFromCart } = useCart();
   const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
-  const toggleSignupPopup = () => {
-    setIsSignupPopupVisible(!isSignupPopupVisible);
-  };
-  const cartPage = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const cartPage = useRef<HTMLDivElement>(null);
   const [netPriceObj, setNetPriceObj] = useState<netPriceObjType>({
     totalPrice: 0,
     totalDiscountedPrice: 0,
     discount: 0,
   });
-
+  
   useEffect(() => {
     let totalPrice = 0;
     let totalDiscountedPrice = 0;
@@ -671,32 +668,31 @@ const Cart = ({ headerHeight }) => {
     });
   }, [cart]);
 
-    useEffect(() => {
-      UserAPI.isLoggedIn()
-        .then((isLoggedIn) => {
-          setIsLoggedIn(isLoggedIn);
-        })
-        .catch((error) => {
-          console.error("Error checking login status:", error);
-        });
-    }, []);
+  useEffect(() => {
+    UserAPI.isLoggedIn()
+      .then((isLoggedIn) => {
+        setIsLoggedIn(isLoggedIn);
+      })
+      .catch((error) => {
+        console.error("Error checking login status:", error);
+      });
+  }, []);
 
-  const requestData: OrderRequestData = {
-    utr: "utr-number",
-    mobileNumber: "9999999999",
-    userId: "user-id",
-    paymentId: "payment-id",
-    modeOfPayment: "mode-of-payment",
-  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  
   useEffect(() => {
     if (cartPage.current) {
       cartPage.current.style.paddingTop = `${headerHeight + 10}px`;
     }
   }, [headerHeight]);
+
+  const toggleSignupPopup = () => {
+    setIsSignupPopupVisible(!isSignupPopupVisible);
+  };
+
 
   return (
     <div
@@ -706,95 +702,101 @@ const Cart = ({ headerHeight }) => {
       <div className="heading text-6xl lg:text-8xl font-semibold text-center lg:text-left overflow-visible">
         Your Shopping Bag
       </div>
-      <div className="main-cart border border-[#ccc] rounded-2xl flex flex-col gap-10 p-5 lg:p-7 xl:p-16 shadow-xl">
-        {cart.map((course) => (
-          <div
-            key={course.id}
-            className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-92"
+      {cart.length === 0 ? (
+        <div className="empty-cart-message text-center text-4xl lg:text-6xl font-bold mb-[5rem] overflow-visible">
+          <h2 className="overflow-visible">Your bag is empty</h2>
+          <NavLink
+            to="/programs"
+            className="start-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer mt-10 inline-block"
           >
-            <div className="course-box-1 flex gap-3 xl:gap-7 lg:w-4/6">
-              <div className="img h-48 w-5/12 xl:w-4/12 xl:h-60 border rounded-xl bg-slate-500"></div>
-              <div className="course-name-desc w-7/12 flex flex-col justify-between py-5 xl:py-7">
-                <div className="course-name text-4xl lg:text-5xl xl:text-6xl overflow-visible font-semibold">
-                  {course.name}
-                </div>
-                <div className="course-desc text-2xl lg:text-3xl xl:text-4xl xl:overflow-visible">
-                  {course.description}
-                </div>
-              </div>
-            </div>
-            <div className="course-box-2 flex items-center justify-between lg:w-2/6">
-              <div className="price text-3xl lg:text-4xl xl:text-5xl xl:overflow-visible font-semibold">
-                <div className="new text-[#6D87F5] overflow-hidden">
-                  Rs {course.discountedPrice}
-                </div>
-                <div className="line-through overflow-hidden">
-                  Rs {course.price}
-                </div>
-              </div>
-              <div
-                className="border-2 border-[#FF7E6C] bg-[#FF7E6C] text-white text-2xl lg:text-4xl xl:text-5xl font-semibold px-5 lg:px-6 xl:px-10 py-3 lg:py-4 xl:py-6 cursor-pointer rounded-xl hover:bg-white hover:text-[#FF7E6C]"
-                onClick={() => removeFromCart(course.id)}
-              >
-                Remove
-              </div>
-            </div>
-          </div>
-        ))}
-        <div className="cart-footer flex flex-col gap-5 border-t-2 border-dashed border-[#2E436A] pt-5">
-          <div className="net-box flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
-            <div className="price text-3xl flex justify-between lg:gap-10">
-              <div className="text-4xl lg:text-5xl xl:text-6xl xl:overflow-visible text-[#2E436A] font-semibold">
-                Total Amount
-              </div>
-              <div className="flex flex-col xl:text-5xl xl:overflow-hidden">
-                <div className="new text-[#6D87F5] xl:overflow-visible">
-                  Rs {netPriceObj.totalDiscountedPrice}
-                </div>
-                <div className="old line-through xl:overflow-visible">
-                  Rs {netPriceObj.totalPrice}
-                </div>
-                <div className="discount-per xl:overflow-visible">
-                  {netPriceObj.discount}% off
-                </div>
-              </div>
-            </div>
-
-            {/* COUPONS SECTION */}
-            {/* <div className="discount-coupon shadow-2xl lg:shadow-md border rounded-2xl w-fit flex mx-auto lg:h-fit lg:my-auto">
-              <input
-                type="text"
-                placeholder="Enter Coupon code"
-                className="border-none px-5 py-3 text-xl lg:text-3xl outline-none"
-              />
-              <div className="bg-[#6D87F5] text-white px-7 py-3 rounded-2xl text-xl lg:text-3xl border border-[#6D87F5] hover:bg-white hover:text-[#6D87F5] cursor-pointer">
-                Apply
-              </div>
-            </div> */}
-          </div>
-
-          <div className="buttons flex justify-between">
-            <NavLink to="/programs"
-              className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer">
-              Continue shopping
-            </NavLink>
-            <div
-              className="continue-shopping bg-[#6D87F5] text-white text-2xl lg:text-4xl border-2 border-[#6D87F5] px-6 lg:px-16 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#6D87F5] cursor-pointer">
-      {isLoggedIn ? (
-        <NavLink to="/update-details">Proceed to pay..</NavLink>
+            Start shopping
+          </NavLink>
+        </div>
       ) : (
-        <button onClick={toggleSignupPopup}>Signup!!</button>
-      )}
+        <div className="main-cart border border-[#ccc] rounded-2xl flex flex-col gap-10 p-5 lg:p-7 xl:p-16 shadow-xl">
+          {cart.map((course) => (
+            <div
+              key={course.id}
+              className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-9"
+            >
+              <div className="course-box-1 flex gap-3 xl:gap-7 lg:w-4/6">
+                <div className="img h-48 w-5/12 xl:w-4/12 xl:h-60 border rounded-xl bg-slate-500"></div>
+                <div className="course-name-desc w-7/12 flex flex-col justify-between py-5 xl:py-7">
+                  <div className="course-name text-4xl lg:text-5xl xl:text-6xl overflow-visible font-semibold">
+                    {course.name}
+                  </div>
+                  <div className="course-desc text-2xl lg:text-3xl xl:text-4xl xl:overflow-visible">
+                    {course.description}
+                  </div>
+                </div>
+              </div>
+              <div className="course-box-2 flex items-center justify-between lg:w-2/6">
+                <div className="price text-3xl lg:text-4xl xl:text-5xl xl:overflow-visible font-semibold">
+                  <div className="new text-[#6D87F5] overflow-hidden">
+                    Rs {course.discountedPrice}
+                  </div>
+                  <div className="line-through overflow-hidden">
+                    Rs {course.price}
+                  </div>
+                </div>
+                <div
+                  className="border-2 border-[#FF7E6C] bg-[#FF7E6C] text-white text-2xl lg:text-4xl xl:text-5xl font-semibold px-5 lg:px-6 xl:px-10 py-3 lg:py-4 xl:py-6 cursor-pointer rounded-xl hover:bg-white hover:text-[#FF7E6C]"
+                  onClick={() => removeFromCart(course.id)}
+                >
+                  Remove
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="cart-footer flex flex-col gap-5 border-t-2 border-dashed border-[#2E436A] pt-5">
+            <div className="net-box flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
+              <div className="price text-3xl flex justify-between lg:gap-10">
+                <div className="text-4xl lg:text-5xl xl:text-6xl xl:overflow-visible text-[#2E436A] font-semibold">
+                  Total Amount
+                </div>
+                <div className="flex flex-col xl:text-5xl xl:overflow-hidden">
+                  <div className="new text-[#6D87F5] xl:overflow-visible">
+                    Rs {netPriceObj.totalDiscountedPrice}
+                  </div>
+                  <div className="old line-through xl:overflow-visible">
+                    Rs {netPriceObj.totalPrice}
+                  </div>
+                  <div className="discount-per xl:overflow-visible">
+                    {netPriceObj.discount}% off
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="buttons flex justify-between">
+              <NavLink
+                to="/programs"
+                className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
+              >
+                Continue shopping
+              </NavLink>
+              <div
+                className={`continue-shopping bg-[#6D87F5] text-white text-2xl lg:text-4xl border-2 border-[#6D87F5] px-6 lg:px-16 py-3 lg:py-5 rounded-2xl font-semibold ${
+                  cart.length === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-white hover:text-[#6D87F5] cursor-pointer"
+                }`}
+              >
+                {isLoggedIn ? (
+                  <NavLink to="/update-details">
+                    <button disabled={cart.length === 0}>Proceed to pay..</button>
+                  </NavLink>
+                ) : (
+                  <button onClick={toggleSignupPopup} disabled={cart.length === 0}>
+                    Proceed to pay..
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       {isSignupPopupVisible && (
-        <div className="absolute w-[78%] bg-white  border rounded-lg">
-          <div
-            className="text-9xl cursor-pointer z-10 right-[5%] absolute overflow-hidden"
-            onClick={() => setIsSignupPopupVisible(false)}
-          >
+        <div className="signing">
+          <div className="close-btn text-9xl" onClick={() => setIsSignupPopupVisible(false)}>
             &times;
           </div>
           <Signup />
@@ -805,12 +807,4 @@ const Cart = ({ headerHeight }) => {
 };
 
 export default Cart;
-
-
-
-
-
-
-
-
 

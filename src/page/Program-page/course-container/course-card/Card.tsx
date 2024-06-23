@@ -1,8 +1,9 @@
-
 import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../../CartContext";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
   heading: string;
@@ -19,7 +20,7 @@ const Card: React.FC<Props> = (props) => {
     const generateUniqueId = () => {
       return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     };
-  
+
     const course = {
       id: generateUniqueId(),
       name: props.heading,
@@ -29,10 +30,12 @@ const Card: React.FC<Props> = (props) => {
     };
 
     addToCart(course);
+    toast.success("Item successfully added to cart!");
   };
 
   return (
     <div className="course-card">
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <div className="course-card-banner-image">
         <p>Live Classes</p>
         <img src={props.image} alt="Girl"></img>
@@ -57,7 +60,7 @@ const Card: React.FC<Props> = (props) => {
             <button className="enroll-btn course-card-content-button-enroll-now" onClick={handleEnroll}>
               Enroll Now
             </button>
-            <button className="course-card-content-button-view-details" >
+            <button className="course-card-content-button-view-details">
               <Link to={props.link}> Details</Link>
             </button>
           </div>
@@ -65,7 +68,6 @@ const Card: React.FC<Props> = (props) => {
       </div>
     </div>
   );
-
 };
 
 export default Card;

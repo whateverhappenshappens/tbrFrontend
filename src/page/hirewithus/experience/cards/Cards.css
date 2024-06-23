@@ -28,16 +28,16 @@
   
   .exp-cards-head1 {
     color: #2E436A;
-    font-size: 3rem;
+    font-size:30px;
     font-family: 'bold';
     overflow: visible;
   }
   
   .exp-cards-para1 {
     overflow: visible;
-    color: #4F4F4F;
-    font-size: 1.5rem;
-    font-family: 'regular';
+    color: #2E436A;
+    font: normal normal normal 18px/40px regular;
+    line-height: 1.5;
   }
   
   .exp-cards-head,.exp-cards-para{

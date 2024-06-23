@@ -47,7 +47,7 @@ function Header({
   return (
     <header className="header" ref={headerContainer}>
       {showLogin && (
-        <div className="login-pop absolute w-3/4 bg-white top-[66%] rounded-lg border">
+        <div className="login-pop absolute w-3/4 bg-white top-[24%] rounded-lg border">
           <div
             className="text-9xl right-[5%] z-10 cursor-pointer absolute overflow-hidden"
             onClick={() => setShowLogin(false)}
@@ -58,7 +58,7 @@ function Header({
         </div>
       )}
       {showSignup && (
-        <div className="signup absolute w-[78%] bg-white top-[64%] border rounded-lg">
+        <div className="signup absolute w-[78%] bg-white top-[24%] border rounded-lg">
           <div
             className="text-9xl cursor-pointer z-10 right-[5%] absolute overflow-hidden"
             onClick={() => setShowSignup(false)}
@@ -106,7 +106,7 @@ function Header({
               <ul className="dropdown-menu">
                 <li>
                   <NavLink to="/hire-with-us">
-                    <button className="more-option">Hire With Us</button>
+                    <button className="more-option">Hire with us</button>
                   </NavLink>
                 </li>
 
@@ -129,17 +129,12 @@ function Header({
             </NavLink>
           </li>
           <li>
-            <NavLink to="/event-listing">
-              <button className="more-option1">Refer & Earn</button>
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/blog">
               <button className="more-option1">Blog</button>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about">
+            <NavLink to="/about-us">
               <button className="more-option1">About Us</button>
             </NavLink>
           </li>

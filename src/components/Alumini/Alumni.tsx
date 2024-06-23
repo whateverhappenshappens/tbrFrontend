@@ -8,7 +8,7 @@ import clear from "../../assets/companies/clear.png";
 import hotstar from "../../assets/companies/hotstar.png";
 import samsung from "../../assets/companies/samsung.png";
 import bosch from "../../assets/companies/bosch.png";
-import celebal from "../../assets/companies/celebal.png"
+import red from "../../assets/companies/red-hat.png"
 const Alumni = () => {
   const settings = {
     infinite: true,
@@ -20,7 +20,7 @@ const Alumni = () => {
   };
 
   const companyLogos = [
-    celebal,
+    red,
     adobe,
     clear,
     hotstar,
@@ -31,7 +31,7 @@ const Alumni = () => {
   return (
     <div className="alumni mt-10 bg-[#2E436A] px-[30px] py-10 lg:py-24 md:pl-[70px] md:pr-[60px] xl:pl-[140px] xl:pr-[100px] flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-5">
       <div className="box1 flex flex-col lg:items-center lg:justify-center lg:text-left text-white text-center w-full lg:w-5/12">
-        <div className="font-bold text-5xl md:text-7xl xl:text-8xl lg:w-full overflow-hidden">
+        <div className="our text-4xl md:text-7xl xl:text-8xl lg:w-full overflow-hidden">
           Our Alumni work at
         </div>
         <div className="text-2xl md:text-4xl xl:text-5xl overflow-hidden">

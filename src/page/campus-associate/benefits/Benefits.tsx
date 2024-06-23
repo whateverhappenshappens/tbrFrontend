@@ -79,7 +79,7 @@ const Benefits: React.FC = () => {
   return (
     <div className="benefits">
       <div className="benefits-head">
-        <p className="vr-bold">Benefits of a Campus Associate</p>
+        <p className="ben">Benefits of a Campus Associate</p>
       </div>
       <Slider {...settings}>
         {benefitsData.map((benefit, index) => (
