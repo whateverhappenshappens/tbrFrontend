@@ -3,8 +3,7 @@ import "./Details.css";
 import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 
 interface Props {
   star: number;
@@ -73,7 +72,7 @@ const Details: React.FC<Props> = (props) => {
 
   return (
     <div className="details">
-      <ToastContainer /> {/* Ensure ToastContainer is placed here */}
+       {/* Ensure ToastContainer is placed here */}
       <div className="details-content">
         <div className="details-info">
           <div className="details-links">

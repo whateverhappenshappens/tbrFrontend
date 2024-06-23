@@ -2,8 +2,8 @@ import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../../CartContext";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import {  toast } from "react-toastify";
+
 
 interface Props {
   heading: string;
@@ -35,7 +35,7 @@ const Card: React.FC<Props> = (props) => {
 
   return (
     <div className="course-card">
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      
       <div className="course-card-banner-image">
         <p>Live Classes</p>
         <img src={props.image} alt="Girl"></img>
