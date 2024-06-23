@@ -8,7 +8,7 @@
 }
 .media-presence h2 {
   font-size: 4rem;
-  font-weight: 900;
+  font-family: bold;
   color: #2e436a;
   text-align: center;
 }
@@ -40,19 +40,19 @@
 }
 .media-presence .media-item .media-title {
   font-size: 2.3rem;
-  font-weight: 900;
+  font-family: bold;
   color: #2e436a;
   text-align: left;
   width: 100%;
 }
 .media-presence .media-item .media-para {
   font-size: 1.8rem;
-  font-weight: 400;
+  font-family: medium;
   color: #2e436a;
 }
 .media-presence .media-item .read-now {
   font-size: 1.8rem;
-  font-weight: 900;
+  font-family: bold;
   background-color: #6d87f5;
   color: white;
   border: 2px solid #6d87f5;

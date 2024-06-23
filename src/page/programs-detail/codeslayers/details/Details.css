@@ -7,7 +7,7 @@
     margin-top: 10rem;
     padding: 4rem 9.2rem;
     border-radius: 20px;
-    background: linear-gradient(90deg, #6D87F5, #6D87F500), url('../../../../assets/Mask Group 9.png') right center/cover no-repeat;
+    background: linear-gradient(90deg, #6D87F5, #6D87F500), url('../../../../assets/my.png') right center/cover no-repeat;
     display: flex;
     justify-content: flex-start; 
     flex-direction: column;
@@ -28,7 +28,13 @@
     color: white;
     text-decoration: none;
 }
-
+.Toastify__toast--success {
+    background-color: #FFFFFF; /* Green background */
+    color: rgb(98, 216, 98); /* White text */
+    height: 7rem;
+    font-family: bold;
+    font-size: larger;
+  }
 .details-paragraphs {
     color: white;
     text-align: left; 
@@ -114,7 +120,7 @@
 }
 
 .details-buttons-download {
-    border: 3px solid #FFFFFF;
+    border: 1px solid #FFFFFF;
     border-radius: 14px;
     font-size: 1.6rem;
     color: white;

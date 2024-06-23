@@ -1,0 +1,129 @@
+
+.gig1 {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    width: 100%;
+    margin-top: 15rem;
+    padding-top: 8rem;
+    padding-bottom: 12rem;
+}
+.gig-headings-head1 {
+    font-family: 'bold';
+    font-size: 6rem;
+    line-height: 7.2rem;
+    color: #FFFFFF;
+    margin-left: 5rem;
+}
+.mine1{
+    display: flex;
+    justify-content: space-between;
+}
+.left23{
+    height: 650px;
+    width: 55%;
+    
+    overflow: hidden;
+}
+.us{
+    font-size: 55px;
+    font-family: 'bold';
+    margin-top: 3rem;
+    margin-left: 5rem;
+    color: #2E436A;
+}
+.us1{
+    margin-top: 1rem;
+    margin-left: 5rem;
+    font-size: 25px;
+    font-family: 'regular';
+    color: #2E436A;
+}
+.lefty{
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    margin-left: 5rem;
+    
+}
+.icon{
+    display: flex;
+    align-items: center;
+    margin-left: 6rem;
+}
+.righty{
+    color: #6D87F5;
+}
+.right23{
+    height: 670px;
+    width: 40%;
+    margin-left: 2rem;
+    overflow: hidden;
+    margin-top: 5rem;
+}
+.lefty img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the div without distortion */
+}
+.right23 img{
+    height: 600px;
+    width: 100%;
+}
+
+
+
+
+
+/* Media query for tablet and larger screens */
+@media only screen and (min-width: 768px) {
+    .content {
+        margin-left: 14rem;
+        margin-right: 14rem;
+    }
+
+    .gig-points {
+        max-width: 163.8rem;
+    }
+
+    .gig-point {
+        gap: 5rem;
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .gig-headings-head1 {
+        font-size: 4rem; 
+        line-height: 5rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-headings-head2 {
+        font-size: 1.5rem; /* Adjusted for smaller screens */
+        line-height: 3rem; /* Adjusted for smaller screens */
+        margin-top: 4rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-points {
+        margin-top: 4rem;
+        font-size: 1.5rem; /* Adjusted for smaller screens */
+        line-height: 3.5rem; /* Adjusted for smaller screens */
+        gap: 3rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-point {
+        flex-direction: column; /* Adjusted for smaller screens */
+        gap: 1rem; /* Adjusted for smaller screens */
+    }
+
+    .gig-headings-head2 span {
+        font-size: 2rem;
+    }
+    
+    
+    .gig-point p {
+        font-size: 1.5rem;
+        margin-top: -0.5rem; /* Adjusted for smaller screens */
+    }
+    .gig{
+        padding-bottom: 0rem;
+    }
+}

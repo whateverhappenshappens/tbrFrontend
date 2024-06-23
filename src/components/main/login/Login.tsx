@@ -1,20 +1,12 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ReviewBox, { ReviewProps } from "./ReviewBox";
-import { FaGoogle } from "react-icons/fa";
+import ReviewSlider from "./ReviewSlider";
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import "../../../styles/components/Login.css";
-
 import { UserRole, User } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
-
-const review: ReviewProps = {
-  content:
-    "I have done multiple courses with TechBairn and they have helped me land my first internship with Google. I recommend everyone to at least try their programs once.",
-  name: "Ankit Sinha",
-  college: "KIIT University",
-  id: "1",
-  img: "https://images.unsplash.com/photo-1592188657297-c6473609e988?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D",
-};
+import Signup from "../Sign/Signup"; // Import the Signup component
+import logo2 from "./Tlogo.svg";
 
 const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const [userDetails, setUserDetails] = useState<User>({
@@ -29,6 +21,9 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     password: "",
   });
 
+  const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false); // State to manage signup popup visibility
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+
   const validateForm = () => {
     let valid = true;
     let emailError = "";
@@ -38,7 +33,7 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
       emailError = "Email is required.";
       valid = false;
     } else if (!/\S+@\S+\.\S+/.test(userDetails.email)) {
-      emailError = "Email is required.";
+      emailError = "Invalid email format.";
       valid = false;
     }
 
@@ -57,7 +52,6 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
   const handle_login_btn = async () => {
     if (validateForm()) {
       console.log(userDetails);
-      // api call
       try {
         await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
         setUserDetails({
@@ -72,24 +66,39 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     }
   };
 
+  const toggleSignupPopup = () => {
+    setIsSignupPopupVisible(!isSignupPopupVisible);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="main_box">
       <aside className="left">
-        <h1>TechBairn</h1>
+        <img
+          src={logo2} // Replace with the path to your logo image
+          alt="TechBairn Logo"
+          className="logo" // Add a custom class for styling
+        />
         <h2>
           We are glad <br />
-          you are back!
+          you are back !
         </h2>
         <p className="para">
-          Discover the India's best EdTech platform for upskilling yourself with
-          community based learning.
+          Discover India's best EdTech platform for upskilling yourself with
+          community-based learning.
         </p>
-        <ReviewBox {...review} />
+        <ReviewSlider />
       </aside>
       <div className="right">
-        <h1>Log in</h1>
+        <h1>Log In</h1>
         <h3>
-          Don't have an account? <a href="#">Sign up</a>
+          Don't have an account?{" "}
+          <button onClick={toggleSignupPopup} className="signup-link">
+            Sign Up
+          </button>
         </h3>
 
         <label>Email</label>
@@ -103,21 +112,28 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
             setUserDetails({ ...userDetails, email: e.target.value })
           }
         />
-        <br />
         {errors.email && <div className="error">{errors.email}</div>}
 
         <label>Password</label>
         <br />
-        <input
-          className="lng"
-          type="password"
-          placeholder="Minimum 8 characters"
-          value={userDetails.password}
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, password: e.target.value })
-          }
-        />
-        <br />
+        <div className="password-container">
+          <input
+            className="lng"
+            type={showPassword ? "text" : "password"}
+            placeholder="Minimum 8 characters"
+            value={userDetails.password}
+            onChange={(e) =>
+              setUserDetails({ ...userDetails, password: e.target.value })
+            }
+          />
+          <button
+            type="button"
+            className="eye-icon"
+            onClick={togglePasswordVisibility}
+          >
+            {showPassword ? <FaEyeSlash className="icon" /> : <FaEye className="icon" />}
+          </button>
+        </div>
         {errors.password && <div className="error">{errors.password}</div>}
 
         <div className="new">
@@ -128,16 +144,21 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
           <div className="pass">Forget Password?</div>
         </div>
         <button className="btn1" onClick={handle_login_btn}>
-          Log in
+          Log In
         </button>
         <p className="cont">-------or continue login with--------</p>
-        <a href="#">
-          <div className="google">
-            <FaGoogle className="icon" />
-            Google
+        
+          <div className="google1">
+            <FaGoogle className="icon1" />
+            <a href="/@{/oauth2/authorization/google}">Google</a>
           </div>
-        </a>
+          
       </div>
+      {isSignupPopupVisible && (
+        <div className="signup absolute w-[100%] ml-[114px] overflow-y-hidden h-full bg-white top-[0%] border">
+          <Signup />
+        </div>
+      )}
     </div>
   );
 };

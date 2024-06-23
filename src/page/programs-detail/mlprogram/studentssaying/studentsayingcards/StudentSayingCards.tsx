@@ -8,7 +8,6 @@ interface Props {
   color: string;
   logocolor: string;
   username: string;
-  program: string;
   link: string;
   review: string;
   rating: number;
@@ -33,9 +32,6 @@ const StudentSayingCard: React.FC<Props> = (props) => {
         <div className="studentsayingcard-profile">
           <p className="vr-bold studentsayingcard-profile-name">
             {props.username}
-          </p>
-          <p className="vr-medium studentsayingcard-profile-program">
-            {props.program}
           </p>
         </div>
         <div className="studentsayingcard-linkedin">

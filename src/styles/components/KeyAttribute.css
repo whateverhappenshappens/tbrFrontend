@@ -10,7 +10,8 @@
   font-size: 5.5rem;
   line-height: 6.6rem;
   font-style: normal;
-  font-weight: 700;
+  font-family: bold;
+  text-align: center;
   color: white;
 }
 .description {
@@ -38,16 +39,18 @@
 }
 .number {
   font-size: 5rem;
+  font-family: bold;
   color: white;
   font-weight: bold;
 }
 .learner {
   font-size: 3rem;
   color: white;
-  font-weight: 500;
+  font-family: demi-bold;
 }
 .highlight-text {
-  color: #2E436A;
+  color: #104294;
+  font-family: extra-bold;
 }
 @media (min-width: 500px) {
   .description {

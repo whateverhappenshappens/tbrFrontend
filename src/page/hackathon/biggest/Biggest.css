@@ -5,12 +5,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    min-height: 80vh;
+    padding: 3rem 0;
 }
 .biggest-hackathon-text {
     width:50%;
     color:#FFFFFF;
    padding-left: 92px;
-    margin-top: 120px;
+    margin-top: 40px;
 }
 .biggest-hackathon-text-large{
     font-size: 5.2rem;
@@ -26,7 +28,7 @@
     border-radius: 20px;
     border: none;
     color:#6D87F5;
-    margin-top: 4rem;
+    margin-top:5rem;
     margin-bottom: 6rem;
     font-size:3.3rem;
     cursor:pointer;
@@ -35,6 +37,7 @@
 .biggest-hackathon-button p{
     padding: 1.5rem 4.4rem;
     font-family: 'bold';
+    
 }
 
 .biggest-hackathon-img{
