@@ -22,7 +22,7 @@ const Explore = ({ handle_login }: any) => {
     <div className="explore">
       <div className="box1">
         <div className="dont-know-text-box">
-          <p className="dont-know-text">Invest in your&nbsp;</p>
+          <p className="dont-know-text">Invest in your</p>
           <p className="dont-know-text">future with&nbsp;</p>
           <p className="dont-know-text">TechBairn&nbsp;</p>
         </div>

@@ -10,7 +10,7 @@ const Gig: React.FC = () => {
         </div>
         <div className="mine">
         <div className="right1">
-            <p className="para12">TechBairn(A unit of TechBairn Research Pvt. Ltd.) is a leading EdTech startup in India. It has been given recognition from Department for Promotion of Industry and Internal Trade(Govt. of India), MSME, and also supported by StartupIndia. Our offices are located in Bhubaneswar, Delhi, and Patna. We are providing 10+ professional courses in different technology domains to aficionados in various professions.Our training team has worked with huge companies such as IBM, Samsung, Directi, Geeksforgeeks, Interviewbit, Cleartax, RedHat, Interviewbit, TCS, Samsung R&D, L&T India, LearningMate, Accenture, etc which is why we are aware of the industry requirements from freshers.</p>
+            <p className="para12">TechBairn, a unit of TechBairn Research Pvt. Ltd., stands as a trailblazer in the Ed-Tech industry, rapidly emerging as the leading educational and upskilling platform in the country. Offering affordable tech education and internships, our growth is backed by giants like Microsoft, Amazon, MongoDB, StartupIndia, and MSME. Our dedication to excellence has garnered significant recognition. We were featured in the Economic Times in 2024, named one of the "20 Most Promising Startups to Watch in 2023" by Business Connect Magazine, and honored as the "Best E-Learning Company of the Year 2022" by BW Business World Magazine. We proudly collaborate with premier institutions such as IIT Bombay, IIT Roorkee, IIM Sambalpur, NMIMS, DTU, VIT, and KIIT, and serve as a trusted hiring partner for over 50 companies.</p>
         </div>
         <div className="left1">
             <img src={girl} alt="girl" /></div></div>

@@ -1,10 +1,11 @@
-
 .gig1 {
     background: #ffffff 0% 0% no-repeat padding-box;
     width: 100%;
     margin-top: 15rem;
     padding-top: 8rem;
     padding-bottom: 12rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    overflow: visible;
 }
 .gig-headings-head1 {
     font-family: 'bold';
@@ -13,65 +14,68 @@
     color: #FFFFFF;
     margin-left: 5rem;
 }
-.mine1{
+.mine1 {
     display: flex;
     justify-content: space-between;
 }
-.left23{
-    height: 650px;
-    width: 55%;
-    
+.left23 {
+    height: 790px;
+    width: 75%;
+    margin-left: 6rem;
     overflow: hidden;
 }
-.us{
+.us {
     font-size: 55px;
     font-family: 'bold';
     margin-top: 3rem;
     margin-left: 5rem;
     color: #2E436A;
 }
-.us1{
+.us1 {
     margin-top: 1rem;
     margin-left: 5rem;
     font-size: 25px;
     font-family: 'regular';
     color: #2E436A;
 }
-.lefty{
+.lefty {
     height: 3px;
     width: 3px;
     border-radius: 50%;
     margin-left: 5rem;
-    
 }
-.icon{
+.icon {
     display: flex;
     align-items: center;
     margin-left: 6rem;
 }
-.righty{
+.righty {
     color: #6D87F5;
+    overflow: visible;
 }
-.right23{
+.tryr {
+    width: 100%;
+}
+.right23 {
     height: 670px;
-    width: 40%;
+    width: 35%;
     margin-left: 2rem;
     overflow: hidden;
     margin-top: 5rem;
+    margin-right: 7rem;
 }
 .lefty img {
-    width: 50%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the div without distortion */
-}
-.right23 img{
-    height: 600px;
     width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensure the image covers the div without distortion */
+    display: block;
+    margin: 1rem 0; /* Add margin to ensure the content moves to the next line */
 }
-
-
-
-
+.right23 img {
+    height: 690px;
+    width: 100%;
+    margin-top: 2rem;
+}
 
 /* Media query for tablet and larger screens */
 @media only screen and (min-width: 768px) {
@@ -92,16 +96,23 @@
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     .gig-headings-head1 {
-        font-size: 4rem; 
+        font-size: 4rem;
         line-height: 5rem; /* Adjusted for smaller screens */
     }
-
+    .righty{
+        overflow-x: visible;
+    }
     .gig-headings-head2 {
         font-size: 1.5rem; /* Adjusted for smaller screens */
         line-height: 3rem; /* Adjusted for smaller screens */
         margin-top: 4rem; /* Adjusted for smaller screens */
     }
-
+    .icon{
+        width: 180%;
+        font-size: 1.8rem;
+        
+    }
+    
     .gig-points {
         margin-top: 4rem;
         font-size: 1.5rem; /* Adjusted for smaller screens */
@@ -117,13 +128,29 @@
     .gig-headings-head2 span {
         font-size: 2rem;
     }
-    
-    
+
     .gig-point p {
         font-size: 1.5rem;
         margin-top: -0.5rem; /* Adjusted for smaller screens */
     }
-    .gig{
+
+    .gig1 {
         padding-bottom: 0rem;
+    }
+
+    .right23 {
+        display: none;
+    }
+
+    .left23 {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .lefty img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 1rem 0; /* Add margin to ensure the content moves to the next line */
     }
 }

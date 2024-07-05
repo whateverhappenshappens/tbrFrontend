@@ -16,7 +16,7 @@ const Head: React.FC = () => {
                 <button>Contact Us</button>
             </button>
           </div>
-          <div className="img">
+          <div className="img123">
             <img src={eventBoy} alt="Girl"></img>
           </div>
           {/* <button className="enroll-help">Help</button> */}
