@@ -37,12 +37,12 @@ export const EventsAPI = {
       return e;
     }
   },
-  
+
   allEventsBasicDetail: async function () {
     try {
       const res = await api.get("v1.5/events");
-      // Add isActive: true to each event
-      res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
+      console.log(res.data);
+
       return res;
     } catch (error) {
       console.error("An error occurred:", error);
@@ -98,7 +98,7 @@ export const EventsAPI = {
   },
   activeEvents: async function () {
     try {
-      const res = await api.get("/v1.5/events?isActive=true");
+      const res = await api.get("/v1.5/events?active=true");
       // Add isActive: true to each event
       res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
       return res;
@@ -146,4 +146,3 @@ export const EventsAPI = {
     }
   },
 };
-
