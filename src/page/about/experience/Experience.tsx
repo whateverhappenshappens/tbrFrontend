@@ -10,52 +10,52 @@ import skills from "../../../assets/skills.png";
 
 const Experience: React.FC = () => {
   const para1 =
-    "With a mutually benefited program we bring out the best in you personally and professionally.";
+    "We offer live, interactive classes tailored to meet individual learning needs, ensuring a more effective and engaging educational experience.";
   const para2 =
-    "We have full confidence in your capability and you are trusted with crucial roles.";
+    "Our platform fosters a collaborative learning environment where students can engage, share knowledge, and support each other through community interactions.";
   const para3 =
-    "Develop your communication and leadership skills. Get a chance to stand out from the crowd.    ";
+    "We provide dedicated teaching assistant support and a vibrant discussion forum to help students resolve queries and deepen their understanding of the subject matter.    ";
   const para4 =
-    "With a mutually benefited program we bring out the best in you personally and professionally.";
+    "Students earn live badges and receive certifications recognized by leading industries, enhancing their professional credibility.";
   const para5 =
-    "We have full confidence in your capability and you are trusted with crucial roles.";
+    "We connect learners with exclusive internship and job opportunities, bridging the gap between education and employment.";
   const para6 =
-    " Develop your communication and leadership skills. Get a chance to stand out from the crowd.";
+    " We are committed to delivering top-notch education through well-structured courses, expert instructors, and up-to-date content.";
 
   const cardsData = [
     {
       color: "#2FD18C",
-      heading: "Growth",
+      heading: "Live & Personalized Learning:",
       para: para1,
       image: growth,
     },
     {
       color: "#FFD75B",
-      heading: "Responsibility",
+      heading: " Community-Based Learning:",
       para: para2,
       image: heart,
     },
     {
       color: "#FF6954",
-      heading: "Skills",
+      heading: "TA Support & Discussion Forum:",
       para: para3,
       image: skills,
     },
     {
       color: "#2FD18C",
-      heading: "Growth",
+      heading: "Live Badges & Certification:",
       para: para4,
       image: growth,
     },
     {
       color: "#FFD75B",
-      heading: "Responsibility",
+      heading: "Internship & Job Opportunities:",
       para: para5,
       image: heart,
     },
     {
       color: "#FF6954",
-      heading: "Skills",
+      heading: "Quality Learning:",
       para: para6,
       image: skills,
     },

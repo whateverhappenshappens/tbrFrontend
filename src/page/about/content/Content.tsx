@@ -13,25 +13,30 @@ const Content: React.FC = () => {
             <p className="us">Contact Us</p>
             <p className="us1">Have some questions or just wanted to know more about us? Why not pick your phone.</p>
             <br/>
+            <div className="ice">
             <div className="icon">
                 <div className="lefty1">
                     <img src={msg} alt="aa" />
                 </div>
                 <div className="righty">
+                    <p>hello@techbairn.com</p>
                     <p>info@techbairn.com</p>
                 </div>
             </div>
             <div className="icon">
                 <div className="lefty1"><img src={call} alt="aa" /></div>
                 <div className="righty">
-                    <p>+91-123456789</p>
+                    <p>(+91)- 8789726459</p>
+                    <p>(+91)- 8545860096</p>
                 </div>
             </div>
             <div className="icon">
                 <div className="lefty1"><img src={location} alt="aa" /></div>
                 <div className="righty">
-                    <p>Platform 9 3/4, Hogwarts, JK Rowling Universe.</p>
+                    <p className="tryr">1st Floor, 568/569, 20th Cross Rd, KPC Layout, Kasavanahalli, Bengaluru, Karnataka 560035
+                    </p>
                 </div>
+            </div>
             </div>
           </div>
             <div className="right23">

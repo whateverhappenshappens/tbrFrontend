@@ -26,9 +26,9 @@
       border-radius: 8px;
     }
     
-    .exp-cards-head1 {
+    .exp-cards-head12 {
       color: #2E436A;
-      font-size:30px;
+      font-size:24px;
       font-family: 'bold';
       overflow: visible;
     }
@@ -48,4 +48,5 @@
         height:35rem;
         margin: 0rem 1rem;
       }
+      
     }
