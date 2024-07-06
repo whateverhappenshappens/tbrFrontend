@@ -131,7 +131,11 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
             className="eye-icon"
             onClick={togglePasswordVisibility}
           >
-            {showPassword ? <FaEyeSlash className="icon" /> : <FaEye className="icon" />}
+            {showPassword ? (
+              <FaEyeSlash className="icon" />
+            ) : (
+              <FaEye className="icon" />
+            )}
           </button>
         </div>
         {errors.password && <div className="error">{errors.password}</div>}
@@ -147,12 +151,11 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
           Log In
         </button>
         <p className="cont">-------or continue login with--------</p>
-        
-          <div className="google1">
-            <FaGoogle className="icon1" />
-            <a href="/@{/oauth2/authorization/google}">Google</a>
-          </div>
-          
+
+        <div className="google1">
+          <FaGoogle className="icon1" />
+          <a href="/@{/oauth2/authorization/google}">Google</a>
+        </div>
       </div>
       {isSignupPopupVisible && (
         <div className="signup absolute w-[100%] ml-[114px] overflow-y-hidden h-full bg-white top-[0%] border">

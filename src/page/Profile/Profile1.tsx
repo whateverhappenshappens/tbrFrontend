@@ -1,20 +1,52 @@
 import React, { useState, useEffect } from "react";
 import "./Profile1.css";
 import boyProfile from "../../assets/Boy photo.png";
+import { UserAPI } from "../../apis/UserAPIs";
 
-function ProfilePage() {
+function Profile() {
+  const [email, setEmail] = useState("");
   const [profile, setProfile] = useState({
     fullname: "",
     email: "",
     phoneNumber: "",
     collegeName: "",
-    stream: ""
+    stream: "",
   });
   const [isValid, setIsValid] = useState(false);
   const [errors, setErrors] = useState({});
   const [editableField, setEditableField] = useState(null);
   const [isSaved, setIsSaved] = useState(true); // Track if the profile is saved
   const [showModal, setShowModal] = useState(false); // State for controlling the modal
+
+  useEffect(() => {
+    const profileEmail = localStorage.getItem("user-email");
+    if (profileEmail) {
+      setEmail(profileEmail);
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      if (email) {
+        try {
+          const res = await UserAPI.userProfileDetail(email);
+          setProfile({
+            fullname: res.data.name,
+            email: res.data.email,
+            phoneNumber: res.data.mobileNumber,
+            collegeName: res.data.collegeName,
+            stream: res.data.stream,
+          });
+        } catch (error) {
+          console.error(
+            "An error occurred while fetching profile data:",
+            error
+          );
+        }
+      }
+    };
+    fetchProfileData();
+  }, [email]);
 
   // Load data from localStorage when the component mounts
   useEffect(() => {
@@ -27,15 +59,18 @@ function ProfilePage() {
 
   // Validate input fields
   const validateProfile = (updatedProfile) => {
-    const { fullname, email, phoneNumber, collegeName, stream } = updatedProfile;
+    const { fullname, email, phoneNumber, collegeName, stream } =
+      updatedProfile;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
 
     const newErrors = {};
 
     if (!fullname) newErrors.fullname = "Fullname is required.";
-    if (!email || !emailRegex.test(email)) newErrors.email = "Invalid email address.";
-    if (!phoneNumber || !phoneRegex.test(phoneNumber)) newErrors.phoneNumber = "Invalid phone number.";
+    if (!email || !emailRegex.test(email))
+      newErrors.email = "Invalid email address.";
+    if (!phoneNumber || !phoneRegex.test(phoneNumber))
+      newErrors.phoneNumber = "Invalid phone number.";
     if (!collegeName) newErrors.collegeName = "College name is required.";
     if (!stream) newErrors.stream = "Stream is required.";
 
@@ -79,7 +114,11 @@ function ProfilePage() {
         <img src={boyProfile} alt="" />
         <div className="buttondabba">
           <button className="buttun buttun1">Change Picture</button>
-          <button className="buttun buttun2" onClick={handleSave} disabled={!isValid}>
+          <button
+            className="buttun buttun2"
+            onClick={handleSave}
+            disabled={!isValid}
+          >
             Apply Changes
           </button>
         </div>
@@ -173,7 +212,11 @@ function ProfilePage() {
         <br />
         <br />
         <br />
-        <button className="buttun3" disabled={!isValid} onClick={handleCompletePayment}>
+        <button
+          className="buttun3"
+          disabled={!isValid}
+          onClick={handleCompletePayment}
+        >
           Complete Payment
         </button>
       </div>
@@ -183,8 +226,13 @@ function ProfilePage() {
           <div className="modal-content">
             <h2>Unsaved Changes</h2>
             <p>Please save your changes before completing the payment.</p>
-            <button className="buttun4" onClick={handleSave}>Save Changes</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button className="buttun4" onClick={() => setShowModal(false)}>Cancel</button>
+            <button className="buttun4" onClick={handleSave}>
+              Save Changes
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button className="buttun4" onClick={() => setShowModal(false)}>
+              Cancel
+            </button>
           </div>
         </div>
       )}
@@ -192,4 +240,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default Profile;

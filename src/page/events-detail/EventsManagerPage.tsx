@@ -37,7 +37,7 @@ function EventsManagerPage({ headerHeight }: any) {
               ...event,
               isActive: true,
             }));
-            setCurrentEvents(res.data,);
+            setCurrentEvents(res.data);
           })
           .catch((e) => {
             console.error(e);
@@ -65,7 +65,6 @@ function EventsManagerPage({ headerHeight }: any) {
     all();
     allDetailsForDownload();
   }, []);
-  
 
   const handleDownload = () => {
     const csvData = Papa.unparse(
@@ -92,7 +91,7 @@ function EventsManagerPage({ headerHeight }: any) {
     a.click();
     window.URL.revokeObjectURL(url);
   };
-  
+
   const handleDelete = async (event: any) => {
     try {
       console.log(event.id);
@@ -184,8 +183,8 @@ function EventsManagerPage({ headerHeight }: any) {
           <div
             key={index}
             className="border rounded-lg p-3 lg:p-10 flex flex-col gap-5 lg:gap-7 relative"
-          > 
-            <div className={`bulb ${event.isActive ? 'green' : 'red'}`}></div>
+          >
+            <div className={`bulb ${event.isActive ? "green" : "red"}`}></div>
 
             <div className="lg:flex lg:flex-col lg:gap-5">
               <div className="text-3xl lg:text-5xl font-bold overflow-visible">
@@ -207,12 +206,12 @@ function EventsManagerPage({ headerHeight }: any) {
               <button
                 className={`border-2 rounded-lg px-5 py-3 text-white ${
                   event.isDeleted
-                    ? 'border-green-500 bg-green-500 hover:text-green-500 hover:bg-white'
-                    : 'border-red-500 bg-red-500 hover:text-red-500 hover:bg-white'
+                    ? "border-green-500 bg-green-500 hover:text-green-500 hover:bg-white"
+                    : "border-red-500 bg-red-500 hover:text-red-500 hover:bg-white"
                 }`}
                 onClick={() => handleDelete(event)}
               >
-                {event.isDeleted ? 'UNDELETE' : 'DELETE'}
+                {event.isDeleted ? "UNDELETE" : "DELETE"}
               </button>
             </div>
           </div>

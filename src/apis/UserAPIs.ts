@@ -32,6 +32,7 @@ export const UserAPI = {
 
   login: async function (user: User, handle_login?: any, setIsLoggedIn?: any) {
     const formData = new URLSearchParams();
+    const useremail = user.email;
     formData.append("username", user.email);
     formData.append("password", user.password);
     try {
@@ -45,6 +46,7 @@ export const UserAPI = {
         localStorage.setItem("access-token", res.data.access_token);
         if (typeof handle_login === "function") handle_login();
         if (typeof setIsLoggedIn === "function") setIsLoggedIn(true);
+        localStorage.setItem("user-email", useremail);
       }
       return res;
     } catch (error) {
@@ -67,6 +69,7 @@ export const UserAPI = {
       console.log(res);
       toast.success("Logout Successful");
       localStorage.removeItem("access-token");
+      localStorage.removeItem("user-email");
       if (typeof setIsLoggedIn === "function") setIsLoggedIn(false);
       return;
     } catch (error) {
@@ -125,7 +128,8 @@ export const UserAPI = {
       console.error("An error occurred:", error);
       return Promise.reject(error);
     }
-  },isLoggedIn: async function () {
+  },
+  isLoggedIn: async function () {
     const access_token = localStorage.getItem("access-token");
     if (!access_token) {
       return false;
@@ -143,7 +147,39 @@ export const UserAPI = {
       console.error("An error occurred while checking login status:", error);
       return false;
     }
-  }
+  },
+
+  userProfileDetail: async function (useremail: any) {
+    const access_token = localStorage.getItem("access-token");
+
+    try {
+      const res = await api.request({
+        url: `/v1.5/users/@${useremail}`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      return res;
+    } catch (error) {
+      refreshAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
+  // userProfileDetail: async function (useremail: any) {
+  //   try {
+  //     const res = await api.get(`/v1.5/users/@${useremail}`);
+  //     return res.data;
+  //   } catch (error) {
+  //     console.error(
+  //       "An error occurred while fetching user profile details:",
+  //       error
+  //     );
+  //     return Promise.reject(error);
+  //   }
+  // },
 };
 
 // import { api } from "./configs/axiosConfigs";

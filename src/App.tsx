@@ -32,14 +32,14 @@ import NotFound from "./page/NotFound/NotFound";
 import EnrollStudent from "./page/enroll/EnrollStudent";
 import { CartProvider } from "./CartContext";
 import SalesOperations from "./page/operations/SalesOperations";
-import ProfilePage from "./page/Profile/ProfilePage";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
   const [pastEventData, setPastEventData] = useState<any>();
+  const [email, setEmail] = useState<any>("");
   const [coupon, setCoupon] = useState<any>();
 
   useEffect(() => {
@@ -105,7 +105,17 @@ function App() {
 
   return (
     <BrowserRouter>
-    <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <CartProvider>
         <div className="main">
           <Toaster
@@ -153,9 +163,7 @@ function App() {
             <Route path="/campus-associate" element={<CampusAssociate />} />
             <Route path="/mentor" element={<Mentor />} />
             <Route path="/About-us" element={<About />} />
-            <Route path="/update-details" element={<Profile />} />
-            <Route path="/operations" element={<OperationSignIn />} />
-
+            {/* <Route path="/update-details" element={<Profile />} /> */}
 
             <Route path="/profile" element={<Profile />} />
             <Route
@@ -195,7 +203,7 @@ function App() {
             />
             <Route path="/test" element={<Test />} />
             <Route path="/operations/sales" element={<SalesOperations />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            {/* <Route path="/profile" element={<ProfilePage />} /> */}
             <Route
               path="/payment-success"
               element={<PaymentSuccess headerHeight={headerHeight} />}
