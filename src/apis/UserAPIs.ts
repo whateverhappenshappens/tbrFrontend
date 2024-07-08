@@ -148,7 +148,25 @@ export const UserAPI = {
       return false;
     }
   },
+  UpdateProfileDetail: async function (useremail: any) {
+    const access_token = localStorage.getItem("access-token");
 
+    try {
+      const res = await api.request({
+        url: `/v1.5/users/@${useremail}`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      return res;
+    } catch (error) {
+      refreshAccessToken();
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  },
   userProfileDetail: async function (useremail: any) {
     const access_token = localStorage.getItem("access-token");
 
