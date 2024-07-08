@@ -16,7 +16,7 @@ const Upcoming: React.FC<props> = (props) => {
   for (var i = 0; i < arr.length; i++) {
     arr[i] = i;
   }
-  console.log(props);
+
   return (
     <div className="upcoming">
       <div className="upcoming-content">

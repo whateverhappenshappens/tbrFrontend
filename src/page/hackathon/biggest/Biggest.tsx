@@ -8,7 +8,7 @@ const Biggest: React.FC = () => {
     try {
       const accessToken = localStorage.getItem("access-token");
       const response = await axios.post(
-        "/api/cart/add", 
+        "/api/cart/add",
         {
           userId: "user-id",
           courses: ["web-dev-hackathon"],
@@ -35,7 +35,10 @@ const Biggest: React.FC = () => {
           Join India's biggest Web Dev Hackathon and be a part of something
           grand! Earn exciting goodies on winning.
         </p>
-        <button className="biggest-hackathon-button visbyroundCF bold" onClick={handleEnroll}>
+        <button
+          className="biggest-hackathon-button visbyroundCF bold"
+          onClick={handleEnroll}
+        >
           <p>Enroll Now</p>
         </button>
       </div>

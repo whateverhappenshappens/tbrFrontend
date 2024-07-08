@@ -117,7 +117,7 @@ function Profile() {
           <button
             className="buttun buttun2"
             onClick={handleSave}
-            disabled={!isValid}
+            // disabled={!isValid}
           >
             Apply Changes
           </button>

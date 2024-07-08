@@ -383,7 +383,6 @@ label {
 .google1 {
   height: 60px;
   width: 190px;
-  border: 2px solid #000;
   display: flex;
   align-items: center;
   justify-content: center;
