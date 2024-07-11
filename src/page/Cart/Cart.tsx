@@ -1117,7 +1117,7 @@
 // export default Cart;
 
 import { useRef, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
 import { UserAPI } from "../../apis/UserAPIs";
@@ -1127,7 +1127,8 @@ import axios from "axios";
 
 interface Props {
   headerHeight: number;
-  email: any;
+  setCartDetailsData: any;
+  setCartValueData: number;
 }
 
 interface CourseType {
@@ -1152,7 +1153,11 @@ interface NetPriceObjType {
   discount: number;
 }
 
-const Cart: React.FC<Props> = ({ headerHeight, email }) => {
+const Cart: React.FC<Props> = ({
+  headerHeight,
+  setCartDetailsData,
+  setCartValueData,
+}) => {
   const { cart, removeFromCart } = useCart();
   const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -1167,6 +1172,7 @@ const Cart: React.FC<Props> = ({ headerHeight, email }) => {
   const [promoApplied, setPromoApplied] = useState(false);
   const [couponMessage, setCouponMessage] = useState("");
   const [additionalDiscount, setAdditionalDiscount] = useState(0);
+  const [paymentToggle, setPaymentToggle] = useState<boolean>(true);
 
   useEffect(() => {
     let totalPrice = 0;
@@ -1187,22 +1193,19 @@ const Cart: React.FC<Props> = ({ headerHeight, email }) => {
     setCartValue(totalDiscountedPrice);
   }, [cart]);
 
-  useEffect(() => {
-    // Log the cart data whenever it changes
-    console.log("Cart data: ", cart);
-    console.log("Cart Value: ", cartValue);
-  }, [cart, cartValue]);
+  // const selectedCourses = cartDetailsData.cartDetailsData.map(
+  //   ({ description, ...rest }) => rest
+  // );
 
-  useEffect(() => {
-    UserAPI.isLoggedIn()
-      .then((isLoggedIn) => {
-        setIsLoggedIn(isLoggedIn);
-        console.log(email);
-      })
-      .catch((error) => {
-        console.error("Error checking login status:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const fetchEmail = async () => {
+  //     const res = await UserAPI.private_test();
+  //     await CartAPI.addToCart(res.data.email, selectedCourses);
+  //     console.log(res);
+  //   };
+
+  //   fetchEmail();
+  // }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -1265,81 +1268,81 @@ const Cart: React.FC<Props> = ({ headerHeight, email }) => {
     setCartValue(newNetPriceObj.totalDiscountedPrice);
   };
 
-  function handlePayment() {
-    const requestData = {
-      utr: "utr-number",
-      mobileNumber: "9999999999",
-      userId: "user-id",
-      paymentId: "payment-id",
-      modeOfPayment: "mode-of-payment",
-      selectedCourses: addedCourses.map(({ description, ...rest }) => rest),
-    };
+  // function handlePayment() {
+  //   const requestData = {
+  //     utr: "utr-number",
+  //     mobileNumber: "9999999999",
+  //     userId: "user-id",
+  //     paymentId: "payment-id",
+  //     modeOfPayment: "mode-of-payment",
+  //     selectedCourses: addedCourses.map(({ description, ...rest }) => rest),
+  //   };
 
-    axios
-      .post(
-        `http://localhost:8080/v1.5/payment/${
-          netPriceObj.totalDiscountedPrice * 100
-        }`,
-        requestData
-      )
-      .then((response) => {
-        console.log(
-          "order created!",
-          response,
-          netPriceObj.totalDiscountedPrice * 100
-        );
-        const data = response.data;
-        const options = {
-          key: "rzp_test_LFEMJf6qnRSih6",
-          amount: data.amount,
-          currency: "INR",
-          name: "Techbairn",
-          description: "Test Transaction",
-          order_id: data.orderId,
-          callback_url: "google.com",
-          show_coupons: true,
-          handler: function (response: any) {
-            console.log("success -->", response);
-            axios
-              .post("http://localhost:8080/payment/success", {
-                orderId: response.razorpay_order_id,
-                paymentId: response.razorpay_payment_id,
-                mobileNumber: "9999999999",
-              })
-              .then((response) => {
-                console.log("payment success!", response);
-              });
-          },
-          prefill: {
-            name: "Gaurav",
-            email: "gauravtripathii7979@gmail.com",
-            contact: "9999999999",
-          },
-          notes: {
-            address: "Razorpay Corporate Office",
-          },
-          theme: {
-            color: "#3399cc",
-          },
-        };
-        const paymentWindow = new (window as any).Razorpay(options);
-        paymentWindow.on("payment.failed", function (response: any) {
-          console.log("failure --->", response);
-          axios.post("http://localhost:8080/payment/fail", {
-            orderId: response.error.metadata.order_id,
-            paymentId: response.error.metadata.payment_id,
-            description: response.error.description,
-            reason: response.error.reason,
-            source: response.error.source,
-            step: response.error.step,
-          });
-        });
-        paymentWindow.open();
-      })
-      .catch((error) => {
-        console.error("There was a problem with the payment operation:", error);
-      });
-  }
+  //   axios
+  //     .post(
+  //       `http://localhost:8080/v1.5/payment/${
+  //         netPriceObj.totalDiscountedPrice * 100
+  //       }`,
+  //       requestData
+  //     )
+  //     .then((response) => {
+  //       console.log(
+  //         "order created!",
+  //         response,
+  //         netPriceObj.totalDiscountedPrice * 100
+  //       );
+  //       const data = response.data;
+  //       const options = {
+  //         key: "rzp_test_LFEMJf6qnRSih6",
+  //         amount: data.amount,
+  //         currency: "INR",
+  //         name: "Techbairn",
+  //         description: "Test Transaction",
+  //         order_id: data.orderId,
+  //         callback_url: "google.com",
+  //         show_coupons: true,
+  //         handler: function (response: any) {
+  //           console.log("success -->", response);
+  //           axios
+  //             .post("http://localhost:8080/payment/success", {
+  //               orderId: response.razorpay_order_id,
+  //               paymentId: response.razorpay_payment_id,
+  //               mobileNumber: "9999999999",
+  //             })
+  //             .then((response) => {
+  //               console.log("payment success!", response);
+  //             });
+  //         },
+  //         prefill: {
+  //           name: "Gaurav",
+  //           email: "gauravtripathii7979@gmail.com",
+  //           contact: "9999999999",
+  //         },
+  //         notes: {
+  //           address: "Razorpay Corporate Office",
+  //         },
+  //         theme: {
+  //           color: "#3399cc",
+  //         },
+  //       };
+  //       const paymentWindow = new (window as any).Razorpay(options);
+  //       paymentWindow.on("payment.failed", function (response: any) {
+  //         console.log("failure --->", response);
+  //         axios.post("http://localhost:8080/payment/fail", {
+  //           orderId: response.error.metadata.order_id,
+  //           paymentId: response.error.metadata.payment_id,
+  //           description: response.error.description,
+  //           reason: response.error.reason,
+  //           source: response.error.source,
+  //           step: response.error.step,
+  //         });
+  //       });
+  //       paymentWindow.open();
+  //     })
+  //     .catch((error) => {
+  //       console.error("There was a problem with the payment operation:", error);
+  //     });
+  // }
 
   return (
     <div
@@ -1448,12 +1451,11 @@ const Cart: React.FC<Props> = ({ headerHeight, email }) => {
                   Continue Shopping
                 </NavLink>
               </div>
-              <div
-                className="bg-[#2E436A] text-white mt-[25px] text-3xl lg:text-4xl p-5 lg:p-6 xl:p-8 font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-[#2E436A]"
-                onClick={handlePayment}
-              >
-                Proceed to Payment
-              </div>
+              <Link to="/update-user-details">
+                <div className="bg-[#2E436A] text-white mt-[25px] text-3xl lg:text-4xl p-5 lg:p-6 xl:p-8 font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-[#2E436A]">
+                  Proceed to Payment
+                </div>
+              </Link>
             </div>
           </div>
         </div>
