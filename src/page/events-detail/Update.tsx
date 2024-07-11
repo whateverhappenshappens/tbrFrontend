@@ -41,6 +41,7 @@ interface FormData {
   heading: string;
   subHeading: string;
   date: string;
+  description: string;
   aboutSpeaker: string;
   speakerSocialLink: string;
   speakerExperienceDetails: string;
@@ -69,6 +70,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
     speakerExperienceDetails: "",
     speakerName: "",
     youtubeLink: "",
+    description: "",
     isActive: false,
   });
 
@@ -92,6 +94,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
           heading: eventData.heading,
           subHeading: eventData.subHeading,
           date: eventData.date,
+          description: eventData.description,
           aboutSpeaker: eventData.aboutSpeaker,
           speakerSocialLink: eventData.speakerSocial,
           speakerExperienceDetails: eventData.speakerExperience,
@@ -252,6 +255,17 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
           name="heading"
           placeholder="Heading"
           value={formData.heading}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="inline-form">
+        <label htmlFor="description">Description:</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          placeholder="Description"
+          value={formData.description}
           onChange={handleInputChange}
         />
       </div>

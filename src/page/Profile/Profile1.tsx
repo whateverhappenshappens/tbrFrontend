@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Profile1.css";
 import boyProfile from "../../assets/Boy photo.png";
 import { UserAPI } from "../../apis/UserAPIs";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const [email, setEmail] = useState("");
@@ -113,14 +114,16 @@ function Profile() {
       <aside className="lefty">
         <img src={boyProfile} alt="" />
         <div className="buttondabba">
-          <button className="buttun buttun1">Change Picture</button>
-          <button
-            className="buttun buttun2"
-            onClick={handleSave}
-            // disabled={!isValid}
-          >
-            Apply Changes
-          </button>
+          <Link to="/update-user-info">
+            {/* <button className="buttun buttun1">Change Picture</button> */}
+            <button
+              className="buttun buttun2"
+              onClick={handleSave}
+              // disabled={!isValid}
+            >
+              Apply Changes
+            </button>
+          </Link>
         </div>
       </aside>
       <div className="righty">
@@ -136,11 +139,11 @@ function Profile() {
             onChange={handleChange}
             readOnly={editableField !== "fullname"}
           />
-          <div className="edit">
+          {/* <div className="edit">
             <button type="button" onClick={() => toggleEdit("fullname")}>
               {editableField === "fullname" ? "Save" : "Edit"}
             </button>
-          </div>
+          </div> */}
         </div>
         {errors.fullname && <p className="error">{errors.fullname}</p>}
         <br />
@@ -157,11 +160,11 @@ function Profile() {
             onChange={handleChange}
             readOnly={editableField !== "email"}
           />
-          <div className="edit">
+          {/* <div className="edit">
             <button type="button" onClick={() => toggleEdit("email")}>
               {editableField === "email" ? "Save" : "Edit"}
             </button>
-          </div>
+          </div> */}
         </div>
         {errors.email && <p className="error">{errors.email}</p>}
         <br />
@@ -212,13 +215,13 @@ function Profile() {
         <br />
         <br />
         <br />
-        <button
+        {/* <button
           className="buttun3"
           disabled={!isValid}
           onClick={handleCompletePayment}
         >
           Complete Payment
-        </button>
+        </button> */}
       </div>
 
       {showModal && (

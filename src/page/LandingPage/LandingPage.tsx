@@ -11,10 +11,10 @@ import MediaPresence from "../../components/MediaPresence/MediaPresence";
 import times from "../../assets/The-Economic_TOI_Logo_Website.jpg";
 import bus from "../../assets/images.jpeg";
 import startup from "../../assets/930c25d5814cff37094e38d67a48566d.jpeg";
-import company from "../../assets/yourstory.png"
+import company from "../../assets/yourstory.png";
 import connect from "../../assets/connect.png";
 import yourstory from "../../assets/iaf.jpg";
-import extra from "../../assets/78.jpeg"
+import extra from "../../assets/78.jpeg";
 import "../../styles/pages/LandingPage.css";
 
 // COMPANY ICONS
@@ -90,7 +90,7 @@ const logo_college: string[] = [
   soa,
   ssu,
   shriram,
-  tmsl
+  tmsl,
 ];
 
 const logo: string[] = [
@@ -101,10 +101,15 @@ const logo: string[] = [
   karkhana,
   sudolearn,
   skill,
-  
 ];
 
-function LandingPage({ headerHeight, handle_login, pastdata }: any) {
+function LandingPage({
+  headerHeight,
+  handle_login,
+  pastdata,
+  latestevent,
+  enroll,
+}: any) {
   const landingPage = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -119,18 +124,20 @@ function LandingPage({ headerHeight, handle_login, pastdata }: any) {
       <DarkBanner
         title="Instructors are from"
         subtitle="All of our instructors are from renowned companies with a vast knowledge on this subject matter."
-        logos={logo_college} 
+        logos={logo_college}
       />
-      <Events pastdata={pastdata} />
+      <Events latestevent={latestevent} pastdata={pastdata} enroll={enroll} />
       <DarkBanner
         title="Collaborations"
         subtitle="Some subtitle will be provided later about our collaborations"
         logos={logos}
-      /><hr className="h-[10rem]"/><hr/>
+      />
+      <hr className="h-[10rem]" />
+      <hr />
       <DarkBanner
-      title="Hiring Partner "
-      subtitle="our partners are"
-      logos={logo}
+        title="Hiring Partner "
+        subtitle="our partners are"
+        logos={logo}
       />
       <MediaPresence
         mediaItems={[
@@ -175,7 +182,7 @@ function LandingPage({ headerHeight, handle_login, pastdata }: any) {
             para: "TechBairn was acclaimed by IAF India for its pioneering technology solutions, recognized as a key innovator with a substantial impact on the industry.",
             image: yourstory,
             link: "https://www.iafindia.com/mr-ashutosh-kumar-shandilya/",
-          }
+          },
         ]}
       />
       <Alumni />

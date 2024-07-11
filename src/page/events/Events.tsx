@@ -83,12 +83,15 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import Upcoming from "../events-detail/upcoming/Upcoming";
 
 interface Props {
   pastdata: any;
+  latestevent: any;
+  enroll: any;
 }
 
-const Events: React.FC<Props> = ({ pastdata }) => {
+const Events: React.FC<Props> = ({ latestevent, pastdata, enroll }) => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -130,7 +133,8 @@ const Events: React.FC<Props> = ({ pastdata }) => {
       <h1 className="text-[#2E436A] text-center mb-10 text-5xl md:text-7xl font-extrabold overflow-hidden xl:pl-[140px] xl:pr-[100px]">
         Events
       </h1>
-      <div className="xl:pl-[140px] xl:pr-[100px]">
+      <Upcoming data={latestevent} enroll={enroll} />
+      <div className="xl:pl-[140px] mt-[8rem] xl:pr-[100px]">
         <Slider {...settings} className="px-[30px] text-[#2E436A]">
           {pastdata?.map((card: any, index: any) => {
             const videoId = extractVideoId(card.youtubeLink);

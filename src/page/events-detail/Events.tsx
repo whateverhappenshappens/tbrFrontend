@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 import VideoPlayer from "./video-events/VideoEvent";
 
-const EventsDetail: React.FC = () => {
+const EventsDetail: React.FC = ({ enroll }) => {
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<any>();
 
@@ -33,9 +33,9 @@ const EventsDetail: React.FC = () => {
 
   return (
     <div className="events">
-      <Upcoming star={4} rating={5000} students={10000} data={data} />
+      <Upcoming data={data} enroll={enroll} />
       {data && <VideoPlayer videolink={data.youtubeLink} />}
-      <AboutEvents />
+      <AboutEvents data={data} />
       <Speaker data={data} />
       <StudentSaying />
       <Faq />

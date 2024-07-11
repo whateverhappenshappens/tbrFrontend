@@ -186,6 +186,26 @@ export const UserAPI = {
       return error;
     }
   },
+  UpdateUserProfile: async function (email: any, patchOps: any[]) {
+    const access_token = localStorage.getItem("access-token");
+    const url = `/v1.5/users/${email}`;
+
+    try {
+      const res = await api.patch(url, patchOps, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "application/json-patch+json",
+        },
+      });
+      console.log("Profile updated:", res.data);
+      return res.data; // Assuming you want to return the updated profile data
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+      toast.error("Failed to update profile.");
+      return Promise.reject(error);
+    }
+  },
+
   // userProfileDetail: async function (useremail: any) {
   //   try {
   //     const res = await api.get(`/v1.5/users/@${useremail}`);

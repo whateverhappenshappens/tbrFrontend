@@ -145,4 +145,30 @@ export const EventsAPI = {
       return error;
     }
   },
+  latestEvent: async function () {
+    try {
+      // Fetch all events
+      const res = await api.get("/v1.5/events");
+
+      // Filter active events
+      const activeEvents = res.data.filter((event: any) => event.isActive);
+
+      // Find the latest active event
+      const latestEvent = activeEvents.reduce((latest, current) => {
+        return new Date(latest.date) > new Date(current.date)
+          ? latest
+          : current;
+      }, activeEvents[0]);
+
+      // Ensure the latest event has isActive set to true
+      if (latestEvent) {
+        latestEvent.isActive = true;
+      }
+
+      return latestEvent;
+    } catch (error) {
+      console.error("An error occurred:", error);
+      return Promise.reject(error);
+    }
+  },
 };

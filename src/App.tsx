@@ -34,13 +34,14 @@ import { CartProvider } from "./CartContext";
 import SalesOperations from "./page/operations/SalesOperations";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import ProfilePage from "./page/Profile/ProfilePage";
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
   const [pastEventData, setPastEventData] = useState<any>();
-  const [email, setEmail] = useState<any>("");
-  const [coupon, setCoupon] = useState<any>();
+  const [latestevent, setLatestEvent] = useState<any>();
+  const [enroll, setEnroll] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchActiveEvents = async () => {
@@ -61,6 +62,18 @@ function App() {
       }
     };
 
+    const latestEvent = async () => {
+      try {
+        const res = await EventsAPI.latestEvent();
+        console.log(res);
+
+        setLatestEvent(res);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    latestEvent();
     fetchActiveEvents();
     fetchPastEvents();
   }, []);
@@ -85,7 +98,7 @@ function App() {
   };
 
   // AUTHENTICATED STATE
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
 
   useEffect(() => {
     const checkTokenValidity = async () => {
@@ -147,6 +160,8 @@ function App() {
                   handle_login={handleLogin}
                   activedata={activeEventData}
                   pastdata={pastEventData}
+                  latestevent={latestevent}
+                  enroll={enroll}
                 />
               }
             />
@@ -166,6 +181,8 @@ function App() {
             {/* <Route path="/update-details" element={<Profile />} /> */}
 
             <Route path="/profile" element={<Profile />} />
+            <Route path="/update-user-info" element={<ProfilePage />} />
+
             <Route
               path="/operations"
               element={
@@ -187,13 +204,19 @@ function App() {
                 <HackathonPage
                   Activedata={activeEventData}
                   Pastdata={pastEventData}
+                  setEnroll={setEnroll}
+                  enroll={enroll}
+                  latestevent={latestevent}
                 />
               }
             />
             <Route path="/course/webmonk" element={<Webmonk />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/course/codeslayer" element={<CodeSlayer />} />
-            <Route path="/events/:id" element={<EventsDetail />} />
+            <Route
+              path="/events/:id"
+              element={<EventsDetail enroll={enroll} />}
+            />
             <Route path="*" element={<NotFound />} />
             <Route path="/course/machinester" element={<MlProgram />} />
             <Route path="/course/IOT" element={<IotProgram />} />

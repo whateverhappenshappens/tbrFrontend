@@ -11,7 +11,7 @@ import Connected from "./connected/Connected";
 
 const CampusAssociate: React.FC = () => {
   return (
-    <div className="container1">
+    <div className="container1 mt-[4rem]">
       <Represent />
       <Associate />
       <Experience />
