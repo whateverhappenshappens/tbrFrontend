@@ -1,6 +1,6 @@
 
   
-  .main_box21 {
+  .main_box22 {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -12,7 +12,7 @@
     overflow: hidden;
     position: relative;
   }
-  .buttondabba{
+  .buttondabba1{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,42 +38,11 @@
     cursor: not-allowed;
     background-color: #ccc; /* Optional: to visually indicate it's disabled */
   }
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
   
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
   
-  .modal-content h2 {
-    margin: 0 0 10px;
-    font-size: 2.5rem;
-    font-family: bold;
-  }
   
-  .modal-content p {
-    margin: 0 0 20px;
-    font-size: 2rem;
-    font-weight: 500;
-  }
   
-  .modal-content .buttun {
-    margin: 0 10px;
-  }
+  
   .search-container input {
     border: none; /* Remove default border */
     outline: none; /* Remove default outline */
@@ -99,7 +68,7 @@
   }
   
   
-  .lefty {
+  .left1 {
     background-color: #F7FAFC;
     width: 30%;
     height: 82%;
@@ -112,7 +81,7 @@
     gap: 30px;
     align-items: center;
   }
-  .buttun{
+  .buttun22{
     width:20.25rem ;
     height: 5.2rem;
     border-radius: 15px;
@@ -152,18 +121,18 @@
     font-size: 1.5rem;
     margin-top: 1rem;
   }  
-  .lefty img{
+  .left1 img{
     height: 16.25rem;
     width: 16.25rem;
     /* background-color: antiquewhite; */
     border-radius: 50%;
     border:2px solid;
   }
-  .lefty h1 {
+  .left1 h1 {
     color: beige;
   }
   
-  .lefty h2 {
+  .left1 h2 {
     color: #e9f4fb;
     font-size: 2rem;
     font-weight: 800;
@@ -175,28 +144,28 @@
     border: 2px solid black;
     margin-left: 25px;
   } 
-  .righty label{
+  .right label{
     color: #2E436A;
     font: normal normal bold 25px/26px extra-bold;
   }
-  .righty {
-    width: 40%;
+  .right {
+    width: 50%;
     height: 95%; 
     margin:2.5%;
     padding: 30px;
   }
   
-  .righty h1 {
+  .right h1 {
     color: #2e436a;
   }
   
-  .righty h4 {
+  .right h4 {
     color: #6d87f5;
     font-size: 1rem;
     margin-bottom: 20px;
   }
   
-  .righty .lng {
+  .right .lng {
     margin-top: 10px;
     width: 70%;
     padding: 15px;
@@ -209,15 +178,15 @@
   } 
   /* @media (max-width:700px) {
     .header {
-      padding-left: 7rem;
+      padding-left1: 7rem;
     }
-    .lefty{
+    .left1{
       display: none;
     }
     .btn{
         width: 95%;
         min-width: 244px;
-        margin-left: 16px;
+        margin-left1: 16px;
         height:40px;
     }
     .right{

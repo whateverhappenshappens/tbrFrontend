@@ -1,9 +1,8 @@
+import React from 'react';
 import "./MediaPresence.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import { NavLink } from "react-router-dom";
 
 type MediaProps = {
   title: string;
@@ -24,9 +23,9 @@ const MediaItem = ({ title, link, para, image }: MediaProps) => {
       </div>
       <div className="media-title">{title}</div>
       <div className="media-para">{para}</div>
-      <NavLink to={link} className="read-now">
+      <a href={link} target="_blank" rel="noopener noreferrer" className="read-now">
         READ NOW
-      </NavLink>
+      </a>
     </div>
   );
 };
@@ -59,7 +58,7 @@ const MediaPresence = ({ mediaItems }: MediaPresenceProps) => {
 
   return (
     <div className="media-presence">
-      <h2>Our Recent Achievements</h2>
+      <h2>Media Presence</h2>
       <Slider {...settings} className="slider">
         {mediaItems.map((item, idx) => (
           <MediaItem

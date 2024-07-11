@@ -24,7 +24,7 @@
     margin-left: 5rem;
     margin-top: 1rem;
 }
-.left1 {
+.left12 {
     width: 40%;
     height: 370px;
     margin-right: 3rem;
@@ -35,6 +35,9 @@
     font-family: 'medium';
     margin-top: 3.8rem;
     color: #FFFFFF;
+}
+.family img{
+    width: 100%;
 }
 
 .gig-point p {
@@ -55,7 +58,7 @@
          /* Adjusted for smaller screens */
     }
 
-    .left1 img {
+    .left12 img {
         display: none;
     }
     

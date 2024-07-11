@@ -9,7 +9,7 @@ import Signup from "../Sign/Signup"; // Import the Signup component
 import logo2 from "./Tlogo.svg";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
-const Login = ({ handle_login, setIsLoggedIn }: any) => {
+const Login = ({ handle_login, setIsLoggedIn, setEmail }: any) => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState<User>({
     password: "",
@@ -56,7 +56,13 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
     if (validateForm()) {
       console.log(userDetails);
       try {
-        await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
+        const res = await UserAPI.login(
+          userDetails,
+          handle_login,
+          setIsLoggedIn
+        );
+        setEmail(res.data.email);
+
         setUserDetails({
           password: "",
           email: "",

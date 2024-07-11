@@ -23,6 +23,7 @@ import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";
 import Hire from "./page/hirewithus/Hire";
 import Profile from "./page/Profile/Profile1";
+import Profile1 from "./page/Profile/ProfilePage";
 import Programs from "./page/Program-page/Program";
 import { EventsAPI } from "./apis/EventsAPI/EventsAPI";
 import Test from "./components/Test";
@@ -150,7 +151,7 @@ function App() {
                 />
               }
             />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setEmail={setEmail} />} />
             <Route path="/signup" element={<Signup />} />
             <Route
               path="/blog"
@@ -165,7 +166,8 @@ function App() {
             <Route path="/About-us" element={<About />} />
             {/* <Route path="/update-details" element={<Profile />} /> */}
 
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/update-details" element={<Profile />} />
+            <Route path="/profile" element={<Profile1 />} />
             <Route
               path="/operations"
               element={

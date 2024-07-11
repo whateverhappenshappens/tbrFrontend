@@ -62,7 +62,7 @@ function Profile() {
     const { fullname, email, phoneNumber, collegeName, stream } =
       updatedProfile;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10}$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
 
     const newErrors = {};
 
@@ -110,133 +110,126 @@ function Profile() {
 
   return (
     <div className="main_box21 mt-[7rem]">
-      <aside className="lefty">
-        <img src={boyProfile} alt="" />
-        <div className="buttondabba">
-          <button className="buttun buttun1">Change Picture</button>
-          <button
-            className="buttun buttun2"
-            onClick={handleSave}
-            // disabled={!isValid}
-          >
-            Apply Changes
+  <div className="righty flex-container">
+    <div className="column">
+      <label>Fullname</label>
+      <br />
+      <br />
+      <div className="search-container">
+        <input
+          type="text"
+          name="fullname"
+          placeholder="John Doe"
+          value={profile.fullname}
+          onChange={handleChange}
+          readOnly={editableField !== "fullname"}
+        />
+        <div className="edit">
+          <button type="button" onClick={() => toggleEdit("fullname")}>
+            {editableField === "fullname" ? "Save" : "Edit"}
           </button>
         </div>
-      </aside>
-      <div className="righty">
-        <label>Fullname</label>
-        <br />
-        <br />
-        <div className="search-container">
-          <input
-            type="text"
-            name="fullname"
-            placeholder="John Doe"
-            value={profile.fullname}
-            onChange={handleChange}
-            readOnly={editableField !== "fullname"}
-          />
-          <div className="edit">
-            <button type="button" onClick={() => toggleEdit("fullname")}>
-              {editableField === "fullname" ? "Save" : "Edit"}
-            </button>
-          </div>
-        </div>
-        {errors.fullname && <p className="error">{errors.fullname}</p>}
-        <br />
+      </div>
+      {errors.fullname && <p className="error">{errors.fullname}</p>}
+      <br />
 
-        <label>Email</label>
-        <br />
-        <br />
-        <div className="search-container">
-          <input
-            type="text"
-            name="email"
-            placeholder="Johndoe@gmail.com"
-            value={profile.email}
-            onChange={handleChange}
-            readOnly={editableField !== "email"}
-          />
-          <div className="edit">
-            <button type="button" onClick={() => toggleEdit("email")}>
-              {editableField === "email" ? "Save" : "Edit"}
-            </button>
-          </div>
-        </div>
-        {errors.email && <p className="error">{errors.email}</p>}
-        <br />
+      <label>College Name</label>
+      <br />
+      <br />
+      <div className="search-container">
+        <input
+          type="text"
+          name="collegeName"
+          placeholder="Enter college name"
+          value={profile.collegeName}
+          onChange={handleChange}
+        />
+      </div>
+      {errors.collegeName && <p className="error">{errors.collegeName}</p>}
+      <br />
 
-        <label>Phone Number</label>
-        <br />
-        <br />
-        <div className="search-container">
-          <input
-            type="text"
-            name="phoneNumber"
-            placeholder="Enter phone number"
-            value={profile.phoneNumber}
-            onChange={handleChange}
-          />
-        </div>
-        {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
-        <br />
+      <label>Stream</label>
+      <br />
+      <br />
+      <div className="search-container">
+        <input
+          type="text"
+          name="stream"
+          placeholder="Enter your Stream"
+          value={profile.stream}
+          onChange={handleChange}
+        />
+      </div>
+      {errors.stream && <p className="error">{errors.stream}</p>}
+    </div>
 
-        <label>College Name</label>
-        <br />
-        <br />
-        <div className="search-container">
-          <input
-            type="text"
-            name="collegeName"
-            placeholder="Enter college name"
-            value={profile.collegeName}
-            onChange={handleChange}
-          />
+    <div className="column">
+      <label>Email</label>
+      <br />
+      <br />
+      <div className="search-container">
+        <input
+          type="text"
+          name="email"
+          placeholder="Johndoe@gmail.com"
+          value={profile.email}
+          onChange={handleChange}
+          readOnly={editableField !== "email"}
+        />
+        <div className="edit">
+          <button type="button" onClick={() => toggleEdit("email")}>
+            {editableField === "email" ? "Save" : "Edit"}
+          </button>
         </div>
-        {errors.collegeName && <p className="error">{errors.collegeName}</p>}
-        <br />
+      </div>
+      {errors.email && <p className="error">{errors.email}</p>}
+      <br />
 
-        <label>Stream</label>
-        <br />
-        <br />
-        <div className="search-container">
-          <input
-            type="text"
-            name="stream"
-            placeholder="Enter your Stream"
-            value={profile.stream}
-            onChange={handleChange}
-          />
-        </div>
-        {errors.stream && <p className="error">{errors.stream}</p>}
-        <br />
-        <br />
-        <br />
-        <button
-          className="buttun3"
-          disabled={!isValid}
-          onClick={handleCompletePayment}
-        >
-          Complete Payment
+      <label>Phone Number</label>
+      <br />
+      <br />
+      <div className="search-container">
+        <input
+          type="text"
+          name="phoneNumber"
+          placeholder="Enter phone number"
+          value={profile.phoneNumber}
+          onChange={handleChange}
+        />
+      </div>
+      {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
+      <button
+    className="buttun3"
+    disabled={!isValid}
+    onClick={handleCompletePayment}
+  >
+    Complete Payment
+  </button>
+    </div>
+  </div>
+
+  <br />
+  <br />
+  <br />
+  
+
+  {showModal && (
+    <div className="modal">
+      <div className="modal-content">
+        <h2>Unsaved Changes</h2>
+        <p >Please save your changes before completing the payment.</p>
+        <button className="buttun4" onClick={handleSave}>
+          Save Changes
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button className="buttun4" onClick={() => setShowModal(false)}>
+          Cancel
         </button>
       </div>
-
-      {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Unsaved Changes</h2>
-            <p>Please save your changes before completing the payment.</p>
-            <button className="buttun4" onClick={handleSave}>
-              Save Changes
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <button className="buttun4" onClick={() => setShowModal(false)}>
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
     </div>
+  )}
+</div>
+
   );
 }
 
