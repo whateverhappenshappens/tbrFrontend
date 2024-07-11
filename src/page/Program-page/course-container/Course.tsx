@@ -75,6 +75,7 @@ const Course: React.FC<Props> = ({ value }) => {
           teachername="Mr. Shashank Pathak"
           image={banner1}
           link="/course/webmonk"
+          id="webmonk"
         />
       )}
 
@@ -85,6 +86,7 @@ const Course: React.FC<Props> = ({ value }) => {
           teachername="Mr. Shashank Pathak"
           image={banner2}
           link="/course/machinester"
+          id="machinester"
         />
       )}
 
@@ -95,6 +97,7 @@ const Course: React.FC<Props> = ({ value }) => {
           teachername="Mr. Shashank Pathak"
           image={banner3}
           link="/course/IOT"
+          id="iot"
         />
       )}
 
@@ -105,6 +108,7 @@ const Course: React.FC<Props> = ({ value }) => {
           teachername="Mr. Shashank Pathak"
           image={banner1}
           link="/course/codeslayer"
+          id="code-slayer"
         />
       )}
     </div>

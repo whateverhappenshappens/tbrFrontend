@@ -150,7 +150,6 @@ export const UserAPI = {
   },
   UpdateProfileDetail: async function (useremail: any) {
     const access_token = localStorage.getItem("access-token");
-
     try {
       const res = await api.request({
         url: `/v1.5/users/@${useremail}`,

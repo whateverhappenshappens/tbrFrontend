@@ -4,7 +4,6 @@ import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
 
-
 interface Props {
   star: number;
   rating: number;
@@ -52,12 +51,12 @@ const Details: React.FC<Props> = (props) => {
   }, [props.students, props.rating]);
 
   const handleEnroll = () => {
-    const generateUniqueId = () => {
-      return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-    };
+    // const generateUniqueId = () => {
+    //   return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    // };
 
     const course = {
-      id: generateUniqueId(),
+      id: "machinester",
       name: "Machinester",
       description: "A very small description of the course should be included",
       price: 5000,
@@ -72,7 +71,6 @@ const Details: React.FC<Props> = (props) => {
 
   return (
     <div className="details">
-      
       <div className="details-content">
         <div className="details-info">
           <div className="details-links">
