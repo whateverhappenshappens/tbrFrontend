@@ -4,7 +4,7 @@ import Login from "../main/login/Login";
 import Signup from "../main/Sign/Signup";
 import { UserAPI } from "../../apis/UserAPIs";
 import { FaCartShopping } from "react-icons/fa6";
-import logo from "../../assets/Logo.png";
+import logo from "../../assets/techbairn logo black-01.png";
 import hamburger from "../../assets/hamburger.png";
 import "../../styles/components/Header.css";
 
@@ -70,7 +70,7 @@ function Header({
       )}
 
       <NavLink to="/">
-        <img className="logo" src={logo} alt="Techbairn logo" />
+        <img className="logo h-[5rem]" src={logo} alt="Techbairn logo" />
       </NavLink>
       <div className="open-nav" onClick={() => setNavOpen(true)}>
         <img src={hamburger} alt="hamburger" />

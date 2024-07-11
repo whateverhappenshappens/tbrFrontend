@@ -9,4 +9,30 @@
   .our{
     font-family: bold;
   }
-  
+  /* Alumni.css */
+
+/* Alumni.css */
+/* Alumni.css */
+
+.rotate {
+  animation: rotateAndScale 1s ease-in-out;
+}
+
+@keyframes rotateAndScale {
+  0% {
+    transform: rotate(0deg) scale(1) translateZ(0);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg) scale(0.5) translateZ(50px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg) scale(1) translateZ(0);
+    opacity: 1;
+  }
+}
+
+.company-card {
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}

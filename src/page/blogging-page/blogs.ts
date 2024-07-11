@@ -47,7 +47,7 @@ export const blogs: Blog[] = [
     genre: "Front end development",
     summary:
       "Explore the foundational principles of front-end development with 'Mastering HTML5: A Beginner's Guide.' This concise resource covers HTML5 basics, semantic markup, interactivity, and integration with CSS and JavaScript. Discover opportunities for practical application and further learning to advance your skills in web development.      ",
-    author: "Mithali Raj",
+    author: "Team TBR",
     date: "Sept 2, 2023",
   },
   {
@@ -93,8 +93,8 @@ export const blogs: Blog[] = [
     genre: "Front end development",
     summary:
       "Explore the forefront of front-end development with our latest blog post: '5 Cutting-Edge Front End Development Trends You Can't Afford to Miss!' From responsive web design and progressive web apps to single-page applications, voice user interfaces, and motion UI, discover the key trends shaping the future of web development. Stay ahead of the curve and learn how to leverage these innovations to create immersive, user-centric experiences that set your projects apart in today's digital landscape.",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "Oct 2, 2023",
   },
   {
     id: "three",
@@ -129,8 +129,8 @@ export const blogs: Blog[] = [
     genre: "Front end development",
     summary:
       "Unlock seamless user experiences in front-end development with strategies like responsive design, fast loading times, intuitive navigation, consistent UI elements, and accessibility. Prioritize user testing and feedback while optimizing performance and ensuring cross-browser compatibility for scalable and maintainable code. By implementing these strategies, create engaging digital experiences that delight users.",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "Sept 20, 2023",
   },
   {
     id: "four",
@@ -170,8 +170,8 @@ export const blogs: Blog[] = [
     genre: "Competitive programming ",
     summary:
       "Dive into the world of competitive programming and unlock limitless opportunities in tech. Explore key strategies, from mastering fundamentals to regular practice and contest participation. Join TechBairn's expert-led program for structured learning and unleash your potential in the dynamic realm of technology.      ",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "Nov 2, 2023",
   },
   {
     id: "five",
@@ -215,8 +215,8 @@ export const blogs: Blog[] = [
     genre: "Competitive programming",
     summary:
       "Discover the exciting world of competitive programming with our beginner's guide. Learn about its essence, benefits, and essential steps to kickstart your journey. From mastering basics to participating in contests, TechBairn offers a comprehensive program to help you excel. Join us today and unlock your coding potential!",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "Nov 20, 2023",
   },
   {
     id: "six",
@@ -258,8 +258,8 @@ export const blogs: Blog[] = [
    `,
     genre: "Machine learning",
     summary: `Unlocking Tomorrow: Understanding Supervised Learning for Predictive Analytics" explores the significance of supervised learning in predictive analytics, likening it to a teacher guiding a student's learning process. It elucidates how predictive analytics utilizes historical data to forecast future trends and behaviors across various industries like finance, healthcare, retail, and education. While highlighting the potential of supervised learning, the article acknowledges challenges such as data quality and overfitting. TechBairn offers a program to equip individuals with skills in predictive analytics, emphasizing the importance of data-driven decision-making in shaping the future.`,
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "Sept 10, 2023",
   },
   {
     id: "seven",
@@ -325,8 +325,8 @@ export const blogs: Blog[] = [
     genre: "Web-development",
     summary:
       "In 2024, mastering JavaScript frameworks is essential for web developers to stay ahead. This article outlines the top 5 frameworks—React.js, Vue.js, Angular, Node.js, and Svelte—highlighting their features and benefits. Learning these frameworks enhances efficiency, scalability, and job prospects, offering a gateway to building advanced web applications and thriving in the evolving tech landscape.      ",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "March 2, 2023",
   },
   {
     id: "eight",
@@ -372,8 +372,8 @@ export const blogs: Blog[] = [
     genre: "IOT",
     summary:
       "The article introduces the concept of the Internet of Things (IoT), exploring its inception, workings, and diverse applications. It underscores IoT's pivotal role in sectors like healthcare, agriculture, transportation, and education, alongside the challenges it faces, such as security and interoperability. Emphasizing the promising future of IoT with emerging technologies like 5G and AI, the piece concludes by highlighting TechBairn's contribution to IoT education and the imperative of leveraging IoT's potential for a smarter, interconnected world.      ",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "Mar 30, 2023",
   },
   {
     id: "nine",
@@ -413,8 +413,8 @@ export const blogs: Blog[] = [
     genre: "IOT",
     summary:
       "The article delves into how IoT revolutionizes industries, such as smart homes, healthcare, agriculture, manufacturing, and transportation. In smart homes, IoT devices grant remote control for convenience and energy efficiency. Wearables with IoT tech offer real-time health monitoring in healthcare. IoT sensors optimize resource usage in agriculture. IoT facilitates smart factories for production optimization in manufacturing. It also streamlines transportation with smart systems, reducing congestion and emissions. Ultimately, IoT's potential for innovation is limitless, and at TechBairn, professionals can access courses to empower themselves in this evolving field.      ",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "May 2, 2023",
   },
   {
     id: "ten",
@@ -462,7 +462,7 @@ export const blogs: Blog[] = [
     genre: "IOT",
     summary:
       "The blog post explores the critical importance of IoT security in safeguarding connected devices and data amidst the widespread adoption of Internet of Things technology. It delves into understanding IoT security vulnerabilities and offers strategies like encryption, authentication, and network segmentation to mitigate risks. The discussion extends to best practices for data protection, emerging technologies like blockchain and AI, challenges, regulatory compliance, and future trends in IoT security. Case studies illustrate successful implementations, emphasizing the necessity of proactive security measures. Ultimately, the post underscores the imperative of prioritizing IoT security to ensure the integrity and resilience of interconnected ecosystems.      ",
-    author: "Mithali Raj",
-    date: "Sept 2, 2023",
+    author: "Team TBR",
+    date: "DEC 2, 2023",
   },
 ];

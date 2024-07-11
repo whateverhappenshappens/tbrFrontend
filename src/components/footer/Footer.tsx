@@ -5,7 +5,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io";
 import { FaYoutube } from "react-icons/fa6";
 import { NavLink } from "react-router-dom"; // Import NavLink
-import logo from "../../assets/Logo.svg";
+import logo from "../../assets/techbairn logo white-01.png";
 import "../../styles/components/Footer.css";
 
 const itemList = [
@@ -31,22 +31,22 @@ const Footer: React.FC = () => {
           <img
             src={logo}
             alt="techbairn logo"
-            className="w-3/4 sm:w-1/2 mx-auto lg:w-full"
+            className="w-[25rem] sm:w-[2rem]  mx-auto lg:w-[35rem]"
           />
           <div className="text-white text-4xl sm:text-6xl flex gap-10 mx-auto lg:mx-0">
-            <a href="#">
+            <a href="https://www.linkedin.com/company/techbairn/  " target="_blank" rel="noopener noreferrer">
               <IoLogoLinkedin />
             </a>
-            <a href="#">
+            <a href="https://www.facebook.com/techbairn/" target="_blank" rel="noopener noreferrer">
               <FaFacebookF />
             </a>
-            <a href="#">
+            <a href="https://instagram.com/techbairn" target="_blank" rel="noopener noreferrer">
               <IoLogoInstagram />
             </a>
-            <a href="#">
+            <a href="#" target="_blank" rel="noopener noreferrer">
               <FaTwitter />
             </a>
-            <a href="#">
+            <a href="https://www.youtube.com/@techbairn" target="_blank" rel="noopener noreferrer">
               <FaYoutube />
             </a>
           </div>

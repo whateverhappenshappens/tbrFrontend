@@ -614,7 +614,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { OrderRequestData } from "../../types/OrderRequestData";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
 import { UserAPI } from "../../apis/UserAPIs";
@@ -633,6 +632,14 @@ interface courseType {
   discountedPrice: number;
 }
 
+const coupons = {
+  SAVE10: 10,
+  SPRING20: 20,
+  WINTER25: 25,
+  SUMMER30: 30,
+  FALL35: 35,
+};
+
 interface netPriceObjType {
   totalPrice: number;
   totalDiscountedPrice: number;
@@ -644,12 +651,16 @@ const Cart = ({ headerHeight }: Props) => {
   const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const cartPage = useRef<HTMLDivElement>(null);
+  const [couponCode, setCouponCode] = useState("");
+  const [couponMessage, setCouponMessage] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [additionalDiscount, setAdditionalDiscount] = useState(0);
   const [netPriceObj, setNetPriceObj] = useState<netPriceObjType>({
     totalPrice: 0,
     totalDiscountedPrice: 0,
     discount: 0,
   });
-  
+
   useEffect(() => {
     let totalPrice = 0;
     let totalDiscountedPrice = 0;
@@ -659,7 +670,7 @@ const Cart = ({ headerHeight }: Props) => {
       totalDiscountedPrice += course.discountedPrice;
     });
 
-    let discount = Math.ceil((totalDiscountedPrice / totalPrice) * 100);
+    let discount = ((totalPrice - totalDiscountedPrice) / totalPrice) * 100;
 
     setNetPriceObj({
       totalPrice,
@@ -682,7 +693,6 @@ const Cart = ({ headerHeight }: Props) => {
     window.scrollTo(0, 0);
   }, []);
 
-  
   useEffect(() => {
     if (cartPage.current) {
       cartPage.current.style.paddingTop = `${headerHeight + 10}px`;
@@ -693,6 +703,30 @@ const Cart = ({ headerHeight }: Props) => {
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
 
+  const handleApplyCoupon = () => {
+    if (coupons.hasOwnProperty(couponCode)) {
+      const couponDiscount = coupons[couponCode];
+      setCouponMessage(
+        `You have got ${netPriceObj.discount.toFixed(2)}% + ${couponDiscount}% discount`
+      );
+      setPromoApplied(true);
+      setAdditionalDiscount(couponDiscount);
+
+      const additionalDiscountAmount = (netPriceObj.totalDiscountedPrice * couponDiscount) / 100;
+      setNetPriceObj((prevState) => {
+        const newDiscountedPrice = prevState.totalDiscountedPrice - additionalDiscountAmount;
+        return {
+          ...prevState,
+          totalDiscountedPrice: newDiscountedPrice,
+          discount: ((prevState.totalPrice - newDiscountedPrice) / prevState.totalPrice) * 100,
+        };
+      });
+    } else {
+      setCouponMessage("Invalid coupon code");
+      setPromoApplied(false);
+      setAdditionalDiscount(0);
+    }
+  };
 
   return (
     <div
@@ -756,18 +790,44 @@ const Cart = ({ headerHeight }: Props) => {
                 </div>
                 <div className="flex flex-col xl:text-5xl xl:overflow-hidden">
                   <div className="new text-[#6D87F5] xl:overflow-visible">
-                    Rs {netPriceObj.totalDiscountedPrice}
+                    Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}
                   </div>
                   <div className="old line-through xl:overflow-visible">
-                    Rs {netPriceObj.totalPrice}
+                    Rs {netPriceObj.totalPrice.toFixed(2)}
                   </div>
                   <div className="discount-per xl:overflow-visible">
-                    {netPriceObj.discount}% off
+                    {promoApplied
+                      ? `${netPriceObj.discount.toFixed(2)}% off`
+                      : `${((netPriceObj.totalPrice - netPriceObj.totalDiscountedPrice) / netPriceObj.totalPrice * 100).toFixed(2)}% off`}
                   </div>
                 </div>
               </div>
             </div>
-
+            <div className="coupon flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10 items-center">
+              <div className="input-box-wrapper flex flex-auto items-center text-3xl lg:text-4xl">
+                <input
+                  className="input-box p-5 text-3xl lg:text-4xl xl:text-5xl font-semibold rounded-l-2xl outline-none"
+                  placeholder="Coupon code"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value)}
+                />
+                <div
+                  className={`apply-btn bg-[#FF7E6C] text-white border-2 border-[#FF7E6C] px-6 lg:px-10 py-3 lg:py-5 rounded-r-2xl font-semibold cursor-pointer ${
+                    promoApplied
+                      ? "pointer-events-none bg-gray-400"
+                      : "hover:bg-white hover:text-[#FF7E6C]"
+                  }`}
+                  onClick={handleApplyCoupon}
+                >
+                  {promoApplied ? "Promo applied" : "Apply coupon"}
+                </div>
+              </div>
+            </div>
+            {couponMessage && (
+              <div className="coupon-message text-2xl text-red-500">
+                {couponMessage}
+              </div>
+            )}
             <div className="buttons flex justify-between">
               <NavLink
                 to="/programs"
@@ -807,4 +867,3 @@ const Cart = ({ headerHeight }: Props) => {
 };
 
 export default Cart;
-
