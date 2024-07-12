@@ -94,7 +94,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
       toast.error("Failed to update profile!");
     }
   };
-
   async function handlePayment() {
     const requestData = {
       utr: "utr-number",
