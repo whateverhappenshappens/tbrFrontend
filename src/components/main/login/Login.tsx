@@ -104,7 +104,7 @@ const Login = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }: any) => {
   }
 
   return (
-    <GoogleOAuthProvider clientId="944851895962-n2ttlahb8aoaohcjbgt3tutlg7gdana6.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId="">
       <div className="main_box">
         <aside className="left">
           <img src={logo2} alt="TechBairn Logo" className="logo" />

@@ -127,9 +127,9 @@ const Events: React.FC<Props> = ({ pastdata }) => {
 
   return (
     <div className="events py-[50px] md:pl-[70px] md:pr-[60px] xl:my-20">
-      <h1 className="text-[#2E436A] text-center mb-10 text-5xl md:text-7xl font-extrabold overflow-hidden xl:pl-[140px] xl:pr-[100px]">
+      {/* <h1 className="text-[#2E436A] text-center mb-10 text-5xl md:text-7xl font-extrabold overflow-hidden xl:pl-[140px] xl:pr-[100px]">
         Events
-      </h1>
+      </h1> */}
       <div className="xl:pl-[140px] xl:pr-[100px]">
         <Slider {...settings} className="px-[30px] text-[#2E436A]">
           {pastdata?.map((card: any, index: any) => {
