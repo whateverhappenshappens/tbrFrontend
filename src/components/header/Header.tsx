@@ -151,7 +151,7 @@ function Header({
         ) : (
           <div className="h-48 flex justify-evenly items-center  md:h-fit">
             <NavLink
-              to="/profile"
+              to="/user-profile"
               className="user-profile-img block bg-cyan-500 w-28 h-28 rounded-full"
             ></NavLink>
             <div className="ml-5">
