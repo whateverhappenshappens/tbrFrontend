@@ -1193,6 +1193,8 @@ const Cart: React.FC<Props> = ({
     setCartValue(totalDiscountedPrice);
     setCartDetailsData(cart);
     setCartValueData(cartValue);
+    console.log("Cart data: ", cart);
+    console.log("Cart value: ", cartValue);
   }, [cart, cartValue]);
 
   // const selectedCourses = cartDetailsData.cartDetailsData.map(
