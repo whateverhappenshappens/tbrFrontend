@@ -1128,7 +1128,7 @@ import axios from "axios";
 interface Props {
   headerHeight: number;
   setCartDetailsData: any;
-  setCartValueData: number;
+  setCartValueData: any;
 }
 
 interface CourseType {
@@ -1191,7 +1191,9 @@ const Cart: React.FC<Props> = ({
       discount,
     });
     setCartValue(totalDiscountedPrice);
-  }, [cart]);
+    setCartDetailsData(cart);
+    setCartValueData(cartValue);
+  }, [cart, cartValue]);
 
   // const selectedCourses = cartDetailsData.cartDetailsData.map(
   //   ({ description, ...rest }) => rest
