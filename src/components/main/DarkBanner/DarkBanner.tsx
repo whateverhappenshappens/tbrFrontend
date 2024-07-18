@@ -31,7 +31,7 @@ const DarkBanner: React.FC<DarkBannerProps> = ({ title, subtitle, logos }) => {
     ],
   };
   return (
-    <div className="dark-banner">
+    <div className="dark-banner mb-[5rem]">
       <div className="title">{title}</div>
       <div className="subtitle">{subtitle}</div>
       <div className="logo-container">

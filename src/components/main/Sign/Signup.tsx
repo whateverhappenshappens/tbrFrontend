@@ -6,7 +6,7 @@ import { User, UserRole } from "../../../types/User";
 import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
 import Login from "../login/Login"; // Import the Login component
-import logo1 from "./Tlogo.svg";
+import logo1 from "../../../assets/techbairn logo black-01.png";
 
 function Signup() {
   const [userDetails, setUserDetails] = useState<User>({
@@ -107,7 +107,7 @@ function Signup() {
         <img
           src={logo1} // Replace with the path to your logo image
           alt="TechBairn Logo"
-          className="logo" // Add a custom class for styling
+          className="logo121" // Add a custom class for styling
         />
         <h2>
           Start Your <br />
@@ -179,12 +179,16 @@ function Signup() {
             I accept all <span className="ex">Terms & conditions</span>
           </span>
           <br />
-          <button className="btn" onClick={handle_signup} disabled={!isFormValid()}>
+          <button
+            className="btn"
+            onClick={handle_signup}
+            disabled={!isFormValid()}
+          >
             Create an account
           </button>
           <p className="cont">-----or continue with Google------</p>
           <div className="google">
-            <FaGoogle className="icon1" />
+            <FaGoogle className="icon12" />
             <a href="/@{/oauth2/authorization/google}">Google</a>
           </div>
         </div>
@@ -199,4 +203,3 @@ function Signup() {
 }
 
 export default Signup;
-

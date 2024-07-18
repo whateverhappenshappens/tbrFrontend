@@ -35,6 +35,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import UpdateUserDetail from "./page/Profile/UpdateUserDetails";
 import UserProfile from "./page/Profile/UserProfile";
+import Refer from "./page/refer&earn/Refer&Earn";
+
+import TryListings from "./try/Try_listing";
+
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
@@ -158,6 +162,7 @@ function App() {
               element={<Login setloggedInUserEmail={setLoggedInUserEmail} />} // Ensure the prop is passed correctly
             />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/refer" element={<Refer />} />
             <Route
               path="/blog"
               element={<Blogging headerHeight={headerHeight} />}
@@ -169,16 +174,11 @@ function App() {
             <Route path="/campus-associate" element={<CampusAssociate />} />
             <Route path="/mentor" element={<Mentor />} />
             <Route path="/About-us" element={<About />} />
-            <Route path="/user-profile" element={<UserProfile />} />
-            <Route
-              path="/update-user-details"
-              element={
-                <UpdateUserDetail
-                  cartValue={cartValue}
-                  cartDetailsData={cartDetailsData}
-                />
-              }
-            />
+            {/* <Route path="/update-details" element={<Profile />} /> */}
+
+            <Route path="/update-details" element={<Profile />} />
+            <Route path="/profile" element={<Profile1 />} />
+            <Route path="/updated-css" element={<TryListings />} />
             <Route
               path="/operations"
               element={
@@ -193,6 +193,7 @@ function App() {
               element={<EventsManagerPage headerHeight={headerHeight} />}
             />
             <Route path="/hire-with-us" element={<Hire />} />
+            
             <Route
               path="/event-listing"
               element={

@@ -8,10 +8,11 @@ import Skills from "./skills/Skills";
 import Roles from "./roles/Roles";
 import Benefits from "./benefits/Benefits";
 import Connected from "./connected/Connected";
+import StudentSaying from "../programs-detail/codeslayers/studentssaying/StudentSaying";
 
 const CampusAssociate: React.FC = () => {
   return (
-    <div className="container1">
+    <div className="container1 mt-[5rem]">
       <Represent />
       <Associate />
       <Experience />
@@ -19,6 +20,7 @@ const CampusAssociate: React.FC = () => {
       <Skills />
       <Roles />
       <Benefits />
+      <StudentSaying />
       <Connected />
     </div>
   );

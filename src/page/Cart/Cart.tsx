@@ -1225,7 +1225,7 @@ const Cart: React.FC<Props> = ({
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
 
-  const handleApplyCoupon = () => {
+    const handleApplyCoupon = () => {
     if (coupons.hasOwnProperty(couponCode)) {
       const couponDiscount = coupons[couponCode];
       setCouponMessage(

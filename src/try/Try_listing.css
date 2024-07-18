@@ -1,0 +1,142 @@
+.listings-container {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    background: azure;
+    
+}
+
+.listings-rectangle {
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+}
+
+.listings-rectangle p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.listings-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+}
+
+.listings-name {
+    color: #2E436A;
+    
+}
+
+.listings-name-para1 {
+    font-family: 'bold';
+    font-size: 3rem;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.listings-name-para2 {
+    font-family: 'medium';
+    opacity: 69%;
+    font-size: 2.5rem;
+}
+
+.listings-date {
+    font-size: 2rem;
+    text-align: right;
+}
+
+.listings-date p {
+    font-family: 'bold';
+    margin: 0;
+}
+
+.listings-button {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.listings-button-enroll {
+    border-radius: 10px;
+    background-color: #2E436A;
+    color: white;
+    font-size: 2.6rem;
+    cursor: pointer;
+}
+
+.listings-button-enroll p {
+    font-family: 'demi-bold';
+    margin: 1.1rem 4.5rem;
+}
+
+.listings-button-details {
+    border-radius: 10px;
+    border: 3px solid #2E436A;
+    color: #2E436A;
+    background-color: white;
+    font-size: 2.6rem;
+    cursor: pointer;
+}
+
+.listings-button-details p {
+    font-family: 'demi-bold';
+    margin: 1.1rem 3.9rem;
+}
+
+.listings-container:hover {
+    background-color: #6D87F5;
+    color: white;
+}
+
+.listings-container:hover .listings-name {
+    color: white;
+}
+
+.listings-container:hover .listings-date {
+    color: white;
+}
+
+.listings-container:hover .listings-button-enroll {
+    color: #6D87F5;
+    background-color: white;
+    border: none;
+}
+
+.listings-container:hover .listings-button-details {
+    background-color: #6D87F5;
+    color: white;
+    border: 3px solid white;
+}
+
+@media (max-width: 767px) {
+    .listings-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        align-items: start;
+    }
+
+    .listings-content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .listings-button {
+        flex-direction: row;
+    }
+
+    .listings-button-enroll, .listings-button-details {
+        width: auto;
+    }
+
+    .listings-name-para1, .listings-name-para2, .listings-date p {
+        font-size: 1.5rem;
+    }
+}

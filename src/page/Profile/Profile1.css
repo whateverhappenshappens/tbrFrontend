@@ -1,45 +1,79 @@
 .main_box21 {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 90%;
-  height: 90%;
   max-width: 1200px;
-  border-radius: 10px;
+  margin: auto;
   background-color: #F7FAFC;
+  border-radius: 10px;
   overflow: hidden;
-  position: relative;
+  padding: 2rem;
 }
 
 .flex-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   width: 100%;
+  gap: 2rem;
 }
 
 .column {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 2rem;
-  padding: 1rem;
-  margin-left: 12rem;
+  gap: 1.5rem;
 }
 
 .search-container {
   display: flex;
   align-items: center;
-  height: 68px;
-  width: 100%;
   background-color: white;
   border-radius: 18px;
   box-shadow: 6px 6px 12px #00000029;
+  padding: 1rem;
+  height: 68px;
+  width: 100%;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.search-container button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #6d87f5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+}
+
+.payment {
+  width: 50%;
+  padding: 0.75rem 1.5rem;
+  color: whitesmoke;
+  background-color: #2E436A;
+  border-radius: 5px;
+  font-size: 1.80rem;
+  font-family: bold;
+  
+  cursor: pointer;
+  margin-top: 1rem;
 }
 
 .buttun3:disabled {
-  cursor: not-allowed;
   background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .modal {
@@ -54,15 +88,7 @@
   justify-content: center;
   z-index: 1000;
 }
-.buttun4{
-  width:20.25rem ;
-  height: 5.2rem;
-  border-radius: 15px;
-  font: normal normal bold 20px/26px bold;
-  border: 2px solid #000;
-  gap: 1.5rem;
-  
-}
+
 .modal-content {
   background: white;
   padding: 20px;
@@ -73,138 +99,100 @@
 
 .modal-content h2 {
   margin: 0 0 10px;
-  font-size: 2.5rem;
-  font-family: bold;
+  font-size: 2rem;
 }
 
 .modal-content p {
   margin: 0 0 20px;
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.25rem;
 }
 
 .modal-content .buttun {
   margin: 0 10px;
 }
 
-.search-container input {
-  border: none;
-  outline: none;
-  padding: 10px;
-  font-size: 16px;
-  width: 80%;
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
   background-color: white;
-  border-radius: 20px;
-}
-
-.search-container button {
-  padding: 10px 20px;
-  background-color: #333;
-  background-color: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 4px;
-  color: #6d87f5;
-  font-weight: 700;
-}
-
-.buttun {
-  width: 20.25rem;
-  height: 5.2rem;
-  border-radius: 15px;
-  font: normal normal bold 20px/26px bold;
-}
-
-.buttun3 {
-  width: 22.25rem;
-  height: 5.2rem;
-  border-radius: 15px;
-  font: normal normal bold 20px/26px bold;
-  border: 2px solid #000;
-  color: #000;
+  border-radius: 18px;
+  box-shadow: 6px 6px 12px #00000029;
+  padding: 1rem;
   margin-top: 10rem;
+  height: 50rem;
+  margin-left: 10rem;
 }
 
-.error {
-  color: red;
-  font-size: 1.5rem;
-  margin-top: 1rem;
-}
-
-.righty label {
+.summary-container h2 {
+  font-size: 40px;
+  font-family: bold;
+  margin-bottom: 1rem;
   color: #2E436A;
-  font: normal normal bold 25px/26px extra-bold;
+  text-align: left;
 }
-
-.righty {
-  width: 100%;
-  height: 95%;
-  margin: 2.5%;
-  padding: 30px;
+.sum{
+  display: flex;
+  justify-content: space-around;
 }
-
-.righty h1 {
-  color: #103270;
+.items{
+  color: #2E436A;
+  font-family: bold;
+  max-width: 300px;
 }
-
-.righty h4 {
-  color: #223db7;
-  font-size: 1rem;
-  margin-bottom: 20px;
+.price{
+  color: #2E436A;
+  font-family: bold;
+  text-align: right;
+  min-width: 60px; /* Ensure the price has a fixed minimum width */
+  
 }
-
-.righty .lng {
-  margin-top: 10px;
-  width: 70%;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+.items1{
+  color: #2E436A;
+  font-family: bold;
+  
 }
-
-.righty input {
-  color: #000;
+.price1{
+  color: #6D87F5;
+  font-family: bold;
+  text-align: right;
+  min-width: 60px; /* Ensure the price has a fixed minimum width */
 }
-
-.edit {
-  font: normal normal bold 16px/26px extra-bold;
+.summary-container p {
+  font-size: 20px;
+  margin: 0.5rem 0;
+  
+}
+.total-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  
+  font-weight: bold;
+  border-top: 3px dotted #000;
+}
+.order{
+  color: #F1604C;
+  font-family: bold;
+}
+.course-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 700px) {
   .flex-container {
     flex-direction: column;
-    margin-left: 0;
   }
 
-  .column {
-    margin-left: 0;
-    padding: 0;
-    gap: 1rem;
-  }
-  .buttun4{
-    width: 15rem;
-    font-size: 1.3srem;
-  }
-  .search-container {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .buttun3 {
+  .summary-container {
     width: 100%;
     margin-top: 2rem;
   }
 
-  .righty {
-    padding: 1rem;
-  }
-
-  .modal-content h2 {
-    font-size: 1.8rem;
-  }
-
-  .modal-content p {
-    font-size: 1.2rem;
+  .buttun3 {
+    width: 100%;
   }
 }

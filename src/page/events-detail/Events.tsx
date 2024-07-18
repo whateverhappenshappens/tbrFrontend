@@ -34,8 +34,8 @@ const EventsDetail: React.FC = () => {
   return (
     <div className="events">
       <Upcoming star={4} rating={5000} students={10000} data={data} />
-      {data && <VideoPlayer videolink={data.youtubeLink} />}
-      <AboutEvents />
+      {data?.youtubeLink && <VideoPlayer videolink={data.youtubeLink} />}
+      <AboutEvents data={data} />
       <Speaker data={data} />
       <StudentSaying />
       <Faq />
