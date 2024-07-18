@@ -6,7 +6,7 @@ import { User, UserRole } from "../../../types/User";
 import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
 import Login from "../login/Login"; // Import the Login component
-import logo1 from "./Tlogo.svg";
+import logo1 from "../../../assets/techbairn logo black-01.png";
 
 function Signup() {
   const [userDetails, setUserDetails] = useState<User>({
@@ -179,7 +179,11 @@ function Signup() {
             I accept all <span className="ex">Terms & conditions</span>
           </span>
           <br />
-          <button className="btn" onClick={handle_signup} disabled={!isFormValid()}>
+          <button
+            className="btn"
+            onClick={handle_signup}
+            disabled={!isFormValid()}
+          >
             Create an account
           </button>
           <p className="cont">-----or continue with Google------</p>
@@ -199,4 +203,3 @@ function Signup() {
 }
 
 export default Signup;
-

@@ -4,7 +4,7 @@ import { User } from "../types/User";
 
 // function to refresh the access token
 async function refreshAccessToken() {
-  console.log("inside refresh token function.");
+  console.log("Inside refresh token function.");
   localStorage.removeItem("access-token");
   await api
     .post("/v1.5/auth/refresh-token")
@@ -129,6 +129,7 @@ export const UserAPI = {
       return Promise.reject(error);
     }
   },
+
   UserDetails: async function () {
     const access_token = localStorage.getItem("access-token");
     if (!access_token) {
@@ -149,6 +150,7 @@ export const UserAPI = {
       return false;
     }
   },
+
   UpdateProfileDetail: async function (useremail: any) {
     const access_token = localStorage.getItem("access-token");
 
@@ -168,12 +170,13 @@ export const UserAPI = {
       return error;
     }
   },
-  userProfileDetail: async function (useremail: any) {
+
+  userProfileDetail: async function () {
     const access_token = localStorage.getItem("access-token");
 
     try {
       const res = await api.request({
-        url: `/v1.5/users/@${useremail}`,
+        url: `/v1.5/users/get-profile`,
         method: "GET",
         headers: {
           Authorization: "Bearer " + access_token,
@@ -187,6 +190,7 @@ export const UserAPI = {
       return error;
     }
   },
+
   UpdateUserProfile: async function (email: any, patchOps: any[]) {
     const access_token = localStorage.getItem("access-token");
     const url = `/v1.5/users/${email}`;

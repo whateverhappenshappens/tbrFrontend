@@ -59,6 +59,7 @@ import ssu from "../../assets/college/SSU-LOGO1-1-scaled-01-01-01.jpg";
 import shriram from "../../assets/college/The_Official_Logo_of_Shri_Ram_College_of_Commerce(SRCC)-01.png";
 import tmsl from "../../assets/college/tmsl-logo white-01.png";
 import Biggest from "../hackathon/biggest/Biggest";
+import DisplayEvent from "./DisplayEvent";
 
 const logos: string[] = [
   amazon_img,
@@ -126,7 +127,9 @@ function LandingPage({
         subtitle="All of our instructors are from renowned companies with a vast knowledge on this subject matter."
         logos={logo_college}
       />
+      <DisplayEvent />
       <Biggest ActiveData={activedata} />
+
       <Events pastdata={pastdata} />
       <DarkBanner
         title="Collaborations"

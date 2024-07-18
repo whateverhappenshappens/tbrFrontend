@@ -21,7 +21,7 @@ function UserProfile() {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const res = await UserAPI.private_test();
+        const res = await UserAPI.userProfileDetail();
         console.log(res);
         setProfile({
           fullname: res.data.name,

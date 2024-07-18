@@ -47,6 +47,7 @@ interface FormData {
   speakerName: string;
   youtubeLink: string;
   isActive: boolean;
+  enrollLink: string;
 }
 
 function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
@@ -70,6 +71,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
     speakerName: "",
     youtubeLink: "",
     isActive: false,
+    enrollLink: "",
   });
 
   // Store the original data to compare with later
@@ -98,6 +100,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
           speakerName: eventData.speakerName,
           youtubeLink: eventData.youtubeLink,
           isActive: eventData.isActive,
+          enrollLink: eventData.enrollLink,
         });
       } catch (e) {
         console.error(e);
@@ -214,6 +217,19 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
           name="mobileBanner"
           placeholder="Mobile Banner Link"
           value={formData.mobileBanner}
+          onChange={handleInputChange}
+        />
+        <button onClick={handleUploadClick}>Upload</button>
+      </div>
+      <br></br>
+      <div className="inline-form">
+        <label htmlFor="mobileBanner">Enroll Link:</label>
+        <input
+          type="text"
+          id="enrollLink"
+          name="enrollLink"
+          placeholder="Enroll Link"
+          value={formData.enrollLink}
           onChange={handleInputChange}
         />
         <button onClick={handleUploadClick}>Upload</button>
