@@ -35,6 +35,7 @@ import { CartProvider } from "./CartContext";
 import SalesOperations from "./page/operations/SalesOperations";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import TryListings from "./try/Try_listing";
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
@@ -168,6 +169,7 @@ function App() {
 
             <Route path="/update-details" element={<Profile />} />
             <Route path="/profile" element={<Profile1 />} />
+            <Route path="/updated-css" element={<TryListings />} />
             <Route
               path="/operations"
               element={
@@ -183,6 +185,7 @@ function App() {
               element={<EventsManagerPage headerHeight={headerHeight} />}
             />
             <Route path="/hire-with-us" element={<Hire />} />
+            
             <Route
               path="/event-listing"
               element={

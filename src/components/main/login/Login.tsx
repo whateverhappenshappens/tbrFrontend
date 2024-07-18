@@ -6,7 +6,7 @@ import "../../../styles/components/Login.css";
 import { UserRole, User } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
 import Signup from "../Sign/Signup"; // Import the Signup component
-import logo2 from "./Tlogo.svg";
+import logo2 from "../../../assets/techbairn logo white-01.png";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 const Login = ({ handle_login, setIsLoggedIn }: any) => {
@@ -101,7 +101,7 @@ const Login = ({ handle_login, setIsLoggedIn }: any) => {
           <img
             src={logo2} // Replace with the path to your logo image
             alt="TechBairn Logo"
-            className="logo" // Add a custom class for styling
+            className="logo121" // Add a custom class for styling
           />
           <h2>
             We are glad <br />

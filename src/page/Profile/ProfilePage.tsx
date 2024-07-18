@@ -17,7 +17,7 @@ function ProfilePage() {
             <button className="buttun buttun2">Apply Changes</button>
           </div>
         </aside>
-        <div className="right">
+        <div className="right12">
           <label>Fullname</label>
           <br />
           <br />

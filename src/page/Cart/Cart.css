@@ -26,5 +26,24 @@
     overflow-y: hidden;
     z-index: 999;
   }
-  
+  @media (max-width:768px) {
+    .coupon1{
+      width: 15rem;
+      margin-left: 2rem;
+    }
+    .apply-coupon{
+      width: 18rem;
+      margin-left: 1rem;
+    }
+    .coupon{
+      display: flex;
+      justify-content: center;
+    }
+    .buttons{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  }
   

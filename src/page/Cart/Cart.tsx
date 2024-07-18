@@ -703,28 +703,20 @@ const Cart = ({ headerHeight }: Props) => {
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
 
-  const handleApplyCoupon = () => {
+    const handleApplyCoupon = () => {
     if (coupons.hasOwnProperty(couponCode)) {
       const couponDiscount = coupons[couponCode];
       setCouponMessage(
-        `You have got ${netPriceObj.discount.toFixed(2)}% + ${couponDiscount}% discount`
+        `You have got ${netPriceObj.discount}% + ${couponDiscount}% discount`
       );
       setPromoApplied(true);
       setAdditionalDiscount(couponDiscount);
-
-      const additionalDiscountAmount = (netPriceObj.totalDiscountedPrice * couponDiscount) / 100;
-      setNetPriceObj((prevState) => {
-        const newDiscountedPrice = prevState.totalDiscountedPrice - additionalDiscountAmount;
-        return {
-          ...prevState,
-          totalDiscountedPrice: newDiscountedPrice,
-          discount: ((prevState.totalPrice - newDiscountedPrice) / prevState.totalPrice) * 100,
-        };
-      });
+      calculateNetPrice(couponDiscount);
     } else {
       setCouponMessage("Invalid coupon code");
       setPromoApplied(false);
       setAdditionalDiscount(0);
+      calculateNetPrice(0);
     }
   };
 
@@ -804,34 +796,34 @@ const Cart = ({ headerHeight }: Props) => {
               </div>
             </div>
             <div className="coupon flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10 items-center">
-              <div className="input-box-wrapper flex flex-auto items-center text-3xl lg:text-4xl">
-                <input
-                  className="input-box p-5 text-3xl lg:text-4xl xl:text-5xl font-semibold rounded-l-2xl outline-none"
-                  placeholder="Coupon code"
-                  value={couponCode}
-                  onChange={(e) => setCouponCode(e.target.value)}
-                />
-                <div
-                  className={`apply-btn bg-[#FF7E6C] text-white border-2 border-[#FF7E6C] px-6 lg:px-10 py-3 lg:py-5 rounded-r-2xl font-semibold cursor-pointer ${
-                    promoApplied
-                      ? "pointer-events-none bg-gray-400"
-                      : "hover:bg-white hover:text-[#FF7E6C]"
-                  }`}
-                  onClick={handleApplyCoupon}
-                >
-                  {promoApplied ? "Promo applied" : "Apply coupon"}
-                </div>
+             <div className="input-box-wrapper flex flex-auto items-center text-3xl lg:text-4xl">
+           <input
+                className="coupon1 input-box p-5 text-3xl lg:text-4xl xl:text-5xl font-semibold rounded-l-2xl outline-none"
+                placeholder="Coupon code"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+              />
+              <div
+                className={`apply-coupon apply-btn bg-[#FF7E6C] text-white border-2 border-[#FF7E6C] px-6 lg:px-10 py-3 lg:py-5 rounded-r-2xl font-semibold cursor-pointer ${
+                  promoApplied
+                    ? "pointer-events-none bg-gray-400"
+                    : "hover:bg-white hover:text-[#FF7E6C]"
+                }`}
+                onClick={handleApplyCoupon}
+              >
+                {promoApplied ? "Promo applied" : "Apply coupon"}
               </div>
             </div>
-            {couponMessage && (
-              <div className="coupon-message text-2xl text-red-500">
-                {couponMessage}
-              </div>
-            )}
+          </div>
+          {couponMessage && (
+            <div className="coupon-message text-2xl text-red-500">
+              {couponMessage}
+            </div>
+          )}
             <div className="buttons flex justify-between">
               <NavLink
                 to="/programs"
-                className="continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
+                className="countinue continue-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
               >
                 Continue shopping
               </NavLink>

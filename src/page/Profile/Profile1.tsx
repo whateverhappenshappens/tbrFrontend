@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Profile1.css";
-import boyProfile from "../../assets/Boy photo.png";
 import { UserAPI } from "../../apis/UserAPIs";
 
 function Profile() {
@@ -17,6 +16,11 @@ function Profile() {
   const [editableField, setEditableField] = useState(null);
   const [isSaved, setIsSaved] = useState(true); // Track if the profile is saved
   const [showModal, setShowModal] = useState(false); // State for controlling the modal
+  const [selectedCourses, setSelectedCourses] = useState([
+    { course: "Webmonk - A Complete Web Development Program", price: 1000 },
+    { course: "Webmonk - A Complete Web Development Program", price: 2000 },
+    { course: "Webmonk - A Complete Web Development Program", price: 1500 },
+  ]); // Static courses data
 
   useEffect(() => {
     const profileEmail = localStorage.getItem("user-email");
@@ -108,128 +112,131 @@ function Profile() {
     setEditableField((prevField) => (prevField === field ? null : field));
   };
 
+  const handleCourseSelect = (course, price) => {
+    setSelectedCourses((prevCourses) => [
+      ...prevCourses,
+      { course, price },
+    ]);
+  };
+
+  // Calculate the total amount
+  const totalAmount = selectedCourses.reduce((sum, item) => sum + item.price, 0);
+
   return (
-    <div className="main_box21 mt-[7rem]">
-  <div className="righty flex-container">
-    <div className="column">
-      <label>Fullname</label>
-      <br />
-      <br />
-      <div className="search-container">
-        <input
-          type="text"
-          name="fullname"
-          placeholder="John Doe"
-          value={profile.fullname}
-          onChange={handleChange}
-          readOnly={editableField !== "fullname"}
-        />
-        <div className="edit">
-          <button type="button" onClick={() => toggleEdit("fullname")}>
-            {editableField === "fullname" ? "Save" : "Edit"}
+    <div className="main_box21 mt-[10rem]">
+      <div className="flex-container">
+        <div className="column">
+          <label>Fullname</label>
+          <div className="search-container">
+            <input
+              type="text"
+              name="fullname"
+              placeholder="John Doe"
+              value={profile.fullname}
+              onChange={handleChange}
+              readOnly={editableField !== "fullname"}
+            />
+            <button type="button" onClick={() => toggleEdit("fullname")}>
+              {editableField === "fullname" ? "Save" : "Edit"}
+            </button>
+          </div>
+          {errors.fullname && <p className="error">{errors.fullname}</p>}
+
+          <label>College Name</label>
+          <div className="search-container">
+            <input
+              type="text"
+              name="collegeName"
+              placeholder="Enter college name"
+              value={profile.collegeName}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.collegeName && <p className="error">{errors.collegeName}</p>}
+
+          <label>Stream</label>
+          <div className="search-container">
+            <input
+              type="text"
+              name="stream"
+              placeholder="Enter your Stream"
+              value={profile.stream}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.stream && <p className="error">{errors.stream}</p>}
+
+          <label>Email</label>
+          <div className="search-container">
+            <input
+              type="text"
+              name="email"
+              placeholder="Johndoe@gmail.com"
+              value={profile.email}
+              onChange={handleChange}
+              readOnly={editableField !== "email"}
+            />
+            <button type="button" onClick={() => toggleEdit("email")}>
+              {editableField === "email" ? "Save" : "Edit"}
+            </button>
+          </div>
+          {errors.email && <p className="error">{errors.email}</p>}
+
+          <label>Phone Number</label>
+          <div className="search-container">
+            <input
+              type="text"
+              name="phoneNumber"
+              placeholder="Enter phone number"
+              value={profile.phoneNumber}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
+
+          <button
+            className="payment"
+            disabled={!isValid}
+            onClick={handleCompletePayment}
+          >
+            Complete Payment
           </button>
         </div>
-      </div>
-      {errors.fullname && <p className="error">{errors.fullname}</p>}
-      <br />
 
-      <label>College Name</label>
-      <br />
-      <br />
-      <div className="search-container">
-        <input
-          type="text"
-          name="collegeName"
-          placeholder="Enter college name"
-          value={profile.collegeName}
-          onChange={handleChange}
-        />
-      </div>
-      {errors.collegeName && <p className="error">{errors.collegeName}</p>}
-      <br />
-
-      <label>Stream</label>
-      <br />
-      <br />
-      <div className="search-container">
-        <input
-          type="text"
-          name="stream"
-          placeholder="Enter your Stream"
-          value={profile.stream}
-          onChange={handleChange}
-        />
-      </div>
-      {errors.stream && <p className="error">{errors.stream}</p>}
-    </div>
-
-    <div className="column">
-      <label>Email</label>
-      <br />
-      <br />
-      <div className="search-container">
-        <input
-          type="text"
-          name="email"
-          placeholder="Johndoe@gmail.com"
-          value={profile.email}
-          onChange={handleChange}
-          readOnly={editableField !== "email"}
-        />
-        <div className="edit">
-          <button type="button" onClick={() => toggleEdit("email")}>
-            {editableField === "email" ? "Save" : "Edit"}
-          </button>
+        <div className="summary-container">
+          <h2>Summary</h2>
+          <div className="sum">
+            <p className="items">Items</p>
+            <p className="price">Price</p>
+          </div>
+          {selectedCourses.map((course, index) => (
+            <div className="course-summary" key={index}>
+              <p className="items">{course.course}</p>
+              <p className="price1">Rs {course.price}/-</p>
+            </div>
+          ))}
+          <div className="total-summary">
+            <p className="order">Order total:</p>
+            <p className="price1">Rs {totalAmount}/-</p>
+          </div>
         </div>
       </div>
-      {errors.email && <p className="error">{errors.email}</p>}
-      <br />
 
-      <label>Phone Number</label>
-      <br />
-      <br />
-      <div className="search-container">
-        <input
-          type="text"
-          name="phoneNumber"
-          placeholder="Enter phone number"
-          value={profile.phoneNumber}
-          onChange={handleChange}
-        />
-      </div>
-      {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
-      <button
-    className="buttun3"
-    disabled={!isValid}
-    onClick={handleCompletePayment}
-  >
-    Complete Payment
-  </button>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Unsaved Changes</h2>
+            <p>Please save your changes before completing the payment.</p>
+            <button className="buttun4" onClick={handleSave}>
+              Save Changes
+            </button>
+            <button className="buttun4" onClick={() => setShowModal(false)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
-  </div>
-
-  <br />
-  <br />
-  <br />
-  
-
-  {showModal && (
-    <div className="modal">
-      <div className="modal-content">
-        <h2>Unsaved Changes</h2>
-        <p >Please save your changes before completing the payment.</p>
-        <button className="buttun4" onClick={handleSave}>
-          Save Changes
-        </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <button className="buttun4" onClick={() => setShowModal(false)}>
-          Cancel
-        </button>
-      </div>
-    </div>
-  )}
-</div>
-
   );
 }
 
