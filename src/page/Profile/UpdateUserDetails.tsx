@@ -409,10 +409,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         </button>
         {errors.stream && <p className="error">{errors.stream}</p>}
         <br />
-
-        <button className="buttun3" onClick={handlePayment}>
-          Complete Payment
-        </button>
       </div>
 
       {showModal && (
@@ -430,6 +426,28 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
           </div>
         </div>
       )}
+      <div className="summary-container">
+        <h2>Summary</h2>
+        <div className="sum">
+          <p className="items">Items</p>
+          <p className="price">Price</p>
+        </div>
+        {cartDetailsData.cartDetailsData.map((course: any, index: any) => (
+          <div className="course-summary" key={index}>
+            <p className="items">{course.name}</p>
+            <p className="price1">Rs {course.discountedPrice}/-</p>
+          </div>
+        ))}
+        <div className="total-summary">
+          <p className="order">Order total:</p>
+          <p className="price1">Rs {cartDetailsData.cartValue}/-</p>
+        </div>
+        <div className="w-[100%] px-[15rem] mt-[4rem]">
+          <button className="buttun3 " onClick={handlePayment}>
+            Complete Payment
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

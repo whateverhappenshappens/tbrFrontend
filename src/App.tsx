@@ -39,7 +39,6 @@ import Refer from "./page/refer&earn/Refer&Earn";
 
 import TryListings from "./try/Try_listing";
 
-
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
@@ -176,8 +175,16 @@ function App() {
             <Route path="/About-us" element={<About />} />
             {/* <Route path="/update-details" element={<Profile />} /> */}
 
-            <Route path="/update-details" element={<Profile />} />
-            <Route path="/profile" element={<Profile1 />} />
+            <Route
+              path="/cart-summary"
+              element={
+                <UpdateUserDetail
+                  cartDetailsData={cartDetailsData}
+                  cartValue={cartValue}
+                />
+              }
+            />
+            <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/updated-css" element={<TryListings />} />
             <Route
               path="/operations"
@@ -193,7 +200,7 @@ function App() {
               element={<EventsManagerPage headerHeight={headerHeight} />}
             />
             <Route path="/hire-with-us" element={<Hire />} />
-            
+
             <Route
               path="/event-listing"
               element={
