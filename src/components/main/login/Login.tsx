@@ -315,7 +315,11 @@ const Login = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }: any) => {
     <GoogleOAuthProvider clientId="">
       <div className="main_box">
         <aside className="left">
-          <img src={logo2} alt="TechBairn Logo" className="logo" />
+          <img
+            src={logo2} // Replace with the path to your logo image
+            alt="TechBairn Logo"
+            className="logo121" // Add a custom class for styling
+          />
           <h2>
             We are glad <br />
             you are back!

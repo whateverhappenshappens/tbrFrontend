@@ -107,7 +107,7 @@ function Signup() {
         <img
           src={logo1} // Replace with the path to your logo image
           alt="TechBairn Logo"
-          className="logo" // Add a custom class for styling
+          className="logo121" // Add a custom class for styling
         />
         <h2>
           Start Your <br />
@@ -188,7 +188,7 @@ function Signup() {
           </button>
           <p className="cont">-----or continue with Google------</p>
           <div className="google">
-            <FaGoogle className="icon1" />
+            <FaGoogle className="icon12" />
             <a href="/@{/oauth2/authorization/google}">Google</a>
           </div>
         </div>

@@ -144,28 +144,28 @@
     border: 2px solid black;
     margin-left: 25px;
   } 
-  .right label{
+  .right12 label{
     color: #2E436A;
     font: normal normal bold 25px/26px extra-bold;
   }
-  .right {
+  .right12 {
     width: 50%;
     height: 95%; 
     margin:2.5%;
     padding: 30px;
   }
   
-  .right h1 {
+  .right12 h1 {
     color: #2e436a;
   }
   
-  .right h4 {
+  .right12 h4 {
     color: #6d87f5;
     font-size: 1rem;
     margin-bottom: 20px;
   }
   
-  .right .lng {
+  .right12 .lng {
     margin-top: 10px;
     width: 70%;
     padding: 15px;
@@ -189,11 +189,11 @@
         margin-left1: 16px;
         height:40px;
     }
-    .right{
+    .right12{
       width:95%;
       min-width: 244px;
     }
-    .right .lng{
+    .right12 .lng{
       width: 95%  ;
     }
   } */
