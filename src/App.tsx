@@ -33,7 +33,12 @@ import { CartProvider } from "./CartContext";
 import SalesOperations from "./page/operations/SalesOperations";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import UpdateUserDetail from "./page/Profile/UpdateUserDetails";
+import UserProfile from "./page/Profile/UserProfile";
+import Refer from "./page/refer&earn/Refer&Earn";
+
 import TryListings from "./try/Try_listing";
+
 
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
@@ -157,6 +162,7 @@ function App() {
               element={<Login setloggedInUserEmail={setLoggedInUserEmail} />} // Ensure the prop is passed correctly
             />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/refer" element={<Refer />} />
             <Route
               path="/blog"
               element={<Blogging headerHeight={headerHeight} />}
