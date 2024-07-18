@@ -46,7 +46,7 @@ export const UserAPI = {
         localStorage.setItem("access-token", res.data.access_token);
         if (typeof handle_login === "function") handle_login();
         if (typeof setIsLoggedIn === "function") setIsLoggedIn(true);
-        localStorage.setItem("user-email", useremail);
+        // localStorage.setItem("user-email", useremail);
       }
       return res;
     } catch (error) {
@@ -69,7 +69,7 @@ export const UserAPI = {
       console.log(res);
       toast.success("Logout Successful");
       localStorage.removeItem("access-token");
-      localStorage.removeItem("user-email");
+      // localStorage.removeItem("user-email");
       if (typeof setIsLoggedIn === "function") setIsLoggedIn(false);
       return;
     } catch (error) {
@@ -108,8 +108,8 @@ export const UserAPI = {
           Authorization: "Bearer " + access_token,
         },
       });
-      console.log(res);
-      toast.success("Valid access token!");
+      // console.log(res);
+      // toast.success("Valid access token!");
       return res;
     } catch (error) {
       refreshAccessToken();
@@ -129,20 +129,21 @@ export const UserAPI = {
       return Promise.reject(error);
     }
   },
-  isLoggedIn: async function () {
+  UserDetails: async function () {
     const access_token = localStorage.getItem("access-token");
     if (!access_token) {
       return false;
     }
     try {
-      await api.request({
+      const res = await api.request({
         url: "/v1.5/requests/test/private/zoro",
         method: "GET",
         headers: {
           Authorization: "Bearer " + access_token,
         },
       });
-      return true;
+      console.log(res.data);
+      return res;
     } catch (error) {
       console.error("An error occurred while checking login status:", error);
       return false;
@@ -184,6 +185,26 @@ export const UserAPI = {
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;
+    }
+  },
+  UpdateUserProfile: async function (email: any, patchOps: any[]) {
+    const access_token = localStorage.getItem("access-token");
+    const url = `/v1.5/users/${email}`;
+
+    try {
+      const res = await api.patch(url, patchOps, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "application/json-patch+json",
+        },
+      });
+      console.log("Profile updated:", res.data);
+      toast.success("Profile updated successfully!");
+      return res.data; // Assuming you want to return the updated profile data
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+      toast.error("Failed to update profile.");
+      return Promise.reject(error);
     }
   },
   // userProfileDetail: async function (useremail: any) {

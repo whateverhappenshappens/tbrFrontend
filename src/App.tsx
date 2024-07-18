@@ -22,8 +22,6 @@ import About from "./page/about/about";
 import { Toaster } from "react-hot-toast";
 import HackathonPage from "./page/hackathon/HackathonPage";
 import Hire from "./page/hirewithus/Hire";
-import Profile from "./page/Profile/Profile1";
-import Profile1 from "./page/Profile/ProfilePage";
 import Programs from "./page/Program-page/Program";
 import { EventsAPI } from "./apis/EventsAPI/EventsAPI";
 import Test from "./components/Test";
@@ -41,8 +39,10 @@ function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
   const [pastEventData, setPastEventData] = useState<any>();
-  const [email, setEmail] = useState<any>("");
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState<string>("");
   const [coupon, setCoupon] = useState<any>();
+  const [cartDetailsData, setCartDetailsData] = useState<any>("");
+  const [cartValue, setCartValueData] = useState<number>();
 
   useEffect(() => {
     const fetchActiveEvents = async () => {
@@ -152,7 +152,10 @@ function App() {
                 />
               }
             />
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/login"
+              element={<Login setloggedInUserEmail={setLoggedInUserEmail} />} // Ensure the prop is passed correctly
+            />
             <Route path="/signup" element={<Signup />} />
             <Route
               path="/blog"
@@ -179,7 +182,6 @@ function App() {
                 />
               }
             />
-
             <Route
               path="/operations/manage-events"
               element={<EventsManagerPage headerHeight={headerHeight} />}
@@ -199,16 +201,21 @@ function App() {
             <Route path="/programs" element={<Programs />} />
             <Route path="/course/codeslayer" element={<CodeSlayer />} />
             <Route path="/events/:id" element={<EventsDetail />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/*" element={<NotFound />} />
             <Route path="/course/machinester" element={<MlProgram />} />
             <Route path="/course/IOT" element={<IotProgram />} />
             <Route
               path="/cart"
-              element={<Cart headerHeight={headerHeight} />}
+              element={
+                <Cart
+                  headerHeight={headerHeight}
+                  setCartDetailsData={setCartDetailsData}
+                  setCartValueData={setCartValueData}
+                />
+              }
             />
             <Route path="/test" element={<Test />} />
             <Route path="/operations/sales" element={<SalesOperations />} />
-            {/* <Route path="/profile" element={<ProfilePage />} /> */}
             <Route
               path="/payment-success"
               element={<PaymentSuccess headerHeight={headerHeight} />}

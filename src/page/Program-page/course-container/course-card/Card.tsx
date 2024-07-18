@@ -2,10 +2,10 @@ import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../../CartContext";
-import {  toast } from "react-toastify";
-
+import { toast } from "react-toastify";
 
 interface Props {
+  id: string;
   heading: string;
   para1: string;
   teachername: string;
@@ -17,12 +17,12 @@ const Card: React.FC<Props> = (props) => {
   const { addToCart } = useCart();
 
   const handleEnroll = () => {
-    const generateUniqueId = () => {
-      return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-    };
+    // const generateUniqueId = () => {
+    //   return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    // };
 
     const course = {
-      id: generateUniqueId(),
+      id: props.id,
       name: props.heading,
       description: props.para1,
       price: 5000,
@@ -35,7 +35,6 @@ const Card: React.FC<Props> = (props) => {
 
   return (
     <div className="course-card">
-      
       <div className="course-card-banner-image">
         <p>Live Classes</p>
         <img src={props.image} alt="Girl"></img>
@@ -57,7 +56,10 @@ const Card: React.FC<Props> = (props) => {
           </div>
           <p className="Teacher-Name">{props.teachername}</p>
           <div className="course-card-content-button">
-            <button className="enroll-btn course-card-content-button-enroll-now" onClick={handleEnroll}>
+            <button
+              className="enroll-btn course-card-content-button-enroll-now"
+              onClick={handleEnroll}
+            >
               Enroll Now
             </button>
             <button className="course-card-content-button-view-details">

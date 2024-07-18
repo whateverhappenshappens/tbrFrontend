@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { UserAPI } from '../../apis/UserAPIs';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { UserAPI } from "../../apis/UserAPIs";
 
 const AuthContext = createContext();
 
@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check if the user is logged in when the component mounts
-    const token = localStorage.getItem('access-token');
+    const token = localStorage.getItem("access-token");
     if (token) {
       UserAPI.check_access_token_validity()
         .then((res) => {
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       await UserAPI.login(user, null, setIsLoggedIn);
       setUser(user);
     } catch (error) {
-      console.error('Login failed', error);
+      console.error("Login failed", error);
     }
   };
 
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       setIsLoggedIn(false);
       setUser(null);
     } catch (error) {
-      console.error('Logout failed', error);
+      console.error("Logout failed", error);
     }
   };
 

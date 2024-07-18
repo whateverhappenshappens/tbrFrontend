@@ -52,12 +52,12 @@ const Details: React.FC<Props> = (props) => {
   }, [props.students, props.rating]);
 
   const handleEnroll = () => {
-    const generateUniqueId = () => {
-      return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-    };
+    // const generateUniqueId = () => {
+    //   return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    // };
 
     const course = {
-      id: generateUniqueId(),
+      id: "code-slayer",
       name: "CodeSlayer",
       description: "A very small description of the course should be included",
       price: 5000,
@@ -72,7 +72,7 @@ const Details: React.FC<Props> = (props) => {
 
   return (
     <div className="details">
-       {/* Ensure ToastContainer is placed here */}
+      {/* Ensure ToastContainer is placed here */}
       <div className="details-content">
         <div className="details-info">
           <div className="details-links">
@@ -90,7 +90,8 @@ const Details: React.FC<Props> = (props) => {
           </div>
           <div className="details-paragraphs">
             <p className="details-paragraphs-para1">
-              A Competitive Programming program, complete Placement Preparation Program
+              A Competitive Programming program, complete Placement Preparation
+              Program
             </p>
           </div>
           <div className="details-ratings">
@@ -120,7 +121,8 @@ const Details: React.FC<Props> = (props) => {
           <div className="details-buttons">
             <button className="details-buttons-enroll" onClick={handleEnroll}>
               <p>
-                Enroll Now for <span className="details-buttons-strike"> ₹ 5000</span> ₹ 3,999
+                Enroll Now for{" "}
+                <span className="details-buttons-strike"> ₹ 5000</span> ₹ 3,999
               </p>
             </button>
             <button className="details-buttons-download">
