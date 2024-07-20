@@ -33,6 +33,10 @@ import { CartProvider } from "./CartContext";
 import SalesOperations from "./page/operations/SalesOperations";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import UpdateUserDetail from "./page/Profile/UpdateUserDetails";
+import UserProfile from "./page/Profile/UserProfile";
+import Refer from "./page/refer&earn/Refer&Earn";
+
 import TryListings from "./try/Try_listing";
 import Unsucessfull from "./page/paymentUnsuccessfull/Unsucessfull";
 function App() {
@@ -157,6 +161,7 @@ function App() {
               element={<Login setloggedInUserEmail={setLoggedInUserEmail} />} // Ensure the prop is passed correctly
             />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/refer" element={<Refer />} />
             <Route
               path="/blog"
               element={<Blogging headerHeight={headerHeight} />}
@@ -171,8 +176,16 @@ function App() {
             {/* <Route path="/update-details" element={<Profile />} /> */}
             <Route path="/unsuccess" element={<Unsucessfull />} />
 
-            {/* <Route path="/update-details" element={<Profile />} />
-            <Route path="/profile" element={<Profile1 />} /> */}
+            <Route
+              path="/cart-summary"
+              element={
+                <UpdateUserDetail
+                  cartDetailsData={cartDetailsData}
+                  cartValue={cartValue}
+                />
+              }
+            />
+            <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/updated-css" element={<TryListings />} />
             <Route
               path="/operations"
@@ -188,7 +201,7 @@ function App() {
               element={<EventsManagerPage headerHeight={headerHeight} />}
             />
             <Route path="/hire-with-us" element={<Hire />} />
-            
+
             <Route
               path="/event-listing"
               element={

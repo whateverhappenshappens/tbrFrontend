@@ -24,6 +24,7 @@ const Upcoming: React.FC<props> = (props) => {
   for (var i = 0; i < arr.length; i++) {
     arr[i] = i;
   }
+  console.log(props.data?.isActive);
 
   return (
     <div className="upcoming">
@@ -70,11 +71,13 @@ const Upcoming: React.FC<props> = (props) => {
             <p>Mode : Online</p>
           </div>
           e
-          <div className="upcoming-buttons">
-            <button className="enroll-btn upcoming-buttons-enroll">
-              <p>Enroll Now</p>
-            </button>
-          </div>
+          {props.data?.isActive && (
+            <div className="upcoming-buttons">
+              <button className="enroll-btn upcoming-buttons-enroll">
+                <p>Enroll Now</p>
+              </button>
+            </div>
+          )}
         </div>
         <div className="upcoming-img">
           <div className="upcoming-links-2">
@@ -88,7 +91,7 @@ const Upcoming: React.FC<props> = (props) => {
           </div>
           <p className="upcoming-paragraphs-para1-1">{props.data?.heading}</p>
 
-          <img src={props.data?.bannerLinkPC} alt="" />
+          <img src={props.data?.enrollLink} alt="" />
           <button className="speaker-btn">
             Ashutosh<br></br>Co-Founder @TechBairn
           </button>

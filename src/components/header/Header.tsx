@@ -7,6 +7,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import logo from "../../assets/techbairn logo black-01.png";
 import hamburger from "../../assets/hamburger.png";
 import "../../styles/components/Header.css";
+import { CgProfile } from "react-icons/cg";
 
 function Header({
   updateHeaderHeight,
@@ -150,10 +151,9 @@ function Header({
           </div>
         ) : (
           <div className="h-48 flex justify-evenly items-center  md:h-fit">
-            <NavLink
-              to="/user-profile"
-              className="user-profile-img block bg-cyan-500 w-28 h-28 rounded-full"
-            ></NavLink>
+            <NavLink to="/user-profile">
+              <CgProfile className="w-[50px] h-[50px] " />
+            </NavLink>
             <div className="ml-5">
               <button
                 onClick={handleLogout}

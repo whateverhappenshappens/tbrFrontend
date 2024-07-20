@@ -3,7 +3,7 @@ import "./Profile1.css";
 import { UserAPI } from "../../apis/UserAPIs";
 import toast from "react-hot-toast";
 import * as jsonpatch from "fast-json-patch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
@@ -12,7 +12,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
 
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState({
-    fullname: "",
+    fullName: "",
     email: "",
     phoneNumber: "",
     collegeName: "",
@@ -23,6 +23,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
   const [editableField, setEditableField] = useState(null);
   const [isSaved, setIsSaved] = useState(true); // Track if the profile is saved
   const [showModal, setShowModal] = useState(false); // State for controlling the modal
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -30,7 +31,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         const res = await UserAPI.private_test();
         console.log(res);
         setProfile({
-          fullname: res.data.name,
+          fullName: res.data.name,
           email: res.data.email,
           phoneNumber: res.data.mobileNumber,
           collegeName: res.data.collegeName,
@@ -52,7 +53,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
 
     const newErrors = {};
 
-    if (!fullname) newErrors.fullname = "Fullname is required.";
+    if (!fullname) newErrors.fullName = "Fullname is required.";
     if (!email || !emailRegex.test(email))
       newErrors.email = "Invalid email address.";
     if (!phoneNumber || !phoneRegex.test(phoneNumber))
@@ -78,7 +79,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
   // Save data to localStorage
   const handleSave = async () => {
     const patchOps = [
-      { op: "replace", path: "/name", value: profile.fullname },
+      { op: "replace", path: "/name", value: profile.fullName },
       { op: "replace", path: "/collegeName", value: profile.collegeName },
       { op: "replace", path: "/stream", value: profile.stream },
       { op: "replace", path: "/mobileNumber", value: profile.phoneNumber },
@@ -156,10 +157,11 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
               "There was a problem with the payment success operation:",
               error
             );
+            navigate("/login");
           }
         },
         prefill: {
-          name: profile.fullname,
+          name: profile.fullName,
           email: profile.email,
           contact: profile.phoneNumber,
         },
@@ -265,7 +267,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
   //             });
   //         },
   //         prefill: {
-  //           name: profile.fullname,
+  //           name: profile.fullName,
   //           email: profile.email,
   //           contact: profile.phoneNumber,
   //         },
@@ -319,19 +321,19 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         <div className="search-container">
           <input
             type="text"
-            name="fullname"
+            name="fullName"
             placeholder="John Doe"
-            value={profile.fullname}
+            value={profile.fullName}
             onChange={handleChange}
-            readOnly={editableField !== "fullname"}
+            readOnly={editableField !== "fullName"}
           />
           <div className="edit">
-            <button type="button" onClick={() => toggleEdit("fullname")}>
-              {editableField === "fullname" ? "Save" : "Edit"}
+            <button type="button" onClick={() => toggleEdit("fullName")}>
+              {editableField === "fullName" ? "Save" : "Edit"}
             </button>
           </div>
         </div>
-        {errors.fullname && <p className="error">{errors.fullname}</p>}
+        {errors.fullName && <p className="error">{errors.fullName}</p>}
         <br />
 
         <label>Email</label>
@@ -363,7 +365,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
           />
           <div className="edit">
             <button type="button" onClick={() => toggleEdit("phoneNumber")}>
-              {editableField === "fullname" ? "Save" : "Edit"}
+              {editableField === "fullName" ? "Save" : "Edit"}
             </button>
           </div>
         </div>
@@ -407,10 +409,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         </button>
         {errors.stream && <p className="error">{errors.stream}</p>}
         <br />
-
-        <button className="buttun3" onClick={handlePayment}>
-          Complete Payment
-        </button>
       </div>
 
       {showModal && (
@@ -428,6 +426,28 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
           </div>
         </div>
       )}
+      <div className="summary-container">
+        <h2>Summary</h2>
+        <div className="sum">
+          <p className="items">Items</p>
+          <p className="price">Price</p>
+        </div>
+        {cartDetailsData.cartDetailsData.map((course: any, index: any) => (
+          <div className="course-summary" key={index}>
+            <p className="items">{course.name}</p>
+            <p className="price1">Rs {course.discountedPrice}/-</p>
+          </div>
+        ))}
+        <div className="total-summary">
+          <p className="order">Order total:</p>
+          <p className="price1">Rs {cartDetailsData.cartValue}/-</p>
+        </div>
+        <div className="w-[100%] px-[15rem] mt-[4rem]">
+          <button className="buttun3 " onClick={handlePayment}>
+            Complete Payment
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

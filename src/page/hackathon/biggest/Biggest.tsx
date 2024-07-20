@@ -27,9 +27,6 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
 
   return (
     <div className="biggest-hackathon-carousel overflow-visible">
-      <h1 className="text-[#2E436A] text-center mb-10 text-5xl md:text-7xl font-extrabold overflow-hidden xl:pl-[140px] xl:pr-[100px]">
-        Events
-      </h1>
       <Slider {...settings}>
         {ActiveData && Array.isArray(ActiveData) ? (
           ActiveData.map((data: any, index: any) => (
@@ -52,7 +49,7 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
                   <p className="image-para visbyroundCF extrabold">
                     {data.heading}
                   </p>
-                  <img src={eventBoy} alt="Event"></img>
+                  <img src={data.enrollLink} alt="" />
                 </div>
               </div>
             </div>

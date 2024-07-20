@@ -1225,7 +1225,7 @@ const Cart: React.FC<Props> = ({
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
 
-    const handleApplyCoupon = () => {
+  const handleApplyCoupon = () => {
     if (coupons.hasOwnProperty(couponCode)) {
       const couponDiscount = coupons[couponCode];
       setCouponMessage(
@@ -1455,7 +1455,7 @@ const Cart: React.FC<Props> = ({
                   Continue Shopping
                 </NavLink>
               </div>
-              <Link to="/update-user-details">
+              <Link to="/cart-summary">
                 <div className="bg-[#2E436A] text-white mt-[25px] text-3xl lg:text-4xl p-5 lg:p-6 xl:p-8 font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-[#2E436A]">
                   Proceed to Payment
                 </div>
