@@ -171,10 +171,10 @@ const Login = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }: any) => {
           {errors.password && <div className="error">{errors.password}</div>}
 
           <div className="new">
-            <div>
+            {/* <div>
               <input type="checkbox" className="rem" />
               <span className="add">Remember me</span>
-            </div>
+            </div> */}
             <div className="pass">Forget Password?</div>
           </div>
           <button className="btn1" onClick={handle_login_btn}>

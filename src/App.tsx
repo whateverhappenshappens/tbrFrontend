@@ -34,7 +34,7 @@ import SalesOperations from "./page/operations/SalesOperations";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import TryListings from "./try/Try_listing";
-
+import Unsucessfull from "./page/paymentUnsuccessfull/Unsucessfull";
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
@@ -169,9 +169,10 @@ function App() {
             <Route path="/mentor" element={<Mentor />} />
             <Route path="/About-us" element={<About />} />
             {/* <Route path="/update-details" element={<Profile />} /> */}
+            <Route path="/unsuccess" element={<Unsucessfull />} />
 
-            <Route path="/update-details" element={<Profile />} />
-            <Route path="/profile" element={<Profile1 />} />
+            {/* <Route path="/update-details" element={<Profile />} />
+            <Route path="/profile" element={<Profile1 />} /> */}
             <Route path="/updated-css" element={<TryListings />} />
             <Route
               path="/operations"

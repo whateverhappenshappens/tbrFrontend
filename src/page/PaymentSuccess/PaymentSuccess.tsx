@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-
+import "./successfull.css"
 import check_mark from "../../assets/check-mark.png";
 
 const PaymentSuccess = ({ headerHeight }: any) => {
@@ -27,7 +27,7 @@ const PaymentSuccess = ({ headerHeight }: any) => {
       </div>
 
       <div className="text-[#2E436A] flex flex-col items-center gap-10 lg:gap-16">
-        <div className="main font-bold text-5xl sm:text-6xl text-center overflow-visible">
+        <div className="main font-bold text-5xl sm:text-6xl text-center overflow-visible ">
           Your Payment was successfull!
         </div>
         <div className="sub text-center text-3xl sm:text-4xl">
@@ -35,7 +35,7 @@ const PaymentSuccess = ({ headerHeight }: any) => {
           your journey ahead!
           <div className="sub-2 font-bold">Happy Learning.</div>
         </div>
-        <NavLink to="/" className="btn bg-[#6D87F5] text-white px-10 py-6 text-3xl sm:text-4xl font-semibold rounded-3xl hover:text-[#6D87F5] hover:bg-white">
+        <NavLink to="/" className="success-btn">
           Return to home
         </NavLink>
       </div>
