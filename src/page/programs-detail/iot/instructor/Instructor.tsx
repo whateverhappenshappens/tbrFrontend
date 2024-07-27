@@ -12,31 +12,42 @@ const Instructor: React.FC = () => {
       <div className="speaker-content">
         <div className="speaker-biodata">
           <p>
-            Here we will have a bio data of speaker who is going to teach the
-            students. Here we will have a bio data of speaker who is going to
-            teach the students. Here we will have a bio data of speaker who is
-            going to teach the students. Here we will have a bio data of speaker
-            who is going to teach the students. Here we will have a bio data of
-            speaker who is going to teach the students. Here we will have a bio
-            data of speaker who is going to teach the students. Here we will
-            have a bio data of speaker who is going to teach the students. Here
-            we will have a bio data of speaker who is going to teach the
-            students.
-            <br />
+            Meet Siddharth Bhatter, our IoT, Embedded Systems, and Robotics
+            Instructor Siddharth Bhatter, the founder & CEO of Karkhana
+            Makerspace and CTO of pKare, is driven by a passion for education,
+            innovation, and startups. With over 10 years of experience, he has
+            inspired a love for problem-solving in students and budding
+            entrepreneurs. Since 2015, Siddharth has trained and mentored over
+            100,000 students and innovators, equipping them with the skills and
+            mindset to tackle real-world problems in Electronics, Embedded
+            Systems, IoT, and AI. Leading Karkhana Makerspace, a company
+            dedicated to "Architecting Tomorrow's Innovators," Siddharth has
+            overseen numerous success stories, from students building
+            award-winning inventions to young entrepreneurs launching impactful
+            startups. A TEDx speaker on startups and entrepreneurship, he
+            continues to guide the product development and strategy of multiple
+            student-driven startups, fostering a culture of innovation and
+            excellence.
+            {/* <br />
             <br /> Previous Experience : Apple Inc.
             <br /> Qualification : How much you need?
             <br /> Salary : More than you can imagine !!
             <br />
-            <br />{" "}
+            <br />{" "} */}
           </p>
         </div>
         <div className="speaker-profile">
           <img src={profilepic} alt="" />
-          <p className="speaker-profile-name">Robert Downey Jr.</p>
-          <p className="speaker-profile-company">CEO Marvel Inc.</p>
+          <p className="speaker-profile-name">Siddharth Bhatter</p>
+          <p className="speaker-profile-company">Founder & CEO @Karkhana</p>
           <div className="speaker-profile-linkedin">
             <img src={linkedin} alt="" />
-            <p>Let's Connect</p>
+            <a
+              href=" https://www.linkedin.com/in/vyaparibaniya/
+"
+            >
+              <p>Let's Connect</p>
+            </a>
           </div>
         </div>
       </div>

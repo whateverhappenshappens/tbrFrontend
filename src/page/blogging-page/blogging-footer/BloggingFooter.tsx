@@ -10,9 +10,10 @@ const BloggingFooter: React.FC = () => {
       <p className="BloggingFooter-descriptio">
         Click here to showcase your blog to the world.
       </p>
+      <a href="https://bit.ly/techbairnblog" target="_blank" rel="noopener noreferrer">
       <button type="submit" className="BloggingFooter-button">
         Submit Here
-      </button>
+      </button></a>
     </div>
   );
 };

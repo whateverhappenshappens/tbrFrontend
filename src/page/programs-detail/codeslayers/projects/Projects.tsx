@@ -12,24 +12,26 @@ const Projects: React.FC = () => {
 
   const projectsData = [
     {
-      heading: "FORM",
-      paragraph: "A responsive Portfolio website showcasing your skills.",
+      heading: "Basic Data Structure Assessment",
+      paragraph: "Arrays, linked lists, stacks, and queues.",
     },
     {
-      heading: "FORM",
-      paragraph: "A responsive Portfolio website showcasing your skills.",
+      heading: "Sorting and Searching Algorithms Assessment",
+      paragraph:
+        "Implementing and optimising various sorting and searching algorithms.",
     },
     {
-      heading: "FORM",
-      paragraph: "A responsive Portfolio website showcasing your skills.",
+      heading: "Recursion and Dynamic Programming Assessment",
+      paragraph:
+        "Solving problems using recursive techniques and dynamic programming.",
     },
     {
-      heading: "FORM",
-      paragraph: "A responsive Portfolio website showcasing your skills.",
+      heading: "Graph Algorithms Assessment",
+      paragraph: "Graph traversal, shortest paths, and connectivity.",
     },
     {
-      heading: "FORM",
-      paragraph: "A responsive Portfolio website showcasing your skills.",
+      heading: "Advanced Data Structures Assessment",
+      paragraph: "Trees, heaps, hash tables, and advanced data structures.",
     },
   ];
 

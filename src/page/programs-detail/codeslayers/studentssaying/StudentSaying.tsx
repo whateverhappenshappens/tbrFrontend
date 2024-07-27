@@ -8,7 +8,7 @@ import StudentSayingCard from "./studentsayingcards/StudentSayingCards";
 
 const StudentSaying: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalCards = 2; // Total number of cards
+  const totalCards = 5; // Total number of cards
 
   const handleBackward = () => {
     setCurrentIndex((prevIndex) =>
@@ -21,6 +21,54 @@ const StudentSaying: React.FC = () => {
       prevIndex === totalCards - 1 ? 0 : prevIndex + 1
     );
   };
+
+  const reviews = [
+    {
+      color: "#FFEDB6",
+      logocolor: "#FFC81E",
+      username: "Tithi Pal",
+      program: "DSA Using C++/Python",
+      link: "https://example.com",
+      review: "I really had a good experience in this course. Under the guidance of Shashank bhaiya, we learned a lot! ",
+      rating: 4,
+    },
+    {
+      color: "#FECBC4",
+      logocolor: "#FE624C",
+      username: "Siddhant Jaiswal",
+      program: "DSA Using C++/Python",
+      link: "https://example.com",
+      review: "Techbairn's initiative was amazing. We learned a lot, including DP, graphs, and trees. The mentor was fabulous and accessible, and students were helpful. The course was focused and versatile. Recorded sessions were always available for review. I'm very grateful for this experience.",
+      rating: 4,
+    },
+    {
+      color: "#B6FFED",
+      logocolor: "#1EFC81",
+      username: "Subhashis Dutta",
+      program: "DSA Using C++/Python",
+      link: "https://example.com",
+      review: "First of all I would like to thank our teacher for his friendly way of teaching. It was very helpful for someone like me who is new to C++. It will help me a lot in preparing for placements.",
+      rating: 5,
+    },
+    {
+      color: "#C4CBFE",
+      logocolor: "#4C62FE",
+      username: "Abhinandan Panua",
+      program: "DSA Using C++/Python",
+      link: "https://example.com",
+      review: "I gained immense knowledge about competitive coding and various algorithms. The course clarified many concepts. Shashank Bhaiya was incredibly helpful, knowledgeable, and patient. Overall, it boosted my confidence and opened doors in competitive coding.",
+      rating: 4,
+    },
+    {
+      color: "#FECBB6",
+      logocolor: "#FE4C6E",
+      username: "Harsh Ambastha",
+      program: "DSA Using C++/Python",
+      link: "https://example.com",
+      review: "A very helpful learning experience for freshers. Instructors and management are positive, constantly motivating students. The company environment is people-friendly and easy to work in. Highly recommended for freshers starting their professional journey.",
+      rating: 4,
+    },
+  ];
 
   return (
     <div className="studentsaying">
@@ -36,29 +84,8 @@ const StudentSaying: React.FC = () => {
         </div>
         {/* Student Saying Cards Content */}
         <div className="studentsaying-cards-card">
-          {/* Display cards based on currentIndex */}
-          <StudentSayingCard
-            color="#FFEDB6"
-            logocolor="#FFC81E"
-            username="John Doe"
-            program="Program Name"
-            link="https://example.com" // Replace with correct URL
-            review="Here there should be a short para of the review of the particular student. The review should be concise, brief and to the point. It is very important so as to keep the space clean."
-            rating={3}
-          />
-
-          {/* Display the next card if it exists */}
-          {totalCards > 1 && currentIndex === 0 && (
-            <StudentSayingCard
-              color="#FECBC4"
-              logocolor="#FE624C"
-              username="Jane Doe"
-              program="Program Name"
-              link="https://example.com" // Replace with correct URL
-              review="Another short para of the review of another student. Keeping it concise and clean."
-              rating={4}
-            />
-          )}
+          {/* Display the current card based on currentIndex */}
+          <StudentSayingCard {...reviews[currentIndex]} />
         </div>
         {/* Right Arrow */}
         <div className="studentsaying-cards-right" onClick={handleForward}>

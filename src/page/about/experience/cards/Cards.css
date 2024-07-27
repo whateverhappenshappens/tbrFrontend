@@ -1,0 +1,52 @@
+
+.mentor .exp-cards {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+    
+    .exp-cards-colorfulbg {
+      padding: 20px;
+      border-radius: 8px;
+      width:7.5rem;
+      height:7.5rem;
+    }
+  
+  
+    .exp-card-image {
+      width: 100%;
+      max-width: 150px; 
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    .exp-cards-head12 {
+      color: #2E436A;
+      font-size:24px;
+      font-family: 'bold';
+      overflow: visible;
+    }
+    
+    .exp-cards-para1 {
+      overflow: visible;
+      color: #2E436A;
+      font: normal normal normal 18px/40px regular;
+      line-height: 1.5;
+    }
+    
+    .exp-cards-head,.exp-cards-para{
+      overflow: visible;
+    }
+    @media (min-width:768px) and (max-width:912px){
+      .exp-cards{
+        height:35rem;
+        margin: 0rem 1rem;
+      }
+      
+    }

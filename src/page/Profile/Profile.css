@@ -1,0 +1,199 @@
+
+  
+  .main_box22 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    background-color:#F7FAFC;
+    overflow: hidden;
+    position: relative;
+  }
+  .buttondabba1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    height: 68px;
+    width: 100%; /* Make the search bar full width */
+    background-color:white; /* Add a light background color */
+    border-radius: 18px; /* Add rounded corners */
+    box-shadow: 6px 6px 12px #00000029 ;
+    
+  }
+  .buttun2:disabled {
+    cursor: not-allowed;
+    background-color: #ccc; /* Optional: to visually indicate it's disabled */
+  }
+  .buttun3:disabled {
+    cursor: not-allowed;
+    background-color: #ccc; /* Optional: to visually indicate it's disabled */
+  }
+  
+  
+  
+  
+  
+  .search-container input {
+    border: none; /* Remove default border */
+    outline: none; /* Remove default outline */
+    padding: 10px;
+    font-size: 16px;
+    
+    width: 80%; /* Make the input field take up 80% of the container width */
+    background-color: white;
+    border-radius: 20px; /* Remove default background color */
+  }
+  
+  .search-container button {
+    padding: 10px 20px; /* Add some padding to the button */
+    background-color: #333; /* Set the button background color */
+    background-color:white; /* Set the button text color */
+    border: none; /* Remove default border */
+    outline: none; /* Remove default outline */
+    cursor: pointer; /* Set the cursor to a pointer on hover */
+    border-radius: 4px; /* Add rounded corners to the button */
+    color: #6d87f5;
+    font-weight: 700;
+    
+  }
+  
+  
+  .left1 {
+    background-color: #F7FAFC;
+    width: 30%;
+    height: 82%;
+    margin: 2.5%;
+    border-radius: 10px;
+    padding: 30px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+  }
+  .buttun22{
+    width:20.25rem ;
+    height: 5.2rem;
+    border-radius: 15px;
+    font: normal normal bold 20px/26px bold;
+  }
+  .buttun4{
+    width:20.25rem ;
+    height: 5.2rem;
+    border-radius: 15px;
+    font: normal normal bold 20px/26px bold;
+    border: 2px solid #000;
+    gap: 1.5rem;
+    
+  }
+  .buttun3{
+    width:22.25rem ;
+    height: 5.2rem;
+    border-radius: 15px;
+    font: normal normal bold 20px/26px bold;
+    border: 2px solid #000;
+  }
+  .buttun1{
+    background-color:#F7FAFC;
+    color: #2E436A;
+    font-weight: 1000;
+    border: 2px solid #000;
+  }
+  .buttun2{
+    background-color: #6D87F5;
+    color: #F7FAFC;
+    font-weight: 1000;
+    opacity: 0.95;
+  }
+  
+  .error {
+    color: red;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }  
+  .left1 img{
+    height: 16.25rem;
+    width: 16.25rem;
+    /* background-color: antiquewhite; */
+    border-radius: 50%;
+    border:2px solid;
+  }
+  .left1 h1 {
+    color: beige;
+  }
+  
+  .left1 h2 {
+    color: #e9f4fb;
+    font-size: 2rem;
+    font-weight: 800;
+  }
+  .image{
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+    border: 2px solid black;
+    margin-left: 25px;
+  } 
+  .right12 label{
+    color: #2E436A;
+    font: normal normal bold 25px/26px extra-bold;
+  }
+  .right12 {
+    width: 50%;
+    height: 95%; 
+    margin:2.5%;
+    padding: 30px;
+  }
+  
+  .right12 h1 {
+    color: #2e436a;
+  }
+  
+  .right12 h4 {
+    color: #6d87f5;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .right12 .lng {
+    margin-top: 10px;
+    width: 70%;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  
+  } 
+  .edit{
+    font: normal normal bold 16px/26px extra-bold;
+  } 
+  /* @media (max-width:700px) {
+    .header {
+      padding-left1: 7rem;
+    }
+    .left1{
+      display: none;
+    }
+    .btn{
+        width: 95%;
+        min-width: 244px;
+        margin-left1: 16px;
+        height:40px;
+    }
+    .right12{
+      width:95%;
+      min-width: 244px;
+    }
+    .right12 .lng{
+      width: 95%  ;
+    }
+  } */

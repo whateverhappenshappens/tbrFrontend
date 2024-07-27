@@ -8,9 +8,11 @@ export const events: Event[] = [
     subHeading:
       "Learn the practical approach of building a D2C Brand in India fromthe man himself.",
     date: "1st February, 2024",
-    aboutSpeaker: "Gaurav is a seasoned software engineer with expertise in AI and ML.",
+    aboutSpeaker:
+      "Gaurav is a seasoned software engineer with expertise in AI and ML.",
     speakerSocial: "https://www.linkedin.com/in/johndoe",
-    speakerExperience: "Over 10 years of industry experience in tech and innovation",
+    speakerExperience:
+      "Over 10 years of industry experience in tech and innovation",
   },
   {
     bannerLinkPC: "https://example.com/banner_pc.jpg",
@@ -19,9 +21,11 @@ export const events: Event[] = [
     subHeading:
       "Learn the practical approach of building a D2C Brand in India fromthe man himself.",
     date: "1st February, 2024",
-    aboutSpeaker: "Gaurav is a seasoned software engineer with expertise in AI and ML.",
+    aboutSpeaker:
+      "Gaurav is a seasoned software engineer with expertise in AI and ML.",
     speakerSocial: "https://www.linkedin.com/in/johndoe",
-    speakerExperience: "Over 10 years of industry experience in tech and innovation",
+    speakerExperience:
+      "Over 10 years of industry experience in tech and innovation",
   },
   {
     bannerLinkPC: "https://example.com/banner_pc.jpg",
@@ -30,8 +34,10 @@ export const events: Event[] = [
     subHeading:
       "Learn the practical approach of building a D2C Brand in India fromthe man himself.",
     date: "1st February, 2024",
-    aboutSpeaker: "Gaurav is a seasoned software engineer with expertise in AI and ML.",
+    aboutSpeaker:
+      "Gaurav is a seasoned software engineer with expertise in AI and ML.",
     speakerSocial: "https://www.linkedin.com/in/johndoe",
-    speakerExperience: "Over 10 years of industry experience in tech and innovation",
+    speakerExperience:
+      "Over 10 years of industry experience in tech and innovation",
   },
 ];

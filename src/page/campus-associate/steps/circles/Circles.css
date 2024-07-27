@@ -6,7 +6,8 @@
     display: flex;
     justify-content: center; 
     align-items: center; 
-    padding: 2rem;
+    padding: 1.5rem;
+    overflow: hidden;
     
 }
 .backGroundCircle{
@@ -23,9 +24,12 @@
 .circles-head{
     margin-top: 2.3rem;
     color: #2E436A;
-    font-size: 3rem;
+    font-size: 2.2rem;
     text-align: center;
     font-family: 'bold';
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 @media (max-width:767px){

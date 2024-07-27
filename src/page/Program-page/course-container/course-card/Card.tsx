@@ -1,15 +1,38 @@
 import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
+import { useCart } from "../../../../CartContext";
+import { toast } from "react-toastify";
 
-interface props {
+interface Props {
+  id: string;
   heading: string;
   para1: string;
   teachername: string;
   image: string;
   link: string;
 }
-const Card: React.FC<props> = (props) => {
+
+const Card: React.FC<Props> = (props) => {
+  const { addToCart } = useCart();
+
+  const handleEnroll = () => {
+    // const generateUniqueId = () => {
+    //   return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    // };
+
+    const course = {
+      id: props.id,
+      name: props.heading,
+      description: props.para1,
+      price: 5000,
+      discountedPrice: 2999,
+    };
+
+    addToCart(course);
+    toast.success("Item successfully added to cart!");
+  };
+
   return (
     <div className="course-card">
       <div className="course-card-banner-image">
@@ -33,7 +56,10 @@ const Card: React.FC<props> = (props) => {
           </div>
           <p className="Teacher-Name">{props.teachername}</p>
           <div className="course-card-content-button">
-            <button className="course-card-content-button-enroll-now">
+            <button
+              className="enroll-btn course-card-content-button-enroll-now"
+              onClick={handleEnroll}
+            >
               Enroll Now
             </button>
             <button className="course-card-content-button-view-details">
@@ -45,4 +71,5 @@ const Card: React.FC<props> = (props) => {
     </div>
   );
 };
+
 export default Card;

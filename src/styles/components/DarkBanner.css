@@ -11,7 +11,7 @@
 
 .dark-banner .title {
   font-size: 3rem;
-  font-weight: bold;
+  font-family: bold;
   margin: 0 2rem;
 }
 
@@ -52,6 +52,7 @@
     width: 9rem !important;
   }
 }
+
 @media (min-width: 1024px) {
   .dark-banner .subtitle {
     font-size: 2.5rem;

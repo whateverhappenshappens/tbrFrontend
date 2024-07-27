@@ -112,30 +112,42 @@
 .main-nav li a.active {
   color: #6d87f5;
 }
-
-.more-btn{
+.more-btn {
   font-size: 2.3rem;
+  /* position: relative; */
+  cursor: pointer;
 }
 
-.dropdown-menu{
+.dropdown-menu {
+  text-align: left;
+  display: none;
   position: absolute;
-  bottom: -10rem;
-  padding: 1rem;
-  background-color: #6d87f5;
+  bottom: -11rem;
+  left: 78rem;
+  padding: 2rem 2rem;
+  background-color: #ffffff;
   cursor: pointer;
   border-radius: 1rem;
- 
+  z-index: 10;
+  /* border: 2px solid #000;  */
 }
 
-.more-option{
-  color: white;
+.more-btn:hover .dropdown-menu {
+  display: block;
 }
 
-.more-option:hover{
+.more-option {
+  color: #000;
+  padding: 2px 50px;
+  /* border-bottom: 2px solid #000; */
+}
+
+.more-option:hover {
   border-bottom: 2px solid white;
+   /* Add this line */
 }
 
-.more-option1{
+.more-option1 {
   display: none;
 }
 @media (min-width: 768px) {
@@ -171,12 +183,15 @@
   }
   .main-nav li a:hover {
     color: #6d87f5;
-    border-bottom: 5px solid #6d87f5;
-    transition: 0.1s ease;
+    box-shadow: rgba(0, 0, 0, 0.56) 1px 1px 2px 4px;
+    transition: 0.5s ease;
+    padding: 2px;  /* Adjust padding as needed */
+    border-radius: 5px;  /* Adjust border-radius as needed */
   }
+  
   .main-nav li a.active {
     color: #6d87f5;
-    border-bottom: 5px solid #6d87f5;
+    /* border-bottom: 5px solid #6d87f5; */
   }
   .trans-box {
     display: none;
@@ -264,6 +279,12 @@
   bottom: 21rem;
   left: 1.2rem;
   padding: 1rem;
+}
+.signup{
+  z-index: 0;
+}
+.login-pop{
+  z-index: 0;
 }
 .more-option{
   display: none;

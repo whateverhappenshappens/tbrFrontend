@@ -16,12 +16,13 @@
   
   .experience-head1 {
     font-family: 'bold';
-    font-size: 3rem;
+    font-size: 4.5rem;
   }
   
  .experience-head2 {
-    font-size: 1.5rem;
+    font-size: 30px/40px;
     font-family: 'regular';
+    color: #2E436A;
   }
   
   /* Styles for cards */

@@ -2,20 +2,23 @@
   display: flex;
   flex-direction: column;
   padding: 0 30px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .box1 {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-bottom: 5rem;
 }
 .dont-know-text {
-  font-size: 4.5rem;
+  font-size: 92px/100px;
   color: #2e436a;
   font-weight: 700;
+  font-family: extra-bold;
   display: inline-block;
   margin: 0;
   white-space: nowrap;
+  line-height: 1.2;
 }
 .about-techbairn {
   letter-spacing: 0;
@@ -52,8 +55,11 @@
 }
 .guided-learning-text {
   font-size: 4.5rem;
-  font-weight: 900;
+  white-space: nowrap;
+  overflow: visible;
   color: #2e436a;
+  font-family: bold;
+  margin-bottom: 2rem;
 }
 .talk-to-consultant {
   color: #516fa7;
@@ -92,6 +98,20 @@ call-back-btn:visited {
   width: 2.3rem;
   height: auto;
   filter: brightness(0) invert(1);
+}
+
+@media (max-width:768px) {
+  .dont-know-text-box{
+    margin-top: 5rem;
+    font-size: 4rem;
+    white-space: wrap;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    display: inline-block;
+  }
+  .guided-learning-text{
+    font-size: 3.7rem;
+  }
 }
 @media (min-width: 768px) {
   .explore {

@@ -83,11 +83,11 @@ const Experience: React.FC = () => {
   return (
     <div className="experience">
       <div className="experience-texts">
-        <p className="experience-head1 vr-bold">Live The Perfect Experience</p>
-        <p className="experience-head2 vr-regular">
+        <p className="experience-head1 ">Live The Perfect Experience</p>
+        <div className="experience-head2">
           Your trust in us is valued, and we reciprocate by providing you with
           valuable benefits.
-        </p>
+        </div>
       </div>
       <div className="cards-container">
         {cardsData.map((card, index) => (
