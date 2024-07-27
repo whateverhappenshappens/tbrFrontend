@@ -12,27 +12,29 @@ const Projects: React.FC = () => {
 
   const projectsData = [
     {
-      heading: "FORM",
+      heading: "Responsive Portfolio Website",
       paragraph:
-        "A form covering most of the aspects of HTML, CSS & Bootstrap      ",
+        "A modern and adaptable website showcasing your portfolio with a seamless user experience across all devices. Highlight your work and skills with a clean, professional design.    ",
     },
     {
-      heading: "PORTFOLIO",
-      paragraph: "A responsive Portfolio website showcasing your skills.",
-    },
-    {
-      heading: "MERN BLOG APP",
+      heading: "Tiny URL",
       paragraph:
-        "A full-fledged MERN app with features authentication, authorization etc.",
+        " A tool for shortening long URLs into compact, easy-to-share links. Simplify and manage your web addresses with a streamlined and user-friendly interface.",
     },
     {
-      heading: "WEATHER APP",
+      heading: "Blogging Platform",
       paragraph:
-        "Includes features like auto fetched location, UI depending on weather",
+        "A versatile platform for creating, managing, and sharing your blog content effortlessly. Engage your audience with an intuitive and user-friendly interface.",
     },
     {
-      heading: "FORM",
-      paragraph: "A responsive Portfolio website showcasing your skills.",
+      heading: "Weather Application",
+      paragraph:
+        " A tool for shortening long URLs into compact, easy-to-share links. Simplify and manage your web addresses with a streamlined and user-friendly interface.",
+    },
+    {
+      heading: "Your Idea/Project",
+      paragraph:
+        "Now that you have learned the MERN Stack (Full Stack Web Development), it's time to make your idea/project accessible to others on the web. Share your creation and let people benefit from your work.",
     },
   ];
 
