@@ -29,7 +29,14 @@
     height: 370px;
     margin-right: 3rem;
     margin-bottom: 5rem;
+    overflow-y: hidden;
+    border-radius: 5px;
 }
+.family {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
 .para12 {
     font-size: 23px;
     font-family: 'medium';

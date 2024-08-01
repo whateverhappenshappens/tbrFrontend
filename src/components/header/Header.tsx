@@ -67,12 +67,14 @@ function Header({
             &times;
           </div>
           <Signup />
+          
         </div>
       )}
 
       <NavLink to="/">
         <img className="logo h-[5rem]" src={logo} alt="Techbairn logo" />
       </NavLink>
+      
       <div className="open-nav" onClick={() => setNavOpen(true)}>
         <img src={hamburger} alt="hamburger" />
       </div>

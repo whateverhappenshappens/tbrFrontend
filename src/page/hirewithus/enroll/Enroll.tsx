@@ -14,7 +14,7 @@ const Enroll: React.FC = () => {
             Empower Your Business with Future-Ready Talent
           </p>
           <button className="enroll-button ">
-            <Link to={"https://forms.gle/iuE2x5w7b15ms2vz7"} target="_blank">
+            <Link to={"https://forms.gle/snETvuhLtfvEPptD8"} target="_blank">
               <p>Join us!</p>
             </Link>
           </button>

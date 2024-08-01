@@ -96,6 +96,17 @@ export const EventsAPI = {
       return error;
     }
   },
+  uploadS3Image: async function(url: string){
+    try {
+      const res = await api.get("/v1.5/events?active=true");
+      // Add isActive: true to each event
+      res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
+      return res;
+    } catch (error) {
+      console.error("An error occurred:", error);
+      return Promise.reject(error);
+    }
+  },
   activeEvents: async function () {
     try {
       const res = await api.get("/v1.5/events?active=true");

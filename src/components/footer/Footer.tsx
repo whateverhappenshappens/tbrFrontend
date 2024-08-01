@@ -15,7 +15,7 @@ const itemList = [
   },
   {
     name: "Quick Links:",
-    list: ["About Us", "Careers", "Become a Mentor", "Hire With Us"],
+    list: ["About Us", "Blog", "Become a Mentor", "Hire With Us"],
   },
   {
     name: "Reach out to us:",
@@ -62,8 +62,8 @@ const Footer: React.FC = () => {
                       <NavLink to="/hire-with-us" className="text-white">{li}</NavLink>
                     ): li === "Become a Mentor" ? (
                       <NavLink to="/mentor" className="text-white">{li}</NavLink>
-                    ) : li === "Careers" ? (
-                      <NavLink to="/" className="text-white">{li}</NavLink>
+                    ) : li === "Blog" ? (
+                      <NavLink to="/blog" className="text-white">{li}</NavLink>
                     ): li === "About Us" ? (
                       <NavLink to="/About-us" className="text-white">{li}</NavLink>
                     ):li === "Webmonk" ? (

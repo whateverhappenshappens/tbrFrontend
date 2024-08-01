@@ -214,7 +214,7 @@ import "../../../styles/components/Login.css";
 import { UserRole, User } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
 import Signup from "../Sign/Signup"; // Import the Signup component
-import logo2 from "../../../assets/techbairn logo black-01.png";
+import logo2 from "../../../assets/techbairn logo white-01.png";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 const Login = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }: any) => {

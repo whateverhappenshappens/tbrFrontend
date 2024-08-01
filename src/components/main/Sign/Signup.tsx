@@ -6,7 +6,7 @@ import { User, UserRole } from "../../../types/User";
 import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
 import Login from "../login/Login"; // Import the Login component
-import logo1 from "../../../assets/techbairn logo black-01.png";
+import logo1 from "../../../assets/techbairn logo white-01.png";
 
 function Signup() {
   const [userDetails, setUserDetails] = useState<User>({

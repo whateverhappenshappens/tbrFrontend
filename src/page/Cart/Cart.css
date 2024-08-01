@@ -14,6 +14,15 @@
     border-radius: 8px;
     padding: 20px;
   }
+  .login {
+  position: absolute;
+  width: 100%;
+  margin-left: 114px;
+  height: full;
+  overflow-y: hidden;
+  background: white;
+  border: 1px solid #ccc;
+}
   .empty-cart-message h2{
     font-family: demi-bold;
   }
