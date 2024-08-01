@@ -12,31 +12,32 @@ const Instructor: React.FC = () => {
       <div className="speaker-content">
         <div className="speaker-biodata">
           <p>
-            Here we will have a bio data of speaker who is going to teach the
-            students. Here we will have a bio data of speaker who is going to
-            teach the students. Here we will have a bio data of speaker who is
-            going to teach the students. Here we will have a bio data of speaker
-            who is going to teach the students. Here we will have a bio data of
-            speaker who is going to teach the students. Here we will have a bio
-            data of speaker who is going to teach the students. Here we will
-            have a bio data of speaker who is going to teach the students. Here
-            we will have a bio data of speaker who is going to teach the
-            students.
-            <br />
+            Meet Lavesh, our Full Stack Web Development Instructor. Lavesh
+            brings over 5 years of experience in the full stack development
+            journey and has been an educator for more than 3 years. He has
+            collaborated with numerous startups, contributing to the creation of
+            many scalable products. Lavesh has also helped thousands of students
+            launch their careers in full stack web development.
+            {/* <br />
             <br /> Previous Experience : Apple Inc.
             <br /> Qualification : How much you need?
             <br /> Salary : More than you can imagine !!
             <br />
-            <br />{" "}
+            <br />{" "} */}
           </p>
         </div>
         <div className="speaker-profile">
           <img src={profilepic} alt="" />
-          <p className="speaker-profile-name">Robert Downey Jr.</p>
-          <p className="speaker-profile-company">CEO Marvel Inc.</p>
+          <p className="speaker-profile-name">Lavesh Gaurav</p>
+          <p className="speaker-profile-company">Senior Software Engineer</p>
           <div className="speaker-profile-linkedin">
             <img src={linkedin} alt="" />
-            <p>Let's Connect</p>
+            <a
+              href=" https://www.linkedin.com/in/lavesh-gaurav-552728115/
+"
+            >
+              <p>Let's Connect</p>
+            </a>
           </div>
         </div>
       </div>
