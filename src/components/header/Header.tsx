@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import Login from "../main/login/Login";
 import Signup from "../main/Sign/Signup";
 import { UserAPI } from "../../apis/UserAPIs";
@@ -8,13 +8,13 @@ import logo from "../../assets/techbairn logo black-01.png";
 import hamburger from "../../assets/hamburger.png";
 import "../../styles/components/Header.css";
 import { CgProfile } from "react-icons/cg";
+import userImage from "../../assets/useImage.jpg";
 
 function Header({
   updateHeaderHeight,
   handle_login,
   handle_signup,
   loginContainer,
-  signupContainer,
   isLoggedIn,
   setIsLoggedIn,
 }: any) {
@@ -66,15 +66,14 @@ function Header({
           >
             &times;
           </div>
-          <Signup />
-          
+          <Signup setIsLoggedIn={setIsLoggedIn} /> {/* Pass setIsLoggedIn here */}
         </div>
       )}
 
       <NavLink to="/">
         <img className="logo h-[5rem]" src={logo} alt="Techbairn logo" />
       </NavLink>
-      
+
       <div className="open-nav" onClick={() => setNavOpen(true)}>
         <img src={hamburger} alt="hamburger" />
       </div>
@@ -152,14 +151,18 @@ function Header({
             </div>
           </div>
         ) : (
-          <div className="h-48 flex justify-evenly items-center  md:h-fit">
+          <div className="h-48 flex justify-evenly items-center md:h-fit">
             <NavLink to="/user-profile">
-              <CgProfile className="w-[50px] h-[50px] " />
+              <img
+                src={userImage}
+                alt="User Profile"
+                className="w-[50px] h-[50px] rounded-full"
+              />
             </NavLink>
             <div className="ml-5">
               <button
                 onClick={handleLogout}
-                className="bg-[#6d87f5] text-[2.3rem]  p-2 rounded-[1rem] text-white"
+                className="bg-[#6d87f5] text-[2.3rem] p-2 rounded-[1rem] text-white"
               >
                 Log Out
               </button>
@@ -172,6 +175,7 @@ function Header({
 }
 
 export default Header;
+
 
 // import "../../styles/components/Header.css";
 // import logo from "../../assets/Logo.png";

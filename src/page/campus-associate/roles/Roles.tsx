@@ -5,38 +5,39 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Roles.css";
 import Cards from "./Cards/Cards";
 import adduser from "../../../assets/add-friend.png";
-
+import fly from "../../../assets/flyers.png";
+import mega from "../../../assets/megaphone.png";
 const Roles: React.FC = () => {
   const cardsData = [
     {
       para: "Enhance your marketing skills to elevate our brand presence and gain recognition in your college.",
-      image: adduser,
+      image: mega,
       color: "#FECBC4",
     },
     {
       para: "Encourage your college peers to join our diverse social media platforms.",
       image: adduser,
-      color: "#FECBC4",
+      color: "#FFEDB6",
     },
     {
       para: "Promote TechBairn by sharing posters on WhatsApp, Facebook, and Instagram.",
-      image: adduser,
-      color: "#FECBC4",
+      image: fly,
+      color: "#B2E2C6",
     },
     {
       para: "Display our event and program posters on your college notice boards.",
-      image: adduser,
+      image: mega,
       color: "#FECBC4",
     },
     {
       para: "Provide weekly updates on your work database.",
       image: adduser,
-      color: "#FECBC4",
+      color: "#FFD75B",
     },
     {
       para: "Represent us in various college clubs and groups, sharing your innovative ideas.",
-      image: adduser,
-      color: "#FECBC4",
+      image: fly,
+      color: "#B2E2C6",
     },
   ];
 

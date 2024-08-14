@@ -1,6 +1,6 @@
 import React from "react";
 import "./Instructor.css";
-import profilepic from "../../../../assets/Mask Group 10.png";
+import profilepic from "../../../../assets/sidhharth.jpeg";
 import linkedin from "../../../../assets/linkedin.png";
 
 const Instructor: React.FC = () => {
@@ -37,7 +37,7 @@ const Instructor: React.FC = () => {
           </p>
         </div>
         <div className="speaker-profile">
-          <img src={profilepic} alt="" />
+          <img src={profilepic} className="instructor_image" alt="" />
           <p className="speaker-profile-name">Siddharth Bhatter</p>
           <p className="speaker-profile-company">Founder & CEO @Karkhana</p>
           <div className="speaker-profile-linkedin">

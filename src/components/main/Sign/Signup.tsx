@@ -7,8 +7,11 @@ import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
 import Login from "../login/Login"; // Import the Login component
 import logo1 from "../../../assets/techbairn logo white-01.png";
+import { Navigate, useNavigate } from "react-router-dom"; // Import useHistory
 
-function Signup() {
+function Signup({ setIsLoggedIn }: any) {
+  const Navigate = useNavigate(); // Initialize useHistory
+
   const [userDetails, setUserDetails] = useState<User>({
     password: "",
     email: "",
@@ -43,8 +46,9 @@ function Signup() {
         setFormError({ ...formError, email: "Invalid Email Format!" });
       else setFormError({ ...formError, email: "" });
     }
+
     if (name === "password") {
-      if (!validatePassword(value))
+      if (value.length < 8)
         setFormError({
           ...formError,
           password: "Password must be 8 characters long!",
@@ -55,7 +59,7 @@ function Signup() {
 
   const handle_signup = async () => {
     console.log(userDetails);
-
+    setIsLoggedIn(true);
     if (!isChecked) {
       alert("Please accept the Terms & Conditions to create an account.");
       return;
@@ -72,6 +76,7 @@ function Signup() {
         });
         setFormError({ email: "", password: "" });
         setIsChecked(false);
+        
       } catch (error) {
         console.error("Signup failed:", error);
         alert("Signup failed: " + error.message); // Show alert with error message
@@ -99,6 +104,10 @@ function Signup() {
       validatePassword(userDetails.password) &&
       isChecked
     );
+  };
+
+  const handleLogin = () => {
+    window.location.href = 'http://3.7.45.90:8080/oauth2/authorization/google';
   };
 
   return (
@@ -189,7 +198,7 @@ function Signup() {
           <p className="cont">-----or continue with Google------</p>
           <div className="google">
             <FaGoogle className="icon12" />
-            <a href="/@{/oauth2/authorization/google}">Google</a>
+            <button onClick={handleLogin}>Google</button>
           </div>
         </div>
       </div>

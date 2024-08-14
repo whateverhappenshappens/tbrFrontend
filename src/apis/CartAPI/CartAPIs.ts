@@ -2,7 +2,7 @@ import { api } from "../configs/axiosConfigs";
 // import { Cart } from "../types/Cart";
 // import { OrderRequestData } from "../types/OrderRequestData";
 // import axios from "axios";
-
+import { refreshAccessToken } from "../UserAPIs";
 export const CartAPI = {
   generateOrder: async function (
     amount: number,
@@ -27,6 +27,9 @@ export const CartAPI = {
       });
       return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       return error;
     }
   },
@@ -44,6 +47,9 @@ export const CartAPI = {
         });
         return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
         return error;
     }
 },
@@ -62,6 +68,9 @@ removeFromCart: async function (userId: string, courseId: string) {
         });
         return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
         return error;
     }
 },
@@ -79,6 +88,9 @@ removeFromCart: async function (userId: string, courseId: string) {
       });
       return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       return error;
     }
   },
@@ -95,6 +107,9 @@ removeFromCart: async function (userId: string, courseId: string) {
       });
       return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       return error;
     }
   },
@@ -113,6 +128,9 @@ removeFromCart: async function (userId: string, courseId: string) {
       });
       return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       return error;
     }
   },
@@ -130,6 +148,9 @@ removeFromCart: async function (userId: string, courseId: string) {
       });
       return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       return error;
     }
   },
@@ -147,6 +168,9 @@ removeFromCart: async function (userId: string, courseId: string) {
       });
       return response;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       return error;
     }
   },

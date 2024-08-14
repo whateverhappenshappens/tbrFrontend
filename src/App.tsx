@@ -36,7 +36,7 @@ import { ToastContainer } from "react-toastify";
 import UpdateUserDetail from "./page/Profile/UpdateUserDetails";
 import UserProfile from "./page/Profile/UserProfile";
 import Refer from "./page/refer&earn/Refer&Earn";
-
+import userImage from "./assets/useImage.jpg"
 import TryListings from "./try/Try_listing";
 import Unsucessfull from "./page/paymentUnsuccessfull/Unsucessfull";
 function App() {
@@ -143,6 +143,7 @@ function App() {
             signupContainer={signupContainer}
             setIsLoggedIn={setIsLoggedIn}
             isLoggedIn={isLoggedIn}
+            useImage={userImage}
           />
           <Routes>
             <Route

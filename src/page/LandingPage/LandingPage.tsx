@@ -123,8 +123,8 @@ function LandingPage({
       <HowWeAreDifferent />
       <ExplorePrograms />
       <DarkBanner
-        title="Instructors are from"
-        subtitle="All of our instructors are from renowned companies with a vast knowledge on this subject matter."
+        title="Collaborations"
+        subtitle="Some subtitle will be provided later about our collaborations"
         logos={logo_college}
       />
       <DisplayEvent />
@@ -132,8 +132,8 @@ function LandingPage({
 
       <Events pastdata={pastdata} />
       <DarkBanner
-        title="Collaborations"
-        subtitle="Some subtitle will be provided later about our collaborations"
+        title="Instructors are from"
+        subtitle="All of our instructors are from renowned companies with a vast knowledge on this subject matter."
         logos={logos}
       />
       <hr className="h-[10rem]" />

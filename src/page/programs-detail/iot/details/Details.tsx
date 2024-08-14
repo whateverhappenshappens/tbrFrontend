@@ -60,7 +60,7 @@ const Details: React.FC<Props> = (props) => {
       id: "iot",
       name: "IOT",
       description: "A very small description of the course should be included",
-      price: 5000,
+      price: 4999,
       discountedPrice: 2999,
     };
 
@@ -127,13 +127,14 @@ const Details: React.FC<Props> = (props) => {
           <div className="details-buttons">
             <button className="details-buttons-enroll " onClick={handleEnroll}>
               <p>
-                Enroll Now for<p className="details-buttons-strike"> ₹ 5000</p>{" "}
+                Enroll Now for<p className="details-buttons-strike"> ₹ 4999</p>{" "}
                 ₹ 3,999
               </p>
             </button>
+            <a href="https://drive.google.com/file/d/1I6ATPZUIAbnkaD6C6Husl_hENMg14mif/view?usp=sharing" target="_blank" rel="noopener noreferrer">
             <button className="details-buttons-download">
               <p>Download Syllabus</p>
-            </button>
+            </button></a>
           </div>
         </div>
       </div>

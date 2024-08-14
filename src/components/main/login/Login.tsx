@@ -90,14 +90,13 @@ const Login = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }: any) => {
     setShowPassword(!showPassword);
   };
 
-  const handleGoogleSuccess = (response: any) => {
-    console.log(response);
-    setIsVisible(false);
-    window.location.href = "https://www.youtube.com";
-  };
-
-  const handleGoogleFailure = (response: any) => {
-    console.error(response);
+  // const handleGoogleSuccess = (response: any) => {
+  //   console.log(response);
+  //   setIsVisible(false);
+  //   window.location.href = 'http://3.7.45.90:8080/oauth2/authorization/google';
+  // };
+  const handleLogin = () => {
+    window.location.href = 'http://3.7.45.90:8080/oauth2/authorization/google';
   };
 
   if (!isVisible) {
@@ -105,10 +104,11 @@ const Login = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }: any) => {
   }
 
   return (
+    
     <GoogleOAuthProvider clientId="">
       <div className="main_box">
         <aside className="left">
-          <img src={logo2} alt="TechBairn Logo" className="logo" />
+          <img src={logo2} alt="TechBairn Logo" className="logo121" />
           <h2>
             We are glad <br />
             you are back!
@@ -179,20 +179,12 @@ const Login = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }: any) => {
           </button>
           <p className="cont">-------or continue login with--------</p>
 
-          <div className="google1">
-            <GoogleLogin
-              onSuccess={handleGoogleSuccess}
-              onFailure={handleGoogleFailure}
-              cookiePolicy={"single_host_origin"}
-              render={(renderProps) => (
+          <div className="google">
                 <button
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
+                  onClick={handleLogin}
                 >
                   Google
                 </button>
-              )}
-            />
           </div>
         </div>
         {isSignupPopupVisible && (

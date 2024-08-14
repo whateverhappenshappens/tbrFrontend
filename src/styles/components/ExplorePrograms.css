@@ -41,12 +41,11 @@
 /* programs part */
 .programs {
   display: flex;
-  overflow: visible;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 .program-card {
-  width: 100%;
+  
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -159,7 +158,7 @@
     font-size: 3rem;
   }
   .program-card {
-    width: 30%;
+    width: 48%;
   }
   .program-card .logo {
     height: 12rem;

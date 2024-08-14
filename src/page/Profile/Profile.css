@@ -20,6 +20,15 @@
     gap: 20px;
   
   }
+ .apply_button{
+  width: 18rem;
+  height: 5rem;
+  background-color: #6D87F5;
+  color: white;
+  font-size: 2rem;
+  border-radius: 10px;
+  font-family: bold;
+ }
   .search-container {
     display: flex;
     align-items: center;

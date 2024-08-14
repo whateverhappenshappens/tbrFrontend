@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { User } from "../types/User";
 
 // function to refresh the access token
-async function refreshAccessToken() {
+export const refreshAccessToken = async function refreshAccessToken() {
   console.log("Inside refresh token function.");
   localStorage.removeItem("access-token");
   await api
@@ -23,7 +23,9 @@ export const UserAPI = {
   create: async function (user: User) {
     try {
       const res = await api.post("/v1.5/auth/register", user);
+      toast.success("Account created Successfully");
       return res;
+      
     } catch (error) {
       console.error("An error occurred:", error);
       return Promise.reject(error);
@@ -41,7 +43,7 @@ export const UserAPI = {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       });
-
+      toast.success("Login Successful");
       if (res.status === 201) {
         localStorage.setItem("access-token", res.data.access_token);
         if (typeof handle_login === "function") handle_login();
@@ -50,7 +52,7 @@ export const UserAPI = {
       }
       return res;
     } catch (error) {
-      console.error("An error occurred:", error);
+      toast.error("Check your credentials and try again");
       if (typeof setIsLoggedIn === "function") setIsLoggedIn(false);
       return Promise.reject(error);
     }
@@ -209,6 +211,25 @@ export const UserAPI = {
       console.error("Failed to update profile:", error);
       toast.error("Failed to update profile.");
       return Promise.reject(error);
+    }
+  },
+  isLoggedIn: async function () {
+    const access_token = localStorage.getItem("access-token");
+    if (!access_token) {
+      return false;
+    }
+    try {
+      const res = await api.request({
+        url: "/v1.5/requests/test/private/zoro",
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      });
+      return res.status === 200;
+    } catch (error) {
+      console.error("An error occurred while checking login status:", error);
+      return false;
     }
   },
   // userProfileDetail: async function (useremail: any) {

@@ -8,7 +8,7 @@ import StudentSayingCard from "./studentsayingcards/StudentSayingCards";
 
 const StudentSaying: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalCards = 8; // Total number of cards
+  const totalCards = 4; // Total number of cards
 
   const handleBackward = () => {
     setCurrentIndex((prevIndex) =>
@@ -23,46 +23,7 @@ const StudentSaying: React.FC = () => {
   };
 
   const reviews = [
-    {
-      color: "#FFEDB6",
-      logocolor: "#FFC81E",
-      username: "Tithi Pal",
-      college: "KIIT university",
-      program: "DSA Using C++/Python",
-      link: "https://example.com",
-      review: "I really had a good experience in this course. Under the guidance of Shashank bhaiya, we learned a lot! ",
-      rating: 4,
-    },
-    {
-      color: "#FECBC4",
-      logocolor: "#FE624C",
-      username: "Siddhant Jaiswal",
-      college: "KIIT university",
-      program: "DSA Using C++/Python",
-      link: "https://example.com",
-      review: "Techbairn's initiative was amazing. We learned a lot, including DP, graphs, and trees. The mentor was fabulous and accessible, and students were helpful. The course was focused and versatile. Recorded sessions were always available for review. I'm very grateful for this experience.",
-      rating: 4,
-    },
-    {
-      color: "#B6FFED",
-      logocolor: "#1EFC81",
-      username: "Subhashis Dutta",
-      college: "Netaji Subha College",
-      program: "DSA Using C++/Python",
-      link: "https://example.com",
-      review: "First of all I would like to thank our teacher for his friendly way of teaching. It was very helpful for someone like me who is new to C++. It will help me a lot in preparing for placements.",
-      rating: 5,
-    },
-    {
-      color: "#C4CBFE",
-      logocolor: "#4C62FE",
-      username: "Abhinandan Panua",
-      college: "KIIT university",
-      program: "DSA Using C++/Python",
-      link: "https://example.com",
-      review: "I gained immense knowledge about competitive coding and various algorithms. The course clarified many concepts. Shashank Bhaiya was incredibly helpful, knowledgeable, and patient. Overall, it boosted my confidence and opened doors in competitive coding.",
-      rating: 4,
-    },
+    
     {
       color: "#FECBB6",
       logocolor: "#FE4C6E",

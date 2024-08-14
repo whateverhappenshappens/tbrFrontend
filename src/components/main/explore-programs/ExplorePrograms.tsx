@@ -52,28 +52,8 @@ const ExplorePrograms = () => {
             <span>{"</>"}</span>
           </div>
           <div className="details">
-            <h2>ThingLink</h2>
+            <h2>IOT</h2>
             <p>A complete Internet of Things Program</p>
-          </div>
-        </div>
-
-        <div className="program-card one">
-          <div className="logo">
-            <span>{"</>"}</span>
-          </div>
-          <div className="details">
-            <h2>Founder Finder</h2>
-            {/* <p>A complete Internet of Things Program</p> */}
-          </div>
-        </div>
-
-        <div className="program-card one">
-          <div className="logo">
-            <span>{"</>"}</span>
-          </div>
-          <div className="details">
-            <h2>Wingon</h2>
-            {/* <p>A complete Internet of Things Program</p> */}
           </div>
         </div>
       </div>

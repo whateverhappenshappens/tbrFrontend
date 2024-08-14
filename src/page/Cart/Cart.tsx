@@ -1,11 +1,11 @@
-import { useRef, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
 import { useCart } from "../../CartContext";
 import { UserAPI } from "../../apis/UserAPIs";
 import Signup from "../../components/main/login/Login";
-import axios from "axios";
-import { FaTimes } from "react-icons/fa";  // Import the cross icon
+import toast from "react-hot-toast";
+import { FaTimes } from "react-icons/fa";
 
 interface Props {
   headerHeight: number;
@@ -19,6 +19,8 @@ interface CourseType {
   description: string;
   price: number;
   discountedPrice: number;
+  image:string;
+  
 }
 
 const coupons: Record<string, number> = {
@@ -54,30 +56,11 @@ const Cart: React.FC<Props> = ({
   const [promoApplied, setPromoApplied] = useState(false);
   const [couponMessage, setCouponMessage] = useState("");
   const [additionalDiscount, setAdditionalDiscount] = useState(0);
-  const [paymentToggle, setPaymentToggle] = useState<boolean>(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    let totalPrice = 0;
-    let totalDiscountedPrice = 0;
-
-    cart.forEach((course) => {
-      totalPrice += course.price;
-      totalDiscountedPrice += course.discountedPrice;
-    });
-
-    let discount = ((totalPrice - totalDiscountedPrice) / totalPrice) * 100;
-
-    setNetPriceObj({
-      totalPrice,
-      totalDiscountedPrice,
-      discount,
-    });
-    setCartValue(totalDiscountedPrice);
-    setCartDetailsData(cart);
-    setCartValueData(cartValue);
-    console.log("Cart data: ", cart);
-    console.log("Cart value: ", cartValue);
-  }, [cart, cartValue]);
+    calculateNetPrice();
+  }, [cart]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -89,6 +72,14 @@ const Cart: React.FC<Props> = ({
     }
   }, [headerHeight]);
 
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const loggedIn = await UserAPI.isLoggedIn();
+      setIsLoggedIn(loggedIn);
+    };
+    checkLoginStatus();
+  }, []);
+
   const toggleSignupPopup = () => {
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
@@ -97,9 +88,7 @@ const Cart: React.FC<Props> = ({
     if (coupons.hasOwnProperty(couponCode)) {
       const couponDiscount = coupons[couponCode];
       setCouponMessage(
-        `You have got ${Math.floor(
-          netPriceObj.discount
-        )}% + ${couponDiscount}% discount`
+        `You have got  ${couponDiscount}% discount`
       );
       setPromoApplied(true);
       setAdditionalDiscount(couponDiscount);
@@ -138,13 +127,15 @@ const Cart: React.FC<Props> = ({
 
     setNetPriceObj(newNetPriceObj);
     setCartValue(newNetPriceObj.totalDiscountedPrice);
+    setCartDetailsData(cart);
+    setCartValueData(newNetPriceObj.totalDiscountedPrice);
   };
 
   const handleProceedToPayment = () => {
-    if (!isLoggedIn) {
-      toggleSignupPopup();
+    if (isLoggedIn) {
+      navigate("/cart-summary");
     } else {
-      // Proceed to payment logic here
+      toggleSignupPopup();
     }
   };
 
@@ -174,7 +165,7 @@ const Cart: React.FC<Props> = ({
               className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-9"
             >
               <div className="course-box-1 flex gap-3 xl:gap-7 lg:w-4/6">
-                <div className="img h-48 w-5/12 xl:w-4/12 xl:h-60 border rounded-xl bg-slate-500"></div>
+                <div className="img h-48 w-5/12 xl:w-4/12 xl:h-60 border rounded-xl overflow-y-hidden"><img src={course.image} alt={course.image} /></div>
                 <div className="course-name-desc w-7/12 flex flex-col justify-between py-5 xl:py-7">
                   <div className="course-name text-4xl lg:text-5xl xl:text-6xl overflow-visible font-semibold">
                     {course.name}
@@ -187,10 +178,10 @@ const Cart: React.FC<Props> = ({
               <div className="course-box-2 flex items-center justify-between lg:w-2/6">
                 <div className="price text-3xl lg:text-4xl xl:text-5xl xl:overflow-visible font-semibold">
                   <div className="new text-[#6D87F5] overflow-hidden">
-                    Rs {course.discountedPrice}
+                    Rs {course.discountedPrice.toFixed(2)}
                   </div>
                   <div className="line-through overflow-hidden">
-                    Rs {course.price}
+                    Rs {course.price.toFixed(2)}
                   </div>
                 </div>
                 <div
@@ -205,62 +196,57 @@ const Cart: React.FC<Props> = ({
           <div className="cart-footer flex flex-col gap-5 border-t-2 border-dashed border-[#2E436A] pt-5">
             <div className="net-box flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
               <div className="price text-3xl flex justify-between lg:gap-10">
-                <div className="text-4xl lg:text-5xl xl:text-6xl xl:overflow-visible text-[#2E436A] font-semibold">
-                  Total Amount
+                <div className="text-4xl lg:text-5xl xl:text-6xl xl:overflow-visible font-semibold">
+                  Net Price
                 </div>
-                <div className="flex flex-col xl:text-5xl xl:overflow-hidden">
-                  <div className="new text-[#6D87F5] xl:overflow-visible">
-                    Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}
-                  </div>
-                  <div className="old line-through xl:overflow-visible">
-                    {promoApplied &&
-                      `Rs ${netPriceObj.totalDiscountedPrice.toFixed(2)}`}
-                  </div>
-                  <div className="discount-per xl:overflow-visible">
-                    {promoApplied
-                      ? " "
+                <div className="new text-[#6D87F5] font-semibold">
+                  Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}
+                </div>
+              </div>
+              <div className="discount">
+                <div className="text-2xl lg:text-4xl xl:text-5xl xl:overflow-visible flex justify-between font-semibold">
+                  <div className="text-[#FF7E6C]">
+                    {additionalDiscount > 0
+                      ? ``
                       : `${Math.floor(netPriceObj.discount)}% off`}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="coupon flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10 items-center">
-              <div className="input-box-wrapper flex flex-auto items-center text-3xl lg:text-4xl">
-                <input
-                  className="input-box p-5 text-3xl lg:text-4xl"
-                  type="text"
-                  placeholder="Enter coupon code"
-                  value={couponCode}
-                  onChange={(e) => setCouponCode(e.target.value)}
-                />
-                <button
-                  className="btn coupon-btn text-white bg-[#2E436A] overflow-visible text-3xl lg:text-4xl  font-semibold rounded-xl hover:bg-white hover:text-[#2E436A] cursor-pointer"
-                  onClick={handleApplyCoupon}
-                >
-                  Apply
-                </button>
-              </div>
-              {promoApplied && (
-                <div className="coupon-message text-3xl lg:text-4xl font-semibold text-green-500">
-                  {couponMessage}
-                </div>
-              )}
+            <div className="coupon flex flex-grap gap-3 xl:gap-7">
+              <input
+                className="input-box p-5 text-4xl w-full sm:w-1/2 lg:text-xl  border-solid border-2 border-black rounded-[5px]"
+                type="text"
+                placeholder="Enter coupon code"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+              />
+              <button className="btn coupon-btn w-[10rem] sm:w-[12rem] md:w-[14rem] lg:w-[10rem] text-white bg-[#2E436A] overflow-visible text-3xl lg:text-4xl font-semibold rounded-xl hover:bg-white hover:text-[#2E436A] cursor-pointer "
+  onClick={handleApplyCoupon}>
+  Apply
+</button>
+
             </div>
-            <div className="pay-box flex flex-col justify-evenly lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
-              <div className="continue-shopping flex justify-center mt-10">
-                <NavLink
-                  to="/programs"
-                  className="bg-[#2E436A] text-white text-3xl lg:text-4xl p-5 lg:p-6 xl:p-8 font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-[#2E436A]"
-                >
-                  Continue Shopping
-                </NavLink>
+            {promoApplied && (
+              <div className="coupon-message text-3xl lg:text-4xl font-semibold text-green-500">
+                {couponMessage}
               </div>
-              <div
-                className="bg-[#2E436A] text-white mt-[25px] text-3xl lg:text-4xl p-5 lg:p-6 xl:p-8 font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-[#2E436A]"
-                onClick={handleProceedToPayment}
+            )}
+          </div>
+          <div className="pay-box flex flex-col justify-evenly lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
+            <div className="continue-shopping flex justify-center mt-10">
+              <NavLink
+                to="/programs"
+                className="bg-[#2E436A] text-white text-3xl lg:text-4xl p-5 lg:p-6 xl:p-8 font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-[#2E436A]"
               >
-                Proceed to Payment
-              </div>
+                Continue Shopping
+              </NavLink>
+            </div>
+            <div
+              className="bg-[#2E436A] text-white mt-[25px] text-3xl lg:text-4xl p-5 lg:p-6 xl:p-8 font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-[#2E436A]"
+              onClick={handleProceedToPayment}
+            >
+              Proceed to Payment
             </div>
           </div>
         </div>

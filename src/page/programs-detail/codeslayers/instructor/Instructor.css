@@ -44,7 +44,11 @@
     font-size: 3rem;
     color:#2E436A;
 }
-
+.instructor_image{
+    width:37rem;
+    height:37rem;
+    border-radius:50%;
+}
 .speaker-profile-linkedin{
     display: flex;
     align-items: center;

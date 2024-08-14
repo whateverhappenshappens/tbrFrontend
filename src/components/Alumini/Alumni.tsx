@@ -113,22 +113,22 @@ import samsung from "../../assets/companies/samsung.png";
 import bosch from "../../assets/companies/bosch.png";
 import red from "../../assets/companies/red-hat.png";
 
-import a from "../../assets/alumini/1280px-COG-Logo-White.svg.png"
-import b from "../../assets/alumini/1280px-HSBC_logo_(2018).svg.png"
-import c from "../../assets/alumini/Deloitte_Logo.png"
-import d from "../../assets/alumini/Oracle-White-logo.png"
-import e from "../../assets/alumini/PROD-16e83fc4-629e-40ae-8671-90acea9532f1.png"
-import f from "../../assets/alumini/PwC-Logo.png"
-import g from "../../assets/alumini/Sprinklr_Logo.png"
-import h from "../../assets/alumini/VRTU_BIG-6de44a1b.png"
-import i from "../../assets/alumini/highradius-white-logo.png"
-import j from "../../assets/alumini/idvpLmE_bp.png"
-import k from "../../assets/alumini/images (1).png"
-import l from "../../assets/alumini/kpit-log-grey.png"
-import m from "../../assets/alumini/kpit-log-grey.png"
-import n from "../../assets/alumini/nagarro-new-20229714.png"
-import o from "../../assets/alumini/ps-logo-white-360.png"
-import p from "../../assets/alumini/stockedgelogoimage28102022144458.png"
+import a from "../../assets/alumini/1280px-COG-Logo-White.svg.png";
+import b from "../../assets/alumini/1280px-HSBC_logo_(2018).svg.png";
+import c from "../../assets/alumini/Deloitte_Logo.png";
+import d from "../../assets/alumini/Oracle-White-logo.png";
+import e from "../../assets/alumini/PROD-16e83fc4-629e-40ae-8671-90acea9532f1.png";
+import f from "../../assets/alumini/PwC-Logo.png";
+import g from "../../assets/alumini/Sprinklr_Logo.png";
+import h from "../../assets/alumini/VRTU_BIG-6de44a1b.png";
+import i from "../../assets/alumini/highradius-white-logo.png";
+import j from "../../assets/alumini/idvpLmE_bp.png";
+import k from "../../assets/alumini/images (1).png";
+import l from "../../assets/alumini/kpit-log-grey.png";
+import m from "../../assets/alumini/kpit-log-grey.png";
+import n from "../../assets/alumini/nagarro-new-20229714.png";
+import o from "../../assets/alumini/ps-logo-white-360.png";
+import p from "../../assets/alumini/stockedgelogoimage28102022144458.png";
 
 const Alumni = () => {
   const [currentSet, setCurrentSet] = useState(0);
@@ -142,8 +142,7 @@ const Alumni = () => {
     hotstar,
     samsung,
     bosch,
-    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,a,f
-    // Add more images here if needed
+    a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, a, f
   ];
 
   useEffect(() => {
@@ -199,6 +198,9 @@ const Alumni = () => {
                 <img src={logo} alt={`company ${i}`} className="m-auto" />
               </div>
             ))}
+            <div className="company-card bg-[#102245] p-32 rounded-xl flex items-center justify-center">
+              <span className="text-white text-2xl">Many more</span>
+            </div>
           </Slider>
         </div>
       ) : (
@@ -211,6 +213,9 @@ const Alumni = () => {
               <img src={logo} alt={`company ${i}`} className="m-auto" />
             </div>
           ))}
+          <div className="company-card bg-[#102245] p-32 lg:p-20 xl:p-44 rounded-xl w-5/12 flex items-center justify-center">
+            <span className="text-white text-4xl text-bold">Many more....</span>
+          </div>
         </div>
       )}
     </div>
@@ -218,3 +223,4 @@ const Alumni = () => {
 };
 
 export default Alumni;
+

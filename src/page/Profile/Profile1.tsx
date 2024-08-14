@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Profile1.css";
 import { UserAPI } from "../../apis/UserAPIs";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function Profile() {
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState({
-    fullname: "",
+   
     email: "",
     phoneNumber: "",
     collegeName: "",
@@ -14,13 +16,13 @@ function Profile() {
   const [isValid, setIsValid] = useState(false);
   const [errors, setErrors] = useState({});
   const [editableField, setEditableField] = useState(null);
-  const [isSaved, setIsSaved] = useState(true); // Track if the profile is saved
-  const [showModal, setShowModal] = useState(false); // State for controlling the modal
+  const [isSaved, setIsSaved] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [selectedCourses, setSelectedCourses] = useState([
     { course: "Webmonk - A Complete Web Development Program", price: 1000 },
     { course: "Webmonk - A Complete Web Development Program", price: 2000 },
     { course: "Webmonk - A Complete Web Development Program", price: 1500 },
-  ]); // Static courses data
+  ]);
 
   useEffect(() => {
     const profileEmail = localStorage.getItem("user-email");
@@ -35,7 +37,7 @@ function Profile() {
         try {
           const res = await UserAPI.userProfileDetail(email);
           setProfile({
-            fullname: res.data.name,
+            fullname: res.data.fullname,
             email: res.data.email,
             phoneNumber: res.data.mobileNumber,
             collegeName: res.data.collegeName,
@@ -52,16 +54,14 @@ function Profile() {
     fetchProfileData();
   }, [email]);
 
-  // Load data from localStorage when the component mounts
   useEffect(() => {
     const savedProfile = JSON.parse(localStorage.getItem("profile"));
     if (savedProfile) {
       setProfile(savedProfile);
-      validateProfile(savedProfile); // Validate the loaded profile
+      validateProfile(savedProfile);
     }
   }, []);
 
-  // Validate input fields
   const validateProfile = (updatedProfile) => {
     const { fullname, email, phoneNumber, collegeName, stream } =
       updatedProfile;
@@ -70,7 +70,7 @@ function Profile() {
 
     const newErrors = {};
 
-    if (!fullname) newErrors.fullname = "Fullname is required.";
+    
     if (!email || !emailRegex.test(email))
       newErrors.email = "Invalid email address.";
     if (!phoneNumber || !phoneRegex.test(phoneNumber))
@@ -82,28 +82,28 @@ function Profile() {
     setIsValid(Object.keys(newErrors).length === 0);
   };
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProfile((prevProfile) => {
       const updatedProfile = { ...prevProfile, [name]: value };
       validateProfile(updatedProfile);
-      setIsSaved(false); // Mark profile as not saved when changes are made
+      setIsSaved(false);
       return updatedProfile;
     });
   };
 
-  // Save data to localStorage
   const handleSave = () => {
     localStorage.setItem("profile", JSON.stringify(profile));
-    setIsSaved(true); // Mark profile as saved
-    setShowModal(false); // Hide the modal
+    setIsSaved(true);
+    setShowModal(false);
+    toast.success("Changes saved successfully!");
   };
 
   const handleCompletePayment = () => {
     if (!isSaved) {
-      setShowModal(true); // Show the modal if changes are not saved
+      setShowModal(true);
     } else {
+      toast.info("Proceeding with the payment process...");
       // Proceed with the payment process
     }
   };
@@ -119,7 +119,6 @@ function Profile() {
     ]);
   };
 
-  // Calculate the total amount
   const totalAmount = selectedCourses.reduce((sum, item) => sum + item.price, 0);
 
   return (
@@ -140,8 +139,6 @@ function Profile() {
               {editableField === "fullname" ? "Save" : "Edit"}
             </button>
           </div>
-          {errors.fullname && <p className="error">{errors.fullname}</p>}
-
           <label>College Name</label>
           <div className="search-container">
             <input
@@ -202,8 +199,9 @@ function Profile() {
             Complete Payment
           </button>
         </div>
-
+      
         <div className="summary-container">
+          <h3>Fill the information then proceed to pay</h3>
           <h2>Summary</h2>
           <div className="sum">
             <p className="items">Items</p>
@@ -236,6 +234,7 @@ function Profile() {
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }

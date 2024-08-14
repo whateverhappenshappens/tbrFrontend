@@ -8,7 +8,7 @@ import Skills from "./skills/Skills";
 import Roles from "./roles/Roles";
 import Benefits from "./benefits/Benefits";
 import Connected from "./connected/Connected";
-import StudentSaying from "../programs-detail/codeslayers/studentssaying/StudentSaying";
+import StudentSaying from "./studentssaying/studentsayingcards/StudentSaying";
 
 const CampusAssociate: React.FC = () => {
   return (

@@ -14,15 +14,16 @@ const Help: React.FC = () => {
         </p>
       </div>
       <div className="connected-button">
-        <button className="connected-button-request visbyroundCF bold ">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJREAXanAnHM_bDf5OuKje08OHyaxXVypePaqPm0Wlv61gQ/viewform" target="_blank" rel="noopener noreferrer"><button className="connected-button-request visbyroundCF bold ">
           <div className="connected-button-request-div">
             <img src={Phone} alt="" />
             <p className="vr-medium">Request a call back</p>
           </div>
-        </button>
+        </button></a>
+        <a href="http://bit.ly/forms_TB-CA" target="_blank" rel="noopener noreferrer">
         <button className="connected-button-join">
           <p className="vr-medium">Join Us</p>
-        </button>
+        </button></a>
       </div>
     </div>
   );

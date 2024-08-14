@@ -131,6 +131,10 @@
   color: #2E436A;
   text-align: left;
 }
+.summary-container h3{
+  color: #2E436A;
+  font-size: 3rem;
+}
 .sum{
   display: flex;
   justify-content: space-around;
@@ -182,6 +186,10 @@
 }
 
 /* Media queries for responsiveness */
+/* Existing CSS */
+
+/* Media queries for responsiveness */
+/* Media queries for responsiveness */
 @media (max-width: 700px) {
   .flex-container {
     flex-direction: column;
@@ -190,9 +198,52 @@
   .summary-container {
     width: 100%;
     margin-top: 2rem;
+    margin-left: 0; /* Remove left margin */
+    padding: 1rem;  /* Add padding for spacing */
   }
 
   .buttun3 {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    
+  }
+  
+  
+  /* New CSS for phone view */
+  .main_box21 {
+    flex-direction: column;
+    padding: 1rem; 
+    margin-top: 2rem;
+    padding-top: 2rem; /* Add padding for better spacing */
+  }
+
+  .column {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .course-summary,
+  .total-summary,
+  .sum {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .items1,
+  .price{
+    display: none;
+  }
+  .items
+  .price1 {
+    text-align: left;
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+  .payment {
+    
+  }
+}
+

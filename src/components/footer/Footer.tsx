@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
       
       <div className="border-t pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
         <div>© 2024 TechBairn Research Pvt. Ltd.</div>
-        <a href="#"><div>Privacy Policy</div> | <div>techbairn.com</div></a>
+        <a href="https://drive.google.com/file/d/18gwUjSwiG7XRywkAHWah9uyX8rrdph1y/view?usp=sharing" target="_blank" rel="noopener noreferrer"><div>Privacy Policy</div> | <div>techbairn.com</div></a>
       </div>
     </footer>
   );

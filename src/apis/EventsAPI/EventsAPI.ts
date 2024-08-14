@@ -1,6 +1,6 @@
 import { api } from "../configs/axiosConfigs";
 import toast from "react-hot-toast";
-
+import { refreshAccessToken } from "../UserAPIs";
 // async function newAccessToken() {
 //   console.log("inside refresh token function.");
 //   localStorage.removeItem("access-token");
@@ -30,8 +30,12 @@ export const EventsAPI = {
       });
       // Add isActive: true to each event
       res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
+      console.log(res.data);
       return res;
     } catch (e) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       console.error("An error occurred:", e);
       toast.error("Invalid access token!");
       return e;
@@ -53,7 +57,7 @@ export const EventsAPI = {
   pastEvents: async function () {
     try {
       const res = await api.get("/v1.5/events?active=false");
-      // Add isActive: false to each event (since they are past events)
+      
       res.data = res.data.map((event: any) => ({ ...event, isActive: true }));
       return res;
     } catch (error) {
@@ -91,6 +95,9 @@ export const EventsAPI = {
       console.log(res.data);
       return res;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;
@@ -132,6 +139,9 @@ export const EventsAPI = {
       console.log("Reached DeleteByEvent");
       return res;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;
@@ -151,6 +161,9 @@ export const EventsAPI = {
       });
       return res;
     } catch (error) {
+      if(error.status === 401){
+        refreshAccessToken();
+      }
       console.error("An error occurred:", error);
       toast.error("Invalid access token!");
       return error;

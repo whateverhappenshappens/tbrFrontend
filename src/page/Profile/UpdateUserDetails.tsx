@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import * as jsonpatch from "fast-json-patch";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { api } from "../../apis/configs/axiosConfigs";
 function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
   console.log("UpdateData:", cartDetailsData);
   console.log("DiscountPrice: ", cartDetailsData.cartValue);
@@ -46,14 +46,14 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
 
   // Validate input fields
   const validateProfile = (updatedProfile) => {
-    const { fullname, email, phoneNumber, collegeName, stream } =
+    const {  email, phoneNumber, collegeName, stream } =
       updatedProfile;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
 
     const newErrors = {};
 
-    if (!fullname) newErrors.fullName = "Fullname is required.";
+    
     if (!email || !emailRegex.test(email))
       newErrors.email = "Invalid email address.";
     if (!phoneNumber || !phoneRegex.test(phoneNumber))
@@ -113,8 +113,8 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
     const access_token = localStorage.getItem("access-token");
 
     try {
-      const response = await axios.post(
-        `http://localhost:8080/v1.5/payment/${cartDetailsData.cartValue * 100}`,
+      const response = await api.post(
+        `/v1.5/payment/${cartDetailsData.cartValue * 100}`,
         requestData,
         {
           headers: {
@@ -138,8 +138,8 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         handler: async function (response: any) {
           console.log("success -->", response);
           try {
-            const paymentSuccessResponse = await axios.post(
-              "http://localhost:8080/v1.5/payment/success",
+            const paymentSuccessResponse = await api.post(
+              "/v1.5/payment/success",
               {
                 orderId: response.razorpay_order_id,
                 paymentId: response.razorpay_payment_id,
@@ -151,8 +151,10 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
                 },
               }
             );
+            navigate("/payment-success");
             console.log("payment success!", paymentSuccessResponse);
           } catch (error) {
+            navigate("/unsuccess")
             console.error(
               "There was a problem with the payment success operation:",
               error
@@ -177,8 +179,8 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
       paymentWindow.on("payment.failed", async function (response: any) {
         console.log("failure --->", response);
         try {
-          await axios.post(
-            "http://localhost:8080/v1.5/payment/fail",
+          await api.post(
+            "/v1.5/payment/fail",
             {
               orderId: response.error.metadata.order_id,
               paymentId: response.error.metadata.payment_id,
@@ -302,7 +304,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
   };
 
   return (
-    <div className="main_box21 mt-[7rem]">
+    <div className="main_box21 mt-[10rem]">
       {/* <aside className="lefty">
         <div className="buttondabba">
           <button
@@ -333,7 +335,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
             </button>
           </div>
         </div>
-        {errors.fullName && <p className="error">{errors.fullName}</p>}
+        
         <br />
 
         <label>Email</label>
@@ -401,7 +403,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         </div>
         <br />
         <button
-          className="buttun buttun2"
+          className="apply_button"
           onClick={handleSave}
           disabled={!isValid}
         >
@@ -426,7 +428,9 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
           </div>
         </div>
       )}
+      
       <div className="summary-container">
+      <h3>Fill the information before proceed to pay</h3>
         <h2>Summary</h2>
         <div className="sum">
           <p className="items">Items</p>
@@ -442,8 +446,8 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
           <p className="order">Order total:</p>
           <p className="price1">Rs {cartDetailsData.cartValue}/-</p>
         </div>
-        <div className="w-[100%] px-[15rem] mt-[4rem]">
-          <button className="buttun3 " onClick={handlePayment}>
+        <div className="w-[100%]  mt-[4rem]">
+          <button className="buttun3" disabled={!isValid} onClick={handlePayment}>
             Complete Payment
           </button>
         </div>

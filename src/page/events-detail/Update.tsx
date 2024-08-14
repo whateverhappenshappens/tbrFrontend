@@ -3,7 +3,6 @@ import "./styles.css";
 import { IoCalendarNumberSharp } from "react-icons/io5";
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 import toast from "react-hot-toast";
-import S3FileUpload from "react-s3";
 import { api } from "../../apis/configs/axiosConfigs";
 import * as jsonpatch from "fast-json-patch";
 import { useNavigate } from "react-router-dom";

@@ -18,6 +18,8 @@ function UserProfile() {
     stream: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
@@ -37,7 +39,34 @@ function UserProfile() {
     fetchProfileData();
   }, []);
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhoneNumber = (phoneNumber) => {
+    const phoneRegex = /^\d{10}$/; // Assuming a 10-digit phone number
+    return phoneRegex.test(phoneNumber);
+  };
+
+  const validate = () => {
+    let validationErrors = {};
+    if (!profile.fullname) validationErrors.fullname = "Fullname is required";
+    if (!validateEmail(profile.email)) validationErrors.email = "Invalid email format";
+    if (!validatePhoneNumber(profile.phoneNumber)) validationErrors.phoneNumber = "Invalid phone number";
+    if (!profile.collegeName) validationErrors.collegeName = "College Name is required";
+    if (!profile.stream) validationErrors.stream = "Stream is required";
+    return validationErrors;
+  };
+
   const handleSave = async () => {
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      toast.error("Please fill out all required fields correctly");
+      return;
+    }
+
     const patchOps = [
       { op: "replace", path: "/name", value: profile.fullname },
       { op: "replace", path: "/collegeName", value: profile.collegeName },
@@ -49,6 +78,7 @@ function UserProfile() {
       await UserAPI.UpdateUserProfile(profile.email, patchOps);
       setIsSaved(true);
       setEditableField(null);
+      toast.success("Profile updated successfully");
     } catch (error) {
       console.error("An error occurred while updating the profile:", error);
       toast.error("Failed to update profile");
@@ -63,6 +93,7 @@ function UserProfile() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
   return (
@@ -72,7 +103,7 @@ function UserProfile() {
           <img src={boyProfile} alt="" />
           <div className="buttondabba1">
             <button className="buttun22 buttun1">Change Picture</button>
-            <button className="buttun buttun2" onClick={handleSave}>
+            <button className="apply_button" onClick={handleSave}>
               Apply Changes
             </button>
           </div>
@@ -95,6 +126,7 @@ function UserProfile() {
                 {editableField === "fullname" ? "Save" : "Edit"}
               </button>
             </div>
+            {errors.fullname && <span className="error">{errors.fullname}</span>}
           </div>
           <br />
 
@@ -110,6 +142,7 @@ function UserProfile() {
               disabled
               placeholder="Johndoe@gmail.com"
             />
+            {errors.email && <span className="error">{errors.email}</span>}
           </div>
           <br />
 
@@ -130,7 +163,8 @@ function UserProfile() {
                 {editableField === "phoneNumber" ? "Save" : "Edit"}
               </button>
             </div>
-          </div>
+            
+          </div>{errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
           <br />
 
           <label>College Name</label>
@@ -150,6 +184,7 @@ function UserProfile() {
                 {editableField === "collegeName" ? "Save" : "Edit"}
               </button>
             </div>
+            {errors.collegeName && <span className="error">{errors.collegeName}</span>}
           </div>
           <br />
 
@@ -170,6 +205,7 @@ function UserProfile() {
                 {editableField === "stream" ? "Save" : "Edit"}
               </button>
             </div>
+            {errors.stream && <span className="error">{errors.stream}</span>}
           </div>
           <br />
         </div>

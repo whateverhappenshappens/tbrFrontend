@@ -153,7 +153,7 @@ const Events: React.FC<Props> = ({ pastdata }) => {
                         className="rounded-xl"
                       ></iframe>
                     ) : (
-                      <div className="text-red-500">Invalid YouTube URL</div>
+                      <div className="text-red-500 none">Invalid YouTube URL</div>
                     )}
                   </div>
                   <div className="h-1/2 md:flex md:flex-col md:gap-5">

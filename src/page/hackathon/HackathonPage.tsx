@@ -25,6 +25,7 @@ const HackathonPage: React.FC<HackathonPageProps> = ({
 
   return (
     <div className="hackathon-page">
+      
       <Biggest ActiveData={Activedata} />
       <Buttons
         activeCallback={activeCallback}

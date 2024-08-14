@@ -1,6 +1,6 @@
 import { api } from "../configs/axiosConfigs";
 import toast from "react-hot-toast";
-
+import { refreshAccessToken } from "../UserAPIs";
 async function newAccessToken() {
   console.log("inside refresh token function.");
   localStorage.removeItem("access-token");

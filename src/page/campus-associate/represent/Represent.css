@@ -17,6 +17,7 @@
     margin-top: 2.5rem;
     
 }
+
 @keyframes flash {
     0% {
       transform: translate(-200%, -50%) rotate(45deg);
@@ -160,6 +161,7 @@
     }
     .doubts{
         margin-top: 2rem;
+        font-size: 1rem;
     }
     .represent-head1{
         font-size: 3.7rem;
@@ -168,8 +170,9 @@
     .doubts-head1{
         font-size: 4rem;
     }
-    .boy-image img{
-        width: 32rem;;
+    .boy-image {
+        width: 30rem;
+        margin-right: 8rem;
     }
     .represent-head2,.doubts-head2{
         font-size: 1.5rem;
@@ -179,11 +182,15 @@
         margin-bottom: 0rem;
         font-size: 2.5rem;
     }
+   
     .represent-button{
-        margin-left: 10rem;
+        margin-left: 12rem;
     }
     .doubts-button{
         width: 20rem;
-        margin-left: 5rem;
+        margin-left: 8rem;
+    }
+    .try{
+        font-size: 3.5rem;
     }
 }
