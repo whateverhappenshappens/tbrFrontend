@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 
 export const api = axios.create({
   withCredentials: true,
-  baseURL:"http://13.127.109.183:8080",
+  baseURL:"http://localhost:8080",
   
 });
 
