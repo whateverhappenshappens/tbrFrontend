@@ -3,7 +3,7 @@ import "./Details.css";
 import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
-
+import { toast } from "react-toastify";
 interface Props {
   star: number;
   rating: number;

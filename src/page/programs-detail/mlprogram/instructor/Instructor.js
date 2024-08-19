@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import "./Instructor.css";
+import profilepic from "../../../../assets/shashank shekhar(ML).jpeg";
+import linkedin from "../../../../assets/linkedin.png";
+const Instructor = () => {
+    return (_jsxs("div", { className: "speaker", children: [_jsx("div", { className: "speaker-heading", children: _jsx("p", { children: "About Instructor" }) }), _jsxs("div", { className: "speaker-content", children: [_jsx("div", { className: "speaker-biodata", children: _jsx("p", { children: "Meet Shashank, our Artificial Intelligence and Machine Learning Instructor Shashank is currently a Senior Consultant in Data Science at Celebal Technologies, with over 5 years of experience in the AI and ML domain. As an educator for the past 4 years, Shashank has helped many students launch their careers in AI, with his students now working at top MNCs and startups. He has developed products for numerous startups and large corporations, and serves as an advisor to many startups. Shashank is known for his exceptional research and development skills and is loved by students for his engaging teaching style." }) }), _jsxs("div", { className: "speaker-profile", children: [_jsx("img", { src: profilepic, className: "instructor_image", alt: "" }), _jsx("p", { className: "speaker-profile-name", children: "Shashank Shekhar" }), _jsx("p", { className: "speaker-profile-company", children: "Senior Consultant - Data Science @ Celebal Technologies" }), _jsxs("div", { className: "speaker-profile-linkedin", children: [_jsx("img", { src: linkedin, alt: "" }), _jsx("a", { href: " https://www.linkedin.com/in/shashank2806/\r\n", children: _jsx("p", { children: "Let's Connect" }) })] })] })] })] }));
+};
+export default Instructor;

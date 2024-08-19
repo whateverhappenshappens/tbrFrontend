@@ -144,10 +144,9 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
     const file = e.target.files?.[0];
     if (file) {
       try {
-        const data = await S3FileUpload.uploadFile(file, config);
+        
         setFormData((prevState) => ({
-          ...prevState,
-          [fieldName]: data.location,
+          ...prevState
         }));
       } catch (err) {
         console.error(err);
