@@ -107,13 +107,13 @@ function LandingPage({ headerHeight, handle_login, pastdata, activedata, }) {
     return (_jsxs("div", { className: "landing-page", ref: landingPage, children: [_jsx(Explore, { handle_login: handle_login }), _jsx(KeyAttribute, {}), _jsx(HowWeAreDifferent, {}), _jsx(ExplorePrograms, {}), _jsx(DarkBanner, { title: "Collaborations", subtitle: "Some subtitle will be provided later about our collaborations", logos: logo_college }), _jsx(DisplayEvent, {}), _jsx(Biggest, { ActiveData: activedata }), _jsx(Events, { pastdata: pastdata }), _jsx(DarkBanner, { title: "Instructors are from", subtitle: "All of our instructors are from renowned companies with a vast knowledge on this subject matter.", logos: logos }), _jsx("hr", { className: "h-[10rem]" }), _jsx("hr", {}), _jsx(DarkBanner, { title: "Hiring Partner ", subtitle: "our partners are", logos: logo }), _jsx(MediaPresence, { mediaItems: [
                     {
                         title: "",
-                        para: "TechBairn was highlighted by Economic Times as a leading innovator in technology, praised for its groundbreaking solutions and significant impact on the industry.",
+                        para: "TechBairn was highlighted by Economic Times as a leading innovator in technology, praised for its groundbreaking solutions and impact on the industry.",
                         image: times,
                         link: "https://economictimes.indiatimes.com/small-biz/sme-sector/engineering-colleges-government-anchor-bhubaneswars-edtech-ecosystem/articleshow/106690269.cms?from=mdr",
                     },
                     {
                         title: "",
-                        para: "Named Best E-Learning Company of the Year 2022 by BW Business World, we are honored for our innovative approach and excellence in online education.",
+                        para: "Named Best E-Learning Company of the Year 2022 by BW Business World, we are honored for our innovative approach and excellence in education.",
                         image: bus,
                         link: "https://currentaffairs.adda247.com/bw-businessworld-awards-edutech-2022-check-the-complete-list-of-winners/",
                     },

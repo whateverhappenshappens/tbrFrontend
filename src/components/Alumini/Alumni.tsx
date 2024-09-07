@@ -213,8 +213,8 @@ const Alumni = () => {
               <img src={logo} alt={`company ${i}`} className="m-auto" />
             </div>
           ))}
-          <div className="company-card bg-[#102245] p-32 lg:p-20 xl:p-44 rounded-xl w-5/12 flex items-center justify-center">
-            <span className="text-white text-4xl text-bold">Many more....</span>
+          <div className="company-card bg-[#102245] p-28 lg:p-20 xl:p-40 rounded-xl w-5/12 flex items-center justify-center">
+            <span className="text-white text-2xl overflow-y-hidden text-bold">Many more</span>
           </div>
         </div>
       )}

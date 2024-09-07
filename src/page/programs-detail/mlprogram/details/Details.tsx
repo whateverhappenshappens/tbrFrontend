@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Details.css";
+import "./Details1.css";
 import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
@@ -60,7 +60,7 @@ const Details: React.FC<Props> = (props) => {
       name: "Machinester",
       description: "A very small description of the course should be included",
       price: 4999,
-      discountedPrice: 2999,
+      discountedPrice: 3429,
     };
 
     addToCart(course);

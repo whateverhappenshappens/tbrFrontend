@@ -33,7 +33,7 @@ export const EventsAPI = {
       console.log(res.data);
       return res;
     } catch (e) {
-      if(error.status === 401){
+      if(e.status === 401){
         refreshAccessToken();
       }
       console.error("An error occurred:", e);
@@ -169,4 +169,27 @@ export const EventsAPI = {
       return error;
     }
   },
+  addEvent: async function (eventData: any) {
+    const access_token = localStorage.getItem("access-token");
+    try {
+      const res = await api.request({
+        url: `/v1.5/all`,
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + access_token,
+          "Content-Type": "application/json",
+        },
+        data: eventData, // Send eventData as the request body
+      });
+      console.log("Event added:", res.data);
+      return res;
+    } catch (error) {
+      if (error.response.status === 401) {
+        refreshAccessToken();
+      }
+      console.error("An error occurred:", error);
+      toast.error("Invalid access token!");
+      return error;
+    }
+  }
 };

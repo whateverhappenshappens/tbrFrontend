@@ -94,7 +94,8 @@ const Cart: React.FC<Props> = ({
       setAdditionalDiscount(couponDiscount);
       calculateNetPrice(couponDiscount);
     } else {
-      setCouponMessage("Invalid coupon code");
+      console.log("Invalid coupon code detected");
+      setCouponMessage(`Invalid coupon code`);
       setPromoApplied(false);
       setAdditionalDiscount(0);
       calculateNetPrice(0);
@@ -227,11 +228,15 @@ const Cart: React.FC<Props> = ({
 </button>
 
             </div>
-            {promoApplied && (
-              <div className="coupon-message text-3xl lg:text-4xl font-semibold text-green-500">
-                {couponMessage}
-              </div>
-            )}
+            {promoApplied ? (
+  <div className="coupon-message text-3xl lg:text-4xl font-semibold text-green-500">
+    {couponMessage}
+  </div>
+) : (
+  <div className="coupon-message text-3xl lg:text-4xl font-semibold text-red-500">
+    {couponMessage}
+  </div>
+)}
           </div>
           <div className="pay-box flex flex-col justify-evenly lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
             <div className="continue-shopping flex justify-center mt-10">

@@ -8,6 +8,7 @@ import { GeneratePresignedUrlforUpload } from "../../apis/s3_api/S3";
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 import axios from "axios"; // Import axios for the upload
 import toast from "react-hot-toast";
+import {S3api} from "../../apis/s3_api/S3.js"
 
 function App({ selectedEvent, setUpdateFormVisible }) {
   const [formData, setFormData] = useState({
@@ -27,27 +28,27 @@ function App({ selectedEvent, setUpdateFormVisible }) {
   });
 
   const [uuid, setUuid] = useState(uuidv4());
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [preSignedUrl, setPreSignedUrl] = useState("");
-  const [uploadStatus, setUploadStatus] = useState("");
-  const [uploadType, setUploadType] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null); // For file selection
+  const [preSignedUrl, setPreSignedUrl] = useState(""); // Store the pre-signed URL
+  const [uploadStatus, setUploadStatus] = useState(""); // Track upload status
+  const [uploadType, setUploadType] = useState(""); // Track the type of upload
 
   useEffect(() => {
     if (selectedEvent) {
       setFormData({
-        bannerLinkPC: selectedEvent.bannerLinkPC || "",
-        bannerLinkMobile: selectedEvent.bannerLinkMobile || "",
-        eventMode: selectedEvent.mode || "",
-        speakerImageLink: selectedEvent.speakerImg || "",
-        heading: selectedEvent.heading || "",
-        subHeading: selectedEvent.subHeading || "",
-        date: new Date(selectedEvent.date) || new Date(),
-        aboutSpeaker: selectedEvent.aboutSpeaker || "",
-        speakerSocialLink: selectedEvent.speakerSocial || "",
-        speakerExperienceDetails: selectedEvent.speakerExperience || "",
-        speakerName: selectedEvent.speakerName || "",
-        youtubeLink: selectedEvent.youtubeLink || "",
-        isActive: selectedEvent.isActive || false,
+        bannerLinkPC: selectedEvent.bannerLinkPC,
+        bannerLinkMobile: selectedEvent.bannerLinkMobile,
+        eventMode: selectedEvent.mode,
+        speakerImageLink: selectedEvent.speakerImg,
+        heading: selectedEvent.heading,
+        subHeading: selectedEvent.subHeading,
+        date: new Date(selectedEvent.date),
+        aboutSpeaker: selectedEvent.aboutSpeaker,
+        speakerSocialLink: selectedEvent.speakerSocial,
+        speakerExperienceDetails: selectedEvent.speakerExperience,
+        speakerName: selectedEvent.speakerName,
+        youtubeLink: selectedEvent.youtubeLink,
+        isActive: selectedEvent.isActive,
       });
       setUuid(selectedEvent.uuid || uuidv4());
     }
@@ -55,98 +56,112 @@ function App({ selectedEvent, setUpdateFormVisible }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: value, // Keep the datetime-local format
     }));
   };
 
-  const handleDateChange = (e) => {
-    const date = e.target.value;
+  const handleDateChange = (date) => {
     setFormData((prevState) => ({
       ...prevState,
-      date: date ? new Date(date) : new Date(),
+      date,
     }));
   };
 
   const handleRadioChange = (e) => {
+    const isActive = e.target.value === "true";
     setFormData((prevState) => ({
       ...prevState,
-      isActive: e.target.value === "true",
+      isActive,
     }));
   };
 
   const handleFileChange = async (e, type) => {
+    // Check if heading is provided before uploading
     if (!formData.heading.trim()) {
       toast.error("Please provide a heading before uploading.");
       return;
     }
 
     const file = e.target.files[0];
-    if (!file) return;
-
     const fileType = file.type;
-    const extension = `.${fileType.split("/").pop()}`;
-    const sanitizedHeading = formData.heading
-      .trim()
-      .replace(/\s+/g, "_")
-      .replace(/[^\w-]/g, "");
+    const extension = "." + fileType.split("/").pop();
 
-    const urlData = {
-      formattedHeading: sanitizedHeading,
-      formattedDate: formData.date,
-      formattedType: type,
-      formattedExtension: extension,
-    };
+    if (file) {
+      try {
+        // Replace spaces with underscores and remove special characters in the heading
+        const sanitizedHeading = formData.heading
+          .trim()
+          .replace(/\s+/g, "_")
+          .replace(/[^\w-]/g, "");
 
-    try {
-      const response = await GeneratePresignedUrlforUpload(urlData);
-      const preSignedUrlForUpload=response.preSignedUrlForUpload;
-      console.log(urlData);
-      
-      const fileNameForUpload = response.fileName;
-      setSelectedFile(file);
-      setPreSignedUrl(preSignedUrlForUpload);
-      setUploadType(type);
-      const fileName = fileNameForUpload;
-      setFormData((prevState) => ({
-        ...prevState,
-        [type]:  fileName,
-      }));
+        // const date = formData.date;
+        // const formattedHeading = `${sanitizedHeading}`;
+        // const formattedDate = `${date}`;
+        // const formattedType = `${type}`;
+        // const formattedExtension = `${extension}`;
 
-      console.log(`Pre-signed URL generated: ${fileName}`);
-    } catch (error) {
-      console.error("Error generating pre-signed URL:", error);
-      toast.error("Error generating pre-signed URL.");
+        console.log(formattedHeading,formattedDate,formattedType,formattedExtension)
+        // Generate a pre-signed URL for the file upload
+        const response = await S3api.GeneratePresignedUrlforUpload(urlData);
+        const preSignedUrlForUpload=response.preSignedUrlForUpload;
+        const fileNameForUpload = response.fileName;
+        setSelectedFile(file);
+        setPreSignedUrl(preSignedUrlForUpload); // Store the pre-signed URL
+        setUploadType(type);
+        // Update the formData with the URL of the uploaded file (optional)
+        const fileName = fileNameForUpload;
+        setFormData((prevState) => ({
+          ...prevState,
+          [type]: fileName,
+        }));
+        console.log(`Pre-signed URL generated: ${fileName}`);
+      } catch (error) {
+        console.error("Error generating pre-signed URL:", error);
+      }
     }
   };
 
+  const urlData = {
+    formattedHeading : sanitizedHeading,
+    formattedDate:formData.date,
+    formattedType:file.type,
+    formattedExtension:extension
+  }
+  console.log(urlData);
   const handleSelectForUploadClick = (type) => {
     document.getElementById(type).click();
   };
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      toast.error("Please select a file first.");
+      alert("Please select a file first.");
       return;
     }
-
     try {
-      await axios.put(preSignedUrl, selectedFile);
+      // Upload the file to the pre-signed URL
+      console.log("the url is", preSignedUrl);
+      console.log("Selected file type:", selectedFile.type);
+      const res = await axios.put(preSignedUrl, selectedFile);
       setUploadStatus("File uploaded successfully!");
-      toast.success("File uploaded successfully!");
+      console.log("File uploaded successfully!");
     } catch (error) {
       console.error("Error uploading file:", error);
-      setUploadStatus("Failed to upload file.");
-      toast.error("Failed to upload file.");
+      setUploadStatus("Failed");
     }
   };
+  
 
   const handleSaveClick = async () => {
+    // Prepare the data with the formatted date
     const formattedData = {
       ...formData,
-      date: formData.date ? new Date(formData.date).toISOString() : "",
+      date: formData.date ? new Date(formData.date).toISOString() : "", // Convert to ISO string if date exists
     };
+
+    console.log("Saving event data:", formattedData);
 
     try {
       const response = await EventsAPI.addEvent(formattedData);
@@ -239,7 +254,10 @@ function App({ selectedEvent, setUpdateFormVisible }) {
                       onChange: handleInputChange,
                       className: "date"
                     }),
-                    
+                    _jsx("span", {
+                      className: "calendar-icon",
+                      children: _jsx(IoCalendarNumberSharp, {})
+                    })
                   ]
                 })
               ]
@@ -478,3 +496,41 @@ function App({ selectedEvent, setUpdateFormVisible }) {
 }
 
 export default App;
+
+//import { api } from "../configs/axiosConfigs";
+// export const GeneratePresignedUrlforUpload = async function generatePresignedUrlforUpload(urlData) {
+//     console.log("generate the pre-sign URL for upload");
+//     try {
+//         console.log("Generating the pre-sign URL for upload");
+//         const res = await api.post("/v1.5/s3/get-presigned-url-for-upload", null, { urlData: { objectKey: key } });
+//         console.log("S3 response:", res.data);
+//         return res.data; // Return the pre-signed URL directly
+//     }
+//     catch (error) {
+//         console.error(`An error occurred while fetching signed URL -> ${error.status}`);
+//         throw error; // Re-throw the error if needed
+//     }
+// };
+
+export const S3api = {
+    GeneratePresignedUrlforUpload : async function (urlData) {
+         console.log("generate the pre-sign URL for upload");
+         try {
+             console.log("Generating the pre-sign URL for upload");
+             const res = await api.request({
+                 url:`/v1.5/s3/get-presigned-url-for-upload`,
+                 method: "POST",
+                 data:urlData
+                 
+             })
+             console.log("this is urlData",urlData);
+             return res.data; // Return the pre-signed URL directly
+         }
+         catch (error) {
+             console.error(`An error occurred while fetching signed URL -> ${error.status}`);
+             throw error; // Re-throw the error if needed
+         }
+    }
+ };
+ 
+ 

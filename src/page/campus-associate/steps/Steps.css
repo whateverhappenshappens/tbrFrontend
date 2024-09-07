@@ -38,9 +38,7 @@
     position: relative;
   }
   @media (max-width:1500px){
-    .steps-hr{
-    display: none;
-}
+  
 .steps-head1{
     align-items: center;
 }

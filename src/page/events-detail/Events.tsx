@@ -37,7 +37,7 @@ const EventsDetail: React.FC = () => {
       {data?.youtubeLink && <VideoPlayer videolink={data.youtubeLink} />}
       <AboutEvents data={data} />
       <Speaker data={data} />
-      <StudentSaying />
+      
       <Faq />
       <Help />
     </div>

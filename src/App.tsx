@@ -13,7 +13,7 @@ import BlogDetail from "./components/BlogDetail/BlogDetail";
 import Login from "./components/main/login/Login";
 import Footer from "./components/footer/Footer";
 import CampusAssociate from "./page/campus-associate/CampusAssociate";
-// import EventsDetail from "./page/events-detail/Events";
+import EventsDetail from "./page/events-detail/Events.tsx";
 import EventsManagerPage from "./page/events-detail/EventsManagerPage";
 import CodeSlayer from "./page/programs-detail/codeslayers/CodeSlayer";
 import MlProgram from "./page/programs-detail/mlprogram/MlProgram";
@@ -216,7 +216,7 @@ function App() {
             <Route path="/course/webmonk" element={<Webmonk />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/course/codeslayer" element={<CodeSlayer />} />
-            {/* <Route path="/events/:id" element={<EventsDetail />} /> */}
+            <Route path="/events/:id" element={<EventsDetail />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/course/machinester" element={<MlProgram />} />
             <Route path="/course/IOT" element={<IotProgram />} />

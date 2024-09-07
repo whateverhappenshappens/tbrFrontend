@@ -25,7 +25,7 @@ const Projects = () => {
         },
         {
             heading: "Complete Deployment of Your Idea/Project ",
-            paragraph: "A comprehensive solution for deploying your idea or project from start to finish. Ensure smooth implementation and operation with end-to-end deployment services that cover all stages of the process.",
+            paragraph: "A comprehensive solution for deploying your idea or project from start to finish. Ensure smooth implementation and operation with end-to-end deployment .",
         },
     ];
     // Update max cards to show based on viewport width

@@ -9,10 +9,10 @@ import heart from "../../../assets/heart.png";
 import skills from "../../../assets/skills.png";
 const Experience = () => {
     const para1 = "We offer live, interactive classes tailored to meet individual learning needs, ensuring a more effective and engaging educational experience.";
-    const para2 = "Our platform fosters a collaborative learning environment where students can engage, share knowledge, and support each other through community interactions.";
-    const para3 = "We provide dedicated teaching assistant support and a vibrant discussion forum to help students resolve queries and deepen their understanding of the subject matter.    ";
+    const para2 = "Our platform fosters a collaborative learning environment where students can engage, share knowledge.";
+    const para3 = "We offer dedicated teaching assistant support and vibrant forums to resolve queries and enhance learning.";
     const para4 = "Students earn live badges and receive certifications recognized by leading industries, enhancing their professional credibility.";
-    const para5 = "We connect learners with exclusive internship and job opportunities, bridging the gap between education and employment.";
+    const para5 = "We connect learners with exclusive internships and jobs, bridging education and employment.";
     const para6 = " We are committed to delivering top-notch education through well-structured courses, expert instructors, and up-to-date content.";
     const cardsData = [
         {

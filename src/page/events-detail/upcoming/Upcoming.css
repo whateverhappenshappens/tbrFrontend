@@ -14,6 +14,8 @@
     flex-direction: row;
     height: auto;
     transform: translateY(10rem);
+    margin-bottom: 8rem;
+    
 }
 
 .upcoming-img {
@@ -114,6 +116,7 @@
     border-radius: 1rem;
     color: #6D87F5;
     background-color: white;
+    margin-bottom: 2rem;
 }
 
 .upcoming-buttons-enroll p {
@@ -145,6 +148,7 @@
         height:auto;
         padding:2rem 2rem;
         justify-content: flex-end;
+        margin-top:1.5rem;
     }
     .upcoming-info{
         margin: 0px;

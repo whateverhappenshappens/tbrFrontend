@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Roles.css";
 import Cards from "./Cards/Cards";
-import adduser from "../../../assets/add-friend.png";
+import adduser from "../../../assets/add-user.png";
 import fly from "../../../assets/flyers.png";
 import mega from "../../../assets/megaphone.png";
 const Roles = () => {
@@ -32,7 +32,7 @@ const Roles = () => {
         {
             para: "Provide weekly updates on your work database.",
             image: adduser,
-            color: "#FFD75B",
+            color: "#FFEDB6",
         },
         {
             para: "Represent us in various college clubs and groups, sharing your innovative ideas.",

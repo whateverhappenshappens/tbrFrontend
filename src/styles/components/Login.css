@@ -162,6 +162,8 @@
 /* Login.css */
 .main_box {
   display: flex;
+  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .left {

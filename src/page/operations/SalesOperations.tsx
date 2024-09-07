@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { SalesAPIs } from "../../apis/SalesAPI/SalesAPIs";
 import { saveAs } from "file-saver";
@@ -223,7 +224,7 @@ const SalesOperations: React.FC = () => {
             id="subOption"
             value={selectedSubOption}
             onChange={handleSubChange}
-            className="w-full border border-gray-300 rounded-md p-2"
+            className="w-full border border-gray-300 rounded-md p-4"
           >
             <option value="">Select an option</option>
             <option value="getPaymentDetailsByEmail">

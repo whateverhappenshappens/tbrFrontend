@@ -8,7 +8,7 @@
 
 .course-card-banner-image p{
     font-family: 'bold';
-    width: 18.6rem;
+    width: 16.6rem;
     font-size: 2rem;
     padding: 1rem 2.1rem 1.1rem 2.3rem;
     color: #FFFFFF;
@@ -22,7 +22,7 @@
 }
 .course-card img{
     width:65rem;
-    height:48rem;
+    height:45rem;
     border-radius: 3rem;
     margin-right: 1.8rem;
 }

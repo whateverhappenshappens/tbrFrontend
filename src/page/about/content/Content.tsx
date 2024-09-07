@@ -19,15 +19,18 @@ const Content: React.FC = () => {
       <div className="gig-headings">
         <div className="mine1">
           <div className="left23">
-            <p className="us" onClick={scrollToFooter}>Contact Us</p>
+            <p className="us" onClick={scrollToFooter}>
+              Contact Us
+            </p>
             <p className="us1">
-              Have some questions or just wanted to know more about us? Why not pick up your phone.
+              Have some questions or just wanted to know more about us? Why not
+              pick up your phone.
             </p>
             <br />
             <div className="ice">
               <div className="icon1">
                 <div className="lefty12">
-                  <img src={msg} alt="aa" />
+                  <img src={msg} alt="Message Icon" />
                 </div>
                 <div className="righty">
                   <p>hello@techbairn.com</p>
@@ -36,7 +39,7 @@ const Content: React.FC = () => {
               </div>
               <div className="icon1">
                 <div className="lefty12">
-                  <img src={call} alt="aa" />
+                  <img src={call} alt="Call Icon" />
                 </div>
                 <div className="righty">
                   <p>(+91)- 8789726459</p>
@@ -45,18 +48,22 @@ const Content: React.FC = () => {
               </div>
               <div className="icon1">
                 <div className="lefty12">
-                  <img src={location} alt="aa" />
+                  <img src={location} alt="Location Icon" />
                 </div>
                 <div className="righty">
                   <p className="tryr">
-                    1st Floor, 568/569, 20th Cross<br /> Rd, KPC Layout, Kasavanahalli<br /> Bengaluru, Karnataka 560035
+                    1st Floor, 568/569, 20th Cross
+                    <br />
+                    Rd, KPC Layout, Kasavanahalli
+                    <br />
+                    Bengaluru, Karnataka 560035
                   </p>
                 </div>
               </div>
             </div>
           </div>
           <div className="right23">
-            <img src={girl1} alt="girl" />
+            <img src={girl1} alt="Girl Illustration" />
           </div>
         </div>
       </div>

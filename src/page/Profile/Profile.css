@@ -29,6 +29,15 @@
   border-radius: 10px;
   font-family: bold;
  }
+ .apply_button1{
+  width: 18rem;
+  height: 5rem;
+  background-color: rgb(241, 73, 73);
+  color: white;
+  font-size: 2rem;
+  border-radius: 10px;
+  font-family: bold;
+ }
   .search-container {
     display: flex;
     align-items: center;

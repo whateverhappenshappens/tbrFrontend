@@ -9,7 +9,7 @@ export interface Event {
   speakerSocial: string;
   speakerExperience: string;
   mode: string;
-  speakerImageLink: string;
+  speakerImageLinkLink: string;
   youtubeLink: string;
   speakerName: string;
 }

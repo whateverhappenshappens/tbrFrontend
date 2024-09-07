@@ -17,6 +17,9 @@
 }
 .projects-heading p{
   font-family: 'extra-bold';
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .projects-cards {
   display: flex;

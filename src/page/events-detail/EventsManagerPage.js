@@ -70,7 +70,7 @@ function EventsManagerPage({ headerHeight }) {
             speakerSocial: event.speakerSocial,
             speakerExperience: event.speakerExperience,
             mode: event.mode,
-            speakerImage: event.speakerImageLink,
+            speakerImageLink: event.speakerImageLinkLink,
             speakerName: event.speakerName,
         })));
         const blob = new Blob([csvData], { type: "text/csv" });

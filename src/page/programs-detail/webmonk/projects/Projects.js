@@ -8,8 +8,8 @@ const Projects = () => {
     const [maxCardsToShow, setMaxCardsToShow] = useState(3);
     const projectsData = [
         {
-            heading: "Responsive Portfolio Website",
-            paragraph: "A modern and adaptable website showcasing your portfolio with a seamless user experience across all devices. Highlight your work and skills with a clean, professional design.    ",
+            heading: "Responsiveness",
+            paragraph: "A modern and adaptable website showcasing your portfolio with a seamless user experience across all devices. Highlight your work and skills. ",
         },
         {
             heading: "Tiny URL",
@@ -21,11 +21,11 @@ const Projects = () => {
         },
         {
             heading: "Weather Application",
-            paragraph: " A tool for shortening long URLs into compact, easy-to-share links. Simplify and manage your web addresses with a streamlined and user-friendly interface.",
+            paragraph: " A tool for shortening long URLs into compact, easy-to-share links. Simplify and manage your web addresses with a streamlined.",
         },
         {
             heading: "Your Idea/Project",
-            paragraph: "Now that you have learned the MERN Stack (Full Stack Web Development), it's time to make your idea/project accessible to others on the web. Share your creation and let people benefit from your work.",
+            paragraph: "Now that you have learned the MERN Stack (Full Stack Web Development), it's time to make your idea/project accessible to others on the web. ",
         },
     ];
     // Update max cards to show based on viewport width

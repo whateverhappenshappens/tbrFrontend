@@ -69,7 +69,7 @@
 
 .represent-head1 {
     color: #2E436A;
-    font-size: 5rem;
+    font-size: 4rem;
     font-family: extra-bold;
     text-align: left;
     line-height: 1.2;
@@ -92,6 +92,7 @@
     padding: 1.8rem 6rem; 
     margin-top: 3rem;
     margin-right: 20rem;
+    margin-left: 5rem;
 }
 .represent-button p,.doubts-button-div p{
     margin-bottom: 0rem;
@@ -133,6 +134,8 @@
     font-size: 2rem;
     margin-top: 3rem;
     margin-right: 16rem;
+    width: 18rem;
+    height: 6rem;
 }
 
 .doubts-button-div {
@@ -140,8 +143,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 2.3rem;
-    padding: 1.8rem 3rem;
+    
 }
 
 .doubts-button-div img {

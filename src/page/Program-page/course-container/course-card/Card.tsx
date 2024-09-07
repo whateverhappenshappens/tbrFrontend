@@ -26,7 +26,7 @@ const Card: React.FC<Props> = (props) => {
       name: props.heading,
       description: props.para1,
       price: 4999,
-      discountedPrice: 2999,
+      discountedPrice: 3429,
       image:props.image
     };
 
@@ -44,7 +44,7 @@ const Card: React.FC<Props> = (props) => {
         <div className="course-card-content-header">
           <h3>{props.heading}</h3>
           <div className="course-card-content-header-rating">
-            4.0 ★ ★ ★ ★ ☆ (10,000)
+            4.0 ★ ★ ★ ★ ☆ (10,00)
           </div>
         </div>
         <div className="course-card-content">

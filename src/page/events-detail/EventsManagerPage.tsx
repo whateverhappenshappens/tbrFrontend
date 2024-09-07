@@ -7,8 +7,7 @@ import UpdateForm from "./Update"; // Import the update form component
 import ConfirmationDialog from "./ConfirmationDialog"; // Import the confirmation dialog component
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 import "./bulb.css";
-// Import badge images
-import bulb from "./bulb.svg"; // Path to your bulb image
+
 
 function EventsManagerPage({ headerHeight }: any) {
   const eventsManagerPage = useRef<HTMLDivElement | null>(null);
@@ -78,7 +77,7 @@ function EventsManagerPage({ headerHeight }: any) {
         speakerSocial: event.speakerSocial,
         speakerExperience: event.speakerExperience,
         mode: event.mode,
-        speakerImage: event.speakerImageLink,
+        speakerImageLink: event.speakerImageLinkLink,
         speakerName: event.speakerName,
       }))
     );

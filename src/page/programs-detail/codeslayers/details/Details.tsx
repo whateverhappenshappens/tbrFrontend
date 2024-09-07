@@ -61,7 +61,7 @@ const Details: React.FC<Props> = (props) => {
       name: "CodeSlayer",
       description: " A Competitive Programming Course.A Complete Placement Preparation Program ",
       price: 4999,
-      discountedPrice: 2999,
+      discountedPrice: 3429,
     };
 
     addToCart(course);

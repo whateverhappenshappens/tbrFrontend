@@ -46,9 +46,9 @@ const patchData = async (
 // FormData Type
 interface FormData {
   pcBanner: string;
-  mobileBanner: string;
+  bannerLinkMobile: string;
   eventMode: string;
-  speakerImage: string;
+  speakerImageLink: string;
   heading: string;
   subHeading: string;
   date: string;
@@ -70,9 +70,9 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
   );
   const [formData, setFormData] = useState<FormData>({
     pcBanner: "",
-    mobileBanner: "",
+    bannerLinkMobile: "",
     eventMode: "",
-    speakerImage: "",
+    speakerImageLink: "",
     heading: "",
     subHeading: "",
     date: "",
@@ -96,9 +96,9 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
         setOriginalData(eventData);
         setFormData({
           pcBanner: eventData.bannerLinkPC,
-          mobileBanner: eventData.bannerLinkMobile,
+          bannerLinkMobile: eventData.bannerLinkMobile,
           eventMode: eventData.mode,
-          speakerImage: eventData.speakerImageLink,
+          speakerImageLink: eventData.speakerImageLinkLink,
           heading: eventData.heading,
           subHeading: eventData.subHeading,
           date: eventData.date,
@@ -230,23 +230,23 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
       </div>
       <br />
       <div className="inline-form">
-        <label htmlFor="mobileBanner">Mobile Banner Link:</label>
+        <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
         <input
           type="text"
-          id="mobileBanner"
-          name="mobileBanner"
+          id="bannerLinkMobile"
+          name="bannerLinkMobile"
           placeholder="Mobile Banner Link"
-          value={formData.mobileBanner}
+          value={formData.bannerLinkMobile}
           onChange={handleInputChange}
         />
         <input
           type="file"
-          id="mobileBannerFile"
+          id="bannerLinkMobileFile"
           style={{ display: "none" }}
-          onChange={(e) => handleFileChange(e, "mobileBanner")}
+          onChange={(e) => handleFileChange(e, "bannerLinkMobile")}
         />
         <button
-          onClick={() => handleUploadClick("mobileBanner")}
+          onClick={() => handleUploadClick("bannerLinkMobile")}
           className="upload-btn"
         >
           Upload
@@ -254,23 +254,23 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
       </div>
       <br />
       <div className="inline-form">
-        <label htmlFor="speakerImage">Speaker Image:</label>
+        <label htmlFor="speakerImageLink">Speaker Image:</label>
         <input
           type="text"
-          id="speakerImage"
-          name="speakerImage"
+          id="speakerImageLink"
+          name="speakerImageLink"
           placeholder="Speaker Image"
-          value={formData.speakerImage}
+          value={formData.speakerImageLink}
           onChange={handleInputChange}
         />
         <input
           type="file"
-          id="speakerImageFile"
+          id="speakerImageLinkFile"
           style={{ display: "none" }}
-          onChange={(e) => handleFileChange(e, "speakerImage")}
+          onChange={(e) => handleFileChange(e, "speakerImageLink")}
         />
         <button
-          onClick={() => handleUploadClick("speakerImage")}
+          onClick={() => handleUploadClick("speakerImageLink")}
           className="upload-btn"
         >
           Upload
@@ -484,9 +484,9 @@ export default UpdateForm;
 
 // interface FormData {
 //   pcBanner: string;
-//   mobileBanner: string;
+//   bannerLinkMobile: string;
 //   eventMode: string;
-//   speakerImage: string;
+//   speakerImageLink: string;
 //   heading: string;
 //   subHeading: string;
 //   date: string;
@@ -508,9 +508,9 @@ export default UpdateForm;
 //   );
 //   const [formData, setFormData] = useState<FormData>({
 //     pcBanner: "",
-//     mobileBanner: "",
+//     bannerLinkMobile: "",
 //     eventMode: "",
-//     speakerImage: "",
+//     speakerImageLink: "",
 //     heading: "",
 //     subHeading: "",
 //     date: "",
@@ -537,9 +537,9 @@ export default UpdateForm;
 //         setOriginalData(eventData); // Store the original data
 //         setFormData({
 //           pcBanner: eventData.bannerLinkPC,
-//           mobileBanner: eventData.bannerLinkMobile,
+//           bannerLinkMobile: eventData.bannerLinkMobile,
 //           eventMode: eventData.mode,
-//           speakerImage: eventData.speakerImageLink,
+//           speakerImageLink: eventData.speakerImageLinkLink,
 //           heading: eventData.heading,
 //           subHeading: eventData.subHeading,
 //           date: eventData.date,
@@ -659,20 +659,20 @@ export default UpdateForm;
 //       </div>
 //       <br></br>
 //       <div className="inline-form">
-//         <label htmlFor="mobileBanner">Mobile Banner Link:</label>
+//         <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
 //         <input
 //           type="text"
-//           id="mobileBanner"
-//           name="mobileBanner"
+//           id="bannerLinkMobile"
+//           name="bannerLinkMobile"
 //           placeholder="Mobile Banner Link"
-//           value={formData.mobileBanner}
+//           value={formData.bannerLinkMobile}
 //           onChange={handleInputChange}
 //         />
 //         <button onClick={handleUploadClick}>Upload</button>
 //       </div>
 //       <br></br>
 //       <div className="inline-form">
-//         <label htmlFor="mobileBanner">Enroll Link:</label>
+//         <label htmlFor="bannerLinkMobile">Enroll Link:</label>
 //         <input
 //           type="text"
 //           id="enrollLink"
@@ -697,13 +697,13 @@ export default UpdateForm;
 //       </div>
 //       <br></br>
 //       <div className="inline-form">
-//         <label htmlFor="speakerImage">Speaker Image:</label>
+//         <label htmlFor="speakerImageLink">Speaker Image:</label>
 //         <input
 //           type="text"
-//           id="speakerImage"
-//           name="speakerImage"
+//           id="speakerImageLink"
+//           name="speakerImageLink"
 //           placeholder="Speaker Image"
-//           value={formData.speakerImage}
+//           value={formData.speakerImageLink}
 //           onChange={handleInputChange}
 //         />
 //         <button onClick={handleUploadClick}>Upload</button>
@@ -877,9 +877,9 @@ export default UpdateForm;
 // //   const [accessToken, setAccessToken] = useState<string | null>(localStorage.getItem('access-token'));
 // //   const [formData, setFormData] = useState({
 // //     pcBanner: "",
-// //     mobileBanner: "",
+// //     bannerLinkMobile: "",
 // //     eventMode: "",
-// //     speakerImage: "",
+// //     speakerImageLink: "",
 // //     heading: "",
 // //     subHeading: "",
 // //     date: "",
@@ -929,9 +929,9 @@ export default UpdateForm;
 // //     if (data) {
 // //       setFormData({
 // //         pcBanner: data.bannerLinkPC,
-// //         mobileBanner: data.bannerLinkMobile,
+// //         bannerLinkMobile: data.bannerLinkMobile,
 // //         eventMode: data.mode,
-// //         speakerImage: data.speakerImageLink,
+// //         speakerImageLink: data.speakerImageLinkLink,
 // //         heading: data.heading,
 // //         subHeading: data.subHeading,
 // //         date: data.date,
@@ -960,9 +960,9 @@ export default UpdateForm;
 // //   //   if (selectedEvent) {
 // //   //     setFormData({
 // //   //       pcBanner: data?.bannerLinkPC,
-// //   //       mobileBanner: data?.bannerLinkMobile,
+// //   //       bannerLinkMobile: data?.bannerLinkMobile,
 // //   //       eventMode: data?.mode,
-// //   //       speakerImage: data?.speakerImageLink,
+// //   //       speakerImageLink: data?.speakerImageLinkLink,
 // //   //       heading: data?.heading,
 // //   //       subHeading: data?.subHeading,
 // //   //       date: data?.date,
@@ -1032,13 +1032,13 @@ export default UpdateForm;
 // //       </div>
 // //       <br></br>
 // //       <div className="inline-form">
-// //         <label htmlFor="mobileBanner">Mobile Banner Link:</label>
+// //         <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
 // //         <input
 // //           type="text"
-// //           id="mobileBanner"
-// //           name="mobileBanner"
+// //           id="bannerLinkMobile"
+// //           name="bannerLinkMobile"
 // //           placeholder="Mobile Banner Link"
-// //           value={formData.mobileBanner}
+// //           value={formData.bannerLinkMobile}
 // //           onChange={handleInputChange}
 // //         />
 // //         <button onClick={handleUploadClick}>Upload</button>
@@ -1057,13 +1057,13 @@ export default UpdateForm;
 // //       </div>
 // //       <br></br>
 // //       <div className="inline-form">
-// //         <label htmlFor="speakerImage">Speaker Image:</label>
+// //         <label htmlFor="speakerImageLink">Speaker Image:</label>
 // //         <input
 // //           type="text"
-// //           id="speakerImage"
-// //           name="speakerImage"
+// //           id="speakerImageLink"
+// //           name="speakerImageLink"
 // //           placeholder="Speaker Image"
-// //           value={formData.speakerImage}
+// //           value={formData.speakerImageLink}
 // //           onChange={handleInputChange}
 // //         />
 // //         <button onClick={handleUploadClick}>Upload</button>

@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-around mr-[0rem] gap-2 lg:gap-10 xl:gap-32 overflow-visible overflow-y-hidden">
           {itemList.map((item, index) => (
-            <div key={index} className="flex flex-col sm:gap-6 xl:gap-16 overflow-visible">
+            <div key={index} className="flex flex-col sm:gap-6 xl:gap-12 overflow-visible">
               <div className="font-semibold overflow-visible">{item.name}</div>
               <div className="sm:flex sm:flex-col sm:gap-3 xl:gap-10 overflow-visible">
                 {item.list.map((li, index1) => (

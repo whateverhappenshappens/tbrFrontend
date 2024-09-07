@@ -171,4 +171,35 @@ export const EventsAPI = {
             return error;
         }
     },
+    addEvent: async function (eventData) {
+        const access_token = localStorage.getItem("access-token");
+        try {
+          const res = await api.request({
+            url: `/v1.5/events`,
+            method: "POST",
+            headers: {
+              Authorization: "Bearer " + access_token,
+              "Content-Type": "application/json",
+            },
+            data: eventData, // Send eventData as the request body
+          });
+          console.log("Event added:", res.data);
+          return res;
+        } catch (error) {
+          // Check if error.response exists before accessing its properties
+          if (error.response) {
+            if (error.response.status === 401) {
+              refreshAccessToken();
+            }
+            console.error("An error occurred:", error.response.data);
+            toast.error("An error occurred: " + (error.response.data.message || "Unknown error"));
+          } else {
+            // Handle cases where error.response is undefined
+            console.error("An unexpected error occurred:", error);
+            toast.error("An unexpected error occurred. Please try again.");
+          }
+          return error;
+        }
+      }
+      
 };

@@ -5,11 +5,27 @@ import BloggingHeader from "./blogging-header/BloggingHeader";
 import FeedbackScroll from "./feedback-scroll/FeedbackScroll";
 import BloggingCard from "./blogging-card/BloggingCard";
 import BloggingFooter from "./blogging-footer/BloggingFooter";
+
 const Blogging = ({ headerHeight }) => {
     const bloggingContainer = useRef(null);
+
     useEffect(() => {
         bloggingContainer.current.style.paddingTop = `${headerHeight}px`;
+        window.scrollTo(0, 0); // Scrolls to the top of the page when the component is mounted
     }, [headerHeight]);
-    return (_jsxs("div", { ref: bloggingContainer, className: "blogging-page", children: [_jsx(BloggingHeader, {}), _jsx(FeedbackScroll, {}), _jsx(BloggingCard, {}), _jsx(BloggingFooter, {})] }));
+
+    return (
+        _jsxs("div", {
+            ref: bloggingContainer,
+            className: "blogging-page",
+            children: [
+                _jsx(BloggingHeader, {}),
+                _jsx(FeedbackScroll, {}),
+                _jsx(BloggingCard, {}),
+                _jsx(BloggingFooter, {})
+            ]
+        })
+    );
 };
+
 export default Blogging;

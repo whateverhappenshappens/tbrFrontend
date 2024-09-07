@@ -13,11 +13,11 @@ const Projects = () => {
         },
         {
             heading: "Smart Home Automation System",
-            paragraph: "A system that integrates smart technology to control and monitor home appliances, lighting, and security. Enhance convenience and efficiency with automated routines and remote access via mobile apps.",
+            paragraph: "A smart home system automates appliances, lighting, and security. Control remotely via apps, enhancing convenience, efficiency, and simplifying daily routines.",
         },
         {
             heading: "Dual-Channel Serial Data Acquisition System",
-            paragraph: "A project focused on developing a system to capture and analyze data from two distinct channels via serial communication. Ideal for simultaneous monitoring and precise processing of multiple data streams.",
+            paragraph: "A project developing a system to capture and analyze data from two channels via serial communication, enabling precise, simultaneous monitoring and processing of data streams.",
         },
         {
             heading: "Developing an IBM Cloud Dashboard",
@@ -25,7 +25,7 @@ const Projects = () => {
         },
         {
             heading: "Complete Deployment of Your Idea/Project",
-            paragraph: "A complete solution for bringing your idea or project to life, from conception to completion. Our end-to-end deployment services ensure seamless implementation and operation, covering every stage of the process.",
+            paragraph: "A complete solution for bringing your project to life, from conception to completion. Our end-to-end deployment services ensure seamless implementation and operation through every stage of the process.",
         },
     ];
     // Update max cards to show based on viewport width

@@ -9,6 +9,7 @@ interface Props {
   para: string;
   date: string;
   id: string;
+  time:string,
 }
 
 const Listings: React.FC<Props> = (props: Props) => {
@@ -26,6 +27,7 @@ const Listings: React.FC<Props> = (props: Props) => {
       </div>
       <div className="listings-date">
         <p className="visbyroundCF bold">{props.date}</p>
+        <p className="visbyroundCF bold">{props.time}</p>
       </div>
       <div className="listings-button">
         <button className="visbyroundCF demibold listings-button-enroll">

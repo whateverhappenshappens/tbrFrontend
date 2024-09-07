@@ -5,13 +5,14 @@ import { v4 as uuidv4 } from "uuid";
 import { IoCalendarNumberSharp } from "react-icons/io5";
 import { GeneratePresignedUrlforUpload } from "../../apis/s3_api/S3";
 import axios from "axios"; // Import axios for the upload
-
-function App({ selectedEvent, setUpdateFormVisible }) {
+import toast from "react-hot-toast";
+import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
+function Add({ selectedEvent, setUpdateFormVisible }) {
   const [formData, setFormData] = useState({
     pcBanner: "",
-    mobileBanner: "",
+    bannerLinkMobile: "",
     eventMode: "",
-    speakerImage: "",
+    speakerImageLink: "",
     heading: "",
     subHeading: "",
     date: new Date(),
@@ -32,9 +33,9 @@ function App({ selectedEvent, setUpdateFormVisible }) {
     if (selectedEvent) {
       setFormData({
         pcBanner: selectedEvent.bannerLinkPC,
-        mobileBanner: selectedEvent.bannerLinkMobile,
+        bannerLinkMobile: selectedEvent.bannerLinkMobile,
         eventMode: selectedEvent.mode,
-        speakerImage: selectedEvent.speakerImg,
+        speakerImageLink: selectedEvent.speakerImg,
         heading: selectedEvent.heading,
         subHeading: selectedEvent.subHeading,
         date: new Date(selectedEvent.date),
@@ -63,9 +64,7 @@ function App({ selectedEvent, setUpdateFormVisible }) {
       date,
     }));
   };
-const generateUuid = () =>{
-  //same uuid for complete event
-}
+
   const handleRadioChange = (e) => {
     const isActive = e.target.value === "true";
     setFormData((prevState) => ({
@@ -81,7 +80,7 @@ const generateUuid = () =>{
         // Replace spaces with underscores and remove special characters in the heading
         const sanitizedHeading = formData.heading.trim().replace(/\s+/g, "_").replace(/[^\w-]/g, "");
   
-        const formattedFileName = `${uuid}_${type}_${sanitizedHeading}_${file.name}`;
+        const formattedFileName = `${uuid}_${sanitizedHeading}_${file.name}`;
   
         // Generate a pre-signed URL for the file upload
         const presignedUrlUpload = await GeneratePresignedUrlforUpload(formattedFileName);
@@ -89,7 +88,7 @@ const generateUuid = () =>{
         setSelectedFile(file); // Store the selected file
         setPreSignedUrl(presignedUrlUpload); // Store the pre-signed URL
         setUploadType(type); // Store the type of upload
-  
+        toast.success("Uploaded successfully");
         // Update the formData with the URL of the uploaded file (optional)
         const fileUrl = presignedUrlUpload;
         console.log("setPresingedurl", fileUrl);
@@ -122,8 +121,10 @@ const generateUuid = () =>{
       // Upload the file to the pre-signed URL
       console.log("the url is",preSignedUrl);
       console.log("Selected file type:",selectedFile.type);
+      toast.success("Uploaded successfully");
       const res = await axios.put(preSignedUrl,selectedFile);
       setUploadStatus("File uploaded successfully!");
+      
       console.log("File uploaded successfully!");
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -132,9 +133,21 @@ const generateUuid = () =>{
     }
   };
 
-  const handleSaveClick = () => {
-    console.log("Data updated:", formData);
-    setUpdateFormVisible(false);
+  const handleSaveClick = async () => {
+    console.log("Saving event data:", formData);
+
+    try {
+      const response = await EventsAPI.addEvent(formData);
+      if (response.status === 200) {
+        toast.success("Event added successfully!");
+        setUpdateFormVisible(false);
+      } else {
+        toast.error("Failed to add event.");
+      }
+    } catch (error) {
+      console.error("Error adding event:", error);
+      toast.error("An error occurred while adding the event.");
+    }
   };
 
   return (
@@ -301,15 +314,15 @@ const generateUuid = () =>{
       </div>
       <br></br>
       <div className="inline-form">
-        <label htmlFor="mobileBanner">Mobile Banner Link:</label>
+        <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
         <input
           type="file"
-          id="mobileBanner"
-          name="mobileBanner"
-          onChange={(e) => handleFileChange(e, "mobileBanner")}
+          id="bannerLinkMobile"
+          name="bannerLinkMobile"
+          onChange={(e) => handleFileChange(e, "bannerLinkMobile")}
           style={{ display: "none" }}
         />
-        <button onClick={() => handleSelectForUploadClick("mobileBanner")}>
+        <button onClick={() => handleSelectForUploadClick("bannerLinkMobile")}>
           Select
         </button>
         <button onClick={handleUpload}>Upload</button>
@@ -317,15 +330,15 @@ const generateUuid = () =>{
       </div>
       <br></br>
       <div className="inline-form">
-        <label htmlFor="speakerImage">Speaker Image:</label>
+        <label htmlFor="speakerImageLink">Speaker Image:</label>
         <input
           type="file"
-          id="speakerImage"
-          name="speakerImage"
-          onChange={(e) => handleFileChange(e, "speakerImage")}
+          id="speakerImageLink"
+          name="speakerImageLink"
+          onChange={(e) => handleFileChange(e, "speakerImageLink")}
           style={{ display: "none" }}
         />
-        <button onClick={() => handleSelectForUploadClick("speakerImage")}>
+        <button onClick={() => handleSelectForUploadClick("speakerImageLink")}>
           Select
         </button>
         <button onClick={handleUpload}>Upload</button>
@@ -347,4 +360,4 @@ const generateUuid = () =>{
   );
 }
 
-export default App;
+export default Add;
