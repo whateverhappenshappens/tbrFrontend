@@ -24,8 +24,8 @@ const Speaker: React.FC<props> = (props) => {
                 : `${profilepic}`
             }
           />
-          <p className="speaker-profile-name">Robert Downey Jr.</p>
-          <p className="speaker-profile-company">CEO Marvel Inc.</p>
+          <p className="speaker-profile-name">{props.data?.speakerName} </p>
+          <p className="speaker-profile-company">{props.data?.aboutSpeaker}</p>
           <a href={props.data?.speakerSocial}>
             <div className="speaker-profile-linkedin">
               <img src={linkedin} alt="" />

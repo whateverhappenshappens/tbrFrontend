@@ -5,13 +5,14 @@ import { v4 as uuidv4 } from "uuid";
 import { IoCalendarNumberSharp } from "react-icons/io5";
 import { GeneratePresignedUrlforUpload } from "../../apis/s3_api/S3";
 import axios from "axios"; // Import axios for the upload
-
+import toast from "react-hot-toast";
+import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 function App({ selectedEvent, setUpdateFormVisible }) {
   const [formData, setFormData] = useState({
-    pcBanner: "",
-    mobileBanner: "",
+    bannerLinkPC: "",
+    bannerLinkMobile: "",
     eventMode: "",
-    speakerImage: "",
+    speakerImageLink: "",
     heading: "",
     subHeading: "",
     date: new Date(),
@@ -22,28 +23,29 @@ function App({ selectedEvent, setUpdateFormVisible }) {
     youtubeLink: "",
     isActive: false,
   });
+
   const [uuid, setUuid] = useState(uuidv4());
-  const [selectedFile, setSelectedFile] = useState(null); // For file selection
-  const [preSignedUrl, setPreSignedUrl] =  useState(''); // Store the pre-signed URL
-  const [uploadStatus, setUploadStatus] = useState(""); // Track upload status
-  const [uploadType, setUploadType] = useState(""); // Track the type of upload
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preSignedUrl, setPreSignedUrl] = useState("");
+  const [uploadStatus, setUploadStatus] = useState("");
+  const [uploadType, setUploadType] = useState("");
 
   useEffect(() => {
     if (selectedEvent) {
       setFormData({
-        pcBanner: selectedEvent.bannerLinkPC,
-        mobileBanner: selectedEvent.bannerLinkMobile,
-        eventMode: selectedEvent.mode,
-        speakerImage: selectedEvent.speakerImg,
-        heading: selectedEvent.heading,
-        subHeading: selectedEvent.subHeading,
-        date: new Date(selectedEvent.date),
-        aboutSpeaker: selectedEvent.aboutSpeaker,
-        speakerSocialLink: selectedEvent.speakerSocial,
-        speakerExperienceDetails: selectedEvent.speakerExperience,
-        speakerName: selectedEvent.speakerName,
-        youtubeLink: selectedEvent.youtubeLink,
-        isActive: selectedEvent.isActive,
+        bannerLinkPC: selectedEvent.bannerLinkPC || "",
+        bannerLinkMobile: selectedEvent.bannerLinkMobile || "",
+        eventMode: selectedEvent.mode || "",
+        speakerImageLink: selectedEvent.speakerImg || "",
+        heading: selectedEvent.heading || "",
+        subHeading: selectedEvent.subHeading || "",
+        date: new Date(selectedEvent.date) || new Date(),
+        aboutSpeaker: selectedEvent.aboutSpeaker || "",
+        speakerSocialLink: selectedEvent.speakerSocial || "",
+        speakerExperienceDetails: selectedEvent.speakerExperience || "",
+        speakerName: selectedEvent.speakerName || "",
+        youtubeLink: selectedEvent.youtubeLink || "",
+        isActive: selectedEvent.isActive || false,
       });
       setUuid(selectedEvent.uuid || uuidv4());
     }
@@ -57,54 +59,65 @@ function App({ selectedEvent, setUpdateFormVisible }) {
     }));
   };
 
-  const handleDateChange = (date) => {
+  const handleDateChange = (e) => {
+    const date = e.target.value;
     setFormData((prevState) => ({
       ...prevState,
-      date,
+      date: date ? new Date(date) : new Date(),
     }));
   };
-const generateUuid = () =>{
-  //same uuid for complete event
-}
+
   const handleRadioChange = (e) => {
-    const isActive = e.target.value === "true";
     setFormData((prevState) => ({
       ...prevState,
-      isActive,
+      isActive: e.target.value === "true",
     }));
   };
 
   const handleFileChange = async (e, type) => {
+    if (!formData.heading.trim()) {
+      toast.error("Please provide a heading before uploading.");
+      return;
+    }
+
     const file = e.target.files[0];
-    if (file) {
-      try {
-        // Replace spaces with underscores and remove special characters in the heading
-        const sanitizedHeading = formData.heading.trim().replace(/\s+/g, "_").replace(/[^\w-]/g, "");
-  
-        const formattedFileName = `${uuid}_${type}_${sanitizedHeading}_${file.name}`;
-  
-        // Generate a pre-signed URL for the file upload
-        const presignedUrlUpload = await GeneratePresignedUrlforUpload(formattedFileName);
-        console.log("the url is", presignedUrlUpload);
-        setSelectedFile(file); // Store the selected file
-        setPreSignedUrl(presignedUrlUpload); // Store the pre-signed URL
-        setUploadType(type); // Store the type of upload
-  
-        // Update the formData with the URL of the uploaded file (optional)
-        const fileUrl = presignedUrlUpload;
-        console.log("setPresingedurl", fileUrl);
-        setFormData((prevState) => ({
-          ...prevState,
-          [type]: fileUrl,
-        }));
-  
-        console.log(`Pre-signed URL generated: ${fileUrl}`);
-      } catch (error) {
-        console.error("Error generating pre-signed URL:", error);
-      }
+    if (!file) return;
+
+    const fileType = file.type;
+    const extension = `.${fileType.split("/").pop()}`;
+    const sanitizedHeading = formData.heading
+      .trim()
+      .replace(/\s+/g, "_")
+      .replace(/[^\w-]/g, "");
+
+    const urlData = {
+      formattedHeading: sanitizedHeading,
+      formattedDate: formData.date,
+      formattedType: type,
+      formattedExtension: extension,
+    };
+
+    try {
+      const response = await GeneratePresignedUrlforUpload(urlData);
+      const preSignedUrlForUpload=response.preSignedUrlForUpload;
+      console.log(urlData);
+      
+      const fileNameForUpload = response.fileName;
+      setSelectedFile(file);
+      setPreSignedUrl(preSignedUrlForUpload);
+      setUploadType(type);
+      const fileName = fileNameForUpload;
+      setFormData((prevState) => ({
+        ...prevState,
+        [type]:  fileName,
+      }));
+
+      console.log(`Pre-signed URL generated: ${fileName}`);
+    } catch (error) {
+      console.error("Error generating pre-signed URL:", error);
+      toast.error("Error generating pre-signed URL.");
     }
   };
-  
 
   const handleSelectForUploadClick = (type) => {
     document.getElementById(type).click();
@@ -112,29 +125,39 @@ const generateUuid = () =>{
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      alert("Please select a file first.");
+      toast.error("Please select a file first.");
       return;
     }
 
     try {
-      console.log("Uploading:", uploadType); // Log the type of banner being uploaded
-
-      // Upload the file to the pre-signed URL
-      console.log("the url is",preSignedUrl);
-      console.log("Selected file type:",selectedFile.type);
-      const res = await axios.put(preSignedUrl,selectedFile);
+      await axios.put(preSignedUrl, selectedFile);
       setUploadStatus("File uploaded successfully!");
-      console.log("File uploaded successfully!");
+      toast.success("File uploaded successfully!");
     } catch (error) {
       console.error("Error uploading file:", error);
-      setUploadStatus("Failed");
-      
+      setUploadStatus("Failed to upload file.");
+      toast.error("Failed to upload file.");
     }
   };
 
-  const handleSaveClick = () => {
-    console.log("Data updated:", formData);
-    setUpdateFormVisible(false);
+  const handleSaveClick = async () => {
+    const formattedData = {
+      ...formData,
+      date: formData.date ? new Date(formData.date).toISOString() : "",
+    };
+
+    try {
+      const response = await EventsAPI.addEvent(formattedData);
+      if (response.status === 200) {
+        toast.success("Event added successfully!");
+        setUpdateFormVisible(false);
+      } else {
+        toast.error("Failed to add event.");
+      }
+    } catch (error) {
+      console.error("Error adding event:", error);
+      toast.error("An error occurred while adding the event.");
+    }
   };
 
   return (
@@ -181,7 +204,7 @@ const generateUuid = () =>{
         <label htmlFor="date">Date:</label>
         <div className="date-input-container">
           <input
-            type="date"
+            type="datetime-local"
             id="date"
             name="date"
             placeholder="Date"
@@ -189,9 +212,7 @@ const generateUuid = () =>{
             onChange={handleInputChange}
             className="date"
           />
-          <span className="calendar-icon">
-            <IoCalendarNumberSharp />
-          </span>
+          
         </div>
       </div>
       <br></br>
@@ -285,15 +306,15 @@ const generateUuid = () =>{
       </div>
       <br></br>
       <div className="inline-form">
-        <label htmlFor="pcBanner">PC Banner Link:</label>
+        <label htmlFor="bannerLinkPC">PC Banner Link:</label>
         <input
           type="file"
-          id="pcBanner"
-          name="pcBanner"
-          onChange={(e) => handleFileChange(e, "pcBanner","")}
+          id="bannerLinkPC"
+          name="bannerLinkPC"
+          onChange={(e) => handleFileChange(e, "bannerLinkPC")}
           style={{ display: "none" }}
         />
-        <button onClick={() => handleSelectForUploadClick("pcBanner")}>
+        <button onClick={() => handleSelectForUploadClick("bannerLinkPC")}>
           Select
         </button>
         <button onClick={handleUpload}>Upload</button>
@@ -301,15 +322,15 @@ const generateUuid = () =>{
       </div>
       <br></br>
       <div className="inline-form">
-        <label htmlFor="mobileBanner">Mobile Banner Link:</label>
+        <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
         <input
           type="file"
-          id="mobileBanner"
-          name="mobileBanner"
-          onChange={(e) => handleFileChange(e, "mobileBanner")}
+          id="bannerLinkMobile"
+          name="bannerLinkMobile"
+          onChange={(e) => handleFileChange(e, "bannerLinkMobile")}
           style={{ display: "none" }}
         />
-        <button onClick={() => handleSelectForUploadClick("mobileBanner")}>
+        <button onClick={() => handleSelectForUploadClick("bannerLinkMobile")}>
           Select
         </button>
         <button onClick={handleUpload}>Upload</button>
@@ -317,15 +338,15 @@ const generateUuid = () =>{
       </div>
       <br></br>
       <div className="inline-form">
-        <label htmlFor="speakerImage">Speaker Image:</label>
+        <label htmlFor="speakerImageLink">Speaker Image:</label>
         <input
           type="file"
-          id="speakerImage"
-          name="speakerImage"
-          onChange={(e) => handleFileChange(e, "speakerImage")}
+          id="speakerImageLink"
+          name="speakerImageLink"
+          onChange={(e) => handleFileChange(e, "speakerImageLink")}
           style={{ display: "none" }}
         />
-        <button onClick={() => handleSelectForUploadClick("speakerImage")}>
+        <button onClick={() => handleSelectForUploadClick("speakerImageLink")}>
           Select
         </button>
         <button onClick={handleUpload}>Upload</button>

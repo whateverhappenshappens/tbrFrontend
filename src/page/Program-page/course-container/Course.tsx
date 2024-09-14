@@ -71,7 +71,7 @@ const Course: React.FC<Props> = ({ value }) => {
       {show.web && (
         <Card
           heading="Webmonk"
-          para1=" A Full Stack Development Course. A Complete MERN Stack Program "
+          para1=" A Full Stack Development Course. "
           teachername="Mr.Lavesh Gaurav"
           image={banner1}
           link="/course/webmonk"
@@ -82,7 +82,7 @@ const Course: React.FC<Props> = ({ value }) => {
       {show.ml && (
         <Card
           heading="Machinester"
-          para1=" A Machine Learning Course. A Complete Machine Learning Program "
+          para1=" A Machine Learning Course.  "
           teachername="Mr.Shashank Shekhar"
           image={banner2}
           link="/course/machinester"
@@ -104,7 +104,7 @@ const Course: React.FC<Props> = ({ value }) => {
       {show.code && (
         <Card
           heading="CodeSlayer"
-          para1=" A Competitive Programming Course. A Complete Placement Preparation Program "
+          para1=" A Competitive Programming Course. "
           teachername="Mr.Shashank Pathak"
           image={banner4}
           link="/course/codeslayer"

@@ -10,19 +10,21 @@ const Help: React.FC = () => {
         <p className="help-head2">
           You can reach us at:{" "}
           <a href="mailto:info@techbairn.com">info@techbairn.com</a> or call us
-          at: <a href="tel:+91123456789">+91 123456789</a>.
+          at: <a href="tel:+91123456789">+91 8789726459</a>.
         </p>
       </div>
       <div className="connected-button">
         <button className="connected-button-request visbyroundCF bold ">
           <div className="connected-button-request-div">
             <img src={Phone} alt="" />
-            <p className="vr-medium">Request a call back</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJREAXanAnHM_bDf5OuKje08OHyaxXVypePaqPm0Wlv61gQ/viewform" target="_blank" rel="noopener noreferrer">
+            <p className="vr-medium">Request a call back</p></a>
           </div>
         </button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJREAXanAnHM_bDf5OuKje08OHyaxXVypePaqPm0Wlv61gQ/viewform" target= "_blank" rel= "noopener noreferrer">
         <button className="connected-button-join">
           <p className="vr-medium">Join Us</p>
-        </button>
+        </button></a>
       </div>
     </div>
   );

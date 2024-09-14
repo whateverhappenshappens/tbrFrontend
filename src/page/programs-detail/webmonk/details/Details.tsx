@@ -61,7 +61,8 @@ const Details: React.FC<Props> = (props) => {
       name: "Webmonk",
       description: "A very small description of the course should be included",
       price: 4999,
-      discountedPrice: 2999,
+      discountedPrice: 3429
+,
     };
 
     addToCart(course);

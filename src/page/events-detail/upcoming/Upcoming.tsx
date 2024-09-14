@@ -91,7 +91,7 @@ const Upcoming: React.FC<props> = (props) => {
           </div>
           <p className="upcoming-paragraphs-para1-1">{props.data?.heading}</p>
 
-          <img src={props.data?.enrollLink} alt="" />
+          <img src={props.data?.bannerLinkPC} alt="" />
           <button className="speaker-btn">
             Ashutosh<br></br>Co-Founder @TechBairn
           </button>

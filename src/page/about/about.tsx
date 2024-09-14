@@ -21,13 +21,13 @@ const About: React.FC = () => {
       <Presence mediaItems={[
           {
             title: "",
-            para: "TechBairn was highlighted by Economic Times as a leading innovator in technology, praised for its groundbreaking solutions and significant impact on the industry.",
+            para: "TechBairn was highlighted by Economic Times as a leading innovator in technology, praised for its groundbreaking solutions and significant impact .",
             image: times,
             link: "https://economictimes.indiatimes.com/small-biz/sme-sector/engineering-colleges-government-anchor-bhubaneswars-edtech-ecosystem/articleshow/106690269.cms?from=mdr",
           },
           {
             title: "",
-            para: "Named Best E-Learning Company of the Year 2022 by BW Business World, we are honored for our innovative approach and excellence in online education.",
+            para: "Named Best E-Learning Company of the Year 2022 by BW Business World, we are honored for our innovative approach .",
             image: bus,
             link: "https://currentaffairs.adda247.com/bw-businessworld-awards-edutech-2022-check-the-complete-list-of-winners/",
           },

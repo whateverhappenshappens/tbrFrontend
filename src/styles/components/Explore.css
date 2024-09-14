@@ -1,7 +1,7 @@
 .explore {
   display: flex;
   flex-direction: column;
-  padding: 0 30px;
+  
   margin-bottom: 1.5rem;
 }
 .box1 {
@@ -155,7 +155,7 @@ call-back-btn:visited {
 
 @media (min-width: 1280px) {
   .explore {
-    padding: 5rem 100px 0 140px !important;
+    padding: 5rem 80px 0 80px !important;
   }
   .box1 {
     justify-content: center;

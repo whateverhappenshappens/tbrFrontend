@@ -8,7 +8,7 @@ import ReviewSlider from "./ReviewSlider1";
 import Login from "../login/Login"; // Import the Login component
 import logo1 from "../../../assets/techbairn logo white-01.png";
 import { Navigate, useNavigate } from "react-router-dom"; // Import useHistory
-
+import { Circles } from "react-loader-spinner";
 function Signup({ setIsLoggedIn }: any) {
   const Navigate = useNavigate(); // Initialize useHistory
 
@@ -26,7 +26,7 @@ function Signup({ setIsLoggedIn }: any) {
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false); // State to manage login popup visibility
   const [isChecked, setIsChecked] = useState(false); // State to track the checkbox
   const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
-
+  const [isLoading, setIsLoading] = useState(false);
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -189,12 +189,24 @@ function Signup({ setIsLoggedIn }: any) {
           </span>
           <br />
           <button
-            className="btn"
-            onClick={handle_signup}
-            disabled={!isFormValid()}
-          >
-            Create an account
-          </button>
+  className="btn"
+  onClick={handle_signup}
+  disabled={!isFormValid() || isLoading} // Disable the button when the form is invalid or loading
+>
+  {isLoading ? (
+    <Circles
+      height="40"
+      width="40"
+      color="#000"
+      ariaLabel="circles-loading"
+      wrapperStyle={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      visible={true}
+    />
+  ) : (
+    "Create an account"
+  )}
+</button>
+
           <p className="cont">-----or continue with Google------</p>
           <div className="google">
             <FaGoogle className="icon12" />

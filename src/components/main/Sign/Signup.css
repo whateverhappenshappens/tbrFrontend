@@ -1,6 +1,8 @@
 /* Login.css */
 .main_box {
   display: flex;
+  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .left {
@@ -65,7 +67,7 @@
   border: 2px solid red;
 }
 .left h2 {
-  font: normal normal bold 42px/62px extra-bold;
+  font: normal normal bold 40px/62px extra-bold;
   color: #FFFFFF;
 }
 
@@ -119,10 +121,10 @@
   color: #2e436a;
 }
 .wow{
-  margin-top: 1rem;
+  margin-top: 0.7rem;
 }
 .right h3 {
-  font: normal normal bold 18px/26px;
+  font: normal normal bold 16px/26px;
   font-family: demi-bold;
   color: #2e436a;
   margin-bottom: 20px;
@@ -132,7 +134,7 @@
 }
 
 .right .lng {
-  margin-top: 10px;
+  margin-top: 0px;
   width: 100%;
   padding: 12px;
   border-radius: 10px;
@@ -188,7 +190,7 @@
   width: 22rem;
 }
 .google {
-  height: 50px;
+  height: 40px;
   width: 180px;
   right: 25% !important;
   position: absolute;

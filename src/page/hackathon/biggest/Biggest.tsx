@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Biggest.css";
-import eventBoy from "../../../assets/event boy@2x.png";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -12,6 +11,7 @@ interface Props {
 
 const Biggest: React.FC<Props> = ({ ActiveData }) => {
   console.log(ActiveData);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -25,11 +25,24 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
     pauseOnHover: true,
   };
 
+  // Function to format the date string, removing 'T' and 'Z'
+  const formatDate = (isoDate: string) => {
+    const date = new Date(isoDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    // Format: YYYY-MM-DD HH:MM
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  };
+
   return (
     <div className="biggest-hackathon-carousel overflow-visible">
       <Slider {...settings}>
         {ActiveData && Array.isArray(ActiveData) ? (
-          ActiveData.map((data: any, index: any) => (
+          ActiveData.map((data: any, index: number) => (
             <div key={index} className="biggest-hackathon-slide">
               <div className="biggest-hackathon">
                 <div className="biggest-hackathon-text">
@@ -37,7 +50,11 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
                     {data.heading}
                   </p>
                   <p className="biggest-hackathon-text-small visbyroundCF medium">
-                    {data.description}
+                    {data.subHeading}
+                  </p>
+                  {/* Formatted Date */}
+                  <p className="biggest-hackathon-text-small visbyroundCF medium">
+                    {formatDate(data.date)}
                   </p>
                   <Link to={`/events/${data.id}`}>
                     <button className="biggest-hackathon-button visbyroundCF bold">
@@ -49,7 +66,7 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
                   <p className="image-para visbyroundCF extrabold">
                     {data.heading}
                   </p>
-                  <img src={data.enrollLink} alt="" />
+                  <img src={data.bannerLinkPC} alt={data.heading} />
                 </div>
               </div>
             </div>
@@ -63,71 +80,3 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
 };
 
 export default Biggest;
-
-// import React from "react";
-// // import axios from "axios";
-// import "./Biggest.css";
-// import eventBoy from "../../../assets/event boy@2x.png";
-// import { Link } from "react-router-dom";
-
-// interface Props {
-//   ActiveData: any;
-// }
-
-// const Biggest: React.FC<Props> = ({ ActiveData }) => {
-//   // const handleEnroll = async () => {
-//   //   try {
-//   //     const accessToken = localStorage.getItem("access-token");
-//   //     const response = await axios.post(
-//   //       "/api/cart/add",
-//   //       {
-//   //         userId: "user-id",
-//   //         courses: ["web-dev-hackathon"],
-//   //       },
-//   //       {
-//   //         headers: {
-//   //           Authorization: `Bearer ${accessToken}`,
-//   //         },
-//   //       }
-//   //     );
-//   //     console.log("Enrollment successful", response.data);
-//   //   } catch (error) {
-//   //     console.error("Error enrolling in hackathon", error);
-//   //   }
-//   // };
-
-//   return (
-//     <div className="biggest-hackathon">
-//       {ActiveData.map((data:any,index:any)=>(
-//         <div key={index} className="biggest-hackathon-text">
-//         <p className="biggest-hackathon-text-large visbyroundCF extrabold">
-//           {/* All India Biggest <br /> Web Dev Hackathon */}
-//           {data.heading}
-//         </p>
-//         <p className="biggest-hackathon-text-small visbyroundCF medium">
-//           {/* Join India's biggest Web Dev Hackathon and be a part of something
-//           grand! Earn exciting goodies on winning. */}
-//           {data.description}
-//         </p>
-//         <Link  to={`/events/${data.id}`}><button
-//           className="biggest-hackathon-button visbyroundCF bold"
-//           // onClick={handleEnroll}
-//         >
-//           <p>Enroll Now</p>
-//         </button>
-//         </Link>
-//       </div>
-//       <div className="biggest-hackathon-img">
-//         <p className="image-para visbyroundCF extrabold">
-//           {/* All India Biggest <br /> Web Dev Hackathon */}
-//           {data.heading}
-//         </p>
-//         <img src={eventBoy} alt="Event"></img>
-//       </div>
-//       ))}
-
-//     </div>
-//   );
-// };
-
-// export default Biggest;

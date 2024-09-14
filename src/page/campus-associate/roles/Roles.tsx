@@ -32,7 +32,7 @@ const Roles: React.FC = () => {
     {
       para: "Provide weekly updates on your work database.",
       image: adduser,
-      color: "#FFD75B",
+      color: "#FFEDB6",
     },
     {
       para: "Represent us in various college clubs and groups, sharing your innovative ideas.",

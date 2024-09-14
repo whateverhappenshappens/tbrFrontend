@@ -12,9 +12,9 @@ const Experience: React.FC = () => {
   const para1 =
     "We offer live, interactive classes tailored to meet individual learning needs, ensuring a more effective and engaging educational experience.";
   const para2 =
-    "Our platform fosters a collaborative learning environment where students can engage, share knowledge, and support each other through community interactions.";
+    "Our platform fosters a collaborative learning environment where students can engage, share knowledge.";
   const para3 =
-    "We provide dedicated teaching assistant support and a vibrant discussion forum to help students resolve queries and deepen their understanding of the subject matter.    ";
+    "We provide dedicated teaching assistant support and a vibrant discussion forum to help students resolve queries.    ";
   const para4 =
     "Students earn live badges and receive certifications recognized by leading industries, enhancing their professional credibility.";
   const para5 =

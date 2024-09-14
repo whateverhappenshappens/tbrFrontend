@@ -6,6 +6,7 @@ interface Course {
   description: string;
   price: number;
   discountedPrice: number;
+  image:string
 }
 
 interface CartContextType {

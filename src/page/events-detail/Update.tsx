@@ -6,276 +6,265 @@ import toast from "react-hot-toast";
 import { api } from "../../apis/configs/axiosConfigs";
 import * as jsonpatch from "fast-json-patch";
 import { useNavigate } from "react-router-dom";
-
-// S3 Configuration
-const config = {
-  bucketName: "myBucket",
-  dirName: "photos" /* optional */,
-  region: "eu-west-1",
-  accessKeyId: "ANEIFNENI4324N2NIEXAMPLE",
-  secretAccessKey: "cms21uMxçduyUxYjeg20+DEkgDxe6veFosBT7eUgEXAMPLE",
-};
-
-// JSON Patch Operation Type
-type JsonPatchOp = {
-  op: "add" | "remove" | "replace" | "move" | "copy" | "test";
-  path: string;
-  value?: any;
-};
+import { GeneratePresignedUrlforUpdate } from "../../apis/s3_api/S3";
+import  axios  from "axios";
 
 // Function to patch data
-const patchData = async (
-  url: string,
-  patchOps: JsonPatchOp[],
-  accessToken: string
-) => {
+const patchData = async (url, patchOps, accessToken) => {
   try {
-    const response = await api.patch(url, patchOps, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    console.error("An error occurred while patching data:", error);
-    throw error;
+      const response = await api.patch(url, patchOps, {
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+          },
+      });
+      return response.data;
+  }
+  catch (error) {
+      console.error("An error occurred while patching data:", error);
+      throw error;
   }
 };
-
-// FormData Type
-interface FormData {
-  pcBanner: string;
-  mobileBanner: string;
-  eventMode: string;
-  speakerImage: string;
-  heading: string;
-  subHeading: string;
-  date: string;
-  aboutSpeaker: string;
-  speakerSocialLink: string;
-  speakerExperienceDetails: string;
-  speakerName: string;
-  youtubeLink: string;
-  isActive: boolean;
-  enrollLink: string;
-}
-
 function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-  const [data, setData] = useState<FormData | null>(null);
-  const [accessToken, setAccessToken] = useState<string | null>(
-    localStorage.getItem("access-token")
-  );
-  const [formData, setFormData] = useState<FormData>({
-    pcBanner: "",
-    mobileBanner: "",
-    eventMode: "",
-    speakerImage: "",
-    heading: "",
-    subHeading: "",
-    date: "",
-    aboutSpeaker: "",
-    speakerSocialLink: "",
-    speakerExperienceDetails: "",
-    speakerName: "",
-    youtubeLink: "",
-    isActive: false,
-    enrollLink: "",
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [data, setData] = useState(null);
+  const [preSignedUrl, setPreSignedUrl] = useState("");
+  const [accessToken, setAccessToken] = useState(localStorage.getItem("access-token"));
+  const [formData, setFormData] = useState({
+      bannerLinkPC: "",
+      bannerLinkMobile: "",
+      eventMode: "",
+      speakerImageLink: "",
+      heading: "",
+      subHeading: "",
+      date: "",
+      aboutSpeaker: "",
+      speakerSocialLink: "",
+      speakerExperienceDetails: "",
+      speakerName: "",
+      youtubeLink: "",
+      isActive: false,
+      enrollLink: "",
   });
-
-  const [originalData, setOriginalData] = useState<FormData | null>(null);
-
+  const [originalData, setOriginalData] = useState(null);
   useEffect(() => {
-    const fetchEventData = async () => {
-      try {
-        const res = await EventsAPI.EventById(selectedEvent.id);
-        const eventData = res.data;
-        setData(eventData);
-        setOriginalData(eventData);
-        setFormData({
-          pcBanner: eventData.bannerLinkPC,
-          mobileBanner: eventData.bannerLinkMobile,
-          eventMode: eventData.mode,
-          speakerImage: eventData.speakerImageLink,
-          heading: eventData.heading,
-          subHeading: eventData.subHeading,
-          date: eventData.date,
-          aboutSpeaker: eventData.aboutSpeaker,
-          speakerSocialLink: eventData.speakerSocial,
-          speakerExperienceDetails: eventData.speakerExperience,
-          speakerName: eventData.speakerName,
-          youtubeLink: eventData.youtubeLink,
-          isActive: eventData.isActive,
-          enrollLink: eventData.enrollLink,
-        });
-      } catch (e) {
-        console.error(e);
+      const fetchEventData = async () => {
+        try {
+          const res = await EventsAPI.EventById(selectedEvent.id);
+          const eventData = res.data;
+          setData(eventData);
+          setOriginalData(eventData);
+    
+          // Convert the event date to ISO string with "Z" at the end
+          const formattedDate = eventData.date ? new Date(eventData.date).toISOString() : "";
+    
+          setFormData({
+            bannerLinkPC: eventData.bannerPCFileName,
+            bannerLinkMobile: eventData.bannerMobileFileName,
+            eventMode: eventData.mode,
+            speakerImageLink: eventData.speakerImageLinkFileName,
+            heading: eventData.heading,
+            subHeading: eventData.subHeading,
+            date: formattedDate,  // Use the formatted date here
+            aboutSpeaker: eventData.aboutSpeaker,
+            speakerSocialLink: eventData.speakerSocial,
+            speakerExperienceDetails: eventData.speakerExperience,
+            speakerName: eventData.speakerName,
+            youtubeLink: eventData.youtubeLink,
+            isActive: eventData.isActive,
+            enrollLink: eventData.enrollLink,
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      if (selectedEvent) {
+        fetchEventData();
       }
+    }, [selectedEvent]);
+    
+  const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevState) => ({
+          ...prevState,
+          [name]: value,
+      }));
+  };
+  const handleRadioChange = (e) => {
+      const isActive = e.target.value === "true";
+      setFormData((prevState) => ({
+          ...prevState,
+          isActive,
+      }));
+  };
+  const handleFileChange = async (e, fieldName) => {
+      setShowPopup(true);
+      const file = e.target.files[0];
+  if (!file) return;
+      if (file) {
+          const file = e.target.files?.[0];
+          const fileType = file.type;
+          const extension = `.${fileType.split("/").pop()}`;
+          const sanitizedHeading = formData.heading
+    .trim()
+    .replace(/\s+/g, "_")
+    .replace(/[^\w-]/g, "");
+    const keyMapping = {
+      bannerLinkPC: originalData?.bannerPCFileName,
+      bannerLinkMobile: originalData?.bannerMobileFileName,
+      speakerImageLinkLink: originalData?.speakerImageLinkFileName,
+  
+  };
+  const oldKey = keyMapping[fieldName];
+      const urlUpdateData = {
+          oldKey:oldKey,
+          formattedHeading: sanitizedHeading,
+          formattedDate: formData.date,
+          formattedType: fieldName,
+          formattedExtension: extension,
+        };
+          try {
+              const data = await GeneratePresignedUrlforUpdate(urlUpdateData);
+              const preSignedUrlForUpdate=data.preSignedUrlForUpload;
+              setSelectedFile(file);
+              console.log(preSignedUrlForUpdate);
+              setPreSignedUrl(preSignedUrlForUpdate);
+              setFormData((prevState) => ({
+                  ...prevState,
+                  [fieldName]: data.fileName,
+              }));
+          }
+          catch (err) {
+              console.error(err);
+          }
+      }
+  };
+  const handleUploadClick = (fieldName) => {
+      const fileInput = document.getElementById(`${fieldName}File`);
+      if (fileInput) {
+          fileInput.click();
+      }
+  };
+  const handleSaveClick = async () => {
+      if (!accessToken || !data) {
+        navigate("/login");
+        return;
+      }
+      if (!originalData) {
+        console.error("Original data is not available");
+        return;
+      }
+    
+      // Ensure the date is formatted correctly before comparing and patching
+      const preprocessedFormData = {
+        ...originalData,
+        ...formData,
+        date: formData.date ? new Date(formData.date).toISOString() : "", // Reformatting date before patching
+      };
+    
+      const patchOps = jsonpatch.compare(originalData, preprocessedFormData);
+      if (patchOps.length > 0) {
+        const url = `/v1.5/events/${selectedEvent.id}`;
+        try {
+          const result = await patchData(url, patchOps, accessToken);
+          setData(result);
+          toast.success("Event updated successfully!");
+        } catch (error) {
+          console.error("Failed to patch data:", error);
+          toast.error("Failed to update event!");
+        }
+      } else {
+        toast.error("No changes to update.");
+      }
+      setUpdateFormVisible(false);
+    };
+    
+  const handleOptionClick = (option) => {
+      setShowPopup(false);
+      if (option === "yes") {
+          handleSaveClick();
+      }
+      else {
+          console.log("Update cancelled");
+      }
+  };
+  const handleSelectForUploadClick = (fieldName) => {
+      document.getElementById(fieldName).click();
     };
 
-    if (selectedEvent) {
-      fetchEventData();
-    }
-  }, [selectedEvent]);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const isActive = e.target.value === "true";
-    setFormData((prevState) => ({
-      ...prevState,
-      isActive,
-    }));
-  };
-
-  const handleFileChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-    fieldName: keyof FormData
-  ) => {
-    setShowPopup(true);
-    const file = e.target.files?.[0];
-    if (file) {
-      try {
-        const data = await S3FileUpload.uploadFile(file, config);
-        setFormData((prevState) => ({
-          ...prevState,
-          [fieldName]: data.location,
-        }));
-      } catch (err) {
-        console.error(err);
+    const handleUpload = async () => {
+      if (!selectedFile) {
+          toast.error("Please select a file first.");
+          return;
       }
-    }
-  };
-
-  const handleUploadClick = (fieldName: keyof FormData) => {
-    const fileInput = document.getElementById(
-      `${fieldName}File`
-    ) as HTMLInputElement;
-    if (fileInput) {
-      fileInput.click();
-    }
-  };
-
-  const handleSaveClick = async () => {
-    if (!accessToken || !data) {
-      navigate("/login");
-      return;
-    }
-
-    if (!originalData) {
-      console.error("Original data is not available");
-      return;
-    }
-
-    const preprocessedFormData: FormData = { ...originalData, ...formData };
-    const patchOps = jsonpatch.compare(originalData, preprocessedFormData);
-
-    if (patchOps.length > 0) {
-      const url = `/v1.5/events/${selectedEvent.id}`;
+  
+      if (!preSignedUrl) {
+          console.error("Pre-signed URL is missing.");
+          toast.error("Pre-signed URL is missing. Cannot upload file.");
+          return;
+      }
+  
       try {
-        const result = await patchData(url, patchOps, accessToken);
-        setData(result);
-        toast.success("Event updated successfully!");
+          await axios.put(preSignedUrl, selectedFile, {
+              headers: {
+                  "Content-Type": selectedFile.type,
+              },
+          });
+          
+          toast.success("File uploaded successfully!");
       } catch (error) {
-        console.error("Failed to patch data:", error);
-        toast.error("Failed to update event!");
+          console.error("Error uploading file:", error);
+          toast.error("Failed to upload file.");
       }
-    } else {
-      toast.error("No changes to update.");
-    }
-
-    setUpdateFormVisible(false);
-  };
-
-  const handleOptionClick = (option: string) => {
-    setShowPopup(false);
-    if (option === "yes") {
-      handleSaveClick();
-    } else {
-      console.log("Update cancelled");
-    }
   };
 
   return (
     <div className="main">
       <div className="inline-form">
-        <label htmlFor="pcBanner">PC Banner Link:</label>
-        <input
-          type="text"
-          id="pcBanner"
-          name="pcBanner"
-          placeholder="PC Banner Link"
-          value={formData.pcBanner}
-          onChange={handleInputChange}
-        />
+        <label htmlFor="bannerLinkPC">PC Banner Link:</label>
         <input
           type="file"
-          id="pcBannerFile"
+          id="bannerLinkPC"
+          name="bannerLinkPC"
+          onChange={(e) => handleFileChange(e, "bannerLinkPC")}
           style={{ display: "none" }}
-          onChange={(e) => handleFileChange(e, "pcBanner")}
         />
-        <button
-          onClick={() => handleUploadClick("pcBanner")}
-          className="upload-btn"
-        >
-          Upload
+        <button onClick={() => handleSelectForUploadClick("bannerLinkPC")}>
+          Select
         </button>
+        <button onClick={handleUpload}>Upload</button>
       </div>
       <br />
       <div className="inline-form">
-        <label htmlFor="mobileBanner">Mobile Banner Link:</label>
-        <input
-          type="text"
-          id="mobileBanner"
-          name="mobileBanner"
-          placeholder="Mobile Banner Link"
-          value={formData.mobileBanner}
-          onChange={handleInputChange}
-        />
-        <input
-          type="file"
-          id="mobileBannerFile"
-          style={{ display: "none" }}
-          onChange={(e) => handleFileChange(e, "mobileBanner")}
-        />
-        <button
-          onClick={() => handleUploadClick("mobileBanner")}
-          className="upload-btn"
-        >
-          Upload
-        </button>
+      <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
+      <input
+        type="file"
+        id="bannerLinkMobile"
+        name="bannerLinkMobile"
+        onChange={(e) => handleFileChange(e, "bannerLinkMobile")}
+        style={{ display: "none" }}
+      />
+      <button onClick={() => handleSelectForUploadClick("bannerLinkMobile")}>
+        Select
+      </button>
+      <button onClick={handleUpload}>Upload</button>
       </div>
       <br />
       <div className="inline-form">
-        <label htmlFor="speakerImage">Speaker Image:</label>
-        <input
-          type="text"
-          id="speakerImage"
-          name="speakerImage"
-          placeholder="Speaker Image"
-          value={formData.speakerImage}
-          onChange={handleInputChange}
-        />
+        <label htmlFor="speakerImageLink">Speaker Image:</label>
         <input
           type="file"
-          id="speakerImageFile"
+          id="speakerImageLink"
+          name="speakerImageLink"
+          onChange={(e) => handleFileChange(e, "speakerImageLink")}
           style={{ display: "none" }}
-          onChange={(e) => handleFileChange(e, "speakerImage")}
         />
-        <button
-          onClick={() => handleUploadClick("speakerImage")}
-          className="upload-btn"
-        >
-          Upload
+        <button onClick={() => handleSelectForUploadClick("speakerImageLink")}>
+          Select
         </button>
+        <button onClick={handleUpload}>Upload</button>
       </div>
       <br />
       <div className="inline-form">
@@ -330,7 +319,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
         <label htmlFor="date">Date:</label>
         <div className="date-input-container">
           <input
-            type="date"
+            type="datetime-local"
             id="date"
             name="date"
             placeholder="Date"
@@ -338,9 +327,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
             onChange={handleInputChange}
             className="date"
           />
-          <span className="calendar-icon">
-            <IoCalendarNumberSharp />
-          </span>
+          
         </div>
       </div>
       <br />
@@ -484,10 +471,10 @@ export default UpdateForm;
 // };
 
 // interface FormData {
-//   pcBanner: string;
-//   mobileBanner: string;
+//   bannerLinkPC: string;
+//   bannerLinkMobile: string;
 //   eventMode: string;
-//   speakerImage: string;
+//   speakerImageLink: string;
 //   heading: string;
 //   subHeading: string;
 //   date: string;
@@ -508,10 +495,10 @@ export default UpdateForm;
 //     localStorage.getItem("access-token")
 //   );
 //   const [formData, setFormData] = useState<FormData>({
-//     pcBanner: "",
-//     mobileBanner: "",
+//     bannerLinkPC: "",
+//     bannerLinkMobile: "",
 //     eventMode: "",
-//     speakerImage: "",
+//     speakerImageLink: "",
 //     heading: "",
 //     subHeading: "",
 //     date: "",
@@ -537,10 +524,10 @@ export default UpdateForm;
 //         setData(eventData);
 //         setOriginalData(eventData); // Store the original data
 //         setFormData({
-//           pcBanner: eventData.bannerLinkPC,
-//           mobileBanner: eventData.bannerLinkMobile,
+//           bannerLinkPC: eventData.bannerLinkPC,
+//           bannerLinkMobile: eventData.bannerLinkMobile,
 //           eventMode: eventData.mode,
-//           speakerImage: eventData.speakerImageLink,
+//           speakerImageLink: eventData.speakerImageLinkLink,
 //           heading: eventData.heading,
 //           subHeading: eventData.subHeading,
 //           date: eventData.date,
@@ -647,33 +634,33 @@ export default UpdateForm;
 //     <div className="main">
 //       {/* Existing form fields */}
 //       <div className="inline-form">
-//         <label htmlFor="pcBanner">PC Banner Link:</label>
+//         <label htmlFor="bannerLinkPC">PC Banner Link:</label>
 //         <input
 //           type="text"
-//           id="pcBanner"
-//           name="pcBanner"
+//           id="bannerLinkPC"
+//           name="bannerLinkPC"
 //           placeholder="PC Banner Link"
-//           value={formData.pcBanner}
+//           value={formData.bannerLinkPC}
 //           onChange={handleInputChange}
 //         />
 //         <button onClick={handleUploadClick}>Upload</button>
 //       </div>
 //       <br></br>
 //       <div className="inline-form">
-//         <label htmlFor="mobileBanner">Mobile Banner Link:</label>
+//         <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
 //         <input
 //           type="text"
-//           id="mobileBanner"
-//           name="mobileBanner"
+//           id="bannerLinkMobile"
+//           name="bannerLinkMobile"
 //           placeholder="Mobile Banner Link"
-//           value={formData.mobileBanner}
+//           value={formData.bannerLinkMobile}
 //           onChange={handleInputChange}
 //         />
 //         <button onClick={handleUploadClick}>Upload</button>
 //       </div>
 //       <br></br>
 //       <div className="inline-form">
-//         <label htmlFor="mobileBanner">Enroll Link:</label>
+//         <label htmlFor="bannerLinkMobile">Enroll Link:</label>
 //         <input
 //           type="text"
 //           id="enrollLink"
@@ -698,13 +685,13 @@ export default UpdateForm;
 //       </div>
 //       <br></br>
 //       <div className="inline-form">
-//         <label htmlFor="speakerImage">Speaker Image:</label>
+//         <label htmlFor="speakerImageLink">Speaker Image:</label>
 //         <input
 //           type="text"
-//           id="speakerImage"
-//           name="speakerImage"
+//           id="speakerImageLink"
+//           name="speakerImageLink"
 //           placeholder="Speaker Image"
-//           value={formData.speakerImage}
+//           value={formData.speakerImageLink}
 //           onChange={handleInputChange}
 //         />
 //         <button onClick={handleUploadClick}>Upload</button>
@@ -877,10 +864,10 @@ export default UpdateForm;
 // //   const [data, setData] = useState<any>();
 // //   const [accessToken, setAccessToken] = useState<string | null>(localStorage.getItem('access-token'));
 // //   const [formData, setFormData] = useState({
-// //     pcBanner: "",
-// //     mobileBanner: "",
+// //     bannerLinkPC: "",
+// //     bannerLinkMobile: "",
 // //     eventMode: "",
-// //     speakerImage: "",
+// //     speakerImageLink: "",
 // //     heading: "",
 // //     subHeading: "",
 // //     date: "",
@@ -929,10 +916,10 @@ export default UpdateForm;
 // //   useEffect(() => {
 // //     if (data) {
 // //       setFormData({
-// //         pcBanner: data.bannerLinkPC,
-// //         mobileBanner: data.bannerLinkMobile,
+// //         bannerLinkPC: data.bannerLinkPC,
+// //         bannerLinkMobile: data.bannerLinkMobile,
 // //         eventMode: data.mode,
-// //         speakerImage: data.speakerImageLink,
+// //         speakerImageLink: data.speakerImageLinkLink,
 // //         heading: data.heading,
 // //         subHeading: data.subHeading,
 // //         date: data.date,
@@ -960,10 +947,10 @@ export default UpdateForm;
 
 // //   //   if (selectedEvent) {
 // //   //     setFormData({
-// //   //       pcBanner: data?.bannerLinkPC,
-// //   //       mobileBanner: data?.bannerLinkMobile,
+// //   //       bannerLinkPC: data?.bannerLinkPC,
+// //   //       bannerLinkMobile: data?.bannerLinkMobile,
 // //   //       eventMode: data?.mode,
-// //   //       speakerImage: data?.speakerImageLink,
+// //   //       speakerImageLink: data?.speakerImageLinkLink,
 // //   //       heading: data?.heading,
 // //   //       subHeading: data?.subHeading,
 // //   //       date: data?.date,
@@ -1020,26 +1007,26 @@ export default UpdateForm;
 // //     <div className="main">
 // //       {/* Existing form fields */}
 // //       <div className="inline-form">
-// //         <label htmlFor="pcBanner">PC Banner Link:</label>
+// //         <label htmlFor="bannerLinkPC">PC Banner Link:</label>
 // //         <input
 // //           type="text"
-// //           id="pcBanner"
-// //           name="pcBanner"
+// //           id="bannerLinkPC"
+// //           name="bannerLinkPC"
 // //           placeholder="PC Banner Link"
-// //           value={formData.pcBanner}
+// //           value={formData.bannerLinkPC}
 // //           onChange={handleInputChange}
 // //         />
 // //         <button onClick={handleUploadClick}>Upload</button>
 // //       </div>
 // //       <br></br>
 // //       <div className="inline-form">
-// //         <label htmlFor="mobileBanner">Mobile Banner Link:</label>
+// //         <label htmlFor="bannerLinkMobile">Mobile Banner Link:</label>
 // //         <input
 // //           type="text"
-// //           id="mobileBanner"
-// //           name="mobileBanner"
+// //           id="bannerLinkMobile"
+// //           name="bannerLinkMobile"
 // //           placeholder="Mobile Banner Link"
-// //           value={formData.mobileBanner}
+// //           value={formData.bannerLinkMobile}
 // //           onChange={handleInputChange}
 // //         />
 // //         <button onClick={handleUploadClick}>Upload</button>
@@ -1058,13 +1045,13 @@ export default UpdateForm;
 // //       </div>
 // //       <br></br>
 // //       <div className="inline-form">
-// //         <label htmlFor="speakerImage">Speaker Image:</label>
+// //         <label htmlFor="speakerImageLink">Speaker Image:</label>
 // //         <input
 // //           type="text"
-// //           id="speakerImage"
-// //           name="speakerImage"
+// //           id="speakerImageLink"
+// //           name="speakerImageLink"
 // //           placeholder="Speaker Image"
-// //           value={formData.speakerImage}
+// //           value={formData.speakerImageLink}
 // //           onChange={handleInputChange}
 // //         />
 // //         <button onClick={handleUploadClick}>Upload</button>

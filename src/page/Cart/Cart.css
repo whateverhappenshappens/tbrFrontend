@@ -1,58 +1,60 @@
 .cart {
-    position: relative;
-  }
-  
-  .signing {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    z-index: 100;
-    width: 78%;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-  }
-  .login {
-  position: absolute;
-  width: 100%;
-  margin-left: 114px;
-  height: full;
-  overflow-y: hidden;
-  background: white;
-  border: 1px solid #ccc;
+  position: relative;
 }
-  .empty-cart-message h2{
-    font-family: demi-bold;
+
+.signing {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 100;
+  width: 78%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+}
+.login {
+position: absolute;
+width: 100%;
+margin-left: 114px;
+height: full;
+overflow-y: hidden;
+background: white;
+border: 1px solid #ccc;
+}
+.coupon-message{
+  font-size: 2rem;
+}
+.empty-cart-message h2{
+  font-family: demi-bold;
+}
+.signing .close-btn {
+  position: absolute;
+  top: 30px; 
+  right: 50px;
+  font-size: 6rem;
+  cursor: pointer;
+  overflow-y: hidden;
+  z-index: 999;
+}
+@media (max-width:768px) {
+  .coupon1{
+    width: 15rem;
+    margin-left: 2rem;
   }
-  .signing .close-btn {
-    position: absolute;
-    top: 30px; 
-    right: 50px;
-    font-size: 6rem;
-    cursor: pointer;
-    overflow-y: hidden;
-    z-index: 999;
+  .apply-coupon{
+    width: 18rem;
+    margin-left: 1rem;
   }
-  @media (max-width:768px) {
-    .coupon1{
-      width: 15rem;
-      margin-left: 2rem;
-    }
-    .apply-coupon{
-      width: 18rem;
-      margin-left: 1rem;
-    }
-    .coupon{
-      display: flex;
-      justify-content: center;
-    }
-    .buttons{
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-    }
+  .coupon{
+    display: flex;
+    justify-content: center;
   }
-  
+  .buttons{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
