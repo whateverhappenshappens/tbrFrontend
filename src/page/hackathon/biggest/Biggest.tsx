@@ -35,7 +35,7 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
     const minutes = String(date.getMinutes()).padStart(2, "0");
 
     // Format: YYYY-MM-DD HH:MM
-    return `${year}-${month}-${day} ${hours}:${minutes}`;
+    return `${day}-${month}-${year} ${hours}:${minutes}`;
   };
 
   return (

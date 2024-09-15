@@ -74,7 +74,7 @@ const Details: React.FC<Props> = (props) => {
   return (
     <div className="details">
       {/* Ensure ToastContainer is placed here */}
-      <div className="details-content">
+      <div className="details-content4">
         <div className="details-info">
           <div className="details-links">
             <a href="http://">
