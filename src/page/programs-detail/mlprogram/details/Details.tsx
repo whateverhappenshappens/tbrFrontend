@@ -72,7 +72,7 @@ const Details: React.FC<Props> = (props) => {
 
   return (
     <div className="details">
-      <div className="details-content">
+      <div className="details-content3">
         <div className="details-info">
           <div className="details-links">
             <a href="http://">
