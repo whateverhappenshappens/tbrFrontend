@@ -3,6 +3,14 @@ import Boy from "../../../assets/Boyphoto@2x.png";
 import "./Represent.css";
 // gurmeet
 const Represent: React.FC = () => {
+
+const handelClick = () => {
+  const element = document.querySelector("#associate") as HTMLElement | null;
+  if (element) {
+    element.scrollIntoView();
+  }
+};
+
   return (
     <div className="container2">
       <div className="represent">
@@ -13,7 +21,7 @@ const Represent: React.FC = () => {
           Become a Campus Associate, by representing our mission and helping
           shape the future of education on your campus.
         </p>
-        <button className="represent-button visbyroundCF bold ">
+        <button onClick={handelClick} className="represent-button visbyroundCF bold ">
           <p className="vr-bold">Explore</p>
         </button>
       </div>

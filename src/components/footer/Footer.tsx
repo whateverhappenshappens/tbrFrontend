@@ -6,6 +6,7 @@ import { IoLogoLinkedin } from "react-icons/io";
 import logo from "../../assets/Logo.svg";
 import "../../styles/components/Footer.css";
 
+
 const itemList = [
   {
     name: "Programs",
@@ -21,9 +22,13 @@ const itemList = [
   },
 ];
 
+
+
 const Footer: React.FC = () => {
   return (
-    <footer className="footer px-[30px] sm:pl-[70px] sm:pr-[60px] xl:pl-[140px] xl:pr-[100px] py-14 sm:py-20 xl:py-52 flex flex-col gap-16 xl:gap-32">
+    <footer className="footer px-[30px] sm:pl-[70px] sm:pr-[60px]
+     xl:pl-[20px] xl:pr-[20px] py-14 sm:py-20 xl:py-52 flex 
+     flex-col gap-1 xl:gap-32">
       <div className="flex flex-col lg:flex-row lg:justify-between gap-10 sm:gap-16">
         <div className="logo-social flex flex-col gap-10 xl:gap-20">
           <img
@@ -62,7 +67,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div className="border-t pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
+      <div className="border-t mt-5 pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
         <div className="overflow-visible">Copyright @ techbairn 2023</div>
         <div className="overflow-visible">Privacy Policy | techbairn.com</div>
       </div>

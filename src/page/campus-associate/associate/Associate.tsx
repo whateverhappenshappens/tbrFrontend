@@ -4,9 +4,9 @@ import boy from "../../../assets/boy pointing@2x.png";
 
 const Associate: React.FC = () => {
   return (
-    <div className="associate">
+    <div id="associate" className="associate">
       <div className="associate-text">
-        <p className="associate-text-head1 vr-bold try">Campus Associates</p>
+        <p className="associate-text-head1 vr-bold ">Campus Associates</p>
         <p className="associate-text-para1 vr-medium">
           The TechBairn Campus Associate Program offers a valuable opportunity
           for college students interested in entrepreneurship. It aims to build
