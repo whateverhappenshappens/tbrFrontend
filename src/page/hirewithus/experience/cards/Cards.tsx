@@ -19,7 +19,7 @@ const Cards: React.FC<Props> = (props) => {
         <img src={props.image} alt={props.heading} className="exp-card-image" />
       </div>
       <p className="exp-cards-head1 vr-bold">{props.heading}</p>
-      <div className="exp-cards-para1 vr-regular">{props.para}</div>
+      <div className="exp-cards-para1 ">{props.para}</div>
     </div>
   );
 };

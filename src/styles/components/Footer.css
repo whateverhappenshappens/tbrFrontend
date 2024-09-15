@@ -3,3 +3,67 @@
   height: auto;
   margin-top: 20px;
 }
+.reach-out-title, .contact-title, .phone-title, .email-title {
+  font-size: 3.25rem; 
+  
+  font-family: bold;
+}
+.contect{
+  font-size: 3.5rem;
+  font-family: regular;
+  font-weight: 600;
+}
+.reach-out-title{
+  font-size: 5rem;
+}
+.footer a {
+  color: #ffffff; 
+  text-decoration: none; 
+}
+.footer a div {
+  display: inline-block; 
+  position: relative; 
+}
+
+.footer a div::after {
+  content: ''; 
+  display: block; 
+  width: 0; 
+  height: 1px; 
+  background: #ffffff; 
+  transition: width 0.3s ease; 
+  position: absolute; 
+  bottom: -0px; 
+  left: 0; 
+}
+
+.footer a:hover div::after {
+  width: 100%; 
+}
+.foot {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 700px) {
+  .foot {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .links-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: left;
+  }
+  
+  .links-main > div {
+    margin-bottom: 1.5rem;
+  }
+}

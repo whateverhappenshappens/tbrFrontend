@@ -15,7 +15,7 @@ const ExplorePrograms = () => {
           <h1>Explore program by categories</h1>
           <p>Get top on-demand courses from our list of courses</p>
         </div>
-        <NavLink className="explore-btn" to="/">
+        <NavLink className="explore-btn" to="/programs">
           View all
         </NavLink>
       </div>
@@ -52,28 +52,8 @@ const ExplorePrograms = () => {
             <span>{"</>"}</span>
           </div>
           <div className="details">
-            <h2>ThingLink</h2>
+            <h2>IOT</h2>
             <p>A complete Internet of Things Program</p>
-          </div>
-        </div>
-
-        <div className="program-card one">
-          <div className="logo">
-            <span>{"</>"}</span>
-          </div>
-          <div className="details">
-            <h2>Founder Finder</h2>
-            {/* <p>A complete Internet of Things Program</p> */}
-          </div>
-        </div>
-
-        <div className="program-card one">
-          <div className="logo">
-            <span>{"</>"}</span>
-          </div>
-          <div className="details">
-            <h2>Wingon</h2>
-            {/* <p>A complete Internet of Things Program</p> */}
           </div>
         </div>
       </div>

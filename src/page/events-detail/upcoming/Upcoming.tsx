@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Upcoming.css";
 import { AiOutlineRight } from "react-icons/ai";
 // import speaker from "../../../assets/Group 380.png";
@@ -11,12 +11,21 @@ interface props {
 }
 
 const Upcoming: React.FC<props> = (props) => {
+  console.log(props.data);
+  // const [enroll, setEnroll] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   if (props.data.isActive === "true") {
+  //     setEnroll(!enroll);
+  //   }
+  // }, []);
   const arr = new Array<number>(5);
 
   for (var i = 0; i < arr.length; i++) {
     arr[i] = i;
   }
-  console.log(props);
+  console.log(props.data?.isActive);
+
   return (
     <div className="upcoming">
       <div className="upcoming-content">
@@ -61,11 +70,14 @@ const Upcoming: React.FC<props> = (props) => {
             </p>
             <p>Mode : Online</p>
           </div>
-          <div className="upcoming-buttons">
-            <button className="upcoming-buttons-enroll">
-              <p>Enroll Now</p>
-            </button>
-          </div>
+          e
+          {props.data?.isActive && (
+            <div className="upcoming-buttons">
+              <button className="enroll-btn upcoming-buttons-enroll">
+                <p>Enroll Now</p>
+              </button>
+            </div>
+          )}
         </div>
         <div className="upcoming-img">
           <div className="upcoming-links-2">

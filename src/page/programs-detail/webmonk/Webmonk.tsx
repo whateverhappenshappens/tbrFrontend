@@ -17,7 +17,7 @@ const Webmonk: React.FC = () => {
   }, []);
   return (
     <div className="programs">
-      <Details star={4} rating={5000} students={10000} />
+      <Details star={4} rating={4999} students={10000} />
       <Roadmap />
       <Overview />
       <Projects />

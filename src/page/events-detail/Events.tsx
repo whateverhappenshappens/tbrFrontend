@@ -8,12 +8,12 @@ import Faq from "./faq/Faq";
 import Help from "./help/Help";
 import { useParams } from "react-router-dom";
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
-// import Overview from "./overview/Overview";
-// import Instructor from "./instructor/Instructor";
+import VideoPlayer from "./video-events/VideoEvent";
 
 const EventsDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<any>();
+
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   }, []);
@@ -29,17 +29,15 @@ const EventsDetail: React.FC = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]); // Add id as a dependency
 
   return (
     <div className="events">
       <Upcoming star={4} rating={5000} students={10000} data={data} />
-      <AboutEvents />
-      {/* <Overview /> */}
-
+      {data?.youtubeLink && <VideoPlayer videolink={data.youtubeLink} />}
+      <AboutEvents data={data} />
       <Speaker data={data} />
-      <StudentSaying />
-      {/* <Instructor /> */}
+      
       <Faq />
       <Help />
     </div>

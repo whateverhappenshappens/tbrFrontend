@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 12rem;
+  z-index: 0;
 }
 .explore-programs .main .name {
   display: flex;
@@ -17,11 +18,11 @@
   gap: 1rem;
 }
 .explore-programs .main .name h1 {
-  font-size: 4.7rem;
-  font-weight: bold;
+  font-size: 55px/66px;
+  font-family: bold;
 }
 .explore-programs .main .name p {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 .explore-programs .explore-btn {
   border: 2px solid #6d87f5;
@@ -31,6 +32,7 @@
   font-weight: 500;
   padding: 1.3rem 3rem;
   transition: 0.4s ease;
+  width: 19rem;
 }
 .explore-programs .explore-btn:hover {
   background-color: white;
@@ -40,12 +42,11 @@
 /* programs part */
 .programs {
   display: flex;
-  overflow: visible;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 .program-card {
-  width: 100%;
+  
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -67,21 +68,25 @@
 }
 .program-card.one .logo {
   background-color: #d0d8f9;
+  height: 100%;
 }
 .program-card.one .logo span {
   color: #6d87f5;
 }
 .program-card.two .logo {
-  background-color: #fbf2d6;
-}
-.program-card.two .logo span {
-  color: #ffd03f;
+ height: 100%;
 }
 .program-card.three .logo {
-  background-color: #fededa;
+ height: 100%;
 }
+.program-card.four .logo {
+  height: 100%;
+}
+
+
 .program-card.three .logo span {
   color: #ff614b;
+ 
 }
 .program-card .logo span {
   font-size: 2rem;
@@ -97,7 +102,7 @@
 }
 .program-card .details h2 {
   font-size: 2.5rem;
-  font-weight: 500;
+  font-family: bold;
 }
 .program-card .details p {
   font-size: 1.6rem;
@@ -106,6 +111,11 @@
 @media (min-width: 640px) {
   .explore-programs {
     text-align: left;
+  }
+}
+@media (max-width: 768px) {
+  .explore-programs .main .name h1 {
+    font-size: 2rem;
   }
 }
 
@@ -121,6 +131,7 @@
     align-items: center;
     justify-content: center;
   }
+  
   .program-card {
     width: 45%;
   }
@@ -139,6 +150,10 @@
   .explore-programs .main .name p {
     font-size: 2rem;
   }
+  img{
+    overflow: hidden;
+    height: 100%;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -146,13 +161,13 @@
     padding: 6rem 100px 6rem 140px !important;
   }
   .explore-programs .main .name h1 {
-    font-size: 6rem;
+    font-size: 5rem;
   }
   .explore-programs .main .name p {
     font-size: 3rem;
   }
   .program-card {
-    width: 30%;
+    width: 48%;
   }
   .program-card .logo {
     height: 12rem;
@@ -165,5 +180,9 @@
   }
   .program-card .details p {
     font-size: 2rem;
+  }
+  img{
+    overflow: hidden;
+    height: 100%;
   }
 }

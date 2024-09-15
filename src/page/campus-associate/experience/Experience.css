@@ -9,7 +9,16 @@
   overflow: visible;
   padding: 2rem 4rem;
 }
-
+.exp-cards-para{
+  font: normal normal normal 35px/40px extra-bold;
+  line-height: 2;
+  text-align:left;
+}
+.heading{
+  /* font: normal normal normal 40px/40px extra-bold; */
+  font-size: 5rem;
+  color: #2E436A;
+}
 .slick-slider {
   overflow: visible;
 }
@@ -20,12 +29,15 @@
 }
 
 .experience-head1 {
-  font-size: 3rem;
-  font-family: "extra-bold";
+  font-size: 4rem;
+  font-family: bold;
+  color: #2E436A;
 }
 
 .experience-head2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-family: regular;
+  color: #2E436A;
 }
 
 .cards-container {

@@ -1,0 +1,28 @@
+.alumni .company-card {
+    padding: 84px; /* Increased padding to make the image larger */
+  }
+  
+  .alumni .company-card img {
+    width: 229px; /* Ensure the image takes up the full width of its container */
+    height: 39px;
+  }
+  .our{
+    font-family: bold;
+  }
+  /* Alumni.css */
+
+/* Alumni.css */
+/* Alumni.css */
+
+.rotate {
+  animation: rotateAndScale 1s ease-in-out;
+}
+
+@keyframes rotateImage {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rotate img {
+  animation: rotateImage 1s linear;
+}

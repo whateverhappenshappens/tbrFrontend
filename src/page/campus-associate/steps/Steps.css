@@ -1,63 +1,63 @@
-@font-face {
-    font-family: 'extra-bold';
-    src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
-  }
+.steps {
+  background-color: #f7fafc;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  position: relative; /* Ensure .steps is a positioned container */
+}
 
-.steps{
-    background-color:#F7FAFC;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
+.steps-head1 {
+  margin-left: 13rem;
+  color: #2e436a;
+  font-size: 60px;
+  font-family: 'extra-bold'; /* Assuming you want to use 'extra-bold' font */
+  margin-bottom: 7rem;
 }
-.steps-head1{
-    margin-left: 5rem;
-    color:#2E436A;
-    font-size: 6rem;
-    font-family: 'extra-bold';
+
+.steps-hr {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%); 
+  width: 100%;
+  height: 2px; 
+  border: 2px dashed #000000;
+
 }
-.steps-hr{
-    position: relative;
-    top: 23rem;
-    left: 20rem;
-    width: 70%;
-    height: 0px;
-    border: 1px dashed #2E436A;
-    opacity: 1;
-}
+
 .circles{
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin-left: 7rem;
-    margin-right: 7rem;
-    
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 9rem;
+  margin-right: 7rem;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
 }
 @media (max-width:1500px){
-    .steps-hr{
-    display: none;
-}
-.steps-head1{
-    align-items: center;
-}
-}
-@media (max-width:767px){
-    .steps{
-        margin: 0 auto;
-        padding: 2rem 0rem;
-    }
-    .steps-hr{
-        display: none;
-    }
-    .steps-head1{
-        margin-left: 0rem;
-        font-size: 3.5rem;
-        text-align: center;
-    }
-    .circles-head{
-        font-size: 1.5rem;
-    }
-}
 
+.steps-head1{
+  align-items: center;
+}
+}
+@media (max-width: 767px) {
+  .steps {
+    margin: 0 auto;
+    padding: 2rem 0rem;
+    
+  }
+  .steps-hr {
+    display: none; /* Hide the hr line on smaller screens */
+  }
+  .steps-head1 {
+    margin-left: 0rem;
+    font-size: 3.5rem;
+    text-align: center;
+  }
+  .circles-head {
+    font-size: 1.5rem;
+  }
+}

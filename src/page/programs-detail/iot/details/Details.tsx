@@ -2,15 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./Details.css";
 import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import girl from "../../../../assets/Mask Group 9.png";
+import { useCart } from "../../../../CartContext";
+import { toast } from "react-toastify";
 
 interface Props {
   star: number;
   rating: number;
   students: number;
+  heading: string;
+  para1: string;
+  teachername: string;
+  image: string;
+  link: string;
 }
 
 const Details: React.FC<Props> = (props) => {
+  const { addToCart } = useCart();
   const [randomStudents, setRandomStudents] = useState<number>(0);
   const [randomRating, setRandomRating] = useState<number>(0);
 
@@ -43,6 +50,24 @@ const Details: React.FC<Props> = (props) => {
       clearInterval(ratingIntervalId);
     };
   }, [props.students, props.rating]);
+
+  const handleEnroll = () => {
+    // const generateUniqueId = () => {
+    //   return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    // };
+
+    const course = {
+      id: "iot",
+      name: "IOT",
+      description: "A very small description of the course should be included",
+      price: 4999,
+      discountedPrice: 3429
+,
+    };
+
+    addToCart(course);
+    toast.success("Item successfully added to cart!");
+  };
 
   const arr = new Array<number>(5).fill(0);
 
@@ -101,15 +126,16 @@ const Details: React.FC<Props> = (props) => {
             </p>
           </div>
           <div className="details-buttons">
-            <button className="details-buttons-enroll">
+            <button className="details-buttons-enroll " onClick={handleEnroll}>
               <p>
-                Enroll Now for<p className="details-buttons-strike"> ₹ 5000</p>{" "}
+                Enroll Now for<p className="details-buttons-strike"> ₹ 4999</p>{" "}
                 ₹ 3,999
               </p>
             </button>
+            <a href="https://drive.google.com/file/d/1I6ATPZUIAbnkaD6C6Husl_hENMg14mif/view?usp=sharing" target="_blank" rel="noopener noreferrer">
             <button className="details-buttons-download">
               <p>Download Syllabus</p>
-            </button>
+            </button></a>
           </div>
         </div>
       </div>

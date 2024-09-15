@@ -2,14 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./Details.css";
 import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { useCart } from "../../../../CartContext";
+import { toast } from "react-toastify";
 
 interface Props {
   star: number;
   rating: number;
   students: number;
+  heading: string;
+  para1: string;
+  teachername: string;
+  image: string;
+  link: string;
 }
 
 const Details: React.FC<Props> = (props) => {
+  const { addToCart } = useCart();
   const [randomStudents, setRandomStudents] = useState<number>(0);
   const [randomRating, setRandomRating] = useState<number>(0);
 
@@ -43,10 +51,29 @@ const Details: React.FC<Props> = (props) => {
     };
   }, [props.students, props.rating]);
 
+  const handleEnroll = () => {
+    // const generateUniqueId = () => {
+    //   return `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    // };
+
+    const course = {
+      id: "code-slayer",
+      name: "CodeSlayer",
+      description: " A Competitive Programming Course.A Complete Placement Preparation Program ",
+      price: 4999,
+      discountedPrice: 3429
+,
+    };
+
+    addToCart(course);
+    toast.success("Item successfully added to cart!");
+  };
+
   const arr = new Array<number>(5).fill(0);
 
   return (
     <div className="details">
+      {/* Ensure ToastContainer is placed here */}
       <div className="details-content">
         <div className="details-info">
           <div className="details-links">
@@ -90,18 +117,19 @@ const Details: React.FC<Props> = (props) => {
             <p>Batch Starting Date: Winter 2023 </p>
             <p>Program Format: Online Live Classes </p>
             <p>Program Duration: 2 Months , At 2-10 hrs/week</p>
-            <p>You Will Learn: C++,Data Structures and Algorithms</p>
+            <p>You Will Learn: C++, Data Structures and Algorithms</p>
           </div>
           <div className="details-buttons">
-            <button className="details-buttons-enroll">
+            <button className="details-buttons-enroll" onClick={handleEnroll}>
               <p>
-                Enroll Now for<p className="details-buttons-strike"> ₹ 5000</p>{" "}
-                ₹ 3,999
+                Enroll Now for{" "}
+                <span className="details-buttons-strike"> ₹ 4999</span> ₹ 3,999
               </p>
             </button>
+            <a href="https://drive.google.com/file/d/1OseXuScYsS0n2X3I_n8UHstEFBbuLlAj/view?usp=sharing" target="_blank" rel="noopener noreferrer">
             <button className="details-buttons-download">
               <p>Download Syllabus</p>
-            </button>
+            </button></a>
           </div>
         </div>
       </div>

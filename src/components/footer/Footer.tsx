@@ -3,7 +3,9 @@ import { FaTwitter } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io";
-import logo from "../../assets/Logo.svg";
+import { FaYoutube } from "react-icons/fa6";
+import { NavLink } from "react-router-dom"; // Import NavLink
+import logo from "../../assets/techbairn logo white-01.png";
 import "../../styles/components/Footer.css";
 
 
@@ -13,12 +15,12 @@ const itemList = [
     list: ["Webmonk", "Machinester", "Codeslayer", "Robotics & IoT"],
   },
   {
-    name: "Campus Associates",
-    list: ["Webmonk", "Machinester", "Codeslayer", "Robotics & IoT"],
+    name: "Quick Links:",
+    list: ["About Us", "Blog", "Become a Mentor", "Hire With Us"],
   },
   {
-    name: "Refer & Earn",
-    list: ["Webmonk", "Machinester", "Codeslayer", "Robotics & IoT"],
+    name: "Reach out to us:",
+    list: ["Contact Us:", "Phone:","(+91) 87897 26459",  " (+91) 70048 85397 ", "Email:","info@techbairn.co.in","hello@techbairn.com"],
   },
 ];
 
@@ -34,32 +36,55 @@ const Footer: React.FC = () => {
           <img
             src={logo}
             alt="techbairn logo"
-            className="w-3/4 sm:w-1/2 mx-auto lg:w-full"
+            className="w-[25rem] sm:w-[2rem]  mx-auto lg:w-[35rem]"
           />
           <div className="text-white text-4xl sm:text-6xl flex gap-10 mx-auto lg:mx-0">
-            <a href="/">
+            <a href="https://www.linkedin.com/company/techbairn/  " target="_blank" rel="noopener noreferrer">
               <IoLogoLinkedin />
             </a>
-            <a href="/">
+            <a href="https://www.facebook.com/techbairn/" target="_blank" rel="noopener noreferrer">
               <FaFacebookF />
             </a>
-            <a href="/">
+            <a href="https://instagram.com/techbairn" target="_blank" rel="noopener noreferrer">
               <IoLogoInstagram />
             </a>
-            <a href="/">
+            <a href="#" target="_blank" rel="noopener noreferrer">
               <FaTwitter />
+            </a>
+            <a href="https://www.youtube.com/@techbairn" target="_blank" rel="noopener noreferrer">
+              <FaYoutube />
             </a>
           </div>
         </div>
-        <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-between gap-2 lg:gap-10 xl:gap-32 overflow-hidden">
+        <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-around mr-[0rem] gap-2 lg:gap-10 xl:gap-32 overflow-visible overflow-y-hidden">
           {itemList.map((item, index) => (
             <div key={index} className="flex flex-col sm:gap-6 xl:gap-16 overflow-visible">
               <div className="font-semibold overflow-visible">{item.name}</div>
               <div className="sm:flex sm:flex-col sm:gap-3 xl:gap-10 overflow-visible">
                 {item.list.map((li, index1) => (
                   <div key={index1} className="overflow-visible">
-                    {li}
+                    {li === "Hire With Us" ? (
+                      <NavLink to="/hire-with-us" className="text-white">{li}</NavLink>
+                    ): li === "Become a Mentor" ? (
+                      <NavLink to="/mentor" className="text-white">{li}</NavLink>
+                    ) : li === "Blog" ? (
+                      <NavLink to="/blog" className="text-white">{li}</NavLink>
+                    ): li === "About Us" ? (
+                      <NavLink to="/About-us" className="text-white">{li}</NavLink>
+                    ):li === "Webmonk" ? (
+                      <NavLink to="/course/Webmonk" className="text-white">{li}</NavLink>
+                    ): li === "Machinester" ? (
+                      <NavLink to="/course/Machinester" className="text-white">{li}</NavLink>
+                    ):li === "Codeslayer" ? (
+                      <NavLink to="/course/Codeslayer" className="text-white">{li}</NavLink>
+                    ):li === "Robotics & IoT" ? (
+                      <NavLink to="/course/IOT" className="text-white">{li}</NavLink>
+                    ):
+                     (
+                      li
+                    )}
                   </div>
+                  
                 ))}
               </div>
             </div>

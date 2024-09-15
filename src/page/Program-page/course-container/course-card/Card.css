@@ -8,9 +8,9 @@
 
 .course-card-banner-image p{
     font-family: 'bold';
-    width: 19.1rem;
-    font-size: 2.5rem;
-    padding: 1.1rem 2.4rem 1.1rem 2.3rem;
+    width: 16.6rem;
+    font-size: 2rem;
+    padding: 1rem 2.1rem 1.1rem 2.3rem;
     color: #FFFFFF;
     opacity: 1;
     background: #6D87F5 0% 0% no-repeat padding-box;
@@ -22,7 +22,7 @@
 }
 .course-card img{
     width:65rem;
-    height:50rem;
+    height:45rem;
     border-radius: 3rem;
     margin-right: 1.8rem;
 }
@@ -44,7 +44,7 @@
     align-items: center;
 }
 .course-card-content-header h3{
-    font-size: 6rem;
+    font-size: 5rem;
     /* margin-left: 5rem;
     margin-top: 4rem;
     margin-right: 17rem; */
@@ -53,7 +53,7 @@
     opacity: 1;
 }
 .course-card-content-header-rating{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'medium';
     padding: 0rem 1rem;
     background: #2E436A 0% 0% no-repeat padding-box;
@@ -63,10 +63,10 @@
     /* margin-right: 5rem;
     margin-top:5.3rem ;
     margin-bottom:4.3rem ; */
-    font: normal normal medium 20px/35px Visby Round CF;
+    font: normal normal medium 16px/35px Visby Round CF;
 }
 .course-card-content-para1{
-    font-size: 2.5rem;
+    font-size: 2rem;
     padding: 0rem 5rem;
     margin: 1.5rem 0rem;
     /* margin-left: 5rem;
@@ -76,13 +76,13 @@
     font-family: 'regular';
 }
 .course-card-content-para2{
-    font-size: 2.5rem;
+    font-size: 2rem;
     padding: 0rem 5rem;
     /* margin-left: 5rem;
     margin-right: 6.9rem; */
     color: #2E436A;
     opacity: 1;
-    font: normal normal normal 25px/35px Visby Round CF;
+    font: normal normal normal 20px/35px Visby Round CF;
 }
 .months-and-internship-oppurtunity{
     display: flex;
@@ -93,7 +93,7 @@
     margin-top: 3rem; */
 }
 .months-details{
-    font-size: 3rem;
+    font-size: 2.3rem;
     padding-right: 3.8rem;
     border-right: 1px solid #2E436A;
     opacity: 1;
@@ -102,7 +102,7 @@
     font-family: 'demi-bold';
 }
 .internship-oppurtunity-details{
-    font-size: 3rem;
+    font-size: 2.3rem;
     /* padding-left: 3.5rem; */
     /* margin-right: 24.2rem; */
     
@@ -111,7 +111,7 @@
     font-family: 'demi-bold';
 }
 .Teacher-Name{
-    font-size: 3rem;
+    font-size: 2.3rem;
     color: #2E436A;
     padding-left: 5rem;
     margin: 1rem 0rem;
@@ -121,13 +121,11 @@
     margin-right: 45.8rem; */
     font-family: 'bold';
 }
-.course-card-content-button{
-    /* margin-top: 4rem; */
-   
+/* .course-card-content-button{
     border-top: 3px solid #6D87F5;
-}
+} */
 .course-card-content-button-enroll-now{
-    font-size: 3rem;
+    font-size: 2.3rem;
     color: #FFFFFF;
     opacity: 1;
     width: 50%;
@@ -155,6 +153,13 @@
     opacity: 1;
     font-family: 'bold';
 }
+.Toastify__toast--success {
+    background-color: #FFFFFF; /* Green background */
+    color: rgb(98, 216, 98); /* White text */
+    height: 7rem;
+    font-family: extra-bold;
+    font-size: 1.5rem;
+  }
 
 @media (max-width: 768px) {
     @media (max-width: 768px) {
@@ -238,4 +243,3 @@
     }
     
 }
-

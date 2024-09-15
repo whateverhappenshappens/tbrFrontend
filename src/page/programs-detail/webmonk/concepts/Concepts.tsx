@@ -40,8 +40,10 @@ const Concepts: React.FC = () => {
         <div className="concepts-head1">
           <p>Concepts Covered</p>
         </div>
-        <div className="concepts-button">
-          <button>Download Syllabus</button>
+        
+        <div className="concepts-button" >
+        <a href="https://drive.google.com/file/d/1QoO7P71ANEbz_NqveGHESJVt2fgfj80x/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <button>Download Syllabus</button></a>
         </div>
       </div>
       <div className="concepts-accordion">

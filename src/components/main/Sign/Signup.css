@@ -1,0 +1,288 @@
+/* Login.css */
+.main_box {
+  display: flex;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+}
+
+/* Add animation for the review slider */
+.review-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.review-slider > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.review-slider > div.active {
+  opacity: 1;
+}
+
+.main_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 92vh;
+  overflow-y: hidden;
+  max-width: 1200px;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+.btn:disabled {
+  cursor: not-allowed;
+  /* background-color: #ccc; Optional: to visually indicate it's disabled */
+}
+.right h3 button{
+  color: #6d87f5;
+}
+.left {
+  background-color: #6d87f5;
+  width: 42%;
+  height: 95%;
+  margin: 2.5%;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.left h1 {
+  color: beige;
+}
+.error-input {
+  border: 2px solid red;
+}
+.left h2 {
+  font: normal normal bold 40px/62px extra-bold;
+  color: #FFFFFF;
+}
+
+.image {
+  height: 45px;
+  width: 45px;
+  border-radius: 5px;
+  border: 2px solid black;
+  margin-left: 25px;
+}
+
+.cards {
+  /* margin-top: 60px; */
+  background-color: #3853c5;
+  border-radius: 12px;
+  padding: 20px;
+  height: 150px;
+  position: relative;
+  left: -5%;
+  bottom: 0%;
+  margin-bottom: 5rem;
+}
+.para{
+  font-size: 17px;
+  font-family: regular;
+  color: #FFFFFF;
+}
+.try {
+  color: #e9f4fb;
+}
+
+.card_info {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  margin-left: 20px;
+}
+
+.right {
+  width: 43%;
+  height: 95%;
+  margin: 2.5%;
+  padding: 30px;
+  overflow-y: hidden;
+  margin-bottom: 7rem;
+}
+
+.right h1 {
+  color: #2e436a;
+}
+.wow{
+  margin-top: 0.7rem;
+}
+.right h3 {
+  font: normal normal bold 16px/26px;
+  font-family: demi-bold;
+  color: #2e436a;
+  margin-bottom: 20px;
+}
+.right h3 a{
+  color: #6d87f5;
+}
+
+.right .lng {
+  margin-top: 0px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+}
+
+.extra1 {
+  font-size: 1.5rem;
+  font-family:regular;
+}
+
+.btn {
+  width: 100%;
+  height: 45px;
+  color: azure;
+  font: normal normal bold 20px/26px demi-bold;
+  background-color: #6d87f5;
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.check {
+  margin-right: 15px;
+  height: 1.7rem;
+  width: 2rem;
+}
+
+.ex {
+  color: #6d87f5;
+  font: normal normal normal 18px/26px demi-bold;
+}
+
+.ex1 {
+  color: #2e436a;
+  font: normal normal normal 18px/26px regular
+}
+
+.cont {
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+.error {
+  color: red;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+.logo121{
+  width: 22rem;
+}
+.google {
+  height: 40px;
+  width: 180px;
+  right: 25% !important;
+  position: absolute;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: demi-bold;
+  text-align: center;
+  /* margin-bottom: 2rem; */
+  /* margin-top: 1.3rem; */
+  font-family: bold;
+}
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  padding-right: 40px; /* Ensure there is space for the eye icon */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.icon12 {
+  margin-right: 2rem;
+  font-size: 24px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .left {
+    display: none;
+  }
+  .main_box{
+    height: 78vh;
+  }
+  .right {
+    width: 95%;
+    min-width: 244px;
+    padding: 20px;
+  }
+  .right h3{
+    font-size: 9px/11px;
+    font-family: demi-bold;
+    margin-top: 5px;
+  }
+  .login{
+    margin-right: 83px;
+  }
+  .right .lng {
+    width: 95%;
+  }
+
+  .btn {
+     /* Ensure button takes full width of parent */
+    height: 40px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .google {
+    margin-left: 0;
+    margin-right: 0rem;
+    margin-top: 3rem;
+  }
+  .ex1{
+    font-size: 1rem;
+    font-family: 'regular';
+  }
+  .ex{
+    font-size: 1rem;
+    font-family: 'demi-bold';
+  }
+  .cont {
+    overflow: hidden;
+    display: none;
+    text-align: center;
+  }
+  .eye-icon{
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+}

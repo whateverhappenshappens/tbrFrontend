@@ -1,7 +1,7 @@
 .studentsayingcard {
     position: relative;
     display: flex;
-    height: 485px;
+    height: 525px;
     width: 812px;
     flex-direction: column;
     background-color: #ffffff;
@@ -41,6 +41,7 @@
 
 .studentsayingcard-linkedin {
     margin-left: 15rem;
+    display: none;
 }
 
 .studentsayingcard-review {
@@ -114,7 +115,7 @@
     }
 
     .studentsayingcard-review p {
-        font-size: 1.5rem;
+        font-size: .5rem;
     }
 
     .studentsaying-heading{

@@ -1,6 +1,6 @@
 .enroll {
     overflow: visible;
-    margin:0px 50px 50px 50px;
+    margin:0px 40px 50px 50px;
 }
 .enroll-text-large span{
     font-size: 2rem;
@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     transform: translateY(10rem);
+    height: 100vh;
 }
 
 .enroll-text {

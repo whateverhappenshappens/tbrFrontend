@@ -2,7 +2,8 @@ import axios, { AxiosError } from "axios";
 
 export const api = axios.create({
   withCredentials: true,
-  baseURL: "http://localhost:8080/",
+  baseURL:"http://3.108.165.88:8080/",
+  
 });
 
 // Token refresh logic
@@ -21,11 +22,11 @@ export const api = axios.create({
 // Error handling
 api.interceptors.response.use(
   (response) => {
-    console.log("response interceptor")
+    console.log("response interceptor");
     return response;
   },
   (error: AxiosError) => {
-    console.log("response interceptor error")
+    console.log("response interceptor error");
     const statusCode = error.response?.status;
     if (statusCode && statusCode !== 401) {
       console.error(error);

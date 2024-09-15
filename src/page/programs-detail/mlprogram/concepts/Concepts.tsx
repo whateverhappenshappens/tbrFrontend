@@ -43,9 +43,10 @@ const Concepts: React.FC = () => {
         <div className="concepts-head1">
           <p>Concepts Covered</p>
         </div>
+        <a href="https://drive.google.com/file/d/16fUdIxhn4Ky015pdqL_aPMpHjl7IlpjF/view?usp=sharing" target="_blank" rel="noopener noreferrer">
         <div className="concepts-button">
           <button>Download Syllabus</button>
-        </div>
+        </div></a>
       </div>
       <div className="concepts-accordion">
         {accordionData.map(({ title, content }) => (

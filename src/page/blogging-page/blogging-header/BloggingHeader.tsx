@@ -20,14 +20,14 @@ const BloggingHeader: React.FC = () => {
           <FaArrowRight />
         </div>
       </div>
-      <div className="blogging-page-header-nav-bar">
+      {/* <div className="blogging-page-header-nav-bar">
         <NavLink to="/blog">All</NavLink>
         <NavLink to="/blog/education">Education</NavLink>
         <NavLink to="/blog/politics">Politics</NavLink>
         <NavLink to="/blog/games">Games</NavLink>
         <NavLink to="/blog/technology">Technology</NavLink>
         <NavLink to="/blog/electronics">Electronics</NavLink>
-      </div>
+      </div> */}
     </div>
   );
 };

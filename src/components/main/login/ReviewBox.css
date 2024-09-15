@@ -1,9 +1,8 @@
 .review-container{
  background-color: #3853C5;
- padding: 1rem 2rem 1rem 1rem;
+ padding: 0.8rem 2rem 1rem 1rem;
  border-radius: 1rem;
- margin-top: 5rem;
- min-width: 50%;
+ min-width: 60%;
 }
 
 .person-info{
@@ -14,7 +13,7 @@
 }
 .review-text{
     color: white;
-    font: normal normal normal 16px/26px Visby Round CF;
+    font: normal normal normal 16px/26px extra-bold;
 }
 .profile-pic{
     height: 5.8rem;
