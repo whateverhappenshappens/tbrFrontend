@@ -15,7 +15,7 @@ const Content: React.FC = () => {
   };
 
   return (
-    <div className="gig1">
+    <div id="#content" className="gig1">
       <div className="gig-headings">
         <div className="mine1">
           <div className="left23">

@@ -3,6 +3,12 @@ import React from "react";
 import eventBoy from "./Group 425.png";
 
 const Head: React.FC = () => {
+  const handelClick = () => {
+    const element = document.getElementById("#content") as HTMLElement | null;
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
     return (
       <div className="enroll">
         <div className="enroll-content">
@@ -13,7 +19,7 @@ const Head: React.FC = () => {
             Let's introduce ourselves a little better. Here's everything you would need to know about us.
             </p>
             <button className="enroll-button ">
-                <button>Contact Us</button>
+                <button onClick={handelClick}>Contact Us</button>
             </button>
           </div>
           <div className="img123">

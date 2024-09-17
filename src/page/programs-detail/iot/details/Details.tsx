@@ -133,7 +133,7 @@ const Details: React.FC<Props> = (props) => {
               </p>
             </button>
             <a href="https://drive.google.com/file/d/1I6ATPZUIAbnkaD6C6Husl_hENMg14mif/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <button className="details-buttons-download">
+            <button className="py-7 details-buttons-download">
               <p>Download Syllabus</p>
             </button></a>
           </div>

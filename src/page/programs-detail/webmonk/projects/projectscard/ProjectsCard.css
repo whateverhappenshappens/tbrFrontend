@@ -35,6 +35,8 @@
 }
 .project-card-content-heading p{
     font-family: 'bold';
+    height: 70px;
+    overflow-y: hidden;
 }
 .project-card-content-paragraph {
     margin-top: 1.5rem; 

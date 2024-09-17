@@ -29,7 +29,7 @@ const itemList = [
 const Footer: React.FC = () => {
   return (
     <footer className="footer px-[30px] sm:pl-[70px] sm:pr-[60px]
-     xl:pl-[20px] xl:pr-[20px] py-14 sm:py-20 xl:py-52 flex 
+     xl:pl-[5px] xl:pr-[5px] py-14 sm:py-20 xl:py-52 flex 
      flex-col gap-1 xl:gap-32">
       <div className="flex flex-col lg:flex-row lg:justify-between gap-10 sm:gap-16">
         <div className="logo-social flex flex-col gap-10 xl:gap-20">
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
             alt="techbairn logo"
             className="w-[25rem] sm:w-[2rem]  mx-auto lg:w-[35rem]"
           />
-          <div className="text-white text-4xl sm:text-6xl flex gap-10 mx-auto lg:mx-0">
+          <div className="text-white text-4xl sm:text-6xl flex gap-10 mx-auto lg:mx-10">
             <a href="https://www.linkedin.com/company/techbairn/  " target="_blank" rel="noopener noreferrer">
               <IoLogoLinkedin />
             </a>
@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-around mr-[0rem] gap-2 lg:gap-10 xl:gap-32 overflow-visible overflow-y-hidden">
+        <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-around mr-[0rem] gap-2 lg:gap-10 xl:gap-10 overflow-visible overflow-y-hidden">
           {itemList.map((item, index) => (
             <div key={index} className="flex flex-col sm:gap-6 xl:gap-16 overflow-visible">
               <div className="font-semibold overflow-visible">{item.name}</div>
