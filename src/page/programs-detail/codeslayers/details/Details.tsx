@@ -4,16 +4,13 @@ import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
 import { toast } from "react-toastify";
-
+import code from "../../../../assets/ai-cloud-concept-with-robot-arm.png"
 interface Props {
   star: number;
   rating: number;
   students: number;
-  heading: string;
-  para1: string;
-  teachername: string;
-  image: string;
-  link: string;
+  
+  
 }
 
 const Details: React.FC<Props> = (props) => {
@@ -61,8 +58,8 @@ const Details: React.FC<Props> = (props) => {
       name: "CodeSlayer",
       description: " A Competitive Programming Course.A Complete Placement Preparation Program ",
       price: 4999,
-      discountedPrice: 3429
-,
+      discountedPrice: 3429,
+      image:code   
     };
 
     addToCart(course);

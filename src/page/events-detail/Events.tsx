@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
 import VideoPlayer from "./video-events/VideoEvent";
 
-const EventsDetail: React.FC = () => {
+const Events: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<any>();
 
@@ -44,4 +44,4 @@ const EventsDetail: React.FC = () => {
   );
 };
 
-export default EventsDetail;
+export default Events;

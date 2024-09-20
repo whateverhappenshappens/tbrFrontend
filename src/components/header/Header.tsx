@@ -21,7 +21,7 @@ function Header({
   const [navOpen, setNavOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false); // State to manage login popup visibility
   const [showSignup, setShowSignup] = useState(false); // State to manage signup popup visibility
-
+  const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
   const transRef = useRef<HTMLDivElement>(null);
   const closeNavRef = useRef<HTMLDivElement>(null);
   const mainNav = useRef<HTMLDivElement>(null);
@@ -55,7 +55,7 @@ function Header({
           >
             &times;
           </div>
-          <Login handle_login={handle_login} setIsLoggedIn={setIsLoggedIn} />
+          <Login handle_login={handle_login} setIsLoggedIn={setIsLoggedIn} setloggedInUserEmail={setloggedInUserEmail}/>
         </div>
       )}
       {showSignup && (

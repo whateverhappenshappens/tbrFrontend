@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 // Define the type for props
 interface CardProps {
-  id: number;
+  id: string;
   heading: string;
   para1: string;
   image: string;

@@ -4,16 +4,12 @@ import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
 import { toast } from "react-toastify";
-
+import web from "../../../../assets/web.png"
 interface Props {
   star: number;
   rating: number;
   students: number;
-  heading: string;
-  para1: string;
-  teachername: string;
-  image: string;
-  link: string;
+ 
 }
 
 const Details: React.FC<Props> = (props) => {
@@ -62,7 +58,7 @@ const Details: React.FC<Props> = (props) => {
       description: "A very small description of the course should be included",
       price: 4999,
       discountedPrice: 3429
-,
+,     image:web
     };
 
     addToCart(course);

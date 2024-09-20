@@ -6,11 +6,22 @@ import boyProfile from "../../assets/Boy photo.png";
 import { UserAPI } from "../../apis/UserAPIs";
 import toast from "react-hot-toast";
 
+// Define the Profile interface
+interface Profile {
+  fullname: string;
+  email: string;
+  phoneNumber: string;
+  collegeName: string;
+  stream: string;
+}
+
 function UserProfile() {
   const [year, setYear] = useState(null);
   const [isSaved, setIsSaved] = useState(true);
-  const [editableField, setEditableField] = useState(null);
-  const [profile, setProfile] = useState({
+  const [editableField, setEditableField] = useState<string | null>(null);
+
+  // Initialize the profile with the Profile interface type
+  const [profile, setProfile] = useState<Profile>({
     fullname: "",
     email: "",
     phoneNumber: "",
@@ -18,7 +29,7 @@ function UserProfile() {
     stream: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Partial<Profile>>({});
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -39,18 +50,18 @@ function UserProfile() {
     fetchProfileData();
   }, []);
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const validatePhoneNumber = (phoneNumber) => {
-    const phoneRegex = /^\d{10}$/; // Assuming a 10-digit phone number
+  const validatePhoneNumber = (phoneNumber: string) => {
+    const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phoneNumber);
   };
 
   const validate = () => {
-    let validationErrors = {};
+    let validationErrors: Partial<Profile> = {};
     if (!profile.fullname) validationErrors.fullname = "Fullname is required";
     if (!validateEmail(profile.email)) validationErrors.email = "Invalid email format";
     if (!validatePhoneNumber(profile.phoneNumber)) validationErrors.phoneNumber = "Invalid phone number";
@@ -85,12 +96,12 @@ function UserProfile() {
     }
   };
 
-  const toggleEdit = (field) => {
+  const toggleEdit = (field: keyof Profile) => {
     setEditableField((prevField) => (prevField === field ? null : field));
     setIsSaved(false);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
@@ -163,8 +174,8 @@ function UserProfile() {
                 {editableField === "phoneNumber" ? "Save" : "Edit"}
               </button>
             </div>
-            
-          </div>{errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+            {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+          </div>
           <br />
 
           <label>College Name</label>

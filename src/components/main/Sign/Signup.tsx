@@ -5,10 +5,10 @@ import { UserAPI } from "../../../apis/UserAPIs";
 import { User, UserRole } from "../../../types/User";
 import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
-import Login from "../login/Login"; // Import the Login component
 import logo1 from "../../../assets/techbairn logo white-01.png";
 import { Navigate, useNavigate } from "react-router-dom"; // Import useHistory
 import { Circles } from "react-loader-spinner";
+import Login from "../login/Login";
 function Signup({ setIsLoggedIn }: any) {
   const Navigate = useNavigate(); // Initialize useHistory
 
@@ -27,6 +27,7 @@ function Signup({ setIsLoggedIn }: any) {
   const [isChecked, setIsChecked] = useState(false); // State to track the checkbox
   const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
   const [isLoading, setIsLoading] = useState(false);
+  const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -216,7 +217,9 @@ function Signup({ setIsLoggedIn }: any) {
       </div>
       {isLoginPopupVisible && (
         <div className="login absolute w-[100%] ml-[114px] h-full overflow-y-hidden bg-white border">
-          <Login />
+          <Login  handle_login={() => setIsLoggedIn(true)}
+            setIsLoggedIn={setIsLoggedIn}
+            setloggedInUserEmail={setloggedInUserEmail}/>
         </div>
       )}
     </div>

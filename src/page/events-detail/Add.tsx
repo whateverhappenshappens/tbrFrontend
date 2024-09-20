@@ -203,15 +203,16 @@ function App({ selectedEvent, setUpdateFormVisible }) {
       <div className="inline-form">
         <label htmlFor="date">Date:</label>
         <div className="date-input-container">
-          <input
-            type="datetime-local"
-            id="date"
-            name="date"
-            placeholder="Date"
-            value={formData.date}
-            onChange={handleInputChange}
-            className="date"
-          />
+        <input
+  type="datetime-local"
+  id="date"
+  name="date"
+  placeholder="Date"
+  value={formData.date ? new Date(formData.date).toISOString().slice(0, 16) : ""}
+  onChange={handleInputChange}
+  className="date"
+/>
+
           
         </div>
       </div>

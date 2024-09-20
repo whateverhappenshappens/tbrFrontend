@@ -43,11 +43,11 @@ function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
   const [pastEventData, setPastEventData] = useState<any>();
-  const [loggedInUserEmail, setLoggedInUserEmail] = useState<string>("");
+  
   const [coupon, setCoupon] = useState<any>();
   const [cartDetailsData, setCartDetailsData] = useState<any>("");
   const [cartValue, setCartValueData] = useState<number>();
-
+  const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
   useEffect(() => {
     const fetchActiveEvents = async () => {
       try {
@@ -159,7 +159,9 @@ function App() {
             />
             <Route
               path="/login"
-              element={<Login setloggedInUserEmail={setLoggedInUserEmail} />} // Ensure the prop is passed correctly
+              element={<Login handle_login={() => setIsLoggedIn(true)}
+              setIsLoggedIn={setIsLoggedIn}
+              setloggedInUserEmail={setloggedInUserEmail} />} // Ensure the prop is passed correctly
             />
             <Route path="/signup" element={<Signup />} />
             <Route path="/refer" element={<Refer />} />
@@ -192,8 +194,6 @@ function App() {
               path="/operations"
               element={
                 <OperationSignIn
-                  handle_login={handleLogin}
-                  setIsLoggedIn={setIsLoggedIn}
                 />
               }
             />

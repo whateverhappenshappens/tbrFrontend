@@ -12,4 +12,6 @@ export interface Event {
   speakerImageLink: string;
   youtubeLink: string;
   speakerName: string;
+  isActive: boolean; 
+  isDeleted: boolean;
 }

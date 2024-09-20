@@ -40,15 +40,16 @@ const EnrollStudent: React.FC<Props> = ({ coupon, setcoupon }) => {
   return (
     <div className="p-6 max-w-sm mt-[15rem] mx-auto bg-white rounded-xl shadow-md space-y-4">
       <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/2zhUebETcUI?si=TScgi1XOgQ1FYuGS"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/2zhUebETcUI?si=TScgi1XOgQ1FYuGS"
+  title="YouTube video player"
+  style={{ border: "none" }} 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+></iframe>
+
       <h1 className="text-2xl font-bold text-center">Coupon Application</h1>
       <div className="flex items-center space-x-4">
         <input
