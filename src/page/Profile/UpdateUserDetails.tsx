@@ -6,6 +6,13 @@ import * as jsonpatch from "fast-json-patch";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { api } from "../../apis/configs/axiosConfigs";
+interface Profile {
+  fullname: string;
+  email: string;
+  phoneNumber: string;
+  collegeName: string;
+  stream: string;
+}
 function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
   console.log("UpdateData:", cartDetailsData);
   console.log("DiscountPrice: ", cartDetailsData.cartValue);
@@ -19,7 +26,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
     stream: "",
   });
   const [isValid, setIsValid] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Partial<Profile>>({});
   const [editableField, setEditableField] = useState(null);
   const [isSaved, setIsSaved] = useState(true); // Track if the profile is saved
   const [showModal, setShowModal] = useState(false); // State for controlling the modal
@@ -51,7 +58,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
 
-    const newErrors = {};
+    const newErrors : Partial<Profile>= {};
 
     
     if (!email || !emailRegex.test(email))

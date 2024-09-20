@@ -1,0 +1,15 @@
+// export interface Event {
+//     bannerLinkPC: string;
+//     bannerLinkMobile: string;
+//     speakerImageLink:string;
+//     heading: string;
+//     subHeading: string;
+//     date: string;
+//     aboutSpeaker: string;
+//     speakerSocial: string;
+//     speakerExperience: string;
+//     mode: string;
+//     youtubeLink: string;
+//     speakerName: string;
+//   }
+  

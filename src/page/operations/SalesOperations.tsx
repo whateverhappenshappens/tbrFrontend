@@ -3,13 +3,16 @@ import { SalesAPIs } from "../../apis/SalesAPI/SalesAPIs";
 import { saveAs } from "file-saver";
 import Papa from "papaparse";
 import { CartAPI } from "../../apis/CartAPI/CartAPIs";
-
+interface Result {
+  [key: string]: string | number;
+}
 const SalesOperations: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [selectedSubOption, setSelectedSubOption] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [mobile, setMobile] = useState<string>("");
-  const [results, setResults] = useState<any[]>([]); // State to store fetched data
+  const [results, setResults] = useState<Result[]>([]);
+ // State to store fetched data
 
   const handleMainChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);

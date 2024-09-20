@@ -99,14 +99,14 @@ function EventsManagerPage({ headerHeight }: any) {
         await EventsAPI.UndoDeleteEventById(event.id);
         setCurrentEvents((prevEvents) =>
           prevEvents.map((e) =>
-            e.id === event.id ? { ...e, isDeleted: false } : e
+            e === event.id ? { ...e, isDeleted: false } : e
           )
         );
       } else {
         await EventsAPI.DeleteEventById(event.id);
         setCurrentEvents((prevEvents) =>
           prevEvents.map((e) =>
-            e.id === event.id ? { ...e, isDeleted: true } : e
+            e === event.id ? { ...e, isDeleted: true } : e
           )
         );
       }
@@ -118,17 +118,17 @@ function EventsManagerPage({ headerHeight }: any) {
     try {
       console.log(event.id);
       if (event.isActive) {
-        await EventsAPI.pastEvents(event.id);
+        await EventsAPI.pastEvents();
         setCurrentEvents((prevEvents) =>
           prevEvents.map((e) =>
-            e.id === event.id ? { ...e, isActive: false } : e
+            e === event.id ? { ...e, isActive: false } : e
           )
         );
       } else {
-        await EventsAPI.activeEvents(event.id);
+        await EventsAPI.activeEvents();
         setCurrentEvents((prevEvents) =>
           prevEvents.map((e) =>
-            e.id === event.id ? { ...e, isActive: false } : e
+            e === event.id ? { ...e, isActive: false } : e
           )
         );
       }

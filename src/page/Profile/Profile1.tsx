@@ -3,18 +3,24 @@ import "./Profile1.css";
 import { UserAPI } from "../../apis/UserAPIs";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+interface Profile {
+  fullname: string;
+  email: string;
+  phoneNumber: string;
+  collegeName: string;
+  stream: string;
+}
 function Profile() {
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState({
-   
+    fullname:"",
     email: "",
     phoneNumber: "",
     collegeName: "",
     stream: "",
   });
   const [isValid, setIsValid] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Partial<Profile>>({});
   const [editableField, setEditableField] = useState(null);
   const [isSaved, setIsSaved] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -35,7 +41,7 @@ function Profile() {
     const fetchProfileData = async () => {
       if (email) {
         try {
-          const res = await UserAPI.userProfileDetail(email);
+          const res = await UserAPI.userProfileDetail();
           setProfile({
             fullname: res.data.fullname,
             email: res.data.email,
@@ -68,7 +74,7 @@ function Profile() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[6-9]\d{9}$/;
 
-    const newErrors = {};
+    const newErrors: Partial<Profile> = {};
 
     
     if (!email || !emailRegex.test(email))

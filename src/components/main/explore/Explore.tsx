@@ -7,9 +7,7 @@ import { UserAPI } from "../../../apis/UserAPIs";
 
 const Explore = ({ handle_login }: any) => {
   const Navigate = useNavigate();
-  const private_test = () => {
-    UserAPI.private_test(handle_login);
-  };
+  
   const public_test = () => {
     UserAPI.public_test();
   };

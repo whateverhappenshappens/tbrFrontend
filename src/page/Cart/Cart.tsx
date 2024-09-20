@@ -39,6 +39,7 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
   const { cart, removeFromCart } = useCart();
   const [isSignupPopupVisible, setIsSignupPopupVisible] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
   const cartPage = useRef<HTMLDivElement | null>(null);
   const [netPriceObj, setNetPriceObj] = useState<NetPrice>({
     totalPrice: 0,
@@ -228,7 +229,9 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
             >
               <FaTimes />
             </button>
-            <Signup />
+            <Signup  handle_login={() => setIsLoggedIn(true)}
+            setIsLoggedIn={setIsLoggedIn}
+            setloggedInUserEmail={setloggedInUserEmail} />
           </div>
         </div>
       )}
