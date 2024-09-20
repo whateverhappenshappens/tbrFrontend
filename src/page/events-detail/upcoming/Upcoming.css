@@ -104,7 +104,7 @@
 
 .upcoming-buttons {
     gap: 1rem;
-    margin-top: 2rem;
+    margin-bottom: 5rem;
 }
 
 .upcoming-buttons-enroll {
@@ -137,14 +137,20 @@
 
 @media (max-width:768px){
     .upcoming{
-        padding: 0px 20px;
-        margin: 0rem;
+        width: 100vw;
+        /* padding: 0px 20px; */
+        margin: 0;
+        padding: 0;
     }
     .upcoming-content{
+        width: 100%;
         flex-direction: column-reverse;
         height:auto;
-        padding:2rem 2rem;
+        /* padding:2rem 2rem; */
         justify-content: flex-end;
+        border-radius: 0;
+        padding:4rem 2rem;
+
     }
     .upcoming-info{
         margin: 0px;

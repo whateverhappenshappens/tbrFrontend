@@ -25,6 +25,7 @@
 .project-card-rectangle img {
     max-width: 100%;
     height: auto;
+    object-fit: cover;
 }
 
 .project-card-content-heading {

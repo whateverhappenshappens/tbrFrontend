@@ -142,9 +142,6 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
             </button>
           </div>
           {errors.password && <div className="error">{errors.password}</div>}
-          <div className="new">
-            <div className="pass">Forget Password?</div>
-          </div>
           <br />
           <button className="btn1" onClick={handle_login_btn} disabled={isLoading}>
             {isLoading ? (

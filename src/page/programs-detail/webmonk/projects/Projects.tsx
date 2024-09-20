@@ -5,6 +5,12 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import ProjectsCard from "./projectscard/ProjectsCard";
+import portfolio from "../../../../assets/program details/pikaso_texttoimage_portfolio-website-project.jpeg";
+import tinyUrl from "../../../../assets/program details/pikaso_texttoimage_Tiny-URL-web-application-project.jpeg";
+import blogging from "../../../../assets/program details/pikaso_texttoimage_Blogging-platform-web-development-application-proj.jpeg";
+import weatherApp from "../../../../assets/program details/pikaso_texttoimage_weather-application-web-development-project.jpeg";
+import yourProject from "../../../../assets/program details/pikaso_texttoimage_your-projectidea-.jpeg";
+
 
 const Projects: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
@@ -15,26 +21,31 @@ const Projects: React.FC = () => {
       heading: "Responsive Portfolio Website",
       paragraph:
         "A modern and adaptable website showcasing your portfolio with a seamless user experience across all devices. Highlight your work and skills with a clean, professional design.    ",
+      image: portfolio,
     },
     {
       heading: "Tiny URL",
       paragraph:
         " A tool for shortening long URLs into compact, easy-to-share links. Simplify and manage your web addresses with a streamlined and user-friendly interface.",
+        image: tinyUrl ,
     },
     {
       heading: "Blogging Platform",
       paragraph:
         "A versatile platform for creating, managing, and sharing your blog content effortlessly. Engage your audience with an intuitive and user-friendly interface.",
+        image: blogging,
     },
     {
       heading: "Weather Application",
       paragraph:
         " A tool for shortening long URLs into compact, easy-to-share links. Simplify and manage your web addresses with a streamlined and user-friendly interface.",
+        image: weatherApp,
     },
     {
       heading: "Your Idea/Project",
       paragraph:
         "Now that you have learned the MERN Stack (Full Stack Web Development), it's time to make your idea/project accessible to others on the web. Share your creation and let people benefit from your work.",
+        image: yourProject,
     },
   ];
 
@@ -85,6 +96,7 @@ const Projects: React.FC = () => {
                 <ProjectsCard
                   heading={project.heading}
                   paragraph={project.paragraph}
+                  image={project.image}
                 />
               </div>
             ))}

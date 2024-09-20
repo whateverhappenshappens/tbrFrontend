@@ -159,6 +159,8 @@ function Signup({ setIsLoggedIn }: any) {
             value={userDetails.email}
             onChange={handleInputChange}
           />
+          <p className={`text-sm capitalize text-red-600 ${userDetails.email.length == 0 ? 'hidden' : 'block'}`}>{formError.email}</p>
+
           <label>Password</label>
           <br />
           <div className="password-container">
@@ -170,6 +172,8 @@ function Signup({ setIsLoggedIn }: any) {
               value={userDetails.password}
               onChange={handleInputChange}
             />
+            <p className={`text-sm capitalize text-red-600 ${userDetails.password.length == 0 ? 'hidden' : 'block'}`}>{formError.password}</p>
+
             <button
               type="button"
               className="eye-icon"
@@ -185,7 +189,7 @@ function Signup({ setIsLoggedIn }: any) {
             onChange={() => setIsChecked(!isChecked)}
           />
           <span className="ex1">
-            I accept all <span className="ex">Terms & conditions</span>
+            I accept all <span className="ex"><a href="https://drive.google.com/file/d/18gwUjSwiG7XRywkAHWah9uyX8rrdph1y/view" target="_blank">Terms & conditions</a></span>
           </span>
           <br />
           <button

@@ -43,7 +43,7 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
       <Slider {...settings}>
         {ActiveData && Array.isArray(ActiveData) ? (
           ActiveData.map((data: any, index: number) => (
-            <div key={index} className="biggest-hackathon-slide">
+            <div key={index} className="biggest-hackathon-slide ">
               <div className="biggest-hackathon">
                 <div className="biggest-hackathon-text">
                   <p className="biggest-hackathon-text-large visbyroundCF extrabold">

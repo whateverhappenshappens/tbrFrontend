@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./ProjectsCard.css";
-import story from "../../../../../assets/yourstory1.png";
 
 interface props {
   heading: string;
   paragraph: string;
+  image: string;
 }
 
 const ProjectsCard: React.FC<props> = (props) => {
@@ -15,7 +15,7 @@ const ProjectsCard: React.FC<props> = (props) => {
   return (
     <div className="project-card">
       <div className="project-card-rectangle">
-        <img src={story} alt="" />
+        <img src={props.image} alt="" />
       </div>
       <div className="project-card-content">
         <div className="project-card-content-heading h-auto">

@@ -27,7 +27,7 @@ const Upcoming: React.FC<props> = (props) => {
   console.log(props.data?.isActive);
 
   return (
-    <div className="upcoming">
+    <div className="upcoming ">
       <div className="upcoming-content">
         <div className="upcoming-info">
           <div className="upcoming-links">

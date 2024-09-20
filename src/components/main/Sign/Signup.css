@@ -67,7 +67,9 @@
   border: 2px solid red;
 }
 .left h2 {
-  font: normal normal bold 40px/62px extra-bold;
+  /* font: normal normal bold 40px/62px extra-bold; */
+  font: normal normal bold 40px extra-bold;
+
   color: #FFFFFF;
 }
 
@@ -287,3 +289,4 @@
     padding-bottom: 10px;
   }
 }
+

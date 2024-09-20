@@ -5,6 +5,8 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import ProjectsCard from "./projectscard/ProjectsCard";
+import temperatureModal from "../../../../assets/program details/pikaso_texttoimage_Temperature-Prediction-Model-AI-prpject.jpeg";
+import story from "../../../../assets/yourstory1.png";
 
 const Projects: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
@@ -15,26 +17,31 @@ const Projects: React.FC = () => {
       heading: "5Temperature Prediction Model",
       paragraph:
         "A predictive model designed to forecast temperature trends with high accuracy. Utilize advanced algorithms to analyze weather patterns and deliver reliable temperature predictions.",
+      image: temperatureModal,
     },
     {
       heading: "House Price Prediction",
       paragraph:
         "A predictive model designed to estimate future house prices based on various market factors. Leverage data analytics to make informed real estate investment decisions.",
+      image: story,
     },
     {
       heading: "Handwritten Text Recognition      ",
       paragraph:
         "A system designed to convert handwritten text into digital format with high accuracy. Streamline document processing and data entry by leveraging advanced recognition algorithms.",
+      image: story,
     },
     {
       heading: "Face Emotion Recognition",
       paragraph:
         "A project that utilizes facial expression analysis to recognize and interpret emotions. Enhance user interactions and experience by providing precise, real-time emotion detection.",
+      image: story,
     },
     {
       heading: "Complete Deployment of Your Idea/Project ",
       paragraph:
         "A comprehensive solution for deploying your idea or project from start to finish. Ensure smooth implementation and operation with end-to-end deployment services that cover all stages of the process.",
+      image: story,
     },
   ];
 
@@ -85,6 +92,7 @@ const Projects: React.FC = () => {
                 <ProjectsCard
                   heading={project.heading}
                   paragraph={project.paragraph}
+                  image={project.image}
                 />
               </div>
             ))}
