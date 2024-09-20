@@ -228,8 +228,8 @@ function EventsManagerPage({ headerHeight }: any) {
             &times;
           </div>
           <div className="flex flex-1">
-            <AddForm setAddFormVisible={setAddFormVisible} />{" "}
-            {/* Render the add form component */}
+            <AddForm setAddFormVisible={setAddFormVisible} />
+          
           </div>
         </div>
       )}
