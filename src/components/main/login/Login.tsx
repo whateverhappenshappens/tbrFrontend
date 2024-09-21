@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReviewSlider from "./ReviewSlider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -33,6 +33,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
   const [isVisible, setIsVisible] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+
   const validateForm = () => {
     let valid = true;
     let emailError = "";
@@ -43,6 +44,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
     } else if (!/\S+@\S+\.\S+/.test(userDetails.email)) {
       emailError = "Invalid email format.";
       valid = false;
+
     }
     if (!userDetails.password) {
       passwordError = "Password is required.";
@@ -95,6 +97,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
     return null;
   }
 
+
   return (
     <GoogleOAuthProvider clientId="">
       <div className="main_box">
@@ -124,9 +127,12 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
             type="email"
             placeholder="JohnDoe@abc.com"
             value={userDetails.email}
-            onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })}
+            onChange={(e) => {
+              validateForm()
+              setUserDetails({ ...userDetails, email: e.target.value })
+            } }
           />
-          {errors.email && <div className="error">{errors.email}</div>}
+          {errors.email && <div className={`error text-lg capitalize text-red-600 ${userDetails.email.length == 0 ? 'hidden' : 'block'}`}>{errors.email}</div>}
           <label>Password</label>
           <br />
           <div className="password-container">
@@ -135,13 +141,16 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
               type={showPassword ? "text" : "password"}
               placeholder="Minimum 8 characters"
               value={userDetails.password}
-              onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })}
+              onChange={(e) => {
+                validateForm()
+                setUserDetails({ ...userDetails, password: e.target.value })
+              }}
             />
             <button type="button" className="eye-icon" onClick={togglePasswordVisibility}>
               {showPassword ? <FaEyeSlash className="icon" /> : <FaEye className="icon" />}
             </button>
           </div>
-          {errors.password && <div className="error">{errors.password}</div>}
+          {errors.password && <div className={`error text-lg capitalize text-red-600 ${userDetails.password.length == 0 ? 'hidden' : 'block'}`}>{errors.password}</div>}
           <br />
           <button className="btn1" onClick={handle_login_btn} disabled={isLoading}>
             {isLoading ? (

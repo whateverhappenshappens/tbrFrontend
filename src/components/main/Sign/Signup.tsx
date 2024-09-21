@@ -160,7 +160,7 @@ function Signup({ setIsLoggedIn }: any) {
             value={userDetails.email}
             onChange={handleInputChange}
           />
-          <p className={`text-sm capitalize text-red-600 ${userDetails.email.length == 0 ? 'hidden' : 'block'}`}>{formError.email}</p>
+          <p className={`text-lg capitalize text-red-600 ${userDetails.email.length == 0 ? 'hidden' : 'block'}`}>{formError.email}</p>
 
           <label>Password</label>
           <br />
@@ -173,7 +173,7 @@ function Signup({ setIsLoggedIn }: any) {
               value={userDetails.password}
               onChange={handleInputChange}
             />
-            <p className={`text-sm capitalize text-red-600 ${userDetails.password.length == 0 ? 'hidden' : 'block'}`}>{formError.password}</p>
+            <p className={`text-lg capitalize text-red-600 ${userDetails.password.length == 0 ? 'hidden' : 'block'}`}>{formError.password}</p>
 
             <button
               type="button"

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/Header";
@@ -48,6 +48,7 @@ function App() {
   const [cartDetailsData, setCartDetailsData] = useState<any>("");
   const [cartValue, setCartValueData] = useState<number>();
   const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
+
   useEffect(() => {
     const fetchActiveEvents = async () => {
       try {
@@ -108,6 +109,8 @@ function App() {
     };
     checkTokenValidity();
   }, []);
+
+
 
   return (
     <BrowserRouter>

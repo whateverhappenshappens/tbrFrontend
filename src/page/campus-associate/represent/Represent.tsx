@@ -28,7 +28,7 @@ const handelClick = () => {
       <div className="boy-image">
         <img src={Boy} alt="" />
       </div>
-      <div ref={scrollToRef} className="doubts">
+      <div  className="doubts">
         <p className="vr-bold doubts-head1 try">
           Ready to make<br/><br/> an impact?
         </p>
