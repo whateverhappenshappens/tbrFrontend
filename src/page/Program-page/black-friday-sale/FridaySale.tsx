@@ -4,37 +4,35 @@ import eventBoy from "../../../assets/Man photo@2x.png";
 import { Link } from "react-router-dom";
 
 const Enroll: React.FC = () => {
+  const handleClick = () => {
+    const element = document.getElementById("course") as HTMLElement | null; // Removed '#' from ID
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="enroll">
       <div className="enroll-content">
-        <div className="enroll-text">
-          <p className="enroll-text-large ">
-            <span>Flat 50% off</span>
-            <br />
-            Black Friday Sale on Machinester
+        <div className="enroll-text w-[70vw] lg:w-[50vw]">
+          <p className="enroll-text-large">
+            Transform Your Career with Our Expert-Led Programs
           </p>
-          {/* <p className="visbyroundCF extrabold"></p> */}
           <p className="enroll-text-small visbyroundCF medium">
-            Are you passionate about making a difference in society and
-            expanding your own knowledge? TechBairn offers an exciting
-            opportunity right at your fingertips!
+            Gain hands-on experience, industry certifications, guaranteed
+            internships, and 24/7 support to excel in your career.
           </p>
 
-          <button className="enroll-button">
-            <Link to={"/course/codeslayer"} >
-              <p>Apply Now</p>
-            </Link>
+          <button className="enroll-button" onClick={handleClick}>
+            <p>Explore</p>
           </button>
         </div>
         <div className="enroll-img">
           <p className="image-para">
-            <span>Flat 50% off</span>
-            <br />
-            Black Friday Sale on Machinester
+          Transform Your Career with Our Expert-Led Programs
           </p>
-          <img src={eventBoy} alt="Girl"></img>
+          <img src={eventBoy} alt="Event Boy" />
         </div>
-        {/* <button className="enroll-help">Help</button> */}
       </div>
     </div>
   );

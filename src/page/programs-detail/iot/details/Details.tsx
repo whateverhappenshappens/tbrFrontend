@@ -116,8 +116,7 @@ const Details: React.FC<Props> = (props) => {
             <p>Program Format: Online Live Classes </p>
             <p>Program Duration: 3 Months , At 5-10 hrs/week</p>
             <p>
-              You Will Learn: HTML,CSS,Git and
-              Github,JavaScript,React,Node,MongoDB,Express,Google Analytics
+              You Will Learn: C programming, electronics fundamentals, Arduino, interfacing techniques, IoT applications, and more.
             </p>
           </div>
           <div className="details-buttons">

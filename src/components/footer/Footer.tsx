@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
             <a href="https://instagram.com/techbairn" target="_blank" rel="noopener noreferrer">
               <IoLogoInstagram />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/techbairn?lang=en" target="_blank" rel="noopener noreferrer">
               <FaTwitter />
             </a>
             <a href="https://www.youtube.com/@techbairn" target="_blank" rel="noopener noreferrer">

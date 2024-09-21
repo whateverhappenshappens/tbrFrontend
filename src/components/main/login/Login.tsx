@@ -1,7 +1,7 @@
 import {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReviewSlider from "./ReviewSlider";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import "../../../styles/components/Login.css";
 import { UserRole } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
@@ -168,6 +168,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
           </button>
           <p className="cont">-------or continue login with--------</p>
           <div className="google">
+          <FaGoogle className="icon12" />
             <button onClick={handleLogin}>Google</button>
           </div>
         </div>

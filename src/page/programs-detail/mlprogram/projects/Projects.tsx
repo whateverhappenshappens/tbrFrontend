@@ -5,8 +5,11 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import ProjectsCard from "./projectscard/ProjectsCard";
-import temperatureModal from "../../../../assets/program details/pikaso_texttoimage_Temperature-Prediction-Model-AI-prpject.jpeg";
-import story from "../../../../assets/yourstory1.png";
+import temperatureModal from "../../../../assets/program details/Ai-images/pikaso_texttoimage_Temperature-Prediction-Model-AI-prpject.jpeg";
+import housePricePrediction from "../../../../assets/program details/Ai-images/pikaso_texttoimage_House-Price-Prediction-AI-prpject.jpeg";
+import handwrittenText from "../../../../assets/program details/Ai-images/pikaso_texttoimage_Handwritten-Text-Recognition-AI-project.jpeg";
+import faceEmotion from "../../../../assets/program details/Ai-images/pikaso_texttoimage_Face-Emotion-Recognition-AI-project.jpeg";
+import completeEnd from "../../../../assets/program details/Ai-images/Complete Deployment.jpg";
 
 const Projects: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
@@ -23,25 +26,25 @@ const Projects: React.FC = () => {
       heading: "House Price Prediction",
       paragraph:
         "A predictive model designed to estimate future house prices based on various market factors. Leverage data analytics to make informed real estate investment decisions.",
-      image: story,
+      image: housePricePrediction,
     },
     {
       heading: "Handwritten Text Recognition      ",
       paragraph:
         "A system designed to convert handwritten text into digital format with high accuracy. Streamline document processing and data entry by leveraging advanced recognition algorithms.",
-      image: story,
+      image: handwrittenText,
     },
     {
       heading: "Face Emotion Recognition",
       paragraph:
         "A project that utilizes facial expression analysis to recognize and interpret emotions. Enhance user interactions and experience by providing precise, real-time emotion detection.",
-      image: story,
+      image: faceEmotion,
     },
     {
-      heading: "Complete Deployment of Your Idea/Project ",
+      heading: "Complete end to end Deployment ",
       paragraph:
         "A comprehensive solution for deploying your idea or project from start to finish. Ensure smooth implementation and operation with end-to-end deployment services that cover all stages of the process.",
-      image: story,
+      image: completeEnd,
     },
   ];
 

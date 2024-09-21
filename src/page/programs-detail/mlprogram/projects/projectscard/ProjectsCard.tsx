@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProjectsCard.css";
 
 interface props {
@@ -8,6 +8,8 @@ interface props {
 }
 
 const ProjectsCard: React.FC<props> = (props) => {
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {setIsReadMore(!isReadMore)};
   return (
     <div className="project-card">
       <div className="project-card-rectangle">
@@ -18,11 +20,11 @@ const ProjectsCard: React.FC<props> = (props) => {
           <p className=" vr-bold">{props.heading}</p>
         </div>
         <div className="project-card-content-paragraph">
-          <p className="vr-medium">{props.paragraph}</p>
+          <p className="vr-medium">{isReadMore ? props.paragraph.slice(0, 80) + '...': props.paragraph }</p>
         </div>
         <div className="project-card-content-button">
-          <button>
-            <p className="vr-bold">Read Now</p>
+        <button onClick={toggleReadMore}>
+            <p className="vr-bold">{isReadMore ? 'Read Now' : 'show less'}</p>
           </button>
         </div>
       </div>

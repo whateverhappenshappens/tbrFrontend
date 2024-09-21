@@ -124,7 +124,7 @@ function LandingPage({
       <ExplorePrograms />
       <DarkBanner
         title="Collaborations"
-        subtitle="Some subtitle will be provided later about our collaborations"
+        subtitle=""
         logos={logo_college}
       />
       <DisplayEvent />

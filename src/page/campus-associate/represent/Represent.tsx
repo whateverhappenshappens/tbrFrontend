@@ -7,7 +7,7 @@ const Represent: React.FC = () => {
 const handelClick = () => {
   const element = document.querySelector("#associate") as HTMLElement | null;
   if (element) {
-    element.scrollIntoView();
+    element.scrollIntoView({ behavior: "smooth" });
   }
 };
 

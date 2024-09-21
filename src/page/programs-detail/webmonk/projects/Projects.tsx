@@ -5,11 +5,11 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import ProjectsCard from "./projectscard/ProjectsCard";
-import portfolio from "../../../../assets/program details/pikaso_texttoimage_portfolio-website-project.jpeg";
-import tinyUrl from "../../../../assets/program details/pikaso_texttoimage_Tiny-URL-web-application-project.jpeg";
-import blogging from "../../../../assets/program details/pikaso_texttoimage_Blogging-platform-web-development-application-proj.jpeg";
-import weatherApp from "../../../../assets/program details/pikaso_texttoimage_weather-application-web-development-project.jpeg";
-import yourProject from "../../../../assets/program details/pikaso_texttoimage_your-projectidea-.jpeg";
+import portfolio from "../../../../assets/program details/webmonk-images/pikaso_texttoimage_portfolio-website-project.jpeg";
+import tinyUrl from "../../../../assets/program details/webmonk-images/pikaso_texttoimage_Tiny-URL-web-application-project.jpeg";
+import blogging from "../../../../assets/program details/webmonk-images/pikaso_texttoimage_Blogging-platform-web-development-application-proj.jpeg";
+import weatherApp from "../../../../assets/program details/webmonk-images/pikaso_texttoimage_weather-application-web-development-project.jpeg";
+import yourProject from "../../../../assets/program details/webmonk-images/pikaso_texttoimage_your-projectidea-.jpeg";
 
 
 const Projects: React.FC = () => {

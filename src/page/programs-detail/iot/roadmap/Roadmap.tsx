@@ -1,6 +1,6 @@
 import React from "react";
 import "./Roadmap.css";
-import story from "../../../../assets/mid.svg";
+import story from "../../../../assets/Group 343.png";
 
 const ProjectsCard: React.FC = () => {
   return (

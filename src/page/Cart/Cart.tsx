@@ -176,11 +176,11 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
           <div className="cart-footer flex flex-col gap-5 border-t-2 border-dashed border-[#2E436A] pt-5">
             <div className="net-box flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
               <div className="price text-3xl flex justify-between lg:gap-10">
-                <div className="text-4xl lg:text-5xl xl:text-4xl xl:overflow-visible font-semibold">Net Price</div>
+                <div className="text-4xl lg:text-5xl xl:text-4xl xl:overflow-hidden font-semibold">Net Price</div>
                 <div className="new text-[#6D87F5] font-semibold">Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}</div>
               </div>
               <div className="discount">
-                <div className="text-2xl lg:text-4xl xl:text-5xl xl:overflow-visible flex justify-between font-semibold">
+                <div className="text-2xl lg:text-5xl xl:text-3xl xl:overflow-hidden flex justify-between font-semibold">
                   <div className="text-[#FF7E6C]">
                     {additionalDiscount > 0 ? `` : `${Math.floor(netPriceObj.discount)}% off`}
                   </div>
@@ -224,10 +224,10 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
         <div className=" flex items-center justify-center fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="signup-content bg-white p-8 rounded-lg shadow-md relative">
             <button
-              className="close-button  text-gray-500 absolute top-2 right-2"
+              className="close-button text-6xl   text-black absolute top-2 right-2"
               onClick={() => setIsSignupPopupVisible(false)}
             >
-              <FaTimes />
+              <FaTimes  />
             </button>
             <Signup  handle_login={() => setIsLoggedIn(true)}
             setIsLoggedIn={setIsLoggedIn}

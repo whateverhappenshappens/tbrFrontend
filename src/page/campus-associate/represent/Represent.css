@@ -156,6 +156,7 @@
     .container2 {
         flex-direction: column;
         padding:7rem 4rem;
+        margin: 0;
     }
     .represent, .doubts{
         width: 100%;
@@ -167,7 +168,6 @@
     }
     .represent-head1{
         font-size: 3.7rem;
-        margin-top:8rem
     }
     .doubts-head1{
         font-size: 4rem;

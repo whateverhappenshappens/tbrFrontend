@@ -13,7 +13,6 @@ function ProfilePage() {
         <aside className="left1">
           <img src={boyProfile} alt="" />
           <div className="buttondabba1">
-            <button className="buttun22 buttun1">Change Picture</button>
             <button className="buttun buttun2">Apply Changes</button>
           </div>
         </aside>

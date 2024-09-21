@@ -67,7 +67,7 @@ const Course: React.FC<Props> = ({ value }) => {
     handleFilter(value);
   }, [value]);
   return (
-    <div className="course-choise-box">
+    <div id="course" className="course-choise-box">
       {show.web && (
         <Card
           heading="Webmonk"

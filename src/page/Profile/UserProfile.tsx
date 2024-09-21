@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Profile.css";
-import boyProfile from "../../assets/Boy photo.png";
+import boyProfile from "../../assets/useImage.jpg";
 import { UserAPI } from "../../apis/UserAPIs";
 import toast from "react-hot-toast";
 
@@ -113,7 +113,6 @@ function UserProfile() {
         <aside className="left1">
           <img src={boyProfile} alt="" />
           <div className="buttondabba1">
-            <button className="buttun22 buttun1">Change Picture</button>
             <button className="apply_button" onClick={handleSave}>
               Apply Changes
             </button>

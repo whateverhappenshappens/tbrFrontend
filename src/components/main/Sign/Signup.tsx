@@ -190,7 +190,7 @@ function Signup({ setIsLoggedIn }: any) {
             onChange={() => setIsChecked(!isChecked)}
           />
           <span className="ex1">
-            I accept all <span className="ex"><a href="https://drive.google.com/file/d/18gwUjSwiG7XRywkAHWah9uyX8rrdph1y/view" target="_blank">Terms & conditions</a></span>
+            I accept all <span className="ex"><a href="https://docs.google.com/document/d/1fbuBJivN2D_C9vBevRpaZV_GxsMCEfRWWsaYxE6jBLQ/edit?usp=sharing" target="_blank">Terms & conditions</a></span>
           </span>
           <br />
           <button

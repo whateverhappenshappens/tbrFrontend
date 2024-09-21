@@ -7,27 +7,27 @@ const Concepts: React.FC = () => {
   const accordionData = [
     {
       title: "1. Introduction to C programming and Electronics",
-      content: `Introduction about HTML, Recommended w3c structure for HTML page,Heading fonts(H1-H6), creating a list, attaching links, creating form and tables,adding images.`,
+      content: ` This course dives into the realm of IoT, where you'll learn how to utilise connected devices to transform various industries. From manufacturing to environmental conservation, IoT opens up endless opportunities for innovation`,
     },
     {
       title: "2. Introduction to Arduino",
-      content: `What is CSS? Selectors, how many types of CSS usage are there , Basic Styling, Relative & Absolute, Media Query, Responsive Design, Bootstrap.`,
+      content: `Yes, the course emphasises practical learning. You'll work on projects involving Arduino, sensors, Wi-Fi modules, and more.`,
     },
     {
       title: "3. Pulse Width Modulation (PWM)",
-      content: `Introduction about Git & Github, Add, Merge, Checkout, Github - Create Repo, remote addition.`,
+      content: `Pulse Width Modulation (PWM), start with basic theory on duty cycles and applications, then experiment with microcontrollers like Arduino to implement real projects.`,
     },
     {
       title: "4. Interfacing",
-      content: `Introduction to JS, Place Javascript Code, Defining Variables, Functions and Scope, Types of JavaScript,Functions Explained, Functions, Object Literals and the 'this' Keyword, Array.`,
+      content: `Learn interfacing, start by communication protocols and component specifications, then practice connecting sensors and actuators to microcontrollers through hands-on projects.`,
     },
     {
       title: "5. IoT",
-      content: `Simple Server, Routing, API Authentication, Map, Rest, forEach, reduce, set timeout, Async functions, Callback >>> Promises >>> async-await, Introduction on Express, Make a call from frontend to server, Express Params and Query String, Express Middleware.`,
+      content: `IoT fundamentals and hands-on projects.`,
     },
     {
       title: "6. Node-Red",
-      content: `What is Database? Types of Database, SQL/No-SQL, What is Mongo, JSON/BSON, Mongo Structure, Architecture, Integration, Atlas, What is _id, CRUD with MongoDB Atlas from CMD.`,
+      content: `create visual IoT applications, using its flow-based programming to connect devices and services.`,
     },
   ];
   return (
