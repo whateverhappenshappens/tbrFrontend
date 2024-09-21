@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Roles.css";
 import Cards from "./Cards/Cards";
-import adduser from "../../../assets/add-friend.png";
+import adduser from "../../../assets/add.png";
 import fly from "../../../assets/flyers.png";
 import mega from "../../../assets/megaphone.png";
 const Roles: React.FC = () => {

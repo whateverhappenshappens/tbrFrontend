@@ -77,10 +77,8 @@ const Details: React.FC<Props> = (props) => {
             <a href="http://">
               <p>Programs</p>
             </a>
-            <AiOutlineRight size={15} color="white" />
-            <a href="http://">
-              <p>Web Dev</p>
-            </a>
+            
+            
             <AiOutlineRight size={15} color="white" />
             <a href="http://">
               <p>CodeSlayer</p>
@@ -120,7 +118,7 @@ const Details: React.FC<Props> = (props) => {
             <button className="details-buttons-enroll" onClick={handleEnroll}>
               <p>
                 Enroll Now for{" "}
-                <span className="details-buttons-strike"> ₹ 4999</span> ₹ 3,999
+                <span className="details-buttons-strike"> ₹ 4999</span> ₹ 3,429
               </p>
             </button>
             <a href="https://drive.google.com/file/d/1OseXuScYsS0n2X3I_n8UHstEFBbuLlAj/view?usp=sharing" target="_blank" rel="noopener noreferrer">

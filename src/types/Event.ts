@@ -4,7 +4,7 @@ export interface Event {
   uniqueNameForUrl: string;
   heading: string;
   subHeading: string;
-  date: string;
+  date: Date | string | number;
   aboutSpeaker: string;
   speakerSocial: string;
   speakerExperience: string;

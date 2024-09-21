@@ -217,7 +217,7 @@ const App: React.FC<AddEventFormProps> = ({
   id="date"
   name="date"
   placeholder="Date"
-  value={formData.date }
+  value={typeof formData.date === 'string' ? formData.date : formData.date?.toISOString().slice(0, 16)}
   onChange={handleInputChange}
   className="date"
 />

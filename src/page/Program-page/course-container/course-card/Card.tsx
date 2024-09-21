@@ -21,8 +21,41 @@ const Card: React.FC<CardProps> = (props) => {
     return Math.floor(Math.random() * (10000 - 8000 + 1)) + 8000;
   };
 
-  // Call the function to generate a random rating count for each card
+  // Function to generate a random star rating between 4.0 and 5.0
+  const getRandomRating = () => {
+    return (Math.random() * (5 - 4) + 4).toFixed(1); // Generates a float between 4.0 and 5.0
+  };
+
+  // Call the functions to generate random values for rating and rating count
   const randomRatingCount = getRandomRatingCount();
+  const randomStarRating = parseFloat(getRandomRating());
+
+  // Function to render stars based on the rating
+  const renderStars = (rating: number) => {
+    const fullStars = Math.floor(rating); // Number of full stars
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0; // If there is a half-star
+    const emptyStars = 5 - fullStars - halfStar; // Remaining empty stars
+
+    return (
+      <>
+        {Array(fullStars)
+          .fill("★")
+          .map((star, index) => (
+            <span key={index} className="filled-star">
+              {star}
+            </span>
+          ))}
+        {halfStar === 1 && <span className="half-star">★</span>} {/* Render half star */}
+        {Array(emptyStars)
+          .fill("☆")
+          .map((star, index) => (
+            <span key={index} className="empty-star">
+              {star}
+            </span>
+          ))}
+      </>
+    );
+  };
 
   const handleEnroll = () => {
     const course = {
@@ -47,7 +80,7 @@ const Card: React.FC<CardProps> = (props) => {
         <div className="course-card-content-header">
           <h3>{props.heading}</h3>
           <div className="course-card-content-header-rating">
-            4.0 ★★★★☆ ({randomRatingCount})
+            {randomStarRating} {renderStars(randomStarRating)} ({randomRatingCount})
           </div>
         </div>
         <div className="course-card-content">
