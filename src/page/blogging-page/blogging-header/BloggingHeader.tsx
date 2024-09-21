@@ -11,15 +11,7 @@ const BloggingHeader: React.FC = () => {
       <div className="blogging-page-header-img">
         <img src={header} alt="header" />
       </div>
-      <div className="blogging-page-header-search-box">
-        <div className="blogging-page-header-search-box-search-icon">
-          <FaSearch />
-        </div>
-        <input type="search" id="search" name="search" placeholder="Search" />
-        <div className="blogging-page-header-search-box-arrow-icon">
-          <FaArrowRight />
-        </div>
-      </div>
+      
       {/* <div className="blogging-page-header-nav-bar">
         <NavLink to="/blog">All</NavLink>
         <NavLink to="/blog/education">Education</NavLink>
