@@ -283,12 +283,6 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
           style={{ display: "none" }}
           onChange={(e) => handleFileChange(e, "enrollLink")}
         />
-        <button
-          onClick={() => handleUploadClick("enrollLink")}
-          className="upload-btn"
-        >
-          Upload
-        </button>
       </div>
       <br />
       <div className="inline-form">
