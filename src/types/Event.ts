@@ -14,4 +14,5 @@ export interface Event {
   speakerName: string;
   isActive: boolean; 
   isDeleted: boolean;
+  enrollLink:string;
 }

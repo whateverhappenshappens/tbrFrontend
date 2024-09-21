@@ -8,6 +8,7 @@ interface props {
   rating: number;
   students: number;
   data: any;
+  
 }
 
 const Upcoming: React.FC<props> = (props) => {
@@ -74,7 +75,9 @@ const Upcoming: React.FC<props> = (props) => {
           {props.data?.isActive && (
             <div className="upcoming-buttons">
               <button className="enroll-btn upcoming-buttons-enroll">
-                <p>Enroll Now</p>
+                <a href={props.data.enrollLink} target="_blank"
+                rel="noopener noreferrer"
+                ><p>Enroll Now</p></a>
               </button>
             </div>
           )}

@@ -31,6 +31,7 @@ const App: React.FC<AddEventFormProps> = ({
     speakerName: "",
     youtubeLink: "",
     isActive: false,
+    enrollLink: "",
   });
 
   const [uuid, setUuid] = useState(uuidv4());
@@ -55,6 +56,7 @@ const App: React.FC<AddEventFormProps> = ({
         speakerName: selectedEvent.speakerName || "",
         youtubeLink: selectedEvent.youtubeLink || "",
         isActive: selectedEvent.isActive || false,
+        enrollLink: selectedEvent.enrollLink||"",
       });
       setUuid(selectedEvent.uuid || uuidv4());
     }
@@ -221,11 +223,26 @@ const App: React.FC<AddEventFormProps> = ({
   onChange={handleInputChange}
   className="date"
 />
-
-          
         </div>
       </div>
       <br></br>
+      <div className="inline-form">
+        <label htmlFor="enrollLink">Enroll Link:</label>
+        <input
+          type="text"
+          id="enrollLink"
+          name="enrollLink"
+          placeholder="Enroll Link"
+          value={formData.enrollLink}
+          onChange={handleInputChange}
+        />
+        <input
+          type="file"
+          id="enrollLinkFile"
+          style={{ display: "none" }}
+          onChange={(e) => handleFileChange(e, "enrollLink")}
+        />
+      </div>
       <div className="inline-form">
         <label htmlFor="speakerName">Speaker's Name:</label>
         <input
