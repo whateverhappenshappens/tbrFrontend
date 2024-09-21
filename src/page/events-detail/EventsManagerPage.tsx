@@ -193,7 +193,11 @@ function EventsManagerPage({ headerHeight }: any) {
               <div className="text-2xl lg:text-4xl overflow-visible">
                 {event.subHeading}
               </div>
-              <div className="text-lg lg:text-3xl">{event.date}</div>
+              <div className="text-lg lg:text-3xl">
+                {typeof event.date === "object" && event.date instanceof Date
+                  ? event.date.toString() // or use .toLocaleDateString() for formatting
+                  : event.date}
+              </div>
             </div>
             <div className="text-xl lg:text-3xl font-bold flex gap-5">
               <button
@@ -228,10 +232,11 @@ function EventsManagerPage({ headerHeight }: any) {
             &times;
           </div>
           <div className="flex flex-1">
-            <AddForm selectedEvent={selectedEvent}
-          setUpdateFormVisible={setUpdateFormVisible}
-          setAddFormVisible={setAddFormVisible}  />
-          
+            <AddForm
+              selectedEvent={selectedEvent}
+              setUpdateFormVisible={setUpdateFormVisible}
+              setAddFormVisible={setAddFormVisible}
+            />
           </div>
         </div>
       )}
