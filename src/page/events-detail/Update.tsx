@@ -67,7 +67,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
             speakerImageLink: eventData.speakerImageLinkFileName,
             heading: eventData.heading,
             subHeading: eventData.subHeading,
-            date: formattedDate,  // Use the formatted date here
+            date: formattedDate, 
             aboutSpeaker: eventData.aboutSpeaker,
             speakerSocialLink: eventData.speakerSocial,
             speakerExperienceDetails: eventData.speakerExperience,

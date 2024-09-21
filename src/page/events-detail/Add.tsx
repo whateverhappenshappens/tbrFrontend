@@ -7,7 +7,16 @@ import { GeneratePresignedUrlforUpload } from "../../apis/s3_api/S3";
 import axios from "axios"; // Import axios for the upload
 import toast from "react-hot-toast";
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
-function App({ selectedEvent, setUpdateFormVisible }) {
+interface AddEventFormProps {
+  selectedEvent: any; // Replace `any` with the actual type if known
+  setUpdateFormVisible: (visible: boolean) => void;
+  setAddFormVisible: (visible: boolean) => void;  // Include this prop
+}
+const App: React.FC<AddEventFormProps> = ({
+  selectedEvent,
+  setUpdateFormVisible,
+  setAddFormVisible,
+}) => {
   const [formData, setFormData] = useState({
     bannerLinkPC: "",
     bannerLinkMobile: "",
@@ -208,7 +217,7 @@ function App({ selectedEvent, setUpdateFormVisible }) {
   id="date"
   name="date"
   placeholder="Date"
-  value={formData.date ? new Date(formData.date).toISOString().slice(0, 16) : ""}
+  value={formData.date }
   onChange={handleInputChange}
   className="date"
 />
