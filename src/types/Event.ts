@@ -15,4 +15,5 @@ export interface Event {
   isActive: boolean; 
   isDeleted: boolean;
   enrollLink:string;
+  description:string;
 }

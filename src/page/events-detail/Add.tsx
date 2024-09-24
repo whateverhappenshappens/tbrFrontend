@@ -32,6 +32,7 @@ const App: React.FC<AddEventFormProps> = ({
     youtubeLink: "",
     isActive: false,
     enrollLink: "",
+    description:""
   });
 
   const [uuid, setUuid] = useState(uuidv4());
@@ -57,6 +58,7 @@ const App: React.FC<AddEventFormProps> = ({
         youtubeLink: selectedEvent.youtubeLink || "",
         isActive: selectedEvent.isActive || false,
         enrollLink: selectedEvent.enrollLink||"",
+        description:selectedEvent.description||""
       });
       setUuid(selectedEvent.uuid || uuidv4());
     }
@@ -207,6 +209,18 @@ const App: React.FC<AddEventFormProps> = ({
           name="subHeading"
           placeholder="Sub Heading"
           value={formData.subHeading}
+          onChange={handleInputChange}
+        />
+      </div>
+      <br></br>
+      <div className="inline-form">
+        <label htmlFor="Description">About Event:</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          placeholder="description"
+          value={formData.description}
           onChange={handleInputChange}
         />
       </div>
