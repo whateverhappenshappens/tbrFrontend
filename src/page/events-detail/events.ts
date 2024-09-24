@@ -18,6 +18,8 @@ export const events: Event[] = [
     speakerImageLink: "https://example.com/speaker_image.jpg", // Add speaker image link
     youtubeLink: "https://youtube.com/watch?v=example", // Add YouTube link
     speakerName: "Gaurav",
+    description:"abc",
+    enrollLink:"www.google.com",
     isActive:true,
     isDeleted:false,
     enrollLink: "https://example.com/enroll_link", // Add enroll link (if applicable)

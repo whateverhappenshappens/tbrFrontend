@@ -47,6 +47,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
       youtubeLink: "",
       isActive: false,
       enrollLink: "",
+      description:"",
   });
   const [originalData, setOriginalData] = useState(null);
   useEffect(() => {
@@ -75,6 +76,7 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
             youtubeLink: eventData.youtubeLink,
             isActive: eventData.isActive,
             enrollLink: eventData.enrollLink,
+            description:eventData.description
           });
         } catch (e) {
           console.error(e);
@@ -305,6 +307,18 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
           name="subHeading"
           placeholder="Sub-Heading"
           value={formData.subHeading}
+          onChange={handleInputChange}
+        />
+      </div>
+      <br />
+      <div className="inline-form">
+        <label htmlFor="description">description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          placeholder="description"
+          value={formData.description}
           onChange={handleInputChange}
         />
       </div>
