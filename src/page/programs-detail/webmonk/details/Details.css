@@ -176,6 +176,11 @@
         font-size: 1.5rem;
     }
 
+    .details-content1 {
+        padding: 4rem 2rem;
+        align-items: flex-start; 
+    }
+
     .details-paragraphs-para1,.details-paragraphs-para2 {
         font-size: 2rem;
     }

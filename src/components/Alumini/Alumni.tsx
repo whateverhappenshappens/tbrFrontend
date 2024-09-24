@@ -214,7 +214,7 @@ const Alumni = () => {
             </div>
           ))}
           <div className="company-card bg-[#102245] p-32 lg:p-20 xl:p-44 rounded-xl flex items-center justify-center">
-            <span className="text-white text-4xl text-bold overflow-hidden">Many more....</span>
+            <span className="text-white text-4xl text-bold overflow-hidden">& Many more...</span>
           </div>
         </div>
       )}

@@ -138,5 +138,6 @@
 
     .listings-name-para1, .listings-name-para2, .listings-date p {
         font-size: 1.5rem;
+        text-align: left;
     }
 }

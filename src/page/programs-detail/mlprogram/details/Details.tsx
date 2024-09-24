@@ -4,17 +4,17 @@ import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useCart } from "../../../../CartContext";
 import toast from "react-hot-toast";
-import machine from "../../../../assets/machine.png"
+import machine from "../../../../assets/machine.png";
+import { useNavigate } from "react-router-dom";
 interface Props {
   star: number;
   rating: number;
   students: number;
-
-  
 }
 
 const Details: React.FC<Props> = (props) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [randomStudents, setRandomStudents] = useState<number>(0);
   const [randomRating, setRandomRating] = useState<number>(0);
 
@@ -58,13 +58,15 @@ const Details: React.FC<Props> = (props) => {
       name: "Machinester",
       description: "A very small description of the course should be included",
       price: 4999,
-      discountedPrice: 3429,
-      image:machine
-,
+      discountedPrice: 3499,
+      image: machine,
     };
 
     addToCart(course);
     toast.success("Item successfully added to cart!");
+    setTimeout(() => {
+      navigate(`/cart`);
+    }, 2000); // Adjust the delay as needed
   };
 
   const arr = new Array<number>(5).fill(0);
@@ -77,7 +79,7 @@ const Details: React.FC<Props> = (props) => {
             <a href="http://">
               <p>Programs</p>
             </a>
-           
+
             <AiOutlineRight size={15} color="white" />
             <a href="http://">
               <p>Machinester</p>
@@ -114,7 +116,7 @@ const Details: React.FC<Props> = (props) => {
             </div>
           </div>
           <div className="details-date">
-            <p>Batch Starting Date: Winter 2023 </p>
+            <p>Batch Starting Date: Winter 2024 </p>
             <p>Program Format: Online Live Classes </p>
             <p>Program Duration: 3 Months , At 5-10 hrs/week</p>
           </div>
@@ -122,13 +124,18 @@ const Details: React.FC<Props> = (props) => {
             <button className="details-buttons-enroll" onClick={handleEnroll}>
               <p>
                 Enroll Now for<p className="details-buttons-strike"> ₹ 4999</p>{" "}
-                ₹ 3,429
+                ₹ 3,499
               </p>
             </button>
-            <a href="https://drive.google.com/file/d/16fUdIxhn4Ky015pdqL_aPMpHjl7IlpjF/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <button className="py-7 details-buttons-download">
-              <p>Download Syllabus</p>
-            </button></a>
+            <a
+              href="https://drive.google.com/file/d/16fUdIxhn4Ky015pdqL_aPMpHjl7IlpjF/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="py-7 details-buttons-download">
+                <p>Download Syllabus</p>
+              </button>
+            </a>
           </div>
         </div>
       </div>

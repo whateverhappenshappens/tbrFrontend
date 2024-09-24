@@ -1,6 +1,16 @@
 import { Blog } from "../../types/Blog";
 
-import img1 from "../../assets/incredible-major-steampunk-balloon-floating-water-surface-illustrations-generative-ai.png";
+// import img1 from "../../assets/incredible-major-steampunk-balloon-floating-water-surface-illustrations-generative-ai.png";
+// import img1 from "../../assets/Blogs Images/Mastering html5.jpg";
+// import img2 from "../../assets/Blogs Images/5 cutting-edge.jpg";
+// import img3 from "../../assets/Blogs Images/unlocking secrets.jpg";
+// import img4 from "../../assets/Blogs Images/mastering competitive programming.jpg";
+// import img5 from "../../assets/Blogs Images/Getting Started with Competitive Programming.jpg";
+import img1 from "../../assets/Blogs Images/Blogs Images 2/Masterging HTML 5.png";
+import img2 from "../../assets/Blogs Images/Blogs Images 2/5 cutting trends.png";
+import img3 from "../../assets/Blogs Images/Blogs Images 2/secrets.png";
+import img4 from "../../assets/Blogs Images/Blogs Images 2/Mastering_Competitive_Programming__Essential_Tips_and_Techniques_for_Success_photo.png";
+import img5 from "../../assets/Blogs Images/Blogs Images 2/Getting_Started_with_Competitive_Programming__A_Beginner_'s_Guide_for_Coding_Enthusiasts_photo.png";
 
 export const blogs: Blog[] = [
   {
@@ -52,7 +62,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "two",
-    image: img1,
+    image: img2,
     title:
       "5 Cutting-Edge Front End Development Trends You Can't Afford to Miss!",
     blog: `In today's fast-paced digital landscape, staying ahead in the world of front end development is crucial for delivering exceptional user experiences. As technology evolves, so do the trends shaping the way we design and build websites and applications. In this article, we'll explore five cutting-edge front end development trends that you simply can't afford to overlook.
@@ -98,7 +108,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "three",
-    image: img1,
+    image: img3,
     title:
       "Unlocking the Secrets of Seamless User Experience in Front End Development",
     blog: `Creating a seamless user experience in front-end development involves a combination of technical expertise and understanding of user behavior. Here are some key strategies to unlock the secrets of seamless user experience:
@@ -134,7 +144,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "four",
-    image: img1,
+    image: img4,
     title:
       " Mastering Competitive Programming: Essential Tips and Techniques for Success",
     blog: `In the dynamic realm of computer science and programming, competitive programming stands out as a crucible of innovation and problem-solving prowess. For aspiring tech enthusiasts and seasoned professionals alike, mastering competitive programming isn't just a skill—it's a gateway to unlocking boundless opportunities in the tech industry. Whether you're aiming to excel in coding competitions, land coveted job offers at top tech firms, or simply enhance your problem-solving abilities, honing your competitive programming skills is a journey worth embarking upon.
@@ -175,7 +185,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "five",
-    image: img1,
+    image: img5,
     title:
       "Getting Started with Competitive Programming: A Beginner's Guide for Coding Enthusiasts    ",
     blog: `In the ever-evolving landscape of programming, competitive programming stands out as a challenging yet rewarding pursuit for coding enthusiasts. Whether you're a student aiming to enhance your problem-solving skills or a professional seeking to sharpen your coding abilities, competitive programming offers a structured platform to test your mettle against fellow programmers from around the globe. However, delving into this domain can be intimidating for beginners. Fear not! In this guide, we'll walk you through the essentials of competitive programming and provide you with the necessary steps to kickstart your journey.

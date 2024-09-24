@@ -45,6 +45,16 @@ function Header({
     UserAPI.logout(setIsLoggedIn);
   };
 
+  const handelSignup = () => {
+    setShowSignup(true);
+    setNavOpen(false);
+  }
+
+  const handelLogin = () => {
+    setShowLogin(true);
+    setNavOpen(false);
+  }
+
   return (
     <header className="header" ref={headerContainer}>
       {showLogin && (
@@ -88,17 +98,18 @@ function Header({
         </div>
         <ul className="nav-list">
           <li>
-            <NavLink className="nav-list-item" to="/programs">
+            <NavLink className="nav-list-item" to="/programs" onClick={() => setNavOpen(false)}
+            >
               programs
             </NavLink>
           </li>
           <li>
-            <NavLink className="nav-list-item" to="/campus-associate">
+            <NavLink className="nav-list-item" to="/campus-associate" onClick={() => setNavOpen(false)}>
               campus associate
             </NavLink>
           </li>
           <li>
-            <NavLink className="nav-list-item" to="/event-listing">
+            <NavLink className="nav-list-item" to="/event-listing" onClick={() => setNavOpen(false)}>
               events
             </NavLink>
           </li>
@@ -126,27 +137,27 @@ function Header({
             </div>
           </li>
           <li>
-            <NavLink className="nav-list-item" to="/cart">
+            <NavLink className="nav-list-item" to="/cart" onClick={() => setNavOpen(false)}>
               <FaCartShopping />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/blog">
+            <NavLink to="/blog" onClick={() => setNavOpen(false)}>
               <button className="more-option1">Blog</button>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about-us">
+            <NavLink to="/about-us" onClick={() => setNavOpen(false)}>
               <button className="more-option1">About Us</button>
             </NavLink>
           </li>
         </ul>
         {!isLoggedIn ? (
           <div className="authenticate">
-            <div className="sign-up" onClick={() => setShowSignup(true)}>
+            <div className="sign-up"  onClick={handelSignup}>
               Sign Up
             </div>
-            <div className="log-in" onClick={() => setShowLogin(true)}>
+            <div className="log-in" onClick={handelLogin}>
               Log In
             </div>
           </div>
