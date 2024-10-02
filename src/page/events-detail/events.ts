@@ -20,9 +20,9 @@ export const events: Event[] = [
     speakerName: "Gaurav",
     description:"abc",
     enrollLink:"www.google.com",
-    isActive:true,
+    isActive:false,
     isDeleted:false,
-    enrollLink: "https://example.com/enroll_link", // Add enroll link (if applicable)
+    // enrollLink: "https://example.com/enroll_link", // Add enroll link (if applicable)
   },
  
 ];

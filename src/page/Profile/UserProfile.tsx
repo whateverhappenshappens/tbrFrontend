@@ -107,6 +107,10 @@ function UserProfile() {
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+
   return (
     <div className="Main mt-[10rem]">
       <div className="main_box22">

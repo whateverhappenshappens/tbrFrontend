@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Profile.css";
@@ -6,7 +6,9 @@ import boyProfile from "../../assets/Boy photo.png";
 
 function ProfilePage() {
   const [year, setYear] = useState(null);
-
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
   return (
     <div className="Main mt-[10rem]">
       <div className="main_box22">

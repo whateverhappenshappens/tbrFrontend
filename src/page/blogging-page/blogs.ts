@@ -1,6 +1,5 @@
 import { Blog } from "../../types/Blog";
 
-// import img1 from "../../assets/incredible-major-steampunk-balloon-floating-water-surface-illustrations-generative-ai.png";
 // import img1 from "../../assets/Blogs Images/Mastering html5.jpg";
 // import img2 from "../../assets/Blogs Images/5 cutting-edge.jpg";
 // import img3 from "../../assets/Blogs Images/unlocking secrets.jpg";

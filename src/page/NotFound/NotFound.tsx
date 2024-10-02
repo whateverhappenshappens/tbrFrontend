@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const NotFound: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
   return (
     <>
       <section className="bg-white dark:bg-gray-900 w-full">

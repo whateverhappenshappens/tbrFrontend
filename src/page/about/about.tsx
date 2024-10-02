@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Enroll from "./head/Head";
 import Gig from "./gig/Gig";
 import Experience from "./experience/Experience";
@@ -13,6 +13,9 @@ import connect from "../../assets/connect.png";
 import extra from "../../assets/78.jpeg"
 
 const About: React.FC = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scrolls to the top of the page
+      }, []);
   return (
     <div className="hire mentor">
       <Enroll />

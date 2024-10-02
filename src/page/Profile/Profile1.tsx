@@ -127,6 +127,10 @@ function Profile() {
 
   const totalAmount = selectedCourses.reduce((sum, item) => sum + item.price, 0);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+
   return (
     <div className="main_box21 mt-[10rem]">
       <div className="flex-container">

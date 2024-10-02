@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
@@ -27,12 +27,20 @@ const itemList = [
 
 
 const Footer: React.FC = () => {
+ 
+  const handelClick = () =>{
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
   return (
     <footer className="footer px-[30px] sm:pl-[70px] sm:pr-[60px]
      xl:pl-[5px] xl:pr-[5px] py-14 sm:py-20 xl:py-52 flex 
      flex-col gap-1 xl:gap-32">
       <div className="flex flex-col lg:flex-row lg:justify-between gap-10 sm:gap-16">
-        <div className="logo-social flex flex-col gap-10 xl:gap-20">
+        <div onClick={handelClick} className="logo-social flex flex-col gap-10 xl:gap-20">
           <img
             src={logo}
             alt="techbairn logo"

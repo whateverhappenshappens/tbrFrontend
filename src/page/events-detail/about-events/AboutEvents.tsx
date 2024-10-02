@@ -15,7 +15,7 @@ const AboutEvents: React.FC<Props> = (props) => {
       <div className="aboutevents-head">
         <p className="vr-bold">About Events</p>
       </div>
-      <p>{props.data?.description}</p>
+      <p className="text-white text-[2.2rem]">{props.data?.description}</p>
       {/* <div className="aboutevents-card">
         <AboutEventsCard
           image={writing}

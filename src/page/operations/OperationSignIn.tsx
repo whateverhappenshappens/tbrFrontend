@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserAPI } from "../../apis/UserAPIs";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -47,6 +47,10 @@ const OperationSignIn: React.FC = ({ handle_login, setIsLoggedIn }: any) => {
     setValue("operation");
     setColor(!color);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">

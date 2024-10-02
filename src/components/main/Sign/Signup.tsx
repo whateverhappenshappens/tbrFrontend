@@ -108,7 +108,7 @@ function Signup({ setIsLoggedIn }: any) {
   };
 
   const handleLogin = () => {
-    window.location.href = 'http://3.7.45.90:8080/oauth2/authorization/google';
+    window.location.href = 'https://www.techbairn.live/api/oauth2/authorization/google';
   };
 
   return (

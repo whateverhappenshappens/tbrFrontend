@@ -221,7 +221,9 @@ function UpdateForm({ selectedEvent, setUpdateFormVisible }) {
           toast.error("Failed to upload file.");
       }
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
   return (
     <div className="main">
       <div className="inline-form">

@@ -23,6 +23,7 @@ const Events: React.FC = () => {
       try {
         if (!id) return;
         const res = await EventsAPI.EventById(id);
+        console.log(res.data);
         setData(res.data);
       } catch (error) {
         console.error("Error fetching event details:", error);

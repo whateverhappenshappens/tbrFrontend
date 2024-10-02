@@ -62,6 +62,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
       setIsLoading(true);
       try {
         const res = await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
+        console.log(res)
         if (res.data && res.data.email) {
           setloggedInUserEmail(res.data.email);
         }
@@ -90,7 +91,8 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
   };
 
   const handleLogin = () => {
-    window.location.href = 'http://3.7.45.90:8080/oauth2/authorization/google';
+    window.location.href = 'https://www.techbairn.live/api/oauth2/authorization/google';
+
   };
 
   if (!isVisible) {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SalesAPIs } from "../../apis/SalesAPI/SalesAPIs";
 import { saveAs } from "file-saver";
 import Papa from "papaparse";
@@ -117,6 +117,10 @@ const SalesOperations: React.FC = () => {
       );
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   return (
     <div className="w-4/5 mx-auto p-6 bg-white shadow-md rounded-lg mt-[20rem]">

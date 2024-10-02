@@ -37,6 +37,10 @@ const EnrollStudent: React.FC<Props> = ({ coupon, setcoupon }) => {
     console.log(coupon);
   }, [coupon]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+
   return (
     <div className="p-6 max-w-sm mt-[15rem] mx-auto bg-white rounded-xl shadow-md space-y-4">
       <iframe

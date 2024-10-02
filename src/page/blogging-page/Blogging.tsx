@@ -18,6 +18,10 @@ const Blogging: React.FC<BloggingPageProps> = ({ headerHeight }) => {
   useEffect(() => {
     bloggingContainer.current!.style.paddingTop = `${headerHeight}px`;
   }, [headerHeight]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
   return (
     <div ref={bloggingContainer} className="blogging-page">
       <BloggingHeader />

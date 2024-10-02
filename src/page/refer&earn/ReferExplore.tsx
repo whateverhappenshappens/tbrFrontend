@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import girlPic from "../../assets/Girl@2x.png";
 import phoneCall from "../../assets/phone-call.png";
 import "../../styles/components/Explore.css";
+import { useEffect } from "react";
 // import { UserAPI } from "../../../apis/UserAPIs";
 
 const ReferExplore = () => {
@@ -11,6 +12,10 @@ const ReferExplore = () => {
   //   const public_test = () => {
   //     UserAPI.public_test();
   //   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   return (
     <div className="explore">

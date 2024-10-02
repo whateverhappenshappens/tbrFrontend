@@ -80,6 +80,7 @@
 
 // export default Events;
 
+import { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -124,6 +125,10 @@ const Events: React.FC<Props> = ({ pastdata }) => {
       return null;
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   return (
     <div className="events py-[50px] md:pl-[70px] md:pr-[60px] xl:my-20">

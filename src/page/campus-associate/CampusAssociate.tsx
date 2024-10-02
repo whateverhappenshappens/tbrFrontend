@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CampusAssociate.css";
 import Represent from "./represent/Represent";
 import Associate from "./associate/Associate";
@@ -11,6 +11,9 @@ import Connected from "./connected/Connected";
 import StudentSaying from "./studentssaying/studentsayingcards/StudentSaying";
 
 const CampusAssociate: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
   return (
     <div className="container1 mt-[5rem]">
       <Represent />

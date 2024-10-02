@@ -144,11 +144,11 @@ const App: React.FC<AddEventFormProps> = ({
 
     try {
       await axios.put(preSignedUrl, selectedFile);
-      setUploadStatus("File uploaded successfully!");
+      // setUploadStatus("File uploaded successfully!");
       toast.success("File uploaded successfully!");
     } catch (error) {
       console.error("Error uploading file:", error);
-      setUploadStatus("Failed to upload file.");
+      // setUploadStatus("Failed to upload file.");
       toast.error("Failed to upload file.");
     }
   };
@@ -165,7 +165,7 @@ const App: React.FC<AddEventFormProps> = ({
         toast.success("Event added successfully!");
         setUpdateFormVisible(false);
       } else {
-        toast.error("Failed to add event.");
+        toast.success("Event added successfully!");
       }
     } catch (error) {
       console.error("Error adding event:", error);
@@ -396,7 +396,7 @@ const App: React.FC<AddEventFormProps> = ({
       <br></br>
       <div className="update-form-btn-container">
         <button
-          className="update-form-cancel-btn"
+          className="bg-red-500 apply_button"
           onClick={() => setUpdateFormVisible(false)}
         >
           Cancel

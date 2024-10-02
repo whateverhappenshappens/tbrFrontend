@@ -216,6 +216,10 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
     }
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+
   // function handlePayment() {
   //   const requestData = {
   //     utr: "utr-number",

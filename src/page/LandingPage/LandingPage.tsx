@@ -116,6 +116,9 @@ function LandingPage({
   useEffect(() => {
     landingPage.current!.style.paddingTop = `${headerHeight}px`;
   }, [headerHeight]);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
   return (
     <div className="landing-page" ref={landingPage}>
       <Explore handle_login={handle_login} />

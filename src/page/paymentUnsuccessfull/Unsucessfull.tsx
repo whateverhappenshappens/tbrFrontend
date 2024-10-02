@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import unsuccess from "../../assets/unsuccess.png"
 import Header from '../../components/header/Header'
 import "./Unsucessfull.css"
 import { NavLink } from 'react-router-dom'
 function Unsucessfull() {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
   return (
     
     <>

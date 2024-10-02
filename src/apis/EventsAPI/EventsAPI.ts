@@ -71,7 +71,7 @@ export const EventsAPI = {
             }
             else {
                 // Add isActive: true to the event
-                res.data = { ...res.data, isActive: true };
+                res.data = { ...res.data, isActive: false };//issue is here 
             }
             return res;
         }
