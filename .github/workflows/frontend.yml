@@ -13,7 +13,7 @@ jobs:
       - name: Build frontend
         run: npm run build
       - name: Deploy to EC2
-        uses: actions/ssh-key-action@v1
+        uses:  actions/ssh-key-action@v1
         with:
           host: 3.108.165.88
           port: 22
