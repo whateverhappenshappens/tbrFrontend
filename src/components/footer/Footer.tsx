@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="border-t mt-5 pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
-        <div className="overflow-visible">Copyright @ techbairn 2024</div>
+        <div className="overflow-visible">Copyright @ techbairn 2024 - hello ci/cd worked</div>
         <div className="overflow-visible"><a href="https://drive.google.com/file/d/18gwUjSwiG7XRywkAHWah9uyX8rrdph1y/view" target="_blank">Privacy Policy | techbairn.com</a></div>
       </div>
     </footer>
