@@ -35,6 +35,7 @@ jobs:
             cd /home/ec2-user/frontend
             sudo systemctl stop nginx
             sudo rm -rf build/
+            cat /home/runner/work/tbrFrontend/tbrFrontend/index.html
             scp -r dist  /home/ec2-user/frontend
             sudo systemctl restart nginx
               '
