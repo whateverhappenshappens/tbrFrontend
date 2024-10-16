@@ -12,15 +12,17 @@ jobs:
         run: npm install
       - name: Build frontend
         run: npm run build
-      - name: Deploy to EC2
-        uses:  actions/ssh-key-action@v1
-        with:
-          host: 3.108.165.88
-          port: 22
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          command: |
+      - name: Deploy to EC2 using SSH
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOSTNAME: ${{secrets.SSH_HOST}}
+          USER_NAME: ${{secrets.USER_NAME}}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd /home/ec2-user/frontend
             sudo systemctl stop nginx
             sudo rm -rf build index.html
             scp -r build/* .
             sudo systemctl reload nginx
+          '
