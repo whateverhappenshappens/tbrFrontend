@@ -12,7 +12,7 @@ jobs:
         run: npm install
       - name: Build frontend
         run: npm run build
-      - name: cd dist
+      - name: CD Dist
         run: cd dist
       - name: Do LS
         run: ls
@@ -26,7 +26,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd /home/ec2-user/frontend
             sudo systemctl stop nginx
-            sudo rm -rf build
             scp -r dist/ /home/ec2-user/frontend/build
             sudo systemctl restart nginx
               '
