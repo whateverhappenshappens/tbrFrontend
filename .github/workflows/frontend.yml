@@ -18,18 +18,20 @@ jobs:
         run: ls
       - name: CD Dist
         run: cd dist
+      - name: PWD II
+        run: pwd
       - name: Do LS II
         run: ls
-      - name: Deploy to EC2 using SSH
-        env:
-          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          HOSTNAME: ${{secrets.SSH_HOST}}
-          USER_NAME: ${{secrets.USER_NAME}}
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-            cd /home/ec2-user/frontend
-            sudo systemctl stop nginx
-            scp -r ./dist/  /home/ec2-user/frontend/build
-            sudo systemctl restart nginx
-              '
+      # - name: Deploy to EC2 using SSH
+      #   env:
+      #     PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     HOSTNAME: ${{secrets.SSH_HOST}}
+      #     USER_NAME: ${{secrets.USER_NAME}}
+      #   run: |
+      #     echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+      #     ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+      #       cd /home/ec2-user/frontend
+      #       sudo systemctl stop nginx
+      #       scp -r ./dist/  /home/ec2-user/frontend/build
+      #       sudo systemctl restart nginx
+      #         '
