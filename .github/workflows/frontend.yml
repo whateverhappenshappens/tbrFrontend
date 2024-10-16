@@ -1,0 +1,26 @@
+name: Frontend Deployment
+on:
+  push:
+    branches: [Prod]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Build frontend
+        run: npm run build
+      - name: Deploy to EC2
+        uses: actions/ssh-key-action@v1
+        with:
+          host: 3.108.165.88
+          port: 22
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command: |
+            cd /home/ec2-user/frontend
+            sudo systemctl stop nginx
+            sudo rm -rf build index.html
+            scp -r build/* .
+            sudo systemctl reload nginx
