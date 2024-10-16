@@ -24,6 +24,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd /home/ec2-user/frontend
             sudo systemctl stop nginx
-            scp -r -dist /home/ec2-user/frontend
+            scp -r dist /home/ec2-user/frontend
             sudo systemctl restart nginx
           '
