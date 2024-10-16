@@ -12,6 +12,8 @@ jobs:
         run: npm install
       - name: Build frontend
         run: npm run build
+      - name: Do LS
+        run: ls
       - name: Deploy to EC2 using SSH
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
