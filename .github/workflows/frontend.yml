@@ -16,8 +16,10 @@ jobs:
         run: pwd
       - name: Do LS
         run: ls
-      - name: CD Dist
-        run: sudo chmod -R 755 /home/runner/work/tbrFrontend/tbrFrontend/src
+      # - name: CD Dist
+      #   run: sudo chmod -R 755 /home/runner/work/tbrFrontend/tbrFrontend/src
+      - name: cat file
+        run: cat index.html
       - name: PWD II
         run: pwd
       - name: Do LS II
