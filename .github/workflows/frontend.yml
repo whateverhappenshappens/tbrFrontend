@@ -27,7 +27,7 @@ jobs:
           USER_NAME: ${{secrets.USER_NAME}}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp -r dist /home/${USER_NAME}/frontend/build
+          scp -r dist /home/ec2-user/frontend
       - name: Deploy to EC2 using SSH
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
