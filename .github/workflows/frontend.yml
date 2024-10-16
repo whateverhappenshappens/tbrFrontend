@@ -27,3 +27,4 @@ jobs:
             sudo rm -rf build
             scp -r dist/ /home/ec2-user/frontend/build
             sudo systemctl restart nginx
+              '
