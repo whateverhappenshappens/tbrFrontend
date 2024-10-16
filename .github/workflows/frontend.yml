@@ -12,11 +12,13 @@ jobs:
         run: npm install
       - name: Build frontend
         run: npm run build
-      - name: CD Dist
-        run: cd dist
-      - name: PWd
+      - name: PWD
         run: pwd
       - name: Do LS
+        run: ls
+      - name: CD Dist
+        run: cd dist
+      - name: Do LS II
         run: ls
       - name: Deploy to EC2 using SSH
         env:
