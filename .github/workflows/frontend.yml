@@ -14,6 +14,8 @@ jobs:
         run: npm run build
       - name: CD Dist
         run: cd dist
+      - name: PWd
+        run: pwd
       - name: Do LS
         run: ls
       - name: Deploy to EC2 using SSH
