@@ -16,16 +16,8 @@ jobs:
         run: pwd
       - name: Do LS
         run: ls
-      # - name: CD Dist
-      #   run: sudo chmod -R 755 /home/runner/work/tbrFrontend/tbrFrontend/src
-      - name: cat file
-        run: cat /home/runner/work/tbrFrontend/tbrFrontend/index.html
-      - name: PWD II
-        run: pwd
-      - name: Do LS II
-        run: ls
       - name: SCP dist to ec2
-        run: scp -r ${{ secrets.SSH_PRIVATE_KEY }} /home/runner/work/tbrFrontend/tbrFrontend/dist ec2-user@${{ secrets.HOSTNAME }}:/home/ec2-user/frontend
+        run: scp -i ${{ secrets.SSH_PRIVATE_KEY }} /home/runner/work/tbrFrontend/tbrFrontend/dist ec2-user@${{ secrets.HOSTNAME }}:/home/ec2-user/frontend
       - name: Deploy to EC2 using SSH
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
