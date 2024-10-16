@@ -12,6 +12,8 @@ jobs:
         run: npm install
       - name: Build frontend
         run: npm run build
+      - name: cd dist
+        run: cd dist
       - name: Do LS
         run: ls
       - name: Deploy to EC2 using SSH
