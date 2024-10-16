@@ -17,7 +17,7 @@ jobs:
       - name: Do LS
         run: ls
       - name: CD Dist
-        run: sudo chmod -R 755 /home/runner/work/tbrFrontend/tbrFrontend/dist
+        run: sudo chmod -R 755 /home/runner/work/tbrFrontend/tbrFrontend/src
       - name: PWD II
         run: pwd
       - name: Do LS II
