@@ -17,7 +17,7 @@ jobs:
       - name: Do LS
         run: ls
       - name: CD Dist
-        run: cd dist
+        run: cd /home/runner/work/tbrFrontend/tbrFrontend/dist
       - name: PWD II
         run: pwd
       - name: Do LS II
@@ -32,6 +32,6 @@ jobs:
       #     ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
       #       cd /home/ec2-user/frontend
       #       sudo systemctl stop nginx
-      #       scp -r ./dist/  /home/ec2-user/frontend/build
+      #       scp -r dist  /home/ec2-user/frontend
       #       sudo systemctl restart nginx
       #         '
