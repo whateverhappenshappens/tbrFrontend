@@ -23,5 +23,5 @@ jobs:
             cd /home/ec2-user/frontend
             sudo systemctl stop nginx
             scp -r -dist /home/ec2-user/frontend
-            sudo systemctl reload nginx
+            sudo systemctl restart nginx
           '
