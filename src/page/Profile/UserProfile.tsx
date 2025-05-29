@@ -5,6 +5,7 @@ import "./Profile.css";
 import boyProfile from "../../assets/useImage.jpg";
 import { UserAPI } from "../../apis/UserAPIs";
 import toast from "react-hot-toast";
+import Helmet from "react-helmet";
 
 // Define the Profile interface
 interface Profile {
@@ -15,10 +16,15 @@ interface Profile {
   stream: string;
 }
 
+// interface UserProfileProps {
+//   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+// }
+
 function UserProfile() {
   const [year, setYear] = useState(null);
   const [isSaved, setIsSaved] = useState(true);
   const [editableField, setEditableField] = useState<string | null>(null);
+  
 
   // Initialize the profile with the Profile interface type
   const [profile, setProfile] = useState<Profile>({
@@ -35,7 +41,6 @@ function UserProfile() {
     const fetchProfileData = async () => {
       try {
         const res = await UserAPI.userProfileDetail();
-        console.log(res);
         setProfile({
           fullname: res.data.name,
           email: res.data.email,
@@ -49,6 +54,7 @@ function UserProfile() {
     };
     fetchProfileData();
   }, []);
+
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -89,7 +95,7 @@ function UserProfile() {
       await UserAPI.UpdateUserProfile(profile.email, patchOps);
       setIsSaved(true);
       setEditableField(null);
-      toast.success("Profile updated successfully");
+      // toast.success("Profile updated successfully");
     } catch (error) {
       console.error("An error occurred while updating the profile:", error);
       toast.error("Failed to update profile");
@@ -113,11 +119,15 @@ function UserProfile() {
 
   return (
     <div className="Main mt-[10rem]">
+      <Helmet>
+        <title>TechBairn - Profile</title>
+        <meta name="User Profile content" content="TechBairn user profile page." />
+      </Helmet>
       <div className="main_box22">
         <aside className="left1">
           <img src={boyProfile} alt="" />
           <div className="buttondabba1">
-            <button className="apply_button" onClick={handleSave}>
+            <button className="apply_buttonNew" onClick={handleSave}>
               Apply Changes
             </button>
           </div>

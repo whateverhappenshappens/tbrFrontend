@@ -39,6 +39,8 @@ import Refer from "./page/refer&earn/Refer&Earn";
 import userImage from "./assets/useImage.jpg"
 import TryListings from "./try/Try_listing";
 import Unsucessfull from "./page/paymentUnsuccessfull/Unsucessfull";
+import Policy from "./components/footer/Policy";
+import TermsCondition from "./components/footer/TermsCondition";
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
@@ -48,6 +50,8 @@ function App() {
   const [cartDetailsData, setCartDetailsData] = useState<any>("");
   const [cartValue, setCartValueData] = useState<number>();
   const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
+
+
 
   useEffect(() => {
     const fetchActiveEvents = async () => {
@@ -109,8 +113,6 @@ function App() {
     };
     checkTokenValidity();
   }, []);
-
-
 
   return (
     <BrowserRouter>
@@ -238,12 +240,17 @@ function App() {
               path="/payment-success"
               element={<PaymentSuccess headerHeight={headerHeight} />}
             />
+            <Route path="/policy" element={<Policy />} />
+            <Route path="/terms_condition" element={<TermsCondition />} />
           </Routes>
           <Footer />
         </div>
       </CartProvider>
     </BrowserRouter>
+    
   );
 }
 
 export default App;
+
+

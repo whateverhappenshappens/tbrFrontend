@@ -10,7 +10,6 @@ interface Props {
 }
 
 const Biggest: React.FC<Props> = ({ ActiveData }) => {
-  console.log(ActiveData);
 
   const settings = {
     dots: true,

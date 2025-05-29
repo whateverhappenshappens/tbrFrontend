@@ -22,7 +22,6 @@ function EventsManagerPage({ headerHeight }: any) {
   const [eventToDelete, setEventToDelete] = useState<Event | null>(null); // State to keep track of event to delete
 
   const updateComponent = (event: Event) => {
-    console.log(event);
     setSelectedEvent(event);
     setUpdateFormVisible(true); // Show the update form when an event is selected for update
   };
@@ -32,7 +31,6 @@ function EventsManagerPage({ headerHeight }: any) {
       try {
         await EventsAPI.allEventsBasicDetail()
           .then((res) => {
-            console.log(res.data);
             const eventsWithActive = res.data.map((event: Event) => ({
               ...event,
               isActive: true,
@@ -51,7 +49,6 @@ function EventsManagerPage({ headerHeight }: any) {
       try {
         await EventsAPI.allEventsDetailsForDownload()
           .then((res: any) => {
-            console.log(res.data);
             setAllEventsDownload(res.data);
           })
           .catch((e) => {
@@ -94,7 +91,6 @@ function EventsManagerPage({ headerHeight }: any) {
 
   const handleDelete = async (event: any) => {
     try {
-      console.log(event.id);
       if (event.isDeleted) {
         await EventsAPI.UndoDeleteEventById(event.id);
         setCurrentEvents((prevEvents) =>
@@ -116,7 +112,6 @@ function EventsManagerPage({ headerHeight }: any) {
   };
   const handle = async (event: any) => {
     try {
-      console.log(event.id);
       if (event.isActive) {
         await EventsAPI.pastEvents();
         setCurrentEvents((prevEvents) =>

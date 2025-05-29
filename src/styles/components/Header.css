@@ -112,6 +112,7 @@
 .main-nav li a.active {
   color: #6d87f5;
 }
+
 .more-btn {
   font-size: 2.3rem;
   /* position: relative; */
@@ -120,10 +121,10 @@
 
 .dropdown-menu {
   text-align: left;
-  display: none;
+  display: block;
   position: absolute;
   bottom: -11rem;
-  left: 70rem;
+  /* left: 70rem; */
   padding: 2rem 1rem;
   background-color: #ffffff;
   cursor: pointer;
@@ -132,9 +133,9 @@
   /* border: 2px solid #000;  */
 }
 
-.more-btn:hover .dropdown-menu {
+/* .more-btn:hover .dropdown-menu {
   display: block;
-}
+} */
 
 .more-option {
   color: #000;
@@ -142,10 +143,10 @@
   /* border-bottom: 2px solid #000; */
 }
 
-.more-option:hover {
-  border-bottom: 2px solid white;
+/* .more-option:hover { */
+  /* border-bottom: 2px solid white; */
    /* Add this line */
-}
+/* } */
 
 .more-option1 {
   display: none;
@@ -258,6 +259,7 @@
   .authenticate a.log-in {
     padding: 1rem 2rem 1.3rem 2rem;
   }
+
 }
 
 @media (max-width: 460px) {

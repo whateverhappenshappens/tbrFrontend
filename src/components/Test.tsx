@@ -11,7 +11,6 @@ function Test() {
         const response = await axios.get(
           "http://localhost:8080/v1.5/cart/get-all"
         );
-        console.log(response.data.carts);
         // Flatten the data structure to include each course as a separate row
         const flattenedData = response.data.carts.flatMap((cart: any) => {
           return cart.courses.map((course: any) => ({

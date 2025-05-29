@@ -7,7 +7,6 @@ async function newAccessToken() {
   await api
     .post("/v1.5/auth/refresh-token")
     .then((res) => {
-      console.log(res);
       localStorage.setItem("access-token", res.data.access_token);
     })
     .catch((error: any) => {
@@ -29,8 +28,6 @@ export const SalesAPIs = {
           Authorization: "Bearer " + access_token,
         },
       });
-      //   console.log("hello");
-      //   console.log(res);
       //   toast.success("Valid access token!");
       return res;
     } catch (error) {
@@ -51,8 +48,6 @@ export const SalesAPIs = {
           Authorization: "Bearer " + access_token,
         },
       });
-      //   console.log("hello");
-      console.log(res.data);
       //   toast.success("Valid access token!");
       return res;
     } catch (error) {
@@ -73,8 +68,6 @@ export const SalesAPIs = {
           Authorization: "Bearer " + access_token,
         },
       });
-      //   console.log("hello");
-      //   console.log(res);
       //   toast.success("Valid access token!");
       return res;
     } catch (error) {
@@ -95,8 +88,6 @@ export const SalesAPIs = {
           Authorization: "Bearer " + access_token,
         },
       });
-      //   console.log("hello");
-      //   console.log(res);
       //   toast.success("Valid access token!");
       return res;
     } catch (error) {

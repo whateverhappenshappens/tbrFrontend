@@ -9,6 +9,9 @@ import Signup from "../Sign/Signup";
 import logo2 from "../../../assets/techbairn logo white-01.png";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Circles } from "react-loader-spinner";
+import Helmet from "react-helmet"
+const GOOGLE_OAUTH_URL = import.meta.env.VITE_GOOGLE_OAUTH_URL;
+
 
 interface LoginProps {
   handle_login: () => void;
@@ -62,7 +65,6 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
       setIsLoading(true);
       try {
         const res = await UserAPI.login(userDetails, handle_login, setIsLoggedIn);
-        console.log(res)
         if (res.data && res.data.email) {
           setloggedInUserEmail(res.data.email);
         }
@@ -74,6 +76,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
         });
         setIsVisible(false);
         setTimeout(() => navigate("/"), 100);
+        
       } catch (e) {
         console.error("Login Error: ", e);
       } finally {
@@ -91,8 +94,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
   };
 
   const handleLogin = () => {
-    window.location.href = 'https://www.techbairn.live/api/oauth2/authorization/google';
-
+    window.location.href = GOOGLE_OAUTH_URL;
   };
 
   if (!isVisible) {
@@ -102,6 +104,13 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
 
   return (
     <GoogleOAuthProvider clientId="">
+       <Helmet>
+        <title>TechBairn - Login </title>
+        <meta
+          name="TechBairn - Login content"
+          content="TechBairn Login page."
+        />
+      </Helmet>
       <div className="main_box">
         <aside className="left">
           <img src={logo2} alt="TechBairn Logo" className="logo121" />

@@ -2,7 +2,7 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../../CartContext";
 import { toast } from "react-toastify";
-
+import { useNavigate } from "react-router-dom";
 // Define the type for props
 interface CardProps {
   id: string;
@@ -13,7 +13,10 @@ interface CardProps {
   link: string;
 }
 
+
 const Card: React.FC<CardProps> = (props) => {
+  const navigate = useNavigate();
+
   const { addToCart } = useCart();
 
   // Function to generate a random number between 8000 and 10000
@@ -68,6 +71,7 @@ const Card: React.FC<CardProps> = (props) => {
     };
     addToCart(course);
     toast.success("Item successfully added to cart!");
+    navigate('/cart');
   };
 
   return (

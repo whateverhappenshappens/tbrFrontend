@@ -60,6 +60,8 @@ import shriram from "../../assets/college/The_Official_Logo_of_Shri_Ram_College_
 import tmsl from "../../assets/college/tmsl-logo white-01.png";
 import Biggest from "../hackathon/biggest/Biggest";
 import DisplayEvent from "./DisplayEvent";
+import Helmet from "react-helmet"
+import Help from "../../components/Help";
 
 const logos: string[] = [
   amazon_img,
@@ -121,6 +123,14 @@ function LandingPage({
   }, []);
   return (
     <div className="landing-page" ref={landingPage}>
+      <Help />
+      <Helmet>
+        <title>TechBairn- Learn From the Best!</title>
+        <meta
+          name="TechBairn Landing Page"
+          content="TechBairn Landing Page."
+        />
+      </Helmet>
       <Explore handle_login={handle_login} />
       <KeyAttribute />
       <HowWeAreDifferent />

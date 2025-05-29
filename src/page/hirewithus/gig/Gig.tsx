@@ -24,7 +24,7 @@ const Gig: React.FC = () => {
     <div className="gig">
       <div className="content">
         <div className="gig-headings">
-          <p className="gig-headings-head1">About the Gig</p>
+          <p className="gig-headings-head1">Hiring Made Easy with Techbairn</p>
         </div>
         <div className="gig-points">
           <ul>

@@ -30,8 +30,8 @@ const Content: React.FC = () => {
                   <img src={msg} alt="aa" />
                 </div>
                 <div className="righty">
-                  <p>hello@techbairn.com</p>
-                  <p>info@techbairn.com</p>
+                  <p><a href="mailto:hello@techbairn.com">hello@techbairn.com</a></p>
+                  <p><a href="mailto:hello@techbairn.com">info@techbairn.com</a></p>
                 </div>
               </div>
               <div className="icon1">

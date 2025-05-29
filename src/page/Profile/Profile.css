@@ -29,6 +29,16 @@
   border-radius: 10px;
   font-family: bold;
  }
+
+ .apply_buttonNew{
+  width: 18rem;
+  height: 5rem;
+  background-color: #6D87F5;
+  color: white;
+  font-size: 2rem;
+  border-radius: 10px;
+  font-family: bold;
+ }
   .search-container {
     display: flex;
     align-items: center;
@@ -185,6 +195,31 @@
   .edit{
     font: normal normal bold 16px/26px extra-bold;
   } 
+  @media only screen and (max-width: 600px) {
+    .left1 img{
+      display: none;
+    }
+    .apply_buttonNew{
+      height: 5rem;
+      font-size: 1.2rem;
+     }
+
+     .main_box22 {
+      flex-direction: column-reverse;
+    }
+  }
+  /* @media (max-width:600px) {
+    .left1 img{
+      display: none;
+    }
+    .apply_button{
+      width: 35rem !important;
+     }
+
+     .main_box22 {
+      flex-direction: column-reverse;
+    }
+  } */
   /* @media (max-width:700px) {
     .header {
       padding-left1: 7rem;

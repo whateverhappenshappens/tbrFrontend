@@ -16,7 +16,6 @@ export const CartAPI = {
     }
 
     try {
-      console.log("hello");
       const response = await api.request({
         url: `/v1.5/payment/${amount * 100}`,
         method: "POST",

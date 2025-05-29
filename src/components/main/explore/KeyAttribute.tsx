@@ -31,16 +31,16 @@ const KeyAttribute: React.FC = () => {
       </p>
       <div className="figure-numbers-box">
         <div className="figure-number">
-          <p className="number" data-val="20000+">20000+</p>
+          <p className="number" data-val="50000+">50000+</p>
           <p className="learner">LEARNERS</p>
         </div>
         <div className="figure-number">
-          <p className="number" data-val="15+">15+</p>
+          <p className="number" data-val="250+">250+</p>
           <p className="learner">PARTNERSHIPS</p>
         </div>
         <div className="figure-number">
-          <p className="number" data-val="250+">250+</p>
-          <p className="learner">COLLABORATIONS</p>
+          <p className="number" data-val="50+">50+</p>
+          <p className="learner">HIRING PARTNERS</p>
         </div>
       </div>
     </div>

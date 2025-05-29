@@ -5,6 +5,7 @@ import Gig from "./gig/Gig";
 import Experience from "./experience/Experience";
 import Faq from "./faq/Faq";
 import Help from "./help/Help";
+import Helmet from "react-helmet"
 
 
 
@@ -15,6 +16,10 @@ const Mentor: React.FC = () => {
 
     return (
         <div className="mentor">
+         <Helmet>
+        <title>TechBairn - Mentor </title>
+        <meta name="Mentor content" content="TechBairn mentor page." />
+      </Helmet>
             <Enroll />
             <Gig/>
             <Experience/>

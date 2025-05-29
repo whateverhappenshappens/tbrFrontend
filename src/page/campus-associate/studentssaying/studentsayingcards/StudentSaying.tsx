@@ -8,7 +8,7 @@ import StudentSayingCard from "./studentsayingcards/StudentSayingCards";
 
 const StudentSaying: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalCards = 4; // Total number of cards
+  const totalCards = 3; // Total number of cards
 
   const handleBackward = () => {
     setCurrentIndex((prevIndex) =>
@@ -23,17 +23,6 @@ const StudentSaying: React.FC = () => {
   };
 
   const reviews = [
-    
-    {
-      color: "#FECBB6",
-      logocolor: "#FE4C6E",
-      username: "Harsh Ambastha",
-      college: "VIT Vellore",
-      program: "DSA Using C++/Python",
-      link: "https://example.com",
-      review: "A very helpful learning experience for freshers. Instructors and management are positive, constantly motivating students. The company environment is people-friendly and easy to work in. Highly recommended for freshers starting their professional journey.",
-      rating: 4,
-    },
     {
       color: "#FECBB6",
       logocolor: "#FE4C6E",

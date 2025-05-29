@@ -1,15 +1,16 @@
 import { Blog } from "../../types/Blog";
 
-// import img1 from "../../assets/Blogs Images/Mastering html5.jpg";
-// import img2 from "../../assets/Blogs Images/5 cutting-edge.jpg";
-// import img3 from "../../assets/Blogs Images/unlocking secrets.jpg";
-// import img4 from "../../assets/Blogs Images/mastering competitive programming.jpg";
-// import img5 from "../../assets/Blogs Images/Getting Started with Competitive Programming.jpg";
 import img1 from "../../assets/Blogs Images/Blogs Images 2/Masterging HTML 5.png";
 import img2 from "../../assets/Blogs Images/Blogs Images 2/5 cutting trends.png";
 import img3 from "../../assets/Blogs Images/Blogs Images 2/secrets.png";
 import img4 from "../../assets/Blogs Images/Blogs Images 2/Mastering_Competitive_Programming__Essential_Tips_and_Techniques_for_Success_photo.png";
 import img5 from "../../assets/Blogs Images/Blogs Images 2/Getting_Started_with_Competitive_Programming__A_Beginner_'s_Guide_for_Coding_Enthusiasts_photo.png";
+import img6 from "../../assets/Blogs Images/Blogs Images 2/predictive_Analytics.jpeg";
+// import img7 from "../../assets/Blogs Images/Blogs Images 2/TOP5Frameworks.jpeg";
+import img7 from "../../assets/Blogs Images/Blogs Images 2/TOP5.jpg";
+import img8 from "../../assets/Blogs Images/Blogs Images 2/IOT_SMARTER_WAY.jpeg";
+import img9 from "../../assets/Blogs Images/Blogs Images 2/IOT_SAFEGUARDING.png";
+import img10 from "../../assets/Blogs Images/Blogs Images 2/IOT_EverydayLife.jpg";
 
 export const blogs: Blog[] = [
   {
@@ -229,7 +230,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "six",
-    image: img1,
+    image: img6,
     title:
       " Unlocking Tomorrow: Understanding Supervised Learning for Predictive Analytics    ",
     blog: `In the realm of data science, predictive analytics stands as a beacon of insight, illuminating the path to informed decision-making. At its core lies a powerful technique known as supervised learning, a cornerstone of modern machine learning algorithms. In this blog post, we delve into the intricacies of supervised learning, exploring its significance in predicting the future and its applications across various domains.
@@ -272,7 +273,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "seven",
-    image: img1,
+    image: img7,
     title: "Top 5 JavaScript Frameworks You Need to Learn in 2024 can help you in future ",
     blog: ` Top 5 JavaScript Frameworks You Need to Learn in 2024
 
@@ -339,7 +340,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "eight",
-    image: img1,
+    image: img8,
     title:
       "Introduction to Internet of Things (IoT): Connecting the World in a Smarter Way    ",
     blog: `In today's digital age, the Internet of Things (IoT) has emerged as a revolutionary concept, transforming the way we interact with technology and the world around us. From smart homes to industrial automation, IoT has permeated various aspects of our lives, offering unprecedented connectivity and convenience. In this article, we'll delve into the realm of IoT, exploring its origins, functionalities, applications, and the impact it holds for the future.
@@ -386,7 +387,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "nine",
-    image: img1,
+    image: img9,
     title:
       "IoT Security: Safeguarding Connected Devices and Data in the Age of Connectivity",
     blog: `In today's fast-paced world, technology is evolving at an unprecedented rate, transforming the way we live and work. One of the most significant advancements in recent years is the Internet of Things (IoT). IoT refers to the interconnection of everyday devices via the internet, enabling them to send and receive data, ultimately leading to smarter, more efficient systems. From smart homes to industrial automation, IoT is revolutionizing various industries and enhancing efficiency in ways never imagined before.
@@ -427,7 +428,7 @@ export const blogs: Blog[] = [
   },
   {
     id: "ten",
-    image: img1,
+    image: img10,
     title:
       "IoT Applications in Everyday Life: How IoT is Transforming Industries and Enhancing Efficiency",
     blog: `In today's digitally interconnected world, the Internet of Things (IoT) has become ubiquitous, revolutionizing various aspects of our daily lives. From smart homes and wearable devices to industrial machinery and healthcare equipment, IoT technology enables seamless connectivity and data exchange. However, this proliferation of interconnected devices also poses significant security challenges, raising concerns about the protection of sensitive data and privacy. In this blog post, we will explore the importance of IoT security and discuss strategies for safeguarding connected devices and data in the age of connectivity.

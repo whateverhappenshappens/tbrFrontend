@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Helmet from "react-helmet"
 
 const NotFound: React.FC = () => {
   useEffect(() => {
@@ -6,6 +7,10 @@ const NotFound: React.FC = () => {
   }, []);
   return (
     <>
+       <Helmet>
+        <title>TechBairn - Not found </title>
+        <meta name="Not found content" content="TechBairn Not found page." />
+      </Helmet>
       <section className="bg-white dark:bg-gray-900 w-full">
         <div className="container flex items-center min-h-screen px-8 py-12 mx-auto w-full">
           <div className="flex flex-col items-center max-w-md mx-auto text-center">

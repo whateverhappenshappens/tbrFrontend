@@ -6,9 +6,12 @@ import { User, UserRole } from "../../../types/User";
 import { FormError } from "../../../types/FormError";
 import ReviewSlider from "./ReviewSlider1";
 import logo1 from "../../../assets/techbairn logo white-01.png";
-import { Navigate, useNavigate } from "react-router-dom"; // Import useHistory
+import { Link, Navigate, useNavigate } from "react-router-dom"; // Import useHistory
 import { Circles } from "react-loader-spinner";
 import Login from "../login/Login";
+import Helmet from "react-helmet";
+const GOOGLE_OAUTH_URL = import.meta.env.VITE_GOOGLE_OAUTH_URL;
+
 function Signup({ setIsLoggedIn }: any) {
   const Navigate = useNavigate(); // Initialize useHistory
 
@@ -59,7 +62,6 @@ function Signup({ setIsLoggedIn }: any) {
   };
 
   const handle_signup = async () => {
-    console.log(userDetails);
     setIsLoggedIn(true);
     if (!isChecked) {
       alert("Please accept the Terms & Conditions to create an account.");
@@ -77,18 +79,23 @@ function Signup({ setIsLoggedIn }: any) {
         });
         setFormError({ email: "", password: "" });
         setIsChecked(false);
-        
       } catch (error) {
         console.error("Signup failed:", error);
-        alert("Signup failed: " + error.message); // Show alert with error message
+        // alert("Signup failed: " + error.message); // Show alert with error message
       }
     } else {
       alert("Cannot create your account! Please correct the errors."); // Show alert if form validation fails
     }
   };
 
+  const handelClick = () =>{
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+}
+
   useEffect(() => {
-    console.log(formError);
   }, [formError]);
 
   const toggleLoginPopup = () => {
@@ -107,12 +114,19 @@ function Signup({ setIsLoggedIn }: any) {
     );
   };
 
-  const handleLogin = () => {
-    window.location.href = 'https://www.techbairn.live/api/oauth2/authorization/google';
+  const handleLogin = async () => {
+    window.location.href = GOOGLE_OAUTH_URL;
   };
 
   return (
     <div className="main_box">
+      <Helmet>
+        <title>TechBairn - Signup </title>
+        <meta
+          name="TechBairn - Signup content"
+          content="TechBairn Signup page."
+        />
+      </Helmet>
       <aside className="left">
         <img
           src={logo1} // Replace with the path to your logo image
@@ -160,7 +174,13 @@ function Signup({ setIsLoggedIn }: any) {
             value={userDetails.email}
             onChange={handleInputChange}
           />
-          <p className={`text-lg capitalize text-red-600 ${userDetails.email.length == 0 ? 'hidden' : 'block'}`}>{formError.email}</p>
+          <p
+            className={`text-lg capitalize text-red-600 ${
+              userDetails.email.length == 0 ? "hidden" : "block"
+            }`}
+          >
+            {formError.email}
+          </p>
 
           <label>Password</label>
           <br />
@@ -173,7 +193,13 @@ function Signup({ setIsLoggedIn }: any) {
               value={userDetails.password}
               onChange={handleInputChange}
             />
-            <p className={`text-lg capitalize text-red-600 ${userDetails.password.length == 0 ? 'hidden' : 'block'}`}>{formError.password}</p>
+            <p
+              className={`text-lg capitalize text-red-600 ${
+                userDetails.password.length == 0 ? "hidden" : "block"
+              }`}
+            >
+              {formError.password}
+            </p>
 
             <button
               type="button"
@@ -190,27 +216,34 @@ function Signup({ setIsLoggedIn }: any) {
             onChange={() => setIsChecked(!isChecked)}
           />
           <span className="ex1">
-            I accept all <span className="ex"><a href="https://docs.google.com/document/d/1fbuBJivN2D_C9vBevRpaZV_GxsMCEfRWWsaYxE6jBLQ/edit?usp=sharing" target="_blank">Terms & conditions</a></span>
+            I accept all{" "}
+            <span className="ex">
+              <Link onClick={handelClick} to={'/terms_condition'}>Terms & conditions</Link>
+            </span>
           </span>
           <br />
           <button
-  className="btn"
-  onClick={handle_signup}
-  disabled={!isFormValid() || isLoading} // Disable the button when the form is invalid or loading
->
-  {isLoading ? (
-    <Circles
-      height="40"
-      width="40"
-      color="#000"
-      ariaLabel="circles-loading"
-      wrapperStyle={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-      visible={true}
-    />
-  ) : (
-    "Create an account"
-  )}
-</button>
+            className="btn"
+            onClick={handle_signup}
+            disabled={!isFormValid() || isLoading} // Disable the button when the form is invalid or loading
+          >
+            {isLoading ? (
+              <Circles
+                height="40"
+                width="40"
+                color="#000"
+                ariaLabel="circles-loading"
+                wrapperStyle={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                visible={true}
+              />
+            ) : (
+              "Create an account"
+            )}
+          </button>
 
           <p className="cont">-----or continue with Google------</p>
           <div className="google">
@@ -221,9 +254,11 @@ function Signup({ setIsLoggedIn }: any) {
       </div>
       {isLoginPopupVisible && (
         <div className="login absolute w-[100%] ml-[114px] h-full overflow-y-hidden bg-white border">
-          <Login  handle_login={() => setIsLoggedIn(true)}
+          <Login
+            handle_login={() => setIsLoggedIn(true)}
             setIsLoggedIn={setIsLoggedIn}
-            setloggedInUserEmail={setloggedInUserEmail}/>
+            setloggedInUserEmail={setloggedInUserEmail}
+          />
         </div>
       )}
     </div>

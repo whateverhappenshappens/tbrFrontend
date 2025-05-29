@@ -1,11 +1,15 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState, useRef } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { json, NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../../CartContext";
 import { UserAPI } from "../../apis/UserAPIs";
 import Signup from "../../components/main/login/Login";
 import { FaTimes } from "react-icons/fa";
-import "./Cart.css"
+import "./Cart.css";
+import Helmet from "react-helmet";
+import toast from "react-hot-toast";
+import Help from "../../components/Help"
+import CryptoJS from "crypto-js"
 interface Course {
   id: string;
   name: string;
@@ -27,17 +31,14 @@ interface NetPrice {
   discount: number;
 }
 
-const coupons: Record<string, number> = {
-  SAVE10: 10,
-  SPRING20: 20,
-  WINTER25: 25,
-  SUMMER30: 30,
-  FALL35: 35,
-};
-
-const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps) => {
+const Cart = ({
+  headerHeight,
+  setCartDetailsData,
+  setCartValueData,
+}: CartProps) => {
   const { cart, removeFromCart } = useCart();
-  const [isSignupPopupVisible, setIsSignupPopupVisible] = useState<boolean>(false);
+  const [isSignupPopupVisible, setIsSignupPopupVisible] =
+    useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
   const cartPage = useRef<HTMLDivElement | null>(null);
@@ -52,6 +53,73 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
   const [couponMessage, setCouponMessage] = useState<string>("");
   const [additionalDiscount, setAdditionalDiscount] = useState<number>(0);
   const navigate = useNavigate();
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_TBR_COUPANS_URL}`);
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    
+        const encryptedData = await response.text(); // Get raw text response
+        // console.log("Encrypted Data:", encryptedData); // Log the encrypted data
+    
+        // If encryptedData is empty, return an error
+        if (!encryptedData) {
+          throw new Error("The server returned an empty response.");
+        }
+    
+        // Define the secret key
+        const secretKey = import.meta.env.VITE_TBR_SECRET_COU_KEY;
+    
+        // Decrypt the data
+        const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
+        const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    
+        // console.log("Decrypted Data:", decryptedData); // Log decrypted data
+    
+        // Parse the decrypted JSON
+        const jsonData = JSON.parse(decryptedData);
+        setData(jsonData);
+      } catch (error) {
+        console.error("Error fetching or decrypting data:", error);
+      }
+    }
+    fetchData();
+  }, []);
+      // .then((result) => {
+      //   const couponsData = result;
+      //   setData(couponsData);
+      // })
+      // .catch((error) => {
+      //   console.error("Fetch error:", error);
+      // });
+  // }, []);
+
+  // useEffect(() => {
+  //   fetch(`${import.meta.env.VITE_TBR_COUPANS_URL}`)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! Status: ${response.status}`);
+  //       }
+  //       console.log(response)
+  //       return response.json();
+  //     })
+  //     .then((result) => {
+  //       console.log(result)
+
+  //       const couponsData = result;
+  //       setData(couponsData);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Fetch error:", error);
+  //     });
+  // }, []);
+
 
   useEffect(() => {
     calculateNetPrice();
@@ -79,21 +147,46 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
 
+
   const handleApplyCoupon = () => {
-    if (coupons.hasOwnProperty(couponCode)) {
-      const couponDiscount = coupons[couponCode];
-      setCouponMessage(`You have got  ${couponDiscount}% discount`);
+    
+    // Reset message and discount first
+    setCouponMessage("");
+    setPromoApplied(false);
+    setAdditionalDiscount(0);
+    calculateNetPrice(0);
+
+    if (!couponCode) {
+      setCouponMessage("Invalid coupon code");
       setPromoApplied(true);
-      setAdditionalDiscount(couponDiscount);
-      calculateNetPrice(couponDiscount);
-    } else {
+      setAdditionalDiscount(0);
+      calculateNetPrice(0);
+      return;
+    }
+  
+    let isCouponValid = false;
+  
+    data.forEach((data) => {
+      if (data[0] === couponCode) {
+        isCouponValid = true;
+        const couponDiscount = data[1];
+        setCouponMessage(
+          `Woohoo! 🎉 You've got an extra ${couponDiscount}% off`
+        );
+        setPromoApplied(true);
+        setAdditionalDiscount(couponDiscount);
+        calculateNetPrice(couponDiscount);
+      }
+    });
+  
+    if (!isCouponValid) {
       setCouponMessage("Invalid coupon code");
       setPromoApplied(true);
       setAdditionalDiscount(0);
       calculateNetPrice(0);
     }
   };
-
+  
   const calculateNetPrice = (additionalDiscount = 0) => {
     let totalPrice = 0;
     let totalDiscountedPrice = 0;
@@ -102,9 +195,12 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
       totalDiscountedPrice += course.discountedPrice;
     });
     if (additionalDiscount > 0) {
-      totalDiscountedPrice = totalDiscountedPrice * (1 - additionalDiscount / 100);
+      totalDiscountedPrice =
+        totalDiscountedPrice * (1 - additionalDiscount / 100);
     }
-    let discount = Math.floor(((totalPrice - totalDiscountedPrice) / totalPrice) * 100);
+    let discount = Math.floor(
+      ((totalPrice - totalDiscountedPrice) / totalPrice) * 100
+    );
     const newNetPriceObj: NetPrice = {
       totalPrice,
       totalDiscountedPrice: Math.floor(totalDiscountedPrice),
@@ -126,12 +222,15 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
 
   return (
     <div
-      className="cart text-[#2E436A] px-[30px] md:pl-[70px] md:pr-[60px] xl:pl-[140px] xl:pr-[100px] overflow-visible flex flex-col gap-10 xl:gap-14 mb-10"
+      className=" cart text-[#2E436A] px-[30px] md:pl-[70px] md:pr-[60px] xl:pl-[140px] xl:pr-[100px] overflow-visible flex flex-col gap-10 xl:gap-14 mb-10"
       ref={cartPage}
     >
-      <div className="heading text-6xl lg:text-8xl font-semibold text-center lg:text-left overflow-visible">
-        
-      </div>
+      <Helmet>
+        <title>TechBairn - Cart</title>
+        <meta name="Cart content" content="TechBairn cart page." />
+      </Helmet>
+      <Help/>
+      <div className=" heading text-6xl lg:text-8xl font-semibold text-center lg:text-left overflow-visible"></div>
       {cart.length === 0 ? (
         <div className="empty-cart-message text-center text-4xl lg:text-6xl font-bold mb-[5rem] overflow-visible">
           <h2 className="overflow-visible">Your bag is empty</h2>
@@ -145,7 +244,10 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
       ) : (
         <div className="main-cart border border-[#ccc] rounded-2xl flex flex-col gap-10 p-5 lg:p-7 xl:p-16 shadow-xl">
           {cart.map((course: Course) => (
-            <div className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-9" key={course.id}>
+            <div
+              className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-9"
+              key={course.id}
+            >
               <div className="course-box-1 flex gap-3 xl:gap-7 lg:w-4/6">
                 <div className="img h-48 w-5/12 xl:w-4/12 xl:h-60 border rounded-xl overflow-y-hidden">
                   <img src={course.image} alt={course.image} />
@@ -161,8 +263,12 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
               </div>
               <div className="course-box-2 flex items-center justify-between lg:w-2/6">
                 <div className="price text-3xl lg:text-4xl xl:text-5xl xl:overflow-visible font-semibold">
-                  <div className="new text-[#6D87F5] overflow-hidden">Rs {course.discountedPrice.toFixed(2)}</div>
-                  <div className="line-through overflow-hidden">Rs {course.price.toFixed(2)}</div>
+                  <div className="new text-[#6D87F5] overflow-hidden">
+                    Rs {course.discountedPrice.toFixed(2)}
+                  </div>
+                  <div className="line-through overflow-hidden">
+                    Rs {course.price.toFixed(2)}
+                  </div>
                 </div>
                 <div
                   className="border-2 border-[#FF7E6C] bg-[#FF7E6C] text-white text-2xl lg:text-4xl xl:text-5xl font-semibold px-5 lg:px-6 xl:px-10 py-3 lg:py-4 xl:py-6 cursor-pointer rounded-xl hover:bg-white hover:text-[#FF7E6C]"
@@ -176,13 +282,19 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
           <div className="cart-footer flex flex-col gap-5 border-t-2 border-dashed border-[#2E436A] pt-5">
             <div className="net-box flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
               <div className="price text-3xl flex justify-between lg:gap-10">
-                <div className="text-4xl lg:text-5xl xl:text-4xl xl:overflow-hidden font-semibold">Net Price</div>
-                <div className="new text-[#6D87F5] font-semibold">Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}</div>
+                <div className="text-4xl lg:text-5xl xl:text-4xl xl:overflow-hidden font-semibold">
+                  Net Price
+                </div>
+                <div className="new text-[#6D87F5] font-semibold">
+                  Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}
+                </div>
               </div>
               <div className="discount">
                 <div className="text-2xl lg:text-5xl xl:text-3xl xl:overflow-hidden flex justify-between font-semibold">
                   <div className="text-[#FF7E6C]">
-                    {additionalDiscount > 0 ? `` : `${Math.floor(netPriceObj.discount)}% off`}
+                    {additionalDiscount > 0
+                      ? ``
+                      : `${Math.floor(netPriceObj.discount)}% off`}
                   </div>
                 </div>
               </div>
@@ -202,20 +314,22 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
                 Apply
               </button>
             </div>
-            {promoApplied && <div className="coupon-message">{couponMessage}</div>}
+            {promoApplied && (
+              <div className="coupon-message">{couponMessage}</div>
+            )}
             <div className="flex flex-col gap-5 lg:flex-row-reverse">
-            <button
+              <button
                 onClick={handleProceedToPayment}
                 className="bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
               >
                 Proceed to payment
               </button>
-              <NavLink to="/programs"
+              <NavLink
+                to="/programs"
                 className="bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
               >
                 Continue Shopping
               </NavLink>
-              
             </div>
           </div>
         </div>
@@ -227,11 +341,13 @@ const Cart = ({ headerHeight, setCartDetailsData, setCartValueData }: CartProps)
               className="close-button text-6xl   text-black absolute top-2 right-2"
               onClick={() => setIsSignupPopupVisible(false)}
             >
-              <FaTimes  />
+              <FaTimes />
             </button>
-            <Signup  handle_login={() => setIsLoggedIn(true)}
-            setIsLoggedIn={setIsLoggedIn}
-            setloggedInUserEmail={setloggedInUserEmail} />
+            <Signup
+              handle_login={() => setIsLoggedIn(true)}
+              setIsLoggedIn={setIsLoggedIn}
+              setloggedInUserEmail={setloggedInUserEmail}
+            />
           </div>
         </div>
       )}

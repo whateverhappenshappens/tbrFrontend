@@ -5,55 +5,35 @@ import FaqAccordion from "./faq-accordion/FaqAccordion";
 const Faq: React.FC = () => {
   const accordionData = [
     {
-      title: "1. What do you want in a mentor or instructor? ",
-      content: `We seek passionate educators with strong expertise in [course topic] (Web Dev, ML, IoT). Experience in online instruction, excellent communication skills, and a talent for making complex topics engaging are essential.
+      title: "1. What kind of talent can I hire through TechBairn?",
+      content: `TechBairn offers a diverse pool of professionals with expertise in areas such as web development, machine learning, competitive coding, and other in-demand technologies. Our candidates are trained to meet the evolving demands of the tech industry and are ready to contribute to your business.
       `,
     },
     {
-      title: "2. Is prior experience teaching [course topic] required?",
-      content: `Prior experience teaching [course topic] is a plus, but not mandatory. Strong industry experience and a demonstrable ability to explain technical concepts clearly are highly valued.`,
+      title: "2. What is the cost of hiring through TechBairn?",
+      content: `Hiring with TechBairn is completely free. We offer zero-cost hiring to streamline your recruitment process without additional expenses.`,
     },
     {
-      title: "3. What will my teaching schedule look like?",
-      content: `The schedule will vary depending on the course but typically involves a mix of live lectures, live Q&A sessions, and providing feedback on student work.`,
+      title: "3. How long does it take to hire candidates through TechBairn?",
+      content: `With our efficient platform and pre-qualified candidates, the hiring process is swift. You can fill vacant positions quickly and reduce your overall hiring time.`,
     },
     {
-      title: "4. Will I have opportunities for professional development?",
-      content: `Absolutely! We offer ongoing support and resources for our instructors, including workshops, training sessions, and access to the latest industry developments.`,
+      title: "4. How does TechBairn ensure the candidates are qualified?",
+      content: `Our graduates undergo rigorous training in the latest industry-relevant skills and technologies, ensuring that they are well-prepared to take on real-world challenges.`,
     },
     {
-      title: "5. How big will the classes be? ",
-      content: `Class sizes vary depending on the course, but we strive to maintain a manageable student-to-instructor ratio to ensure personalised attention.`,
+      title: "5. Are there flexible hiring options?",
+      content: `Yes, TechBairn provides year-round hiring options, allowing you to meet both your immediate and future talent needs.
+`,
     },
     {
-      title: "6. What platform will be used for delivering the course?",
-      content: `We utilise a user-friendly learning management system (LMS) that provides a smooth online learning experience for both instructors and students.`,
-    },
-    {
-      title:
-        "7. Will I have the opportunity to develop my own course materials?",
-      content: `While we have a core curriculum, we encourage instructors to add their unique insights and approaches to enrich the learning experience.`,
-    },
-    {
-      title: "8. How will student performance be evaluated?",
-      content: `We employ a multi-faceted approach to assessment, including assignments, quizzes, projects, and participation.`,
+      title: "6. How can I start the hiring process with TechBairn?",
+      content: `You can browse our talented pool of graduates through our platform and find the perfect fit for your company's needs. Just reach out to us, and we'll guide you through the process.`,
     },
     {
       title:
-        "9. Is there an opportunity to collaborate with other instructors? ",
-      content: `We foster a collaborative environment where instructors can share best practices, resources, and ideas.`,
-    },
-    {
-      title: "10. What are the compensation and benefits like?",
-      content: `We offer a competitive compensation package that includes salary, benefits, and potential performance incentives (details will be provided during the interview process).      `,
-    },
-    {
-      title: "11. What makes TechBairn unique in the EdTech space?",
-      content: `We're committed to providing high-quality, engaging instruction that empowers learners to achieve their tech goals.      `,
-    },
-    {
-      title: "12. What is your company culture like?",
-      content: `We cultivate a supportive, collaborative, and innovative environment where educators can thrive.`,
+        "7.  What industries do TechBairn candidates specialize in?",
+      content: `Our candidates are equipped with skills that are applicable across various industries, especially in tech fields such as software development, AI, machine learning, and IT services.`,
     },
   ];
 

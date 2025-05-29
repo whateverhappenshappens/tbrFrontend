@@ -10,6 +10,7 @@ import Instructor from "./instructor/Instructor";
 import StudentSaying from "./studentssaying/StudentSaying";
 import Faq from "./faq/Faq";
 import Help from "./help/Help";
+import Helmet from "react-helmet"
 
 const MlProgram: React.FC = () => {
   useEffect(() => {
@@ -18,6 +19,10 @@ const MlProgram: React.FC = () => {
 
   return (
     <div className="programs">
+      <Helmet>
+        <title>TechBairn - Machinester Program </title>
+        <meta name="Machinester Program content" content="TechBairn Machinester Program page." />
+      </Helmet>
       <Details star={4} rating={4999} students={10000} />
       <Roadmap />
       <Overview />

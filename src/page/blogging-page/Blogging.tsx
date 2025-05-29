@@ -6,6 +6,10 @@ import FeedbackScroll from "./feedback-scroll/FeedbackScroll";
 import BloggingCard from "./blogging-card/BloggingCard";
 import BloggingFooter from "./blogging-footer/BloggingFooter";
 
+import Helmet from "react-helmet";
+import Help from "../../components/Help"
+
+
 // import { Blog } from "../../types/Blog";
 
 interface BloggingPageProps extends React.JSX.IntrinsicAttributes {
@@ -23,7 +27,12 @@ const Blogging: React.FC<BloggingPageProps> = ({ headerHeight }) => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   }, []);
   return (
-    <div ref={bloggingContainer} className="blogging-page">
+    <div ref={bloggingContainer} className="blogging-page ">
+      <Helmet>
+        <title>TechBairn - Blog</title>
+        <meta name="Blog content" content="TechBairn blog page." />
+      </Helmet>
+      <Help />
       <BloggingHeader />
       <FeedbackScroll />
       <BloggingCard />

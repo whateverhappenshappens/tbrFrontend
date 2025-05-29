@@ -15,7 +15,7 @@ const Enroll: React.FC = () => {
           </p>
           <button className="enroll-button ">
             <Link to={"https://forms.gle/snETvuhLtfvEPptD8"} target="_blank">
-              <p>Join us!</p>
+              <p>Request Info</p>
             </Link>
           </button>
         </div>

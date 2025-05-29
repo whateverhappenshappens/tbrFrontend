@@ -12,7 +12,6 @@ interface props {
 }
 
 const Upcoming: React.FC<props> = (props) => {
-  console.log(props.data);
   // const [enroll, setEnroll] = useState<boolean>(false);
 
   // useEffect(() => {
@@ -25,7 +24,6 @@ const Upcoming: React.FC<props> = (props) => {
   for (var i = 0; i < arr.length; i++) {
     arr[i] = i;
   }
-  console.log(props.data?.isActive);
 
   return (
     <div className="upcoming ">

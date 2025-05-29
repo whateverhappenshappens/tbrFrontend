@@ -3,6 +3,8 @@ import "./HackathonPage.css";
 import Biggest from "./biggest/Biggest";
 import Buttons from "./buttons/Buttons";
 import FiltersListings from "./filters-listings/Filters-Listings";
+import Helmet from "react-helmet"
+import Help from "../../components/Help"
 
 interface HackathonPageProps {
   Pastdata: any;
@@ -24,8 +26,15 @@ const HackathonPage: React.FC<HackathonPageProps> = ({
   }, []);
 
   return (
-    <div className="hackathon-page">
-      
+    <div className="hackathon-page ">
+      <Helmet>
+        <title>TechBairn - Events</title>
+        <meta
+          name="TechBairn Events Page"
+          content="TechBairn events page."
+        />
+      </Helmet>
+    <Help/>
       <Biggest ActiveData={Activedata} />
       <Buttons
         activeCallback={activeCallback}

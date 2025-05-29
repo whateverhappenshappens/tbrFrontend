@@ -9,6 +9,8 @@ import Roles from "./roles/Roles";
 import Benefits from "./benefits/Benefits";
 import Connected from "./connected/Connected";
 import StudentSaying from "./studentssaying/studentsayingcards/StudentSaying";
+import Helmet from "react-helmet";
+import Help from "../../components/Help"
 
 const CampusAssociate: React.FC = () => {
   useEffect(() => {
@@ -16,6 +18,14 @@ const CampusAssociate: React.FC = () => {
   }, []);
   return (
     <div className="container1 mt-[5rem]">
+      <Helmet>
+        <title>TechBairn - Campus Associate</title>
+        <meta
+          name="Campus Associate "
+          content="TechBairn Campus Associate page."
+        />
+      </Helmet>
+      <Help />
       <Represent />
       <Associate />
       <Experience />

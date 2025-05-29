@@ -1,24 +1,11 @@
 import axios, { AxiosError } from "axios";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 
 export const api = axios.create({
   withCredentials: true,
-  baseURL:"https://www.techbairn.live/api",
-  // baseURL:"http://3.108.165.88:8080/",
-  
+  baseURL:BASE_URL,
 });
-
-// Token refresh logic
-// api.interceptors.request.use(
-//   async (config) => {
-//     console.log("request interceptor")
-//     const accessToken = localStorage.getItem('access-token');
-//     if (accessToken) {
-//       config.headers.Authorization = `Bearer ${accessToken}`;
-//     }
-//     return config;
-//   },
-//   (error) => Promise.reject(error)
-// );
 
 // Error handling
 api.interceptors.response.use(

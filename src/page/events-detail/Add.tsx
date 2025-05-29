@@ -113,7 +113,6 @@ const App: React.FC<AddEventFormProps> = ({
     try {
       const response = await GeneratePresignedUrlforUpload(urlData);
       const preSignedUrlForUpload=response.preSignedUrlForUpload;
-      console.log(urlData);
       
       const fileNameForUpload = response.fileName;
       setSelectedFile(file);
@@ -125,7 +124,6 @@ const App: React.FC<AddEventFormProps> = ({
         [type]:  fileName,
       }));
 
-      console.log(`Pre-signed URL generated: ${fileName}`);
     } catch (error) {
       console.error("Error generating pre-signed URL:", error);
       toast.error("Error generating pre-signed URL.");

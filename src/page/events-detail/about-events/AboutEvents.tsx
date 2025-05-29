@@ -8,8 +8,6 @@ interface Props {
 }
 
 const AboutEvents: React.FC<Props> = (props) => {
-  console.log(props.data);
-
   return (
     <div className="aboutevents">
       <div className="aboutevents-head">

@@ -4,7 +4,8 @@ import Enroll from "./enroll/Enroll";
 import Gig from "./gig/Gig";
 import Experience from "./experience/Experience";
 import Faq from "./faq/Faq";
-import Help from "./help/Help";
+import Helmet from "react-helmet"
+import Help from "../../components/Help"
 
 const Hire: React.FC = () => {
   useEffect(() => {
@@ -12,6 +13,11 @@ const Hire: React.FC = () => {
   }, []);
   return (
     <div className="hire mentor">
+                  <Helmet>
+        <title>TechBairn - Hire</title>
+        <meta name="Hire with us content" content="TechBairn hire with us page." />
+      </Helmet>
+      <Help />
       <Enroll />
       <Gig />
       <Experience />

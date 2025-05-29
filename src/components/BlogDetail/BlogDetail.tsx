@@ -32,7 +32,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ headerHeight }) => {
       <div className="text-center text-[#6D87F5] font-bold text-xl sm:text-3xl">
         {currentBlog?.genre}
       </div>
-      <div className="text-center text-[#2E436A] text-4xl sm:text-6xl font-bold overflow-hidden">
+      <div className="text-center text-[#2E436A text-4xl sm:text-6xl font-bold overflow-hidden">
         {currentBlog?.title}
       </div>
       <div className="blog-banner xl:h-[900px] overflow-hidden">

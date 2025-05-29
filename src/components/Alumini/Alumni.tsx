@@ -187,7 +187,6 @@ const Alumni = () => {
           Our Alumni work at
         </div>
         <div className="text-2xl md:text-4xl xl:text-5xl overflow-hidden">
-          Here we will showcase all big companies where our students got placed
         </div>
       </div>
       {isMobile ? (

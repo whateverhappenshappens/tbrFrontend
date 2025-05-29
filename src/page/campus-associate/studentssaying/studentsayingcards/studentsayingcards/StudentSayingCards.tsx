@@ -45,7 +45,7 @@ const StudentSayingCard: React.FC<Props> = (props) => {
       <div className="studentsayingcard-review">
         <p>{props.review}</p>
       </div>
-      <div className="studentsayingcard-card-stars">
+      {/* <div className="studentsayingcard-card-stars">
         {arr.map((value, key) =>
           key < props.rating ? (
             <AiFillStar key={key} color="#6D87F5" size={40} />
@@ -53,7 +53,7 @@ const StudentSayingCard: React.FC<Props> = (props) => {
             <AiOutlineStar key={key} color="#6D87F5" size={40} />
           )
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

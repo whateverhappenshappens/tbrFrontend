@@ -6,6 +6,7 @@ import * as jsonpatch from "fast-json-patch";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { api } from "../../apis/configs/axiosConfigs";
+const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
 interface Profile {
   fullname: string;
   email: string;
@@ -14,8 +15,6 @@ interface Profile {
   stream: string;
 }
 function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
-  console.log("UpdateData:", cartDetailsData);
-  console.log("DiscountPrice: ", cartDetailsData.cartValue);
 
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState({
@@ -28,7 +27,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
   const [isValid, setIsValid] = useState(false);
   const [errors, setErrors] = useState<Partial<Profile>>({});
   const [editableField, setEditableField] = useState(null);
-  const [isSaved, setIsSaved] = useState(true); // Track if the profile is saved
+  // const [isSaved, setIsSaved] = useState(true); // Track if the profile is saved
   const [showModal, setShowModal] = useState(false); // State for controlling the modal
   const navigate = useNavigate();
 
@@ -36,7 +35,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
     const fetchProfileData = async () => {
       try {
         const res = await UserAPI.private_test();
-        console.log(res);
         setProfile({
           fullName: res.data.name,
           email: res.data.email,
@@ -78,7 +76,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
     setProfile((prevProfile) => {
       const updatedProfile = { ...prevProfile, [name]: value };
       validateProfile(updatedProfile);
-      setIsSaved(false); // Mark profile as not saved when changes are made
+      // setIsSaved(false); // Mark profile as not saved when changes are made
       return updatedProfile;
     });
   };
@@ -94,9 +92,8 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
 
     try {
       const res = await UserAPI.UpdateUserProfile(profile.email, patchOps);
-      console.log(res.data);
       // toast.success("Profile updated successfully!");
-      setIsSaved(true); // Mark profile as saved
+      // setIsSaved(true); // Mark profile as saved
     } catch (error) {
       console.error("Failed to update profile:", error);
       toast.error("Failed to update profile!");
@@ -114,9 +111,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
       ),
     };
 
-    console.log("Request data: ", requestData);
-    console.log(cartDetailsData.cartValue * 100);
-
     const access_token = localStorage.getItem("access-token");
 
     try {
@@ -130,11 +124,10 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         }
       );
 
-      console.log("order created!", response, cartDetailsData.cartValue * 100);
 
       const data = response.data;
       const options = {
-        key: "rzp_test_LFEMJf6qnRSih6",
+        key: razorpayKey,
         amount: data.amount,
         currency: "INR",
         name: "Techbairn",
@@ -143,7 +136,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
         callback_url: "google.com",
         show_coupons: true,
         handler: async function (response: any) {
-          console.log("success -->", response);
           try {
             const paymentSuccessResponse = await api.post(
               "/v1.5/payment/success",
@@ -159,7 +151,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
               }
             );
             navigate("/payment-success");
-            console.log("payment success!", paymentSuccessResponse);
           } catch (error) {
             navigate("/unsuccess")
             console.error(
@@ -184,7 +175,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
 
       const paymentWindow = new (window as any).Razorpay(options);
       paymentWindow.on("payment.failed", async function (response: any) {
-        console.log("failure --->", response);
         try {
           await api.post(
             "/v1.5/payment/fail",
@@ -220,95 +210,6 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   }, []);
 
-  // function handlePayment() {
-  //   const requestData = {
-  //     utr: "utr-number",
-  //     mobileNumber: profile.phoneNumber,
-  //     userId: profile.email,
-  //     paymentId: "payment-id",
-  //     modeOfPayment: "razorpay",
-  //     selectedCourses: cartDetailsData.cartDetailsData.map(
-  //       ({ description, ...rest }) => rest
-  //     ),
-  //   };
-
-  //   console.log("Request data: ", requestData);
-  //   console.log(cartDetailsData.cartValue * 100);
-
-  //   const access_token = localStorage.getItem("access-token");
-
-  //   try {
-  //     const res = await a.request({
-  //       url: "/v1.5/requests/test/private/zoro",
-  //       method: "GET",
-  //       headers: {
-  //         Authorization: "Bearer " + access_token,
-  //       },
-  //     });
-
-  //   axios
-  //     .post(
-  //       `http://localhost:8080/v1.5/payment/${cartDetailsData.cartValue * 100}`,
-  //       requestData
-  //     )
-  //     .then((response) => {
-  //       console.log(
-  //         "order created!",
-  //         response,
-  //         cartDetailsData.cartValue * 100
-  //       );
-  //       const data = response.data;
-  //       const options = {
-  //         key: "rzp_test_LFEMJf6qnRSih6",
-  //         amount: data.amount,
-  //         currency: "INR",
-  //         name: "Techbairn",
-  //         description: "Test Transaction",
-  //         order_id: data.orderId,
-  //         callback_url: "google.com",
-  //         show_coupons: true,
-  //         handler: function (response: any) {
-  //           console.log("success -->", response);
-  //           axios
-  //             .post("http://localhost:8080/payment/success", {
-  //               orderId: response.razorpay_order_id,
-  //               paymentId: response.razorpay_payment_id,
-  //               mobileNumber: profile.phoneNumber,
-  //             })
-  //             .then((response) => {
-  //               console.log("payment success!", response);
-  //             });
-  //         },
-  //         prefill: {
-  //           name: profile.fullName,
-  //           email: profile.email,
-  //           contact: profile.phoneNumber,
-  //         },
-  //         notes: {
-  //           address: "Razorpay Corporate Office",
-  //         },
-  //         theme: {
-  //           color: "#3399cc",
-  //         },
-  //       };
-  //       const paymentWindow = new (window as any).Razorpay(options);
-  //       paymentWindow.on("payment.failed", function (response: any) {
-  //         console.log("failure --->", response);
-  //         axios.post("http://localhost:8080/payment/fail", {
-  //           orderId: response.error.metadata.order_id,
-  //           paymentId: response.error.metadata.payment_id,
-  //           description: response.error.description,
-  //           reason: response.error.reason,
-  //           source: response.error.source,
-  //           step: response.error.step,
-  //         });
-  //       });
-  //       paymentWindow.open();
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was a problem with the payment operation:", error);
-  //     });
-  // }
 
   const toggleEdit = (field) => {
     setEditableField((prevField) => (prevField === field ? null : field));
@@ -441,7 +342,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
       )}
       
       <div className="summary-container">
-      <h3>Fill the information before proceed to pay</h3>
+      <h3 className="font-bold">Complete the details before proceeding to payment.</h3>
         <h2>Summary</h2>
         <div className="sum">
           <p className="items">Items</p>
@@ -458,7 +359,7 @@ function UpdateUserDetails(cartDetailsData: any, cartValue: any) {
           <p className="price1">Rs {cartDetailsData.cartValue}/-</p>
         </div>
         <div className="w-[100%]  mt-[4rem]">
-          <button className="buttun3" disabled={!isValid} onClick={handlePayment}>
+          <button className="buttun3"  onClick={handlePayment}>
             Complete Payment
           </button>
         </div>

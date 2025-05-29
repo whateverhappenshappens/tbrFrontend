@@ -33,8 +33,8 @@ const Card: React.FC<BlogCardProps> = (props) => {
 
   return (
     <div onClick={() => handleBlogClick(props.id)} className="card">
-      <div className="card-image">
-        <img src={props.cardimg} alt="card" />
+      <div className="card-image h-[50vh]">
+        <img className="object-cover object-top" src={props.cardimg}  alt="card" />
       </div>
       <div className="card-content">
         <p className="card-content-games">{props.para}</p>

@@ -3,7 +3,8 @@ import "./Program.css";
 import FridaySale from "./black-friday-sale/FridaySale";
 import Development from "./development-box/Development";
 import Course from "./course-container/Course";
-
+import Helmet from "react-helmet";
+import Help from '../../components/Help'
 const Programs: React.FC = () => {
   const [value, setValue] = useState<string>("all");
 
@@ -13,6 +14,14 @@ const Programs: React.FC = () => {
 
   return (
     <div className="mentor">
+      <Helmet>
+        <title>TechBairn - Programs </title>
+        <meta
+          name="Programs content"
+          content="TechBairn Programs page."
+        />
+      </Helmet>
+      <Help />
       <FridaySale />
       <Development value={[value, setValue]} />
       <Course value={value} />

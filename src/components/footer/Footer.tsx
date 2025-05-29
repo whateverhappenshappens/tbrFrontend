@@ -4,7 +4,7 @@ import { IoLogoInstagram } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io";
 import { FaYoutube } from "react-icons/fa6";
-import { NavLink } from "react-router-dom"; // Import NavLink
+import { Link, NavLink } from "react-router-dom"; // Import NavLink
 import logo from "../../assets/techbairn logo white-01.png";
 import "../../styles/components/Footer.css";
 
@@ -20,7 +20,7 @@ const itemList = [
   },
   {
     name: "Reach out to us:",
-    list: ["Contact Us:", "Phone:","(+91) 87897 26459",  " (+91) 70048 85397 ", "Email:","info@techbairn.co.in","hello@techbairn.com"],
+    list: ["Contact Us:", "Phone:","(+91) 87897 26459",  " (+91) 70048 85397 ", "Email:", <a href="mailto:hello@techbairn.com">hello@techbairn.com</a> , <a href="mailto:hello@techbairn.com">info@techbairn.com</a>],
   },
 ];
 
@@ -101,8 +101,10 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="border-t mt-5 pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
-        <div className="overflow-visible">Copyright @ techbairn 2024</div>
-        <div className="overflow-visible"><a href="https://drive.google.com/file/d/18gwUjSwiG7XRywkAHWah9uyX8rrdph1y/view" target="_blank">Privacy Policy | techbairn.com</a></div>
+        <div className="overflow-visible">© 2024 TechBairn Research Pvt. Ltd. All rights reserved.</div>
+        <div className="overflow-visible">
+          <Link to={'/policy'} onClick={handelClick}>Privacy Policy | techbairn.com</Link>
+          </div>
       </div>
     </footer>
   );

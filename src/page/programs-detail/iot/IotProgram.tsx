@@ -10,6 +10,7 @@ import Instructor from "./instructor/Instructor";
 import StudentSaying from "./studentssaying/StudentSaying";
 import Faq from "./faq/Faq";
 import Help from "./help/Help";
+import Helmet from "react-helmet"
 
 const IotProgram: React.FC = () => {
   useEffect(() => {
@@ -18,6 +19,10 @@ const IotProgram: React.FC = () => {
 
   return (
     <div className="programs">
+      <Helmet>
+        <title>TechBairn - IOT Program </title>
+        <meta name="IOT Program content" content="TechBairn IOT Program page." />
+      </Helmet>
       <Details star={4} rating={4999} students={10000} />
       <Roadmap />
       <Overview />

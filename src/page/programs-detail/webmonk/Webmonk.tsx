@@ -10,6 +10,7 @@ import Instructor from "./instructor/Instructor";
 import StudentSaying from "./studentssaying/StudentSaying";
 import Faq from "./faq/Faq";
 import Help from "./help/Help";
+import Helmet from "react-helmet"
 
 const Webmonk: React.FC = () => {
   useEffect(() => {
@@ -17,6 +18,10 @@ const Webmonk: React.FC = () => {
   }, []);
   return (
     <div className="programs">
+      <Helmet>
+        <title>TechBairn - Webmonk Program </title>
+        <meta name="Webmonk Program content" content="TechBairn Webmonk Program page." />
+      </Helmet>
       <Details star={4} rating={4999} students={10000} />
       <Roadmap />
       <Overview />
