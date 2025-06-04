@@ -60,7 +60,7 @@ const Details: React.FC<Props> = (props) => {
       name: "CodeSlayer",
       description: " A Competitive Programming Course.A Complete Placement Preparation Program ",
       price: 4999,
-      discountedPrice: 3499,
+      // discountedPrice: 3499,
       image:code   
     };
 
@@ -114,7 +114,7 @@ const Details: React.FC<Props> = (props) => {
             </div>
           </div>
           <div className="details-date">
-            <p>Batch Starting Date: Winter 2024 </p>
+            <p>Batch Starting Date: Summer 2025 </p>
             <p>Program Format: Online Live Classes </p>
             <p>Program Duration: 2 Months , At 2-10 hrs/week</p>
             <p>You Will Learn: C++, Data Structures and Algorithms</p>
@@ -123,7 +123,7 @@ const Details: React.FC<Props> = (props) => {
             <button className="details-buttons-enroll bg-red-400" onClick={handleEnroll}>
               <p>
                 Enroll Now for{" "}
-                <span className="details-buttons-strike"> ₹ 4999</span> ₹ 3,499
+                <span className=""> ₹ 4999</span> 
               </p>
             </button>
             <a href="https://drive.google.com/file/d/1OseXuScYsS0n2X3I_n8UHstEFBbuLlAj/view?usp=sharing" target="_blank" rel="noopener noreferrer">

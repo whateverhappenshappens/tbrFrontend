@@ -66,7 +66,7 @@ const Card: React.FC<CardProps> = (props) => {
       name: props.heading,
       description: props.para1,
       price: 4999,
-      discountedPrice: 3499,
+      // discountedPrice: 3499,
       image: props.image,
     };
     addToCart(course);

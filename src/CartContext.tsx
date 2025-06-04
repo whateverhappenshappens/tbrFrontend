@@ -6,7 +6,7 @@ interface Course {
   name: string;
   description: string;
   price: number;
-  discountedPrice: number;
+  // discountedPrice: number;
   image:string
 }
 

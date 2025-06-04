@@ -18,7 +18,7 @@ function Test() {
             courseId: course._id,
             courseName: course.name,
             coursePrice: course.price,
-            courseDiscountedPrice: course.discountedPrice,
+            // courseDiscountedPrice: course.discountedPrice,
             paidFor: cart.paidFor,
             totalPrice: cart.totalPrice,
             totalDiscountedPrice: cart.totalDiscountedPrice,

@@ -10,12 +10,12 @@ import Helmet from "react-helmet";
 import toast from "react-hot-toast";
 import Help from "../../components/Help"
 import CryptoJS from "crypto-js"
+
 interface Course {
   id: string;
   name: string;
   description: string;
   price: number;
-  discountedPrice: number;
   image: string;
 }
 
@@ -37,8 +37,7 @@ const Cart = ({
   setCartValueData,
 }: CartProps) => {
   const { cart, removeFromCart } = useCart();
-  const [isSignupPopupVisible, setIsSignupPopupVisible] =
-    useState<boolean>(false);
+  const [isSignupPopupVisible, setIsSignupPopupVisible] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
   const cartPage = useRef<HTMLDivElement | null>(null);
@@ -53,36 +52,23 @@ const Cart = ({
   const [couponMessage, setCouponMessage] = useState<string>("");
   const [additionalDiscount, setAdditionalDiscount] = useState<number>(0);
   const navigate = useNavigate();
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_TBR_COUPANS_URL}`);
-    
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-    
-        const encryptedData = await response.text(); // Get raw text response
-        // console.log("Encrypted Data:", encryptedData); // Log the encrypted data
-    
-        // If encryptedData is empty, return an error
+        const encryptedData = await response.text();
         if (!encryptedData) {
           throw new Error("The server returned an empty response.");
         }
     
-        // Define the secret key
         const secretKey = import.meta.env.VITE_TBR_SECRET_COU_KEY;
-    
-        // Decrypt the data
         const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
         const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
-    
-        // console.log("Decrypted Data:", decryptedData); // Log decrypted data
-    
-        // Parse the decrypted JSON
         const jsonData = JSON.parse(decryptedData);
         setData(jsonData);
       } catch (error) {
@@ -91,35 +77,6 @@ const Cart = ({
     }
     fetchData();
   }, []);
-      // .then((result) => {
-      //   const couponsData = result;
-      //   setData(couponsData);
-      // })
-      // .catch((error) => {
-      //   console.error("Fetch error:", error);
-      // });
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch(`${import.meta.env.VITE_TBR_COUPANS_URL}`)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! Status: ${response.status}`);
-  //       }
-  //       console.log(response)
-  //       return response.json();
-  //     })
-  //     .then((result) => {
-  //       console.log(result)
-
-  //       const couponsData = result;
-  //       setData(couponsData);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Fetch error:", error);
-  //     });
-  // }, []);
-
 
   useEffect(() => {
     calculateNetPrice();
@@ -147,10 +104,7 @@ const Cart = ({
     setIsSignupPopupVisible(!isSignupPopupVisible);
   };
 
-
   const handleApplyCoupon = () => {
-    
-    // Reset message and discount first
     setCouponMessage("");
     setPromoApplied(false);
     setAdditionalDiscount(0);
@@ -189,18 +143,17 @@ const Cart = ({
   
   const calculateNetPrice = (additionalDiscount = 0) => {
     let totalPrice = 0;
-    let totalDiscountedPrice = 0;
     cart.forEach((course: Course) => {
       totalPrice += course.price;
-      totalDiscountedPrice += course.discountedPrice;
     });
+    
+    let totalDiscountedPrice = totalPrice;
     if (additionalDiscount > 0) {
-      totalDiscountedPrice =
-        totalDiscountedPrice * (1 - additionalDiscount / 100);
+      totalDiscountedPrice = totalPrice * (1 - additionalDiscount / 100);
     }
-    let discount = Math.floor(
-      ((totalPrice - totalDiscountedPrice) / totalPrice) * 100
-    );
+    
+    let discount = additionalDiscount > 0 ? additionalDiscount : 0;
+    
     const newNetPriceObj: NetPrice = {
       totalPrice,
       totalDiscountedPrice: Math.floor(totalDiscountedPrice),
@@ -263,10 +216,7 @@ const Cart = ({
               </div>
               <div className="course-box-2 flex items-center justify-between lg:w-2/6">
                 <div className="price text-3xl lg:text-4xl xl:text-5xl xl:overflow-visible font-semibold">
-                  <div className="new text-[#6D87F5] overflow-hidden">
-                    Rs {course.discountedPrice.toFixed(2)}
-                  </div>
-                  <div className="line-through overflow-hidden">
+                  <div className="overflow-hidden">
                     Rs {course.price.toFixed(2)}
                   </div>
                 </div>
@@ -289,15 +239,15 @@ const Cart = ({
                   Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}
                 </div>
               </div>
-              <div className="discount">
-                <div className="text-2xl lg:text-5xl xl:text-3xl xl:overflow-hidden flex justify-between font-semibold">
-                  <div className="text-[#FF7E6C]">
-                    {additionalDiscount > 0
-                      ? ``
-                      : `${Math.floor(netPriceObj.discount)}% off`}
+              {additionalDiscount > 0 && (
+                <div className="discount">
+                  <div className="text-2xl lg:text-5xl xl:text-3xl xl:overflow-hidden flex justify-between font-semibold">
+                    <div className="text-[#FF7E6C]">
+                      {additionalDiscount}% off
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="coupon flex flex-grap gap-3 xl:gap-7">
               <input

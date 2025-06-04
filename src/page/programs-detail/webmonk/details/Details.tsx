@@ -124,7 +124,7 @@ const Details: React.FC<Props> = (props) => {
           <div className="details-buttons">
             <button className="details-buttons-enroll bg-red-400" onClick={handleEnroll}>
               <p>
-                Enroll Now for <span className="details-buttons-strike ">₹ 4999</span> ₹ 3,499
+                Enroll Now for <span className=" ">₹ 4999</span> 
               </p>
             </button>
             <button className="details-buttons-download">
