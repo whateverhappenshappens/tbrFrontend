@@ -33,5 +33,5 @@ jobs:
         # extract the host (strip user@)
         HOST="${EC2_HOST#*@}"
         ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
-        scp -i ~/.ssh/id_rsa -r build/* $EC2_HOST:/var/www/staging.techbairn.com/
+        scp -i ~/.ssh/id_rsa -r dist/* $EC2_HOST:/var/www/staging.techbairn.com/
         ssh -i ~/.ssh/id_rsa $EC2_HOST "sudo systemctl reload nginx"
