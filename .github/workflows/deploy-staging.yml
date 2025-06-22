@@ -40,7 +40,7 @@ jobs:
         # deploy (no need to ssh-scan the user@ part)
         scp -o StrictHostKeyChecking=no \
         -i ~/.ssh/id_rsa \
-        -r build/* \
+        -r dist/* \
         $EC2_HOST:/var/www/staging.techbairn.com/
         ssh -o StrictHostKeyChecking=no \
         -i ~/.ssh/id_rsa \
