@@ -10,39 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Install dependencies & build
-      run: |
-        # ignore peer dep conflicts so react-google-login can coexist with React 18
-        npm ci --legacy-peer-deps
-        npm run build
-        
-    - name: Copy build to staging server
-      env:
-        SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
-        EC2_HOST: ${{ secrets.EC2_HOST }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        
-        # extract just the hostname (e.g. 3.108.165.88)
-        HOST="${EC2_HOST#*@}"
-        # optional: add host key 
-        ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
-        # deploy (no need to ssh-scan the user@ part)
-        scp -o StrictHostKeyChecking=no \
-        -i ~/.ssh/id_rsa \
-        -r dist/* \
-        $EC2_HOST:/var/www/staging.techbairn.com/
-        ssh -o StrictHostKeyChecking=no \
-        -i ~/.ssh/id_rsa \
-        $EC2_HOST \
-        "sudo systemctl reload nginx"
+      - name: Install dependencies & build
+        run: |
+          npm ci --legacy-peer-deps
+          npm run build
+
+      - name: Prepare SSH key
+        shell: bash
+        env:
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # Disable host key checking for simplicity
+          printf "Host *\n  StrictHostKeyChecking no\n" > ~/.ssh/config
+
+      - name: Deploy to staging
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+        run: |
+          scp -i ~/.ssh/id_ed25519 -r dist/* $EC2_HOST:/var/www/staging.techbairn.com/
+          ssh -i ~/.ssh/id_ed25519 $EC2_HOST "sudo systemctl reload nginx"
