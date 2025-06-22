@@ -16,8 +16,10 @@ jobs:
       with:
         node-version: '18'
 
-    - run: |
-        npm ci
+    - name: Install dependencies & build
+      run: |
+        # ignore peer dep conflicts so react-google-login can coexist with React 18
+        npm ci --legacy-peer-deps
         npm run build
 
     - name: Copy build to prod server
