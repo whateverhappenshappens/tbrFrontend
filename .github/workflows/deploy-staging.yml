@@ -29,12 +29,11 @@ jobs:
         SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
         EC2_HOST: ${{ secrets.EC2_HOST }}
       run: |
-        # prepare SSH
         mkdir -p ~/.ssh
         echo "$SSH_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts
-
-        # deploy
-        scp -r build/* $EC2_HOST:/var/www/staging.techbairn.com/
-        ssh $EC2_HOST "sudo systemctl reload nginx"
+        # extract the host (strip user@)
+        HOST="${EC2_HOST#*@}"
+        ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+        scp -i ~/.ssh/id_rsa -r build/* $EC2_HOST:/var/www/staging.techbairn.com/
+        ssh -i ~/.ssh/id_rsa $EC2_HOST "sudo systemctl reload nginx"
