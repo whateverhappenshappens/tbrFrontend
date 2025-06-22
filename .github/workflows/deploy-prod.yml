@@ -1,0 +1,34 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - build
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - run: |
+        npm ci
+        npm run build
+
+    - name: Copy build to prod server
+      env:
+        SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+        EC2_HOST: ${{ secrets.EC2_HOST }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts
+
+        scp -r build/* $EC2_HOST:/var/www/www.techbairn.com/
+        ssh $EC2_HOST "sudo systemctl reload nginx"
