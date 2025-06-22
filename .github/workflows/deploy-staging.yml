@@ -20,9 +20,10 @@ jobs:
 
     - name: Install dependencies & build
       run: |
-        npm ci
+        # ignore peer dep conflicts so react-google-login can coexist with React 18
+        npm ci --legacy-peer-deps
         npm run build
-
+        
     - name: Copy build to staging server
       env:
         SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
