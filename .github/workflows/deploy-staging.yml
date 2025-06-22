@@ -32,8 +32,17 @@ jobs:
         mkdir -p ~/.ssh
         echo "$SSH_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        # extract the host (strip user@)
+        
+        # extract just the hostname (e.g. 3.108.165.88)
         HOST="${EC2_HOST#*@}"
+        # optional: add host key 
         ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
-        scp -i ~/.ssh/id_rsa -r build/* $EC2_HOST:/var/www/staging.techbairn.com/
-        ssh -i ~/.ssh/id_rsa $EC2_HOST "sudo systemctl reload nginx"
+        # deploy (no need to ssh-scan the user@ part)
+        scp -o StrictHostKeyChecking=no \
+        -i ~/.ssh/id_rsa \
+        -r build/* \
+        $EC2_HOST:/var/www/staging.techbairn.com/
+        ssh -o StrictHostKeyChecking=no \
+        -i ~/.ssh/id_rsa \
+        $EC2_HOST \
+        "sudo systemctl reload nginx"
