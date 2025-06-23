@@ -1,8 +1,8 @@
+
 @font-face {
     font-family: 'extra-bold';
-    src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+    src: url(/fonts/visiby-Round/OTF/VisbyRoundCF-ExtraBold.otf);
 }
-
 .benefits{
     margin-top: 5rem;
     background-color: #2E436A;

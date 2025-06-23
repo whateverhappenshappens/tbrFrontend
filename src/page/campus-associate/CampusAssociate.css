@@ -1,6 +1,6 @@
 @font-face {
     font-family:'VisbyRoundCF-Regular';
-    src: url(../../assets/fonts/VisbyRoundCF-Regular.otf);
+    src: url(/fonts/visiby-Round/OTF/VisbyRoundCF-Regular.otf);
 }
 *{
     font-family: 'VisbyRoundCF-Regular';

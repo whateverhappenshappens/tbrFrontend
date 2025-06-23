@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'semi-bold';
-    src: url(../../../../assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-DemiBold.otf);
+    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-DemiBold.otf);
 }
 
 .faqaccordion {

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'bold';
-    src: url(../../../../assets/fonts/VisbyRoundCF-DemiBold.otf);
+    src: url(/fonts/visiby-Round/OTF/VisbyRoundCF-DemiBold.otf);
 }
 .circle{
     display: flex;

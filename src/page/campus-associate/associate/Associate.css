@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'extra-bold';
-    src: url(../../../assets/fonts/VisbyRoundCF-ExtraBold.otf);
+    src: url(/fonts/visiby-Round/OTF/VisbyRoundCF-ExtraBold.otf);
   }
   @font-face {
     font-family: 'bold';
-    src: url(../../../assets/fonts/VisbyRoundCF-DemiBold.otf);
+    src: url(/fonts/visiby-Round/OTF/VisbyRoundCF-DemiBold.otf);
   }
   
   .associate {
