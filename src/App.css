@@ -1,32 +1,32 @@
 @font-face {
     font-family: 'bold';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-Bold.otf);
+    src: url(./assets/fonts/VisbyRoundCF-Bold.otf);
 }
 @font-face {
     font-family: 'demi-bold';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-DemiBold.otf);
+    src: url(./assets/fonts/VisbyRoundCF-DemiBold.otf);
 }
 @font-face {
     font-family: 'extra-bold';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-ExtraBold.otf);
+    src: url(./assets/fonts/VisbyRoundCF-ExtraBold.otf);
 }
 @font-face {
     font-family: 'extra-light';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-ExtraLight.otf);
+    src: url(./assets/fonts/VisbyRoundCF-ExtraLight.otf);
 }
 @font-face {
     font-family: 'heavy';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-Heavy.otf);
+    src: url(./assets/fonts/VisbyRoundCF-Heavy.otf);
 }
 @font-face {
     font-family: 'light';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-Light.otf);
+    src: url(../assets/fonts/VisbyRoundCF-Light.otf);
 }
 @font-face {
     font-family: 'medium';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-Medium.otf);
+    src: url(./assets/fonts/VisbyRoundCF-Medium.otf);
 }
 @font-face {
     font-family: 'regular';
-    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-Regular.otf);
+    src: url(./assets/fonts/VisbyRoundCF-Regular.otf);
 }
