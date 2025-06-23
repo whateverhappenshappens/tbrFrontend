@@ -3,7 +3,7 @@ name: Deploy to Staging
 on:
   push:
     branches:
-      - staging
+      - Prod
 
 jobs:
   build_and_deploy:
