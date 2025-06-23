@@ -10,28 +10,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Install dependencies & build
-      run: |
-        # ignore peer dep conflicts so react-google-login can coexist with React 18
-        npm ci --legacy-peer-deps
-        npm run build
+      - name: Install dependencies & build
+        run: |
+          npm ci --legacy-peer-deps
+          npm run build
 
-    - name: Copy build to prod server
-      env:
-        SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
-        EC2_HOST: ${{ secrets.EC2_HOST }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        # extract the host (strip user@)
-        HOST="${EC2_HOST#*@}"
-        ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
-        scp -i ~/.ssh/id_rsa -r dist/* $EC2_HOST:/var/www/www.techbairn.com/
-        ssh -i ~/.ssh/id_rsa $EC2_HOST "sudo systemctl reload nginx"
+      - name: Copy build to production server safely
+        env:
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          HOST="${EC2_HOST#*@}"
+          ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+
+          # Create temporary folder and upload files
+          ssh -i ~/.ssh/id_rsa $EC2_HOST "mkdir -p /home/ec2-user/tmp-prod"
+          scp -i ~/.ssh/id_rsa -r dist/* $EC2_HOST:/home/ec2-user/tmp-prod/
+
+          # Use sudo to move files into place and reload nginx
+          ssh -i ~/.ssh/id_rsa $EC2_HOST "
+            sudo rm -rf /var/www/www.techbairn.com/* &&
+            sudo mv /home/ec2-user/tmp-prod/* /var/www/www.techbairn.com/ &&
+            sudo systemctl reload nginx
+          "
