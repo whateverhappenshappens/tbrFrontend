@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
 
@@ -23,20 +21,24 @@ jobs:
           npm ci --legacy-peer-deps
           npm run build
 
-      - name: Prepare SSH key
-        shell: bash
+      - name: Copy build to staging server safely
         env:
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          # Disable host key checking for simplicity
-          printf "Host *\n  StrictHostKeyChecking no\n" > ~/.ssh/config
-
-      - name: Deploy to staging
-        env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
         run: |
-          scp -i ~/.ssh/id_ed25519 -r dist/* $EC2_HOST:/var/www/staging.techbairn.com/
-          ssh -i ~/.ssh/id_ed25519 $EC2_HOST "sudo systemctl reload nginx"
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          HOST="${EC2_HOST#*@}"
+          ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+
+          # Create temporary folder and upload files
+          ssh -i ~/.ssh/id_rsa $EC2_HOST "mkdir -p /home/ec2-user/tmp-staging"
+          scp -i ~/.ssh/id_rsa -r dist/* $EC2_HOST:/home/ec2-user/tmp-staging/
+
+          # Use sudo to move files into place and reload nginx
+          ssh -i ~/.ssh/id_rsa $EC2_HOST "
+            sudo rm -rf /var/www/staging.techbairn.com/* &&
+            sudo mv /home/ec2-user/tmp-staging/* /var/www/staging.techbairn.com/ &&
+            sudo systemctl reload nginx
+          "

@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: "regular";
-  src: url(../../assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-Regular.otf);
+  src: url(/fonts/visiby-Round/OTF/VisbyRoundCF-Regular.otf);
 }
 * {
   font-family: "regular";

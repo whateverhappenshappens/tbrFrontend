@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'bold';
-    src: url(../../../assets/Visby-Round-www.Dfonts.org/Visby-Round-www.Dfonts.org/OTF/VisbyRoundCF-Bold.otf);
+    src: url(/fonts/visby-Round/OTF/VisbyRoundCF-Bold.otf);
 }
 .faq-mentor {
     background-color: #f7fafc;
