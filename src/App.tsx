@@ -41,6 +41,8 @@ import TryListings from "./try/Try_listing";
 import Unsucessfull from "./page/paymentUnsuccessfull/Unsucessfull";
 import Policy from "./components/footer/Policy";
 import TermsCondition from "./components/footer/TermsCondition";
+import Coupon from "./page/Coupons_code/AdminPanel";
+import Course_update from "./page/Admin_course_update/Main"
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
@@ -224,6 +226,8 @@ function App() {
             <Route path="/*" element={<NotFound />} />
             <Route path="/course/machinester" element={<MlProgram />} />
             <Route path="/course/IOT" element={<IotProgram />} />
+            <Route path="/Coupons" element={<Coupon />} />
+            <Route path="/course_update" element={<Course_update />} />
             <Route
               path="/cart"
               element={
