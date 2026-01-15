@@ -54,4 +54,4 @@ jobs:
 
             # 4. Restart Nginx to serve the new files
             sudo systemctl reload nginx
-            echo "Deployment and Backup Complete!"
+            echo "Deployment and Backup Completed!"
