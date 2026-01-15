@@ -1,0 +1,57 @@
+name: Deploy with Backup Strategy
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 1: Upload to a TEMPORARY folder first
+      # We do NOT touch the live 'dist' folder yet.
+      - name: Upload to Temp Folder
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "./*"
+          # Upload to a temporary staging folder
+          target: "/home/ec2-user/frontend/incoming_build" 
+
+      # Step 2: Atomic Swap (The "Magic" Step)
+      - name: Swap and Restart
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            # Navigate to your project folder
+            cd /home/ec2-user/frontend
+
+            # 1. Remove the PREVIOUS backup (it's too old now)
+            # We use -rf to force delete without asking
+            rm -rf lastBuild
+
+            # 2. Move the CURRENT live site to be the new Backup
+            # We check if 'dist' exists first to avoid errors on the very first run
+            if [ -d "dist" ]; then
+              echo "Backing up current dist to lastBuild..."
+              mv dist lastBuild
+            fi
+
+            # 3. Move the NEW upload to be the live 'dist'
+            # This happens instantly, minimizing downtime
+            echo "Promoting incoming_build to dist..."
+            mv incoming_build dist
+
+            # 4. Restart Nginx to serve the new files
+            sudo systemctl reload nginx
+            echo "Deployment and Backup Complete!"
