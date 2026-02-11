@@ -55,7 +55,7 @@ const Details: React.FC<Props> = (props) => {
       name: "Webmonk",
       description: "A very small description of the course should be included",
       price: 4999,
-      discountedPrice: 3499,
+      discountedPrice: 3999,
       image: web,
     };
 
@@ -114,7 +114,7 @@ const Details: React.FC<Props> = (props) => {
             </div>
           </div>
           <div className="details-date">
-            <p>Batch Starting Date: Winter 2024</p>
+            <p>Batch Starting Date: Next Month 2026</p>
             <p>Program Format: Online Live Classes</p>
             <p>Program Duration: 3 Months, At 5-10 hrs/week</p>
             <p>
@@ -124,12 +124,12 @@ const Details: React.FC<Props> = (props) => {
           <div className="details-buttons">
             <button className="details-buttons-enroll bg-red-400" onClick={handleEnroll}>
               <p>
-                Enroll Now for <span className="details-buttons-strike ">₹ 4999</span> ₹ 3,499
+                Enroll Now for <span className="details-buttons-strike ">₹ 4999</span> ₹ 3,999
               </p>
             </button>
             <button className="details-buttons-download">
               <a
-                href="https://drive.google.com/file/d/1QoO7P71ANEbz_NqveGHESJVt2fgfj80x/view?usp=sharing"
+                href="https://drive.google.com/file/d/1w4zChLysMjj0qJJ0P8Vxy_XJ7ITaoeOS/view"
                 target="_blank"
                 rel="noopener noreferrer"
               >

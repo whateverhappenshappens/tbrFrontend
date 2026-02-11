@@ -5,7 +5,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io";
 import { FaYoutube } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom"; // Import NavLink
-import logo from "../../assets/techbairn logo white-01.png";
+import logo from "../../assets/TECHB LOGO WHITE-01-x.png";
 import "../../styles/components/Footer.css";
 
 
@@ -19,9 +19,10 @@ const itemList = [
     list: ["About Us", "Blog", "Become a Mentor", "Hire With Us"],
   },
   {
-    name: "Reach out to us:",
-    list: ["Contact Us:", "Phone:","(+91) 87897 26459",  " (+91) 70048 85397 ", "Email:", <a href="mailto:hello@techbairn.com">hello@techbairn.com</a> , <a href="mailto:hello@techbairn.com">info@techbairn.com</a>],
+    name: "Contact Us:",
+    list: ["Phone:","(+91) 87897 26459", "Email:", <a href="mailto:hello@techbairn.com">hello@techbairn.com</a> , ]
   },
+  
 ];
 
 
@@ -38,15 +39,18 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer px-[30px] sm:pl-[70px] sm:pr-[60px]
      xl:pl-[5px] xl:pr-[5px] py-14 sm:py-20 xl:py-52 flex 
-     flex-col gap-1 xl:gap-32">
+     flex-col gap-1 xl:gap-32 text-xl sm:text-2xl xl:text-3xl">
       <div className="flex flex-col lg:flex-row lg:justify-between gap-10 sm:gap-16">
-        <div onClick={handelClick} className="logo-social flex flex-col gap-10 xl:gap-20">
+        <div
+          onClick={handelClick}
+          className="logo-social flex flex-col items-center gap-10 xl:gap-20"
+        >
           <img
             src={logo}
             alt="techbairn logo"
-            className="w-[25rem] sm:w-[2rem]  mx-auto lg:w-[35rem]"
+            className="w-[25rem] sm:w-[2rem] mx-auto lg:w-[35rem]"
           />
-          <div className="text-white text-4xl sm:text-6xl flex gap-10 mx-auto lg:mx-10">
+          <div className="text-white text-4xl sm:text-5xl flex gap-8 justify-center mt-[-1.5rem]">
             <a href="https://www.linkedin.com/company/techbairn/  " target="_blank" rel="noopener noreferrer">
               <IoLogoLinkedin />
             </a>
@@ -64,11 +68,11 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="links-main text-white text-2xl sm:text-4xl xl:text-5xl flex justify-around mr-[0rem] gap-2 lg:gap-10 xl:gap-10 overflow-visible overflow-y-hidden">
+        <div className="links-main text-white text-xl sm:text-2xl xl:text-3xl flex justify-around mr-[0rem] gap-2 lg:gap-10 xl:gap-10">
           {itemList.map((item, index) => (
-            <div key={index} className="flex flex-col sm:gap-6 xl:gap-16 overflow-visible">
-              <div className="font-semibold overflow-visible">{item.name}</div>
-              <div className="sm:flex sm:flex-col sm:gap-3 xl:gap-10 overflow-visible">
+            <div key={index} className="flex flex-col sm:gap-5 xl:gap-12">
+              <div className="font-semibold overflow-visible text-2xl sm:text-2xl xl:text-3xl">{item.name}</div>
+              <div className="sm:flex sm:flex-col sm:gap-2 xl:gap-6">
                 {item.list.map((li, index1) => (
                   <div key={index1} className="overflow-visible">
                     {li === "Hire With Us" ? (
@@ -92,7 +96,6 @@ const Footer: React.FC = () => {
                       li
                     )}
                   </div>
-                  
                 ))}
               </div>
             </div>
@@ -100,11 +103,11 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div className="border-t mt-5 pt-10 xl:pt-24 text-white text-3xl sm:text-4xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
-        <div className="overflow-visible">© 2024 TechBairn Research Pvt. Ltd. All rights reserved.</div>
+      <div className="border-t mt-5 pt-10 xl:pt-24 text-white text-xl sm:text-2xl xl:text-3xl flex flex-col sm:flex-row sm:justify-between gap-5 overflow-visible">
+        <div className="overflow-visible">© 2025 TechBairn Research Pvt. Ltd. All rights reserved.</div>
         <div className="overflow-visible">
           <Link to={'/policy'} onClick={handelClick}>Privacy Policy | techbairn.com</Link>
-          </div>
+        </div>
       </div>
     </footer>
   );

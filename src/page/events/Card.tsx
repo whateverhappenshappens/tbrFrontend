@@ -27,8 +27,18 @@ const Cards: React.FC<Props> = (props) => {
         ></div>
         {/* <img src={props.image} alt={props.heading} className="exp-card-image" /> */}
       </div>
-      <p className="exp-cards-head">{props.heading}</p>
-      <div className="exp-cards-para">{props.para}</div>
+      <p
+        className="exp-cards-head"
+        style={{ fontSize: "2.6rem", fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}
+      >
+        {props.heading}
+      </p>
+      <div
+        className="exp-cards-para"
+        style={{ fontSize: "1.6rem", lineHeight: 1.45, marginTop: 12 }}
+      >
+        {props.para}
+      </div>
     </div>
   );
 };

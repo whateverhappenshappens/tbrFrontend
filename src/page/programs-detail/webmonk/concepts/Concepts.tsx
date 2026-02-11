@@ -42,7 +42,7 @@ const Concepts: React.FC = () => {
         </div>
         
         <div className="concepts-button" >
-        <a href="https://drive.google.com/file/d/1QoO7P71ANEbz_NqveGHESJVt2fgfj80x/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <a href="https://drive.google.com/file/d/1w4zChLysMjj0qJJ0P8Vxy_XJ7ITaoeOS/view" target="_blank" rel="noopener noreferrer">
           <button>Download Syllabus</button></a>
         </div>
       </div>

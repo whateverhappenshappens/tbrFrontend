@@ -10,7 +10,7 @@ const BloggingFooter: React.FC = () => {
       <p className="BloggingFooter-descriptio">
         Click here to showcase your blog to the world.
       </p>
-      <a href="https://bit.ly/techbairnblog" target="_blank" rel="noopener noreferrer">
+      <a href="https://forms.gle/kgPjfAK83qxzfLQx5" target="_blank" rel="noopener noreferrer">
       <button type="submit" className="BloggingFooter-button">
         Submit Here
       </button></a>

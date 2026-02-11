@@ -11,11 +11,11 @@ const Connected: React.FC = () => {
                 <button className="connected-button-request visbyroundCF bold ">
                     <div className="connected-button-request-div">
                         <img src={Phone} alt="" />
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJREAXanAnHM_bDf5OuKje08OHyaxXVypePaqPm0Wlv61gQ/viewform" target="_blank" rel="noopener noreferrer">
+                        <a href="https://forms.gle/aFVk5d8Nm3eMSWay6" target="_blank" rel="noopener noreferrer">
                         <p className="vr-medium">Request a call back</p></a>
                     </div>
                 </button>
-                <a href="http://bit.ly/forms_TB-CA" target="_blank" rel="noopener noreferrer">
+                <a href="https://forms.gle/PM7a1X6NqFfzNPgq5" target="_blank" rel="noopener noreferrer">
                 <button className="connected-button-join">
                     <p className="vr-medium">Join Us</p>
                 </button></a>

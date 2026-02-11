@@ -1,28 +1,103 @@
 .alumni .company-card {
-    padding: 84px; /* Increased padding to make the image larger */
+    padding: 2rem;
+    max-width: 180px;
+    min-width: 160px;
+    width: 100%;
+    margin: 0;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .alumni .company-card:hover {
+    transform: translateY(-4px) scale(1.03);
   }
   
   .alumni .company-card img {
-    width: 229px; /* Ensure the image takes up the full width of its container */
+    width: 120px;
     height: 39px;
+    object-fit: contain;
+    filter: brightness(0.95);
   }
+  
+  .box2-no-slider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 800px;
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
+  
+  @media (max-width: 900px) {
+    .box2-no-slider {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 100vw;
+    }
+    .alumni .company-card {
+      max-width: 140px;
+      min-width: 120px;
+      padding: 1rem;
+    }
+    .alumni .company-card img {
+      width: 90px;
+      height: 39px;
+    }
+  }
+  @media (max-width: 600px) {
+    .box2-no-slider {
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+    }
+    .alumni .company-card {
+      max-width: 100%;
+      min-width: 0;
+      padding: 1rem;
+    }
+    .alumni .company-card img {
+      width: 80px;
+      height: 32px;
+    }
+  }
+  
   .our{
     font-family: bold;
+    white-space: normal;
+    font-size: 2.5rem;
+    overflow: visible;
+    text-overflow: initial;
+  }
+  @media (min-width: 768px) {
+    .our {
+      font-size: 3.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .our {
+      font-size: 4.5rem;
+    }
   }
   /* Alumni.css */
-
-/* Alumni.css */
-/* Alumni.css */
-
-.rotate {
-  animation: rotateAndScale 1s ease-in-out;
-}
-
-@keyframes rotateImage {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.rotate img {
-  animation: rotateImage 1s linear;
-}
+  
+  .fade-in {
+    animation: popIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: both;
+  }
+  
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    80% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }

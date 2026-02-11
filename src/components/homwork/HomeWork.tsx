@@ -13,7 +13,14 @@ const HomeWork: React.FC<HomeWorkProp> = ({ color, text }) => {
       <div className="circle" style={{ backgroundColor: color }}>
         <img className="book-logo" src={bookLogo} alt="book-logo" />
       </div>
-      <p className="ellipse-description">{text}</p>
+      <p className="ellipse-description">
+        {text.split('\n').map((line, idx) => (
+          <React.Fragment key={idx}>
+            {line}
+            {idx !== text.split('\n').length - 1 && <br />}
+          </React.Fragment>
+        ))}
+      </p>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const HowWeAreDifferent: React.FC = () => {
     { color: "#6D87F5", text: "Affordable Quality Learning" },
     { color: "#FFEDB6", text: "Internship Opportunities" },
     { color: "#B2E2C6", text: "Community Based Learning" },
-    { color: "#FECBC4", text: "Live Projects" },
+    { color: "#FECBC4", text: "Live \n Projects" },
   ];
   return (
     <div className="how-we-are-different-box">

@@ -9,16 +9,18 @@ interface DarkBannerProps {
   title: string;
   subtitle: string;
   logos: string[];
+  speed?: number;
+  autoplaySpeed?: number;
 }
 
-const DarkBanner: React.FC<DarkBannerProps> = ({ title, subtitle, logos }) => {
+const DarkBanner: React.FC<DarkBannerProps> = ({ title, subtitle, logos, speed = 4000, autoplaySpeed = 1000 }) => {
   const settings = {
     infinite: true,
-    speed: 1500,
+    speed: speed,
     slidesToShow: logos.length / 2,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 0,
+    autoplaySpeed: autoplaySpeed,
     cssEase: "linear",
     pauseOnHover: true,
     responsive: [

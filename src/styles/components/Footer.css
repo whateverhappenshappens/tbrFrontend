@@ -2,6 +2,13 @@
   background-color: #2e436a;
   height: auto;
   margin-top: 20px;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Remove scroll bar from contact/email section in footer */
+.links-main .overflow-visible {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
 }
 .reach-out-title, .contact-title, .phone-title, .email-title {
   font-size: 3.25rem; 

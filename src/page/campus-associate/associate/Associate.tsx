@@ -17,7 +17,7 @@ const Associate: React.FC = () => {
           TechBairn's campus associate program could be an excellent starting
           point for your journey.
         </p>
-        <a href="http://bit.ly/forms_TB-CA" target="_blank" rel="noopener noreferrer">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScW3FS67DA7Urq9PRMPt12eUStLW4YAWim0YIEMDIHPyKHy9w/viewform" target="_blank" rel="noopener noreferrer">
         <button className="enroll-btn1">
           <p>Enroll now</p>
         </button></a>

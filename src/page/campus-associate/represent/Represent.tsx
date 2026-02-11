@@ -35,7 +35,7 @@ const handelClick = () => {
         <p className="vr-medium medium doubts-head2">
           Get in touch with us to learn more!
         </p>
-        <a href="http://bit.ly/forms_TB-CA" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.gle/PM7a1X6NqFfzNPgq5" target="_blank" rel="noopener noreferrer">
           <button className="doubts-button mt-[4rem] vr-bold">
             <div className="doubts-button-div">
               <p>Apply Now</p>

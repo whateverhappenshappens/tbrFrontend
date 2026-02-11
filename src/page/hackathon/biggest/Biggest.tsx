@@ -45,24 +45,39 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
             <div key={index} className="biggest-hackathon-slide ">
               <div className="biggest-hackathon">
                 <div className="biggest-hackathon-text">
-                  <p className="biggest-hackathon-text-large visbyroundCF extrabold">
+                  <p
+                    className="biggest-hackathon-text-large"
+                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
+                  >
                     {data.heading}
                   </p>
-                  <p className="biggest-hackathon-text-small visbyroundCF medium">
+                  <p
+                    className="biggest-hackathon-text-small"
+                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
+                  >
                     {data.subHeading}
                   </p>
                   {/* Formatted Date */}
-                  <p className="biggest-hackathon-text-small visbyroundCF medium">
+                  <p
+                    className="biggest-hackathon-text-small"
+                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
+                  >
                     {formatDate(data.date)}
                   </p>
                   <Link to={`/events/${data.id}`}>
-                    <button className="biggest-hackathon-button visbyroundCF bold">
+                    <button
+                      className="biggest-hackathon-button"
+                      style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
+                    >
                       <p>Enroll Now</p>
                     </button>
                   </Link>
                 </div>
                 <div className="biggest-hackathon-img">
-                  <p className="image-para visbyroundCF extrabold">
+                  <p
+                    className="image-para"
+                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
+                  >
                     {data.heading}
                   </p>
                   <img src={data.bannerLinkPC} alt={data.heading} />

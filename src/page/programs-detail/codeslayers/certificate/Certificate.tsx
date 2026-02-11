@@ -1,6 +1,6 @@
 import React from "react";
 import "./Certificate.css";
-import certificate from "../../../../assets/Image 1.png";
+import certificate from "../../../../assets/SampleCertificate-02.jpg";
 
 const Certificate: React.FC = () => {
   return (

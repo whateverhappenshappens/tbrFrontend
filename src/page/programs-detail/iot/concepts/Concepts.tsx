@@ -36,7 +36,7 @@ const Concepts: React.FC = () => {
         <div className="concepts-head1">
           <p>Concepts Covered</p>
         </div>
-        <a href="https://drive.google.com/file/d/1I6ATPZUIAbnkaD6C6Husl_hENMg14mif/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <a href="https://drive.google.com/file/d/1VydYo5LzLtwl3HYD3izo1w---svQ2As1/view" target="_blank" rel="noopener noreferrer">
         <div className="concepts-button">
           <button>Download Syllabus</button>
         </div></a>

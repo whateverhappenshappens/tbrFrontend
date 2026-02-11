@@ -47,7 +47,12 @@ const Explore = ({ handle_login }: any) => {
           Talk to our consultants and find your right path to start.
         </p>
         <div className="call-back-btn-box">
-          <NavLink className="call-back-btn" to="https://docs.google.com/forms/d/e/1FAIpQLSdKJREAXanAnHM_bDf5OuKje08OHyaxXVypePaqPm0Wlv61gQ/viewform" target="_blank" rel="noopener noreferrer">
+          <NavLink
+            className="call-back-btn"
+            to="https://forms.gle/aFVk5d8Nm3eMSWay6"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={phoneCall} alt="Phone image" className="phone-image" />
             <span className="request-call-back-text">Request a call back</span>
           </NavLink>

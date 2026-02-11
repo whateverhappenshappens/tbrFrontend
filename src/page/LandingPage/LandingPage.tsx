@@ -38,6 +38,9 @@ import marqberry from "../../assets/hiring_partner/Marquee Berry-01.png";
 import karkhana from "../../assets/hiring_partner/karkhana-01.png";
 import sudolearn from "../../assets/hiring_partner/sudolearn-01.png";
 import skill from "../../assets/hiring_partner/Fidset Skill-01.png";
+import faodail from "../../assets/hiring_partner/faodail.png";
+import qego from "../../assets/hiring_partner/qego.jpeg";
+import iri from "../../assets/hiring_partner/iri.png";
 
 //college_images
 import army from "../../assets/college/Army Institute of Technology(AIT Pune)-01.png";
@@ -105,6 +108,10 @@ const logo: string[] = [
   karkhana,
   sudolearn,
   skill,
+  faodail,
+  qego,
+  iri,
+
 ];
 
 function LandingPage({
