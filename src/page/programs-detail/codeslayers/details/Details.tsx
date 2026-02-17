@@ -116,7 +116,7 @@ const Details: React.FC<Props> = (props) => {
           <div className="details-date">
             <p>Batch Starting Date: Next Month 2026 </p>
             <p>Program Format: Online Live Classes </p>
-            <p>Program Duration: 2 Months , At 2-10 hrs/week</p>
+            <p>Program Duration: 3 Months , At 2-10 hrs/week</p>
             <p>You Will Learn: C++, Data Structures and Algorithms</p>
           </div>
           <div className="details-buttons">
