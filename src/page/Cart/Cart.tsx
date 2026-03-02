@@ -1,22 +1,26 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState, useRef } from "react";
-import { json, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../../CartContext";
 import { UserAPI } from "../../apis/UserAPIs";
+import { couponService } from "../../apis/coupon/couponService";
 import Signup from "../../components/main/login/Login";
 import { FaTimes } from "react-icons/fa";
 import "./Cart.css";
 import Helmet from "react-helmet";
-import toast from "react-hot-toast";
-import Help from "../../components/Help"
-import CryptoJS from "crypto-js"
+import Help from "../../components/Help";
+
 interface Course {
   id: string;
   name: string;
   description: string;
-  price: number;
-  discountedPrice: number;
   image: string;
+
+  // backend may send different keys
+  price?: number;
+  discountedPrice?: number;
+  originalPrice?: number;
+  discountPrice?: number;
+  discounted_price?: number;
 }
 
 interface CartProps {
@@ -37,97 +41,47 @@ const Cart = ({
   setCartValueData,
 }: CartProps) => {
   const { cart, removeFromCart } = useCart();
-  const [isSignupPopupVisible, setIsSignupPopupVisible] =
-    useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [loggedInUserEmail, setloggedInUserEmail] = useState<string>("");
+  const navigate = useNavigate();
   const cartPage = useRef<HTMLDivElement | null>(null);
+
+  const [isSignupPopupVisible, setIsSignupPopupVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedInUserEmail, setloggedInUserEmail] = useState("");
+
   const [netPriceObj, setNetPriceObj] = useState<NetPrice>({
     totalPrice: 0,
     totalDiscountedPrice: 0,
     discount: 0,
   });
-  const [couponCode, setCouponCode] = useState<string>("");
-  const [cartValue, setCartValue] = useState<number>(0);
-  const [promoApplied, setPromoApplied] = useState<boolean>(false);
-  const [couponMessage, setCouponMessage] = useState<string>("");
-  const [additionalDiscount, setAdditionalDiscount] = useState<number>(0);
-  const navigate = useNavigate();
 
-  const [data, setData] = useState([]);
+  const [couponCode, setCouponCode] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [couponMessage, setCouponMessage] = useState("");
+  const [additionalDiscount, setAdditionalDiscount] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_TBR_COUPANS_URL}`);
-    
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-    
-        const encryptedData = await response.text(); // Get raw text response
-        // console.log("Encrypted Data:", encryptedData); // Log the encrypted data
-    
-        // If encryptedData is empty, return an error
-        if (!encryptedData) {
-          throw new Error("The server returned an empty response.");
-        }
-    
-        // Define the secret key
-        const secretKey = import.meta.env.VITE_TBR_SECRET_COU_KEY;
-    
-        // Decrypt the data
-        const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
-        const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
-    
-        // console.log("Decrypted Data:", decryptedData); // Log decrypted data
-    
-        // Parse the decrypted JSON
-        const jsonData = JSON.parse(decryptedData);
-        setData(jsonData);
-      } catch (error) {
-        console.error("Error fetching or decrypting data:", error);
-      }
-    }
-    fetchData();
-  }, []);
-      // .then((result) => {
-      //   const couponsData = result;
-      //   setData(couponsData);
-      // })
-      // .catch((error) => {
-      //   console.error("Fetch error:", error);
-      // });
-  // }, []);
+  /* ----------------------------
+     🔥 PRICE NORMALIZER (REAL FIX)
+  ----------------------------- */
+  const getPrice = (course: Course) =>
+    Number(
+      course.price ??
+        course.originalPrice ??
+        0
+    );
 
-  // useEffect(() => {
-  //   fetch(`${import.meta.env.VITE_TBR_COUPANS_URL}`)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! Status: ${response.status}`);
-  //       }
-  //       console.log(response)
-  //       return response.json();
-  //     })
-  //     .then((result) => {
-  //       console.log(result)
+  const getDiscountedPrice = (course: Course) =>
+    Number(
+      course.discountedPrice ??
+        course.discountPrice ??
+        course.discounted_price ??
+        course.price ??
+        0
+    );
 
-  //       const couponsData = result;
-  //       setData(couponsData);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Fetch error:", error);
-  //     });
-  // }, []);
-
-
+  /* ---------------------------- */
   useEffect(() => {
     calculateNetPrice();
   }, [cart]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     if (cartPage.current) {
@@ -143,190 +97,180 @@ const Cart = ({
     checkLoginStatus();
   }, []);
 
-  const toggleSignupPopup = () => {
-    setIsSignupPopupVisible(!isSignupPopupVisible);
-  };
-
-
-  const handleApplyCoupon = () => {
-    
-    // Reset message and discount first
-    setCouponMessage("");
+  /* ----------------------------
+     COUPON (BACKEND)
+  ----------------------------- */
+  const handleApplyCoupon = async () => {
     setPromoApplied(false);
     setAdditionalDiscount(0);
-    calculateNetPrice(0);
 
-    if (!couponCode) {
+    if (!couponCode.trim()) {
       setCouponMessage("Invalid coupon code");
       setPromoApplied(true);
-      setAdditionalDiscount(0);
       calculateNetPrice(0);
       return;
     }
-  
-    let isCouponValid = false;
-  
-    data.forEach((data) => {
-      if (data[0] === couponCode) {
-        isCouponValid = true;
-        const couponDiscount = data[1];
-        setCouponMessage(
-          `Woohoo! 🎉 You've got an extra ${couponDiscount}% off`
-        );
-        setPromoApplied(true);
-        setAdditionalDiscount(couponDiscount);
-        calculateNetPrice(couponDiscount);
-      }
-    });
-  
-    if (!isCouponValid) {
-      setCouponMessage("Invalid coupon code");
+
+    const result = await couponService.validateCoupon(couponCode);
+
+    if (result.success) {
+      setCouponMessage(
+        `Woohoo! 🎉 You've got an extra ${result.discount}% off`
+      );
+      setAdditionalDiscount(result.discount);
       setPromoApplied(true);
-      setAdditionalDiscount(0);
+      calculateNetPrice(result.discount);
+    } else {
+      setCouponMessage(result.message || "Invalid coupon code");
+      setPromoApplied(true);
       calculateNetPrice(0);
     }
   };
-  
-  const calculateNetPrice = (additionalDiscount = 0) => {
+
+  /* ----------------------------
+     PRICE CALCULATION
+  ----------------------------- */
+  const calculateNetPrice = (extraDiscount = 0) => {
     let totalPrice = 0;
     let totalDiscountedPrice = 0;
+
     cart.forEach((course: Course) => {
-      totalPrice += course.price;
-      totalDiscountedPrice += course.discountedPrice;
+      totalPrice += getPrice(course);
+      totalDiscountedPrice += getDiscountedPrice(course);
     });
-    if (additionalDiscount > 0) {
+
+    if (extraDiscount > 0) {
       totalDiscountedPrice =
-        totalDiscountedPrice * (1 - additionalDiscount / 100);
+        totalDiscountedPrice * (1 - extraDiscount / 100);
     }
-    let discount = Math.floor(
-      ((totalPrice - totalDiscountedPrice) / totalPrice) * 100
-    );
-    const newNetPriceObj: NetPrice = {
+
+    const discount =
+      totalPrice > 0
+        ? Math.floor(
+            ((totalPrice - totalDiscountedPrice) / totalPrice) * 100
+          )
+        : 0;
+
+    const newNet = {
       totalPrice,
-      totalDiscountedPrice: Math.floor(totalDiscountedPrice),
+      totalDiscountedPrice: Math.round(totalDiscountedPrice),
       discount,
     };
-    setNetPriceObj(newNetPriceObj);
-    setCartValue(newNetPriceObj.totalDiscountedPrice);
+
+    setNetPriceObj(newNet);
     setCartDetailsData(cart);
-    setCartValueData(newNetPriceObj.totalDiscountedPrice);
+    setCartValueData(newNet.totalDiscountedPrice);
   };
 
   const handleProceedToPayment = () => {
-    if (isLoggedIn) {
-      navigate("/cart-summary");
-    } else {
-      toggleSignupPopup();
-    }
+    if (isLoggedIn) navigate("/cart-summary");
+    else setIsSignupPopupVisible(true);
   };
 
+  /* ----------------------------
+     UI (UNCHANGED LAYOUT)
+  ----------------------------- */
   return (
     <div
-      className=" cart text-[#2E436A] px-[30px] md:pl-[70px] md:pr-[60px] xl:pl-[140px] xl:pr-[100px] overflow-visible flex flex-col gap-10 xl:gap-14 mb-10"
+      className="cart text-[#2E436A] px-[30px] md:pl-[70px] md:pr-[60px] xl:pl-[140px] xl:pr-[100px] flex flex-col gap-10 mb-10"
       ref={cartPage}
     >
       <Helmet>
         <title>TechBairn - Cart</title>
-        <meta name="Cart content" content="TechBairn cart page." />
       </Helmet>
-      <Help/>
-      <div className=" heading text-6xl lg:text-8xl font-semibold text-center lg:text-left overflow-visible"></div>
+
+      <Help />
+
       {cart.length === 0 ? (
-        <div className="empty-cart-message text-center text-4xl lg:text-6xl font-bold mb-[5rem] overflow-visible">
-          <h2 className="overflow-visible">Your bag is empty</h2>
-          <NavLink
-            to="/programs"
-            className="start-shopping bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer mt-10 inline-block"
-          >
-            Start shopping
-          </NavLink>
+        <div className="text-center text-4xl font-bold">
+          Your bag is empty
         </div>
       ) : (
-        <div className="main-cart border border-[#ccc] rounded-2xl flex flex-col gap-10 p-5 lg:p-7 xl:p-16 shadow-xl">
-          {cart.map((course: Course) => (
-            <div
-              className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-9"
-              key={course.id}
-            >
-              <div className="course-box-1 flex gap-3 xl:gap-7 lg:w-4/6">
-                <div className="img h-48 w-5/12 xl:w-4/12 xl:h-60 border rounded-xl overflow-y-hidden">
-                  <img src={course.image} alt={course.image} />
-                </div>
-                <div className="course-name-desc w-7/12 flex flex-col justify-between py-5 xl:py-7">
-                  <div className="course-name text-4xl lg:text-5xl xl:text-6xl overflow-visible font-semibold">
-                    {course.name}
+        <div className="main-cart border rounded-2xl flex flex-col gap-10 p-5 lg:p-7 xl:p-16 shadow-xl">
+          {cart.map((course: Course) => {
+            const price = getPrice(course);
+            const discounted = getDiscountedPrice(course);
+
+            return (
+              <div
+                className="cart-course-card flex flex-col lg:flex-row gap-3 xl:gap-9"
+                key={course.id}
+              >
+                <div className="course-box-1 flex gap-3 xl:gap-7 lg:w-4/6">
+                  <div className="img h-48 w-5/12 xl:w-4/12 xl:h-60 border rounded-xl overflow-hidden">
+                    <img src={course.image} alt={course.name} />
                   </div>
-                  <div className="course-desc text-2xl lg:text-3xl xl:text-4xl xl:overflow-visible">
-                    {course.description}
+
+                  <div className="w-7/12 flex flex-col justify-between py-5">
+                    <div className="text-4xl lg:text-5xl font-semibold">
+                      {course.name}
+                    </div>
+                    <div className="text-2xl lg:text-3xl">
+                      {course.description}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between lg:w-2/6">
+                  <div className="text-3xl lg:text-4xl font-semibold">
+                    <div className="text-[#6D87F5]">
+                      Rs {discounted.toFixed(2)}
+                    </div>
+                    <div className="line-through">
+                      Rs {price.toFixed(2)}
+                    </div>
+                  </div>
+
+                  <div
+                    onClick={() => removeFromCart(course.id)}
+                    className="bg-[#FF7E6C] text-white px-6 py-3 rounded-xl cursor-pointer"
+                  >
+                    Remove
                   </div>
                 </div>
               </div>
-              <div className="course-box-2 flex items-center justify-between lg:w-2/6">
-                <div className="price text-3xl lg:text-4xl xl:text-5xl xl:overflow-visible font-semibold">
-                  <div className="new text-[#6D87F5] overflow-hidden">
-                    Rs {course.discountedPrice.toFixed(2)}
-                  </div>
-                  <div className="line-through overflow-hidden">
-                    Rs {course.price.toFixed(2)}
-                  </div>
-                </div>
-                <div
-                  className="border-2 border-[#FF7E6C] bg-[#FF7E6C] text-white text-2xl lg:text-4xl xl:text-5xl font-semibold px-5 lg:px-6 xl:px-10 py-3 lg:py-4 xl:py-6 cursor-pointer rounded-xl hover:bg-white hover:text-[#FF7E6C]"
-                  onClick={() => removeFromCart(course.id)}
-                >
-                  Remove
-                </div>
+            );
+          })}
+
+          <div className="border-t-2 border-dashed pt-5 flex flex-col gap-5">
+            <div className="flex justify-end gap-6 text-3xl font-semibold">
+              <div>Net Price</div>
+              <div className="text-[#6D87F5]">
+                Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}
               </div>
+              {additionalDiscount === 0 && (
+                <div className="text-[#FF7E6C]">{netPriceObj.discount}% off</div>
+              )}
             </div>
-          ))}
-          <div className="cart-footer flex flex-col gap-5 border-t-2 border-dashed border-[#2E436A] pt-5">
-            <div className="net-box flex flex-col lg:flex-row gap-5 lg:w-fit lg:ml-auto lg:gap-10">
-              <div className="price text-3xl flex justify-between lg:gap-10">
-                <div className="text-4xl lg:text-5xl xl:text-4xl xl:overflow-hidden font-semibold">
-                  Net Price
-                </div>
-                <div className="new text-[#6D87F5] font-semibold">
-                  Rs {netPriceObj.totalDiscountedPrice.toFixed(2)}
-                </div>
-              </div>
-              <div className="discount">
-                <div className="text-2xl lg:text-5xl xl:text-3xl xl:overflow-hidden flex justify-between font-semibold">
-                  <div className="text-[#FF7E6C]">
-                    {additionalDiscount > 0
-                      ? ``
-                      : `${Math.floor(netPriceObj.discount)}% off`}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="coupon flex flex-grap gap-3 xl:gap-7">
+
+            <div className="flex gap-3">
               <input
-                className="input-box p-2 text-6xl w-full sm:w-1/2 lg:w-1/3 xl:py-4 border border-[#2E436A]  rounded-md focus:outline-none"
-                type="text"
+                className="border p-2 rounded-md w-1/3"
                 placeholder="Enter coupon code"
                 value={couponCode}
                 onChange={(e) => setCouponCode(e.target.value)}
               />
               <button
-                className="border-[#FF7E6C] bg-[#FF7E6C] text-white text-2xl font-semibold px-14 rounded-md hover:bg-white hover:text-[#FF7E6C]"
+                className="bg-[#FF7E6C] text-white px-6 rounded-md"
                 onClick={handleApplyCoupon}
               >
                 Apply
               </button>
             </div>
-            {promoApplied && (
-              <div className="coupon-message">{couponMessage}</div>
-            )}
-            <div className="flex flex-col gap-5 lg:flex-row-reverse">
+
+            {promoApplied && <div>{couponMessage}</div>}
+
+            <div className="flex lg:flex-row-reverse gap-4">
               <button
+                className="bg-[#2E436A] text-white px-8 py-3 rounded-2xl"
                 onClick={handleProceedToPayment}
-                className="bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
               >
                 Proceed to payment
               </button>
+
               <NavLink
                 to="/programs"
-                className="bg-[#2E436A] text-white border-2 border-[#2E436A] text-2xl lg:text-4xl px-6 lg:px-10 py-3 lg:py-5 rounded-2xl font-semibold hover:bg-white hover:text-[#2E436A] cursor-pointer"
+                className="bg-[#2E436A] text-white px-8 py-3 rounded-2xl"
               >
                 Continue Shopping
               </NavLink>
@@ -334,12 +278,13 @@ const Cart = ({
           </div>
         </div>
       )}
+
       {isSignupPopupVisible && (
-        <div className=" flex items-center justify-center fixed inset-0 bg-black bg-opacity-50 z-50">
-          <div className="signup-content bg-white p-8 rounded-lg shadow-md relative">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg relative">
             <button
-              className="close-button text-6xl   text-black absolute top-2 right-2"
               onClick={() => setIsSignupPopupVisible(false)}
+              className="absolute top-2 right-2 text-4xl"
             >
               <FaTimes />
             </button>

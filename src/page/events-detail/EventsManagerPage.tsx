@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Event } from "../../types/Event";
 import { events as initialEvents } from "./events";
 import Papa from "papaparse";
@@ -6,14 +7,22 @@ import AddForm from "./Add"; // Import the add form component
 import UpdateForm from "./Update"; // Import the update form component
 import ConfirmationDialog from "./ConfirmationDialog"; // Import the confirmation dialog component
 import { EventsAPI } from "../../apis/EventsAPI/EventsAPI";
+
+// coupon imports for Add Coupon flow
+import AddCouponModal from "../Coupons_code/AddCouponModal";
+import { couponService } from "../../apis/coupon/couponService";
+import { CouponType } from "../../apis/coupon/Coupon";
+import { toast } from "react-hot-toast";
 import "./bulb.css";
 // Import badge images
 import bulb from "./bulb.svg"; // Path to your bulb image
 
 function EventsManagerPage({ headerHeight }: any) {
+  const navigate = useNavigate();
   const eventsManagerPage = useRef<HTMLDivElement | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [isAddFormVisible, setAddFormVisible] = useState(false); // State to control add form visibility
+  const [isAddCouponVisible, setAddCouponVisible] = useState(false); // new state for coupon modal
   const [isUpdateFormVisible, setUpdateFormVisible] = useState(false); // State to control update form visibility
   const [isConfirmDialogVisible, setConfirmDialogVisible] = useState(false); // State to control confirmation dialog visibility
   const [currentEvents, setCurrentEvents] = useState<Event[]>(initialEvents);
@@ -164,6 +173,15 @@ function EventsManagerPage({ headerHeight }: any) {
         Manage Events
       </div>
 
+      {/* Manage Coupons now navigates to the coupon admin page */}
+      <button
+        className="md:w-fit bg-[#2FD18C] hover:bg-white text-white hover:text-[#2FD18C] border-2 border-[#2FD18C] font-bold text-3xl lg:text-5xl px-20 lg:px-12 py-4 lg:py-7 rounded-2xl transition visible"
+        onClick={() => navigate('/coupons')}
+      >
+        Manage Coupons
+      </button>
+
+      {/* Add Event button (unchanged) */}
       <button
         className="md:w-fit bg-[#2FD18C] hover:bg-white text-white hover:text-[#2FD18C] border-2 border-[#2FD18C] font-bold text-3xl lg:text-5xl px-20 lg:px-12 py-4 lg:py-7 rounded-2xl transition visible"
         onClick={() => setAddFormVisible(true)}
@@ -221,20 +239,35 @@ function EventsManagerPage({ headerHeight }: any) {
         ))}
       </div>
 
-      {/* Render the add event form */}
-      {isAddFormVisible && (
+      {/* Render the add coupon modal */}
+      {isAddCouponVisible && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col">
           <div
             className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10 cursor-pointer w-fit self-end m-5"
-            onClick={() => setAddFormVisible(false)}
+            onClick={() => setAddCouponVisible(false)}
           >
             &times;
           </div>
           <div className="flex flex-1">
-            <AddForm
-              selectedEvent={selectedEvent}
-              setUpdateFormVisible={setUpdateFormVisible}
-              setAddFormVisible={setAddFormVisible}
+            <AddCouponModal
+              isOpen={isAddCouponVisible}
+              onClose={() => setAddCouponVisible(false)}
+              existingCodes={[]}
+              isLoading={false}
+              onAddCoupon={async (code, discount, type) => {
+                try {
+                  const res = await couponService.addCoupon({
+                    couponCode: code.toUpperCase(),
+                    percentage: discount,
+                    type
+                  });
+                  if (res && res.data) {
+                    toast.success('Coupon added from events page');
+                  }
+                } catch (e) {
+                  console.error(e);
+                }
+              }}
             />
           </div>
         </div>

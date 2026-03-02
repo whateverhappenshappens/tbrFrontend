@@ -1,4 +1,3 @@
-export {};
 import React, { useState } from 'react';
 import { X, Plus, AlertCircle } from 'lucide-react';
 import { CouponType, COUPON_TYPES, getCouponTypeInfo } from '../../apis/coupon/Coupon';
@@ -19,7 +18,7 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
   isLoading
 }) => {
   const [code, setCode] = useState('');
-  const [discount, setDiscount] = useState<number>(null);
+  const [discount, setDiscount] = useState<number | null>(null);
   const [type, setType] = useState<CouponType>('percentage');
   const [errors, setErrors] = useState<{ code?: string; discount?: string }>({});
 
@@ -35,7 +34,7 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
     }
 
     if (type !== 'free-shipping') {
-      if (discount <= 0) {
+      if (discount === null || discount <= 0) {
         newErrors.discount = 'Discount must be greater than 0';
       } else if (type === 'percentage' && discount > 100) {
         newErrors.discount = 'Percentage discount cannot exceed 100%';
@@ -50,9 +49,9 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
-      const finalDiscount = type === 'free-shipping' ? 0 : discount;
+      const finalDiscount = type === 'free-shipping' ? 0 : (discount ?? 0);
       onAddCoupon(code.trim(), finalDiscount, type);
       handleClose();
     }
@@ -150,9 +149,8 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
                 }
               }}
               disabled={isLoading}
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 font-mono ${
-                errors.code ? 'border-red-300 bg-red-50' : 'border-gray-300'
-              } disabled:bg-gray-100 disabled:text-gray-500`}
+              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 font-mono ${errors.code ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                } disabled:bg-gray-100 disabled:text-gray-500`}
               placeholder="e.g., SAVE25"
             />
             {errors.code && (
@@ -172,11 +170,10 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
               {COUPON_TYPES.map((typeOption) => (
                 <label
                   key={typeOption.value}
-                  className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all duration-200 ${
-                    type === typeOption.value
-                      ? 'border-blue-500 bg-blue-50'
-                      : 'border-gray-200 hover:border-gray-300'
-                  } ${isLoading ? 'cursor-not-allowed opacity-50' : ''}`}
+                  className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all duration-200 ${type === typeOption.value
+                    ? 'border-blue-500 bg-blue-50'
+                    : 'border-gray-200 hover:border-gray-300'
+                    } ${isLoading ? 'cursor-not-allowed opacity-50' : ''}`}
                 >
                   <input
                     type="radio"
@@ -187,14 +184,12 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
                     disabled={isLoading}
                     className="sr-only"
                   />
-                  <div className={`flex items-center space-x-3 ${
-                    type === typeOption.value ? 'text-blue-700' : 'text-gray-700'
-                  }`}>
-                    <span className={`inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold ${
-                      type === typeOption.value 
-                        ? typeOption.color.replace('text-', 'bg-').replace('-800', '-200') + ' ' + typeOption.color
-                        : 'bg-gray-100 text-gray-600'
+                  <div className={`flex items-center space-x-3 ${type === typeOption.value ? 'text-blue-700' : 'text-gray-700'
                     }`}>
+                    <span className={`inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold ${type === typeOption.value
+                      ? typeOption.color.replace('text-', 'bg-').replace('-800', '-200') + ' ' + typeOption.color
+                      : 'bg-gray-100 text-gray-600'
+                      }`}>
                       {typeOption.icon}
                     </span>
                     <div>
@@ -222,7 +217,7 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
               <input
                 type="number"
                 id="discount"
-                value={type === 'free-shipping' ? '' : discount}
+                value={type === 'free-shipping' ? '' : (discount ?? '')}
                 onChange={(e) => {
                   setDiscount(Number(e.target.value));
                   if (errors.discount) {
@@ -233,9 +228,8 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
                 min="0"
                 max={type === 'percentage' || type === 'seasonal' || type === 'bogo' ? "100" : "1000"}
                 step={type === 'fixed' ? "0.01" : "1"}
-                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                  errors.discount ? 'border-red-300 bg-red-50' : 'border-gray-300'
-                } disabled:bg-gray-100 disabled:text-gray-500`}
+                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${errors.discount ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                  } disabled:bg-gray-100 disabled:text-gray-500`}
                 placeholder={getDiscountPlaceholder()}
               />
               {(type === 'percentage' || type === 'seasonal' || type === 'bogo') && (
@@ -272,11 +266,11 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
               </span>
               <span className="font-mono text-sm font-semibold">{code || 'COUPON_CODE'}</span>
               <span className="text-sm text-gray-600">
-                {type === 'free-shipping' 
-                  ? 'Free Shipping' 
-                  : type === 'fixed' 
-                    ? `$${discount} off`
-                    : `${discount}% off`
+                {type === 'free-shipping'
+                  ? 'Free Shipping'
+                  : type === 'fixed'
+                    ? `$${discount ?? 0} off`
+                    : `${discount ?? 0}% off`
                 }
               </span>
             </div>
@@ -294,7 +288,7 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({
             </button>
             <button
               type="submit"
-              disabled={isLoading || !code.trim() || (type !== 'free-shipping' && discount <= 0)}
+              disabled={isLoading || !code.trim() || (type !== 'free-shipping' && (discount === null || discount <= 0))}
               className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-blue-400 transition-all duration-200 flex items-center justify-center space-x-2"
             >
               {isLoading ? (

@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+
+import CouponManagementViewer from "./page/Coupons_code/CouponManagementViewer";
+
+
 import "./App.css";
 import Header from "./components/header/Header";
 import Mentor from "./page/mentor/Mentor";
@@ -41,11 +46,13 @@ import TryListings from "./try/Try_listing";
 import Unsucessfull from "./page/paymentUnsuccessfull/Unsucessfull";
 import Policy from "./components/footer/Policy";
 import TermsCondition from "./components/footer/TermsCondition";
+import Coupon from "./page/Coupons_code/AdminPanel";
+//import Course_update from "./page/Admin_course_update/Main"
 function App() {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [activeEventData, setActiveEventData] = useState<any>();
   const [pastEventData, setPastEventData] = useState<any>();
-  
+
   const [coupon, setCoupon] = useState<any>();
   const [cartDetailsData, setCartDetailsData] = useState<any>("");
   const [cartValue, setCartValueData] = useState<number>();
@@ -165,8 +172,8 @@ function App() {
             <Route
               path="/login"
               element={<Login handle_login={() => setIsLoggedIn(true)}
-              setIsLoggedIn={setIsLoggedIn}
-              setloggedInUserEmail={setloggedInUserEmail} />} // Ensure the prop is passed correctly
+                setIsLoggedIn={setIsLoggedIn}
+                setloggedInUserEmail={setloggedInUserEmail} />} // Ensure the prop is passed correctly
             />
             <Route path="/signup" element={<Signup />} />
             <Route path="/refer" element={<Refer />} />
@@ -199,6 +206,8 @@ function App() {
               path="/operations"
               element={
                 <OperationSignIn
+                  handle_login={handleLogin}
+                  setIsLoggedIn={setIsLoggedIn}
                 />
               }
             />
@@ -224,6 +233,8 @@ function App() {
             <Route path="/*" element={<NotFound />} />
             <Route path="/course/machinester" element={<MlProgram />} />
             <Route path="/course/IOT" element={<IotProgram />} />
+            <Route path="/coupons" element={<Coupon />} />
+            {/* <Route path="/course_update" element={<Course_update />} /> */}
             <Route
               path="/cart"
               element={
@@ -247,9 +258,10 @@ function App() {
         </div>
       </CartProvider>
     </BrowserRouter>
-    
+
   );
 }
+
 
 export default App;
 

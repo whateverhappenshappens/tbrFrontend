@@ -1,4 +1,3 @@
-export {};
 import React from 'react';
 import { X, Trash2, AlertTriangle } from 'lucide-react';
 import { Coupon, getCouponTypeInfo } from '../../apis/coupon/Coupon';

@@ -5,12 +5,23 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Biggest.css";
 import { Link } from "react-router-dom";
 
-interface Props {
-  ActiveData: any;
+/* ---------- TYPES ---------- */
+interface EventData {
+  id: string | number;
+  heading: string;
+  subHeading: string;
+  date?: string;
+  bannerLinkPC: string;
 }
 
+interface Props {
+  ActiveData?: EventData[];
+}
+
+/* ---------- COMPONENT ---------- */
 const Biggest: React.FC<Props> = ({ ActiveData }) => {
 
+  /* ---------- SLIDER SETTINGS ---------- */
   const settings = {
     dots: true,
     infinite: true,
@@ -24,70 +35,69 @@ const Biggest: React.FC<Props> = ({ ActiveData }) => {
     pauseOnHover: true,
   };
 
-  // Function to format the date string, removing 'T' and 'Z'
-  const formatDate = (isoDate: string) => {
+  /* ---------- DATE FORMATTER ---------- */
+  const formatDate = (isoDate?: string) => {
+    if (!isoDate) return "Date unavailable";
+
     const date = new Date(isoDate);
+    if (isNaN(date.getTime())) return "Invalid date";
+
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
 
-    // Format: YYYY-MM-DD HH:MM
     return `${day}-${month}-${year} ${hours}:${minutes}`;
   };
 
+  /* ---------- LOADING / EMPTY STATE ---------- */
+  if (!ActiveData || !Array.isArray(ActiveData) || ActiveData.length === 0) {
+    return <p>Loading...</p>;
+  }
+
+  /* ---------- UI ---------- */
   return (
     <div className="biggest-hackathon-carousel overflow-visible">
       <Slider {...settings}>
-        {ActiveData && Array.isArray(ActiveData) ? (
-          ActiveData.map((data: any, index: number) => (
-            <div key={index} className="biggest-hackathon-slide ">
-              <div className="biggest-hackathon">
-                <div className="biggest-hackathon-text">
-                  <p
-                    className="biggest-hackathon-text-large"
-                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
-                  >
-                    {data.heading}
-                  </p>
-                  <p
-                    className="biggest-hackathon-text-small"
-                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
-                  >
-                    {data.subHeading}
-                  </p>
-                  {/* Formatted Date */}
-                  <p
-                    className="biggest-hackathon-text-small"
-                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
-                  >
-                    {formatDate(data.date)}
-                  </p>
-                  <Link to={`/events/${data.id}`}>
-                    <button
-                      className="biggest-hackathon-button"
-                      style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
-                    >
-                      <p>Enroll Now</p>
-                    </button>
-                  </Link>
-                </div>
-                <div className="biggest-hackathon-img">
-                  <p
-                    className="image-para"
-                    style={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500 }}
-                  >
-                    {data.heading}
-                  </p>
-                  <img src={data.bannerLinkPC} alt={data.heading} />
-                </div>
+        {ActiveData.map((data) => (
+          <div key={data.id} className="biggest-hackathon-slide">
+            <div className="biggest-hackathon">
+
+              <div className="biggest-hackathon-text">
+                <p className="biggest-hackathon-text-large visbyroundCF extrabold">
+                  {data.heading}
+                </p>
+
+                <p className="biggest-hackathon-text-small visbyroundCF medium">
+                  {data.subHeading}
+                </p>
+
+                <p className="biggest-hackathon-text-small visbyroundCF medium">
+                  {formatDate(data.date)}
+                </p>
+
+                <Link to={`/events/${data.id}`}>
+                  <button className="biggest-hackathon-button visbyroundCF bold">
+                    <p>Enroll Now</p>
+                  </button>
+                </Link>
               </div>
+
+              <div className="biggest-hackathon-img">
+                <p className="image-para visbyroundCF extrabold">
+                  {data.heading}
+                </p>
+                <img
+                  src={data.bannerLinkPC}
+                  alt={data.heading}
+                  loading="lazy"
+                />
+              </div>
+
             </div>
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
+          </div>
+        ))}
       </Slider>
     </div>
   );

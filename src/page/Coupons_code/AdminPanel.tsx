@@ -1,4 +1,3 @@
-export {};
 import React, { useState, useEffect } from 'react';
 import CouponTable from './CouponTable';
 import AddCouponModal from './AddCouponModal';
@@ -195,6 +194,40 @@ const AdminPanel: React.FC = () => {
                 <Plus className="h-4 w-4" />
                 <span>Add Coupon</span>
               </button>
+              {/* quick-add button for demonstration/testing */}
+              <button
+                onClick={async () => {
+                  // use couponService directly with types from Coupon.ts
+                  setIsLoading(true);
+                  try {
+                    const sample: { couponCode: string; percentage: number; type: CouponType } = {
+                      couponCode: 'TEST10',
+                      percentage: 10,
+                      type: 'percentage'
+                    };
+                    const res = await couponService.addCoupon(sample);
+                    if (res && res.data) {
+                      const newCoupon: Coupon = {
+                        id: res.data.id,
+                        code: res.data.couponCode,
+                        discount: res.data.percentage,
+                        type: res.data.type
+                      };
+                      setCoupons(prev => [...prev, newCoupon]);
+                      toast.success('Test coupon added');
+                    }
+                  } catch (e) {
+                    console.error(e);
+                  } finally {
+                    setIsLoading(false);
+                  }
+                }}
+                disabled={isLoading}
+                className="bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-all duration-200 shadow-sm hover:shadow-md"
+              >
+                <Plus className="h-4 w-4" />
+                <span>Quick Add</span>
+              </button>
             </div>
           </div>
         </div>
@@ -255,6 +288,17 @@ const AdminPanel: React.FC = () => {
         </div>
 
         {/* Coupon Table */}
+        {/* extra add button placed above table for visibility */}
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={() => setIsAddModalOpen(true)}
+            disabled={isLoading}
+            className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-all duration-200 shadow-sm hover:shadow-md"
+          >
+            <Plus className="h-4 w-4" />
+            <span>Add Coupon</span>
+          </button>
+        </div>
         <CouponTable 
           coupons={filteredCoupons} 
           onDeleteCoupon={handleDeleteCoupon}

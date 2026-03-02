@@ -4,9 +4,9 @@ import toast from "react-hot-toast";
 // function to refresh the access token
 export const refreshAccessToken = async function refreshAccessToken() {
     // console.log("Inside refresh token function.");
-    if(!localStorage.getItem("access-token") == null) {
-        localStorage.removeItem("access-token");
-    }
+    if (localStorage.getItem("access-token") !== null) {
+  localStorage.removeItem("access-token");
+}
     await api
         .post("/v1.5/auth/refresh-token")
         .then((res) => {

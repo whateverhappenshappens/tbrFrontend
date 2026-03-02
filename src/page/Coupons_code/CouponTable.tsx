@@ -1,7 +1,6 @@
-export {};
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Trash2, Tag } from 'lucide-react';
-import { fetchCoupons, Coupon, getCouponTypeInfo } from '../../apis/coupon/Coupon';
+import { Coupon, getCouponTypeInfo } from '../../apis/coupon/Coupon';
 
 interface CouponTableProps {
   coupons: Coupon[];
@@ -9,29 +8,9 @@ interface CouponTableProps {
   isLoading: boolean;
 }
 
-const CouponTable: React.FC<CouponTableProps> = ({ onDeleteCoupon, isLoading }) => {
-  const [coupons, setCoupons] = useState<Coupon[]>([]);
-  const [isFetching, setIsFetching] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadCoupons = async () => {
-      try {
-        setIsFetching(true);
-        const fetchedCoupons = await fetchCoupons();
-        setCoupons(fetchedCoupons);
-        setError(null);
-      } catch (err) {
-        console.error('Failed to fetch coupons:', err);
-        setError('Failed to load coupons. Please try again later.');
-        setCoupons([]);
-      } finally {
-        setIsFetching(false);
-      }
-    };
-    
-    loadCoupons();
-  }, []);
+const CouponTable: React.FC<CouponTableProps> = ({ coupons, onDeleteCoupon, isLoading }) => {
+  // the parent component (AdminPanel) controls the coupon list and loading state;
+  // this table simply renders whatever it receives via props.
 
   const formatDiscount = (discount: number, type: string) => {
     switch (type) {
@@ -50,21 +29,11 @@ const CouponTable: React.FC<CouponTableProps> = ({ onDeleteCoupon, isLoading }) 
     }
   };
 
-  if (isFetching) {
+  if (isLoading) {
     return (
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-400 mx-auto mb-4"></div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">Loading coupons...</h3>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
-        <Tag className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-gray-900 mb-2">Error loading coupons</h3>
-        <p className="text-gray-500">{error}</p>
       </div>
     );
   }
