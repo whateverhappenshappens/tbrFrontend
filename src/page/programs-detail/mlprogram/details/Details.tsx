@@ -56,7 +56,7 @@ const Details: React.FC<Props> = (props) => {
     const course = {
       id: "machinester",
       name: "Machinester",
-      description: "A very small description of the course should be included",
+      description: "A Machine Learning Journey. Unlock the Future with AI and Machine Learning.",
       price: 4999,
       discountedPrice: 3999,
       image: machine,

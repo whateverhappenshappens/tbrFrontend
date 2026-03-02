@@ -10,8 +10,8 @@ interface Props {
   star: number;
   rating: number;
   students: number;
-  
-  
+
+
 }
 
 const Details: React.FC<Props> = (props) => {
@@ -58,10 +58,10 @@ const Details: React.FC<Props> = (props) => {
     const course = {
       id: "code-slayer",
       name: "CodeSlayer",
-      description: " A Competitive Programming Course.A Complete Placement Preparation Program ",
+      description: "A Competitive Programming program, complete Placement Preparation Program.",
       price: 4999,
       discountedPrice: 3999,
-      image:code   
+      image: code
     };
 
     addToCart(course);
@@ -82,8 +82,8 @@ const Details: React.FC<Props> = (props) => {
             <a href="http://">
               <p>Programs</p>
             </a>
-            
-            
+
+
             <AiOutlineRight size={15} color="white" />
             <a href="http://">
               <p>CodeSlayer</p>
@@ -91,8 +91,7 @@ const Details: React.FC<Props> = (props) => {
           </div>
           <div className="details-paragraphs">
             <p className="details-paragraphs-para1">
-              A Competitive Programming program, complete Placement Preparation
-              Program
+              A Competitive Programming Course.
             </p>
           </div>
           <div className="details-ratings">
@@ -127,9 +126,9 @@ const Details: React.FC<Props> = (props) => {
               </p>
             </button>
             <a href="https://drive.google.com/file/d/1FccrX_zIaLZNgjAGv8ULRF11BB65mC-g/view" target="_blank" rel="noopener noreferrer">
-            <button className="py-7 details-buttons-download">
-              <p>Download Syllabus</p>
-            </button></a>
+              <button className="py-7 details-buttons-download">
+                <p>Download Syllabus</p>
+              </button></a>
           </div>
         </div>
       </div>

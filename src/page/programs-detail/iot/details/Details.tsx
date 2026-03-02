@@ -10,8 +10,8 @@ interface Props {
   star: number;
   rating: number;
   students: number;
-  
-  
+
+
 }
 
 const Details: React.FC<Props> = (props) => {
@@ -58,11 +58,11 @@ const Details: React.FC<Props> = (props) => {
     const course = {
       id: "iot",
       name: "IOT",
-      description: "A very small description of the course should be included",
+      description: "A Complete Internet of Things course with data analytics.",
       price: 4999,
       discountedPrice: 3999,
-      image:iot
-,
+      image: iot
+      ,
     };
 
     addToCart(course);
@@ -82,7 +82,7 @@ const Details: React.FC<Props> = (props) => {
             <a href="http://">
               <p>Programs</p>
             </a>
-            
+
             <AiOutlineRight size={15} color="white" />
             <a href="http://">
               <p>Iot</p>
@@ -132,9 +132,9 @@ const Details: React.FC<Props> = (props) => {
               </p>
             </button>
             <a href="https://drive.google.com/file/d/1VydYo5LzLtwl3HYD3izo1w---svQ2As1/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <button className="py-7 details-buttons-download">
-              <p>Download Syllabus</p>
-            </button></a>
+              <button className="py-7 details-buttons-download">
+                <p>Download Syllabus</p>
+              </button></a>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 
 import CouponManagementViewer from "./page/Coupons_code/CouponManagementViewer";
@@ -121,6 +121,14 @@ function App() {
     checkTokenValidity();
   }, []);
 
+  // Protected Route component
+  const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+    if (!isLoggedIn) {
+      return <Navigate to="/login" replace />;
+    }
+    return <>{children}</>;
+  };
+
   return (
     <BrowserRouter>
       <ToastContainer
@@ -194,13 +202,19 @@ function App() {
             <Route
               path="/cart-summary"
               element={
-                <UpdateUserDetail
-                  cartDetailsData={cartDetailsData}
-                  cartValue={cartValue}
-                />
+                <ProtectedRoute>
+                  <UpdateUserDetail
+                    cartDetailsData={cartDetailsData}
+                    cartValue={cartValue}
+                  />
+                </ProtectedRoute>
               }
             />
-            <Route path="/user-profile" element={<UserProfile />} />
+            <Route path="/user-profile" element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            } />
             <Route path="/updated-css" element={<TryListings />} />
             <Route
               path="/operations"
@@ -213,7 +227,11 @@ function App() {
             />
             <Route
               path="/operations/manage-events"
-              element={<EventsManagerPage headerHeight={headerHeight} />}
+              element={
+                <ProtectedRoute>
+                  <EventsManagerPage headerHeight={headerHeight} />
+                </ProtectedRoute>
+              }
             />
             <Route path="/hire-with-us" element={<Hire />} />
 
@@ -233,7 +251,11 @@ function App() {
             <Route path="/*" element={<NotFound />} />
             <Route path="/course/machinester" element={<MlProgram />} />
             <Route path="/course/IOT" element={<IotProgram />} />
-            <Route path="/coupons" element={<Coupon />} />
+            <Route path="/operations/manage-coupons" element={
+              <ProtectedRoute>
+                <Coupon />
+              </ProtectedRoute>
+            } />
             {/* <Route path="/course_update" element={<Course_update />} /> */}
             <Route
               path="/cart"
@@ -246,7 +268,11 @@ function App() {
               }
             />
             <Route path="/test" element={<Test />} />
-            <Route path="/operations/sales" element={<SalesOperations />} />
+            <Route path="/operations/sales" element={
+              <ProtectedRoute>
+                <SalesOperations />
+              </ProtectedRoute>
+            } />
             <Route
               path="/payment-success"
               element={<PaymentSuccess headerHeight={headerHeight} />}

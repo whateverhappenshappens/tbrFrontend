@@ -53,7 +53,7 @@ const Details: React.FC<Props> = (props) => {
     const course = {
       id: "webmonk",
       name: "Webmonk",
-      description: "A very small description of the course should be included",
+      description: "A Full Stack Development Course.",
       price: 4999,
       discountedPrice: 3999,
       image: web,
