@@ -1,7 +1,7 @@
-import {useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReviewSlider from "./ReviewSlider";
-import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import "../../../styles/components/Login.css";
 import { UserRole } from "../../../types/User";
 import { UserAPI } from "../../../apis/UserAPIs";
@@ -17,9 +17,10 @@ interface LoginProps {
   handle_login: () => void;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   setloggedInUserEmail: (email: string) => void;
+  onClose?: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInUserEmail }) => {
+const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInUserEmail, onClose }) => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({
     password: "",
@@ -76,7 +77,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
         });
         setIsVisible(false);
         setTimeout(() => navigate("/"), 100);
-        
+
       } catch (e) {
         console.error("Login Error: ", e);
       } finally {
@@ -104,14 +105,22 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
 
   return (
     <GoogleOAuthProvider clientId="">
-       <Helmet>
+      <Helmet>
         <title>TechBairn - Login </title>
         <meta
           name="TechBairn - Login content"
           content="TechBairn Login page."
         />
       </Helmet>
-      <div className="main_box">
+      <div className="main_box relative">
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="absolute top-6 right-6 text-4xl text-gray-600 hover:text-black z-[2100]"
+          >
+            <FaTimes />
+          </button>
+        )}
         <aside className="left">
           <img src={logo2} alt="TechBairn Logo" className="logo121" />
           <h2>
@@ -141,7 +150,7 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
             onChange={(e) => {
               validateForm()
               setUserDetails({ ...userDetails, email: e.target.value })
-            } }
+            }}
           />
           {errors.email && <div className={`error text-lg capitalize text-red-600 ${userDetails.email.length == 0 ? 'hidden' : 'block'}`}>{errors.email}</div>}
           <label>Password</label>
@@ -178,14 +187,14 @@ const Login: React.FC<LoginProps> = ({ handle_login, setIsLoggedIn, setloggedInU
             )}
           </button>
           <p className="cont">-------or continue login with--------</p>
-          <div className="google">
-          <FaGoogle className="icon12" />
+          <div className="google1">
+            <FaGoogle className="icon12" />
             <button onClick={handleLogin}>Google</button>
           </div>
         </div>
         {isSignupPopupVisible && (
-          <div className="signup absolute w-[100%] ml-[114px] overflow-y-hidden h-full bg-white top-[0%] border">
-            <Signup />
+          <div className="signup absolute w-[100%] ml-[114px] overflow-y-hidden h-full bg-white top-[0%] border z-[2200]">
+            <Signup setIsLoggedIn={setIsLoggedIn} onClose={() => setIsSignupPopupVisible(false)} />
           </div>
         )}
       </div>

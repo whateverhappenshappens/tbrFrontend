@@ -183,7 +183,7 @@ function App() {
                 setIsLoggedIn={setIsLoggedIn}
                 setloggedInUserEmail={setloggedInUserEmail} />} // Ensure the prop is passed correctly
             />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/refer" element={<Refer />} />
             <Route
               path="/blog"

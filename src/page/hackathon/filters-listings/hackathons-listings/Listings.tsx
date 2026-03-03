@@ -9,6 +9,7 @@ interface Props {
   para: string;
   date: string;
   id: string;
+  isActive: boolean;
 }
 
 const Listings: React.FC<Props> = (props: Props) => {
@@ -28,9 +29,11 @@ const Listings: React.FC<Props> = (props: Props) => {
         <p className="visbyroundCF bold">{props.date}</p>
       </div>
       <div className="listings-button">
-        <button className="visbyroundCF demibold listings-button-enroll">
-          <p>Enroll</p>
-        </button>
+        {props.isActive && (
+          <button className="visbyroundCF demibold listings-button-enroll">
+            <p>Enroll</p>
+          </button>
+        )}
         <Link
           to={`/events/${props.id}`}
           className="visbyroundCF demibold listings-button-details"

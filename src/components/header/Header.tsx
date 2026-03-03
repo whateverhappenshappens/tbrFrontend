@@ -398,6 +398,7 @@ import Login from "../main/login/Login";
 import Signup from "../main/Sign/Signup";
 import { UserAPI } from "../../apis/UserAPIs";
 import { FaCartShopping } from "react-icons/fa6";
+import { FaTimes } from "react-icons/fa";
 import logo from "../../assets/techbairn logo black-01.png";
 import hamburger from "../../assets/hamburger.png";
 import "../../styles/components/Header.css";
@@ -428,26 +429,26 @@ function Header({
 
   const { cart } = useCart();
 
-const toggleDropdown = () => {
+  const toggleDropdown = () => {
     setIsOpen(!isOpen);
-};
-
-const handleMouseLeave = () => {
-    setIsOpen(false);
-};
-
-const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-    }
-};
-
-useEffect(() => {
-  document.addEventListener('click', handleClickOutside);
-  return () => {
-      document.removeEventListener('click', handleClickOutside);
   };
-}, []);
+
+  const handleMouseLeave = () => {
+    setIsOpen(false);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     if (navOpen) {
@@ -479,25 +480,18 @@ useEffect(() => {
   return (
     <header className="header" ref={headerContainer}>
       {showLogin && (
-        <div className="login-pop absolute w-3/4 bg-white top-[24%] rounded-lg border">
-          <div
-            className="text-9xl right-[5%] z-10 cursor-pointer absolute overflow-hidden"
-            onClick={() => setShowLogin(false)}
-          >
-            &times;
-          </div>
-          <Login handle_login={handle_login} setIsLoggedIn={setIsLoggedIn} setloggedInUserEmail={setloggedInUserEmail}/>
+        <div className="login-pop fixed inset-0 bg-black/50 flex items-center justify-center z-[2000]">
+          <Login
+            handle_login={handle_login}
+            setIsLoggedIn={setIsLoggedIn}
+            setloggedInUserEmail={setloggedInUserEmail}
+            onClose={() => setShowLogin(false)}
+          />
         </div>
       )}
       {showSignup && (
-        <div className="signup absolute w-[78%] bg-white top-[24%] border rounded-lg">
-          <div
-            className="text-9xl cursor-pointer z-10 right-[5%] absolute overflow-hidden"
-            onClick={() => setShowSignup(false)}
-          >
-            &times;
-          </div>
-          <Signup setIsLoggedIn={setIsLoggedIn} /> {/* Pass setIsLoggedIn here */}
+        <div className="signup-pop fixed inset-0 bg-black/50 flex items-center justify-center z-[2000]">
+          <Signup setIsLoggedIn={setIsLoggedIn} onClose={() => setShowSignup(false)} />
         </div>
       )}
 
@@ -538,31 +532,31 @@ useEffect(() => {
             <div className="more-btn" onClick={toggleDropdown}>
               more↓
               {isOpen && (
-               <ul className="dropdown-menu" onMouseLeave={handleMouseLeave}>
-                <li>
-                  <NavLink to="/hire-with-us">
-                    <button className="more-option">Hire with us</button>
-                  </NavLink>
-                </li>
+                <ul className="dropdown-menu" onMouseLeave={handleMouseLeave}>
+                  <li>
+                    <NavLink to="/hire-with-us">
+                      <button className="more-option">Hire with us</button>
+                    </NavLink>
+                  </li>
 
-                <li>
-                  <NavLink to="/blog">
-                    <button className="more-option">Blog</button>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/About-us">
-                    <button className="more-option">About Us</button>
-                  </NavLink>
-                </li>
-              </ul> 
+                  <li>
+                    <NavLink to="/blog">
+                      <button className="more-option">Blog</button>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/About-us">
+                      <button className="more-option">About Us</button>
+                    </NavLink>
+                  </li>
+                </ul>
               )}
             </div>
           </li>
           <li>
             <NavLink className="nav-list-item" to="/cart" onClick={() => setNavOpen(false)}>
               <FaCartShopping />
-              <span className={`text-xl ${cart.length ===0 ? "hidden": "block"}`} >{cart.length}</span>
+              <span className={`text-xl ${cart.length === 0 ? "hidden" : "block"}`} >{cart.length}</span>
             </NavLink>
           </li>
           <li>
@@ -578,7 +572,7 @@ useEffect(() => {
         </ul>
         {!isLoggedIn ? (
           <div className="authenticate">
-            <div className="sign-up"  onClick={handelSignup}>
+            <div className="sign-up" onClick={handelSignup}>
               Sign Up
             </div>
             <div className="log-in" onClick={handelLogin}>

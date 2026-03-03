@@ -144,7 +144,7 @@
 }
 .check-box:checked {
   /* background-color: #6D87F5; */
-  /* background-color: red;
+/* background-color: red;
 }
 .forgot-password-btn {
   font-size: 2rem;
@@ -158,7 +158,7 @@
   background-color: #6d87f5;
   padding: 2rem 8rem 2rem 8rem;
   border-radius: 2rem;
-} */ 
+} */
 /* Login.css */
 .main_box {
   display: flex;
@@ -179,17 +179,19 @@
   height: 100%;
 }
 
-.review-slider > div {
+.review-slider>div {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-.right h3 button{
+
+.right h3 button {
   color: #3853c5;
 }
-.review-slider > div.active {
+
+.review-slider>div.active {
   opacity: 1;
 }
 
@@ -206,25 +208,28 @@
   justify-content: space-around;
   align-items: center;
   width: 90%;
-  height: 90vh;
-  max-width: 1200px;
+  height: auto;
+  max-height: 90vh;
+  max-width: 1000px;
   border-radius: 10px;
   background-color: #6d87f5;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .left {
   background-color: #6d87f5;
-  width: 494px;
-  height: 650px;
-  margin: 2.5%;
+  width: 420px;
+  height: 580px;
+  margin: 1.5%;
   border-radius: 10px;
   overflow: hidden;
 }
+
 .error {
   color: red;
   font-size: 1rem;
 }
+
 .left h1 {
   color: beige;
   font-size: 3.75rem;
@@ -234,10 +239,10 @@
 
 .left h2 {
   color: #e9f4fb;
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
   font-family: extra-bold;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .image {
@@ -273,7 +278,7 @@
   display: flex;
   align-items: center;
   margin-top: 2rem;
-  
+
 }
 
 .info {
@@ -283,21 +288,21 @@
 }
 
 .right {
-  width: 40%;
+  width: 45%;
   height: 95%;
-  margin: 2.5%;
-  padding: 30px;
+  margin: 1.5%;
+  padding: 20px 25px;
 }
 
 .right h1 {
   color: #2e436a;
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   font-family: extra-bold;
 }
 
 .right h3 {
-  font-size: 2.3rem;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
   font-family: bold;
   color: #2e436a;
 }
@@ -309,18 +314,18 @@ a {
 
 label {
   font-family: demi-bold;
-  font-size: 25px;
+  font-size: 18px;
   color: #2E436A;
 }
 
 .right .lng {
-  margin-top: 10px;
+  margin-top: 5px;
   width: 100%;
-  padding: 15px;
-  border-radius: 20px;
-  margin-bottom: 20px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
   border: 1px solid #2E436A;
-  font-size: small;
+  font-size: 14px;
   color: #000;
 }
 
@@ -354,15 +359,15 @@ label {
 
 .btn1 {
   width: 100%;
-  height: 50px;
+  height: 42px;
   font-family: demi-bold;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #6d87f5;
   border: none;
   color: azure;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  margin-top: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  margin-top: 1rem;
 }
 
 .need {
@@ -382,23 +387,25 @@ label {
 }
 
 .google1 {
-  height: 60px;
-  width: 190px;
+  height: 45px;
+  width: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  font-size: 1.7rem;
+  border-radius: 8px;
+  font-size: 1.4rem;
   font-family: bold;
   margin: 0 auto;
-  margin-top: 3.3rem;
+  margin-top: 1.5rem;
 }
+
 .password-container {
   position: relative;
 }
 
 .password-container input {
-  padding-right: 40px; /* Ensure there is space for the eye icon */
+  padding-right: 40px;
+  /* Ensure there is space for the eye icon */
 }
 
 .eye-icon {
@@ -413,7 +420,8 @@ label {
 }
 
 .icon {
-  font-size: 24px; /* Increase the size of the icon */
+  font-size: 24px;
+  /* Increase the size of the icon */
 }
 
 .icon {
@@ -429,12 +437,14 @@ label {
     width: 100%;
     min-width: 284px;
   }
-  .right h3{
+
+  .right h3 {
     font-size: 1.3rem;
     color: #2E436A;
     font-family: extra-bold;
   }
-  .right a{
+
+  .right a {
     color: #6d87f5;
     font-family: extra-bold;
   }
@@ -442,9 +452,11 @@ label {
   .right .lng {
     width: 95%;
   }
-  .signup{
-    margin-right: 83px;
+
+  .signup {
+    margin-right: 0;
   }
+
   .btn1 {
     width: 100%;
     height: 40px;
@@ -455,9 +467,8 @@ label {
   }
 
   .google {
-    width: 95%;
-    margin: 0 auto;
-    border: none;
+    width: 90%;
+    margin: 1.5rem auto;
   }
 
   .cont {
@@ -470,10 +481,13 @@ label {
     align-items: flex-start;
     gap: 7px;
   }
-  .add, .pass {
+
+  .add,
+  .pass {
     font-size: 1.5rem;
   }
-  .add{
+
+  .add {
     margin-left: 10px;
   }
 

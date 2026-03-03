@@ -65,17 +65,17 @@ const Cart = ({
   const getPrice = (course: Course) =>
     Number(
       course.price ??
-        course.originalPrice ??
-        0
+      course.originalPrice ??
+      0
     );
 
   const getDiscountedPrice = (course: Course) =>
     Number(
       course.discountedPrice ??
-        course.discountPrice ??
-        course.discounted_price ??
-        course.price ??
-        0
+      course.discountPrice ??
+      course.discounted_price ??
+      course.price ??
+      0
     );
 
   /* ---------------------------- */
@@ -147,8 +147,8 @@ const Cart = ({
     const discount =
       totalPrice > 0
         ? Math.floor(
-            ((totalPrice - totalDiscountedPrice) / totalPrice) * 100
-          )
+          ((totalPrice - totalDiscountedPrice) / totalPrice) * 100
+        )
         : 0;
 
     const newNet = {
@@ -280,18 +280,13 @@ const Cart = ({
       )}
 
       {isSignupPopupVisible && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-          <div className="bg-white p-8 rounded-lg relative">
-            <button
-              onClick={() => setIsSignupPopupVisible(false)}
-              className="absolute top-2 right-2 text-4xl"
-            >
-              <FaTimes />
-            </button>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[2000]">
+          <div className="relative">
             <Signup
               handle_login={() => setIsLoggedIn(true)}
               setIsLoggedIn={setIsLoggedIn}
               setloggedInUserEmail={setloggedInUserEmail}
+              onClose={() => setIsSignupPopupVisible(false)}
             />
           </div>
         </div>

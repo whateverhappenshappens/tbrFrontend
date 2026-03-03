@@ -112,45 +112,47 @@ const FiltersListings: React.FC<HackathonPageProps> = ({
       <div className="hackathon-listings">
         {isactive
           ? Activedata?.map((item: any, index: any) => (
-              <React.Fragment key={index}>
-                <Listings
-                  rectColor="#FFEDB6"
-                  hColor="#FFC001"
-                  heading={item.heading}
-                  para={item.subHeading}
-                  id={item.id}
-                  date={new Date(item.date).toLocaleString("en-US", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    hour12: true,
-                  })}
-                />
-                <hr />
-              </React.Fragment>
-            ))
+            <React.Fragment key={index}>
+              <Listings
+                rectColor="#FFEDB6"
+                hColor="#FFC001"
+                heading={item.heading}
+                para={item.subHeading}
+                id={item.id}
+                isActive={true}
+                date={new Date(item.date).toLocaleString("en-US", {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
+                })}
+              />
+              <hr />
+            </React.Fragment>
+          ))
           : Pastdata?.map((item: any, index: any) => (
-              <React.Fragment key={index}>
-                <Listings
-                  rectColor="#FFEDB6"
-                  hColor="#FFC001"
-                  heading={item.heading}
-                  para={item.subHeading}
-                  date={new Date(item.date).toLocaleString("en-US", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    hour12: true,
-                  })}
-                  id={item.id}
-                />
-                <hr />
-              </React.Fragment>
-            ))}
+            <React.Fragment key={index}>
+              <Listings
+                rectColor="#FFEDB6"
+                hColor="#FFC001"
+                heading={item.heading}
+                para={item.subHeading}
+                isActive={false}
+                date={new Date(item.date).toLocaleString("en-US", {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
+                })}
+                id={item.id}
+              />
+              <hr />
+            </React.Fragment>
+          ))}
 
         {/* <Listings
           rectColor="#B2E2C6"

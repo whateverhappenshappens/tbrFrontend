@@ -1,5 +1,5 @@
 import "./Signup.css";
-import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaGoogle, FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { UserAPI } from "../../../apis/UserAPIs";
 import { User, UserRole } from "../../../types/User";
@@ -12,7 +12,12 @@ import Login from "../login/Login";
 import Helmet from "react-helmet";
 const GOOGLE_OAUTH_URL = import.meta.env.VITE_GOOGLE_OAUTH_URL;
 
-function Signup({ setIsLoggedIn }: any) {
+interface SignupProps {
+  setIsLoggedIn: any;
+  onClose?: () => void;
+}
+
+function Signup({ setIsLoggedIn, onClose }: SignupProps) {
   const Navigate = useNavigate(); // Initialize useHistory
 
   const [userDetails, setUserDetails] = useState<User>({
@@ -88,12 +93,12 @@ function Signup({ setIsLoggedIn }: any) {
     }
   };
 
-  const handelClick = () =>{
+  const handelClick = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
-}
+  }
 
   useEffect(() => {
   }, [formError]);
@@ -119,7 +124,7 @@ function Signup({ setIsLoggedIn }: any) {
   };
 
   return (
-    <div className="main_box">
+    <div className="main_box relative">
       <Helmet>
         <title>TechBairn - Signup </title>
         <meta
@@ -127,6 +132,14 @@ function Signup({ setIsLoggedIn }: any) {
           content="TechBairn Signup page."
         />
       </Helmet>
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 text-4xl text-gray-600 hover:text-black z-[2100]"
+        >
+          <FaTimes />
+        </button>
+      )}
       <aside className="left">
         <img
           src={logo1} // Replace with the path to your logo image
@@ -175,9 +188,8 @@ function Signup({ setIsLoggedIn }: any) {
             onChange={handleInputChange}
           />
           <p
-            className={`text-lg capitalize text-red-600 ${
-              userDetails.email.length == 0 ? "hidden" : "block"
-            }`}
+            className={`text-lg capitalize text-red-600 ${userDetails.email.length == 0 ? "hidden" : "block"
+              }`}
           >
             {formError.email}
           </p>
@@ -194,9 +206,8 @@ function Signup({ setIsLoggedIn }: any) {
               onChange={handleInputChange}
             />
             <p
-              className={`text-lg capitalize text-red-600 ${
-                userDetails.password.length == 0 ? "hidden" : "block"
-              }`}
+              className={`text-lg capitalize text-red-600 ${userDetails.password.length == 0 ? "hidden" : "block"
+                }`}
             >
               {formError.password}
             </p>
@@ -253,11 +264,12 @@ function Signup({ setIsLoggedIn }: any) {
         </div>
       </div>
       {isLoginPopupVisible && (
-        <div className="login absolute w-[100%] ml-[114px] h-full overflow-y-hidden bg-white border">
+        <div className="login absolute w-[100%] ml-[114px] h-full overflow-y-hidden bg-white border z-[2200]">
           <Login
             handle_login={() => setIsLoggedIn(true)}
             setIsLoggedIn={setIsLoggedIn}
             setloggedInUserEmail={setloggedInUserEmail}
+            onClose={() => setIsLoginPopupVisible(false)}
           />
         </div>
       )}
