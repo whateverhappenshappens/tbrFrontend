@@ -161,9 +161,10 @@ const App: React.FC<AddEventFormProps> = ({
       const response = await EventsAPI.addEvent(formattedData);
       if (response.status === 200) {
         toast.success("Event added successfully!");
-        setUpdateFormVisible(false);
+        setAddFormVisible(false);
       } else {
         toast.success("Event added successfully!");
+        setAddFormVisible(false);
       }
     } catch (error) {
       console.error("Error adding event:", error);
@@ -395,7 +396,7 @@ const App: React.FC<AddEventFormProps> = ({
       <div className="update-form-btn-container">
         <button
           className="bg-red-500 apply_button"
-          onClick={() => setUpdateFormVisible(false)}
+          onClick={() => setAddFormVisible(false)}
         >
           Cancel
         </button>

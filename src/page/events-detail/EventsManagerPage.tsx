@@ -274,6 +274,24 @@ function EventsManagerPage({ headerHeight }: any) {
       )}
 
       {/* Render the update event form */}
+      {isAddFormVisible && (
+        <div className="fixed inset-0 bg-white z-50 flex flex-col">
+          <div
+            className="text-7xl lg:text-9xl overflow-hidden pl-5 lg:pl-10 cursor-pointer w-fit self-end m-5"
+            onClick={() => setAddFormVisible(false)}
+          >
+            &times;
+          </div>
+          <div className="flex flex-1">
+            <AddForm
+              selectedEvent={null}
+              setUpdateFormVisible={setUpdateFormVisible}
+              setAddFormVisible={setAddFormVisible}
+            />
+          </div>
+        </div>
+      )}
+
       {isUpdateFormVisible && selectedEvent && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col">
           <div
