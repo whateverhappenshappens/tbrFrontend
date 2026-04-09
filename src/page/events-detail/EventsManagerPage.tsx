@@ -176,7 +176,7 @@ function EventsManagerPage({ headerHeight }: any) {
       {/* Manage Coupons now navigates to the coupon admin page */}
       <button
         className="md:w-fit bg-[#2FD18C] hover:bg-white text-white hover:text-[#2FD18C] border-2 border-[#2FD18C] font-bold text-3xl lg:text-5xl px-20 lg:px-12 py-4 lg:py-7 rounded-2xl transition visible"
-        onClick={() => navigate('/coupons')}
+        onClick={() => navigate('/operations/manage-coupons')}
       >
         Manage Coupons
       </button>
